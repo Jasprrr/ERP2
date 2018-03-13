@@ -11,19 +11,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Diagnostics;
-using MaterialDesignThemes.Wpf;
 
 namespace ERP.View
 {
     /// <summary>
-    /// Interaction logic for Account.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class AccountView : Window
+    public partial class LoginView : Window
     {
-        public AccountView(int accountID)
+        public LoginView()
         {
-            Debug.Print(accountID.ToString());
             InitializeComponent();
         }
     }

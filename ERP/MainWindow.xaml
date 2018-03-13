@@ -88,14 +88,16 @@
             </materialDesign:ColorZone>
 
             <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+                                     Content="{materialDesign:PackIcon Kind=Pencil}"
                                      PlacementMode="TopAndAlignRightEdges" 
                                      StaysOpen="False" 
                                      Grid.Row="1"
                                      Grid.Column="1" 
                                      VerticalAlignment="Bottom" 
                                      HorizontalAlignment="Right"
-                                     
-                                     Margin="16" Panel.ZIndex="1">
+                                     Margin="16" 
+                                     Panel.ZIndex="1" 
+                                     PopupMode="MouseOver" Width="38">
                 <StackPanel>
                     <Button ToolTip="Log">
                         <materialDesign:PackIcon Kind="Message"/>

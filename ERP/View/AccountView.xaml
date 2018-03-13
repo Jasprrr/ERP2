@@ -9,8 +9,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf" 
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
-        Height="800"
-        Width="800"
         Title="Wyatt"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -18,11 +16,36 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}" WindowStyle="ThreeDBorderWindow">
+    <Window.Resources>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Style.BasedOn>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="BorderThickness" Value="1,1,1,1"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                    <Setter Property="AcceptsReturn" Value="true"/>
+                    <Setter Property="Padding" Value="2,0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <TextBox BorderThickness="{TemplateBinding BorderThickness}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AcceptsReturn="{TemplateBinding AcceptsReturn}" Padding="{TemplateBinding Padding}"/>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsFocused" Value="true">
+                                        <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueMidBrush}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Style.BasedOn>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Grid.Column="0"
                                   Padding="16" 
@@ -34,22 +57,54 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Center" 
                            VerticalAlignment="Center" 
                            FontSize="22"
                            Text="Account"
                            Style="{StaticResource MaterialDesignTitleTextBlock}"/>
-                <Button Grid.Column="1" 
-                        Padding="4" 
-                        Width="34"
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignCentres"
+                                         Height="32"
+                                         Width="32"
+                                         Grid.Column="1" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         HorizontalContentAlignment="Center" 
+                                         VerticalContentAlignment="Center"
+                                         Margin="10,0">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Plus"
+                                                 Foreground="White"
+                                                 Height="30"
+                                                 Width="30"/>
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel>
+                        <Button ToolTip="One" Content="This is some content"/>
+                        <Button ToolTip="Two" IsEnabled="False">2</Button>
+                        <Button ToolTip="Three">3</Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <Button Grid.Column="2" 
+                        Padding="0" 
+                        Width="32"
                         materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                        materialDesign:RippleAssist.ClipToBounds="False">
-                    <materialDesign:PackIcon Kind="AccountPlus" Width="24" Height="24"/>
+                        materialDesign:RippleAssist.ClipToBounds="False"
+                        Margin="10,0">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="ContentSave"
+                                                 Width="24"
+                                                 Height="24"/>
+                    </Button.Content>
                 </Button>
-                <materialDesign:PopupBox Grid.Column="2" 
+                <materialDesign:PopupBox Grid.Column="3" 
                                          PlacementMode="BottomAndAlignRightEdges" 
-                                         StaysOpen="False">
+                                         StaysOpen="True"
+                                         Margin="10,0">
+                    <materialDesign:PopupBox.ToggleCheckedContent>
+                        <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
+                    </materialDesign:PopupBox.ToggleCheckedContent>
                     <StackPanel>
                         <Button Content="Hello World" />
                         <Button Content="Nice Popup" />
@@ -60,121 +115,294 @@
                 </materialDesign:PopupBox>
             </Grid>
         </materialDesign:ColorZone>
-
-        <TabControl Grid.Row="1" BorderThickness="0">
-            <TabItem Header="MATERIAL"
-                     Width="90"
-                     Style="{DynamicResource TabItemStyle1}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
-            </TabItem>
-            <TabItem Height="48"
-                     Width="90" 
-                     Header="DESIGN" 
-                     Style="{DynamicResource TabItemStyle1}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
-            </TabItem>
-            <TabItem Style="{DynamicResource TabItemStyle1}"
-                     Width="90">
-                <TabItem.Header>
-                    <Label Content="123"/>
-                </TabItem.Header>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="320"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <materialDesign:PackIcon Kind="Account"
-                                             Grid.Column="0" 
-                                             Width="24"
-                                             Height="24"
-                                             VerticalAlignment="Bottom" 
-                                             Margin="16,0,16,4"/>
-                    <TextBox materialDesign:HintAssist.Hint="Name" 
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Grid.Row="0"
-                             Grid.Column="1"
-                             Margin="0,16,0,4"/>
-                    <materialDesign:PackIcon Kind="Phone"
-                                     Grid.Column="0"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card Grid.Column="0" 
+                                     HorizontalAlignment="Left" 
+                                     VerticalAlignment="Stretch" >
+                <TabControl BorderThickness="0"
+                                MaxWidth="454" 
+                                Padding="0">
+                    <TabItem Style="{DynamicResource MaterialTab}"
+                             Width="90">
+                        <TabItem.Header>
+                            <Label Content="DETAILS"/>
+                        </TabItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="370"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <materialDesign:PackIcon Kind="Domain"
+                                                     Grid.Column="0" 
+                                                     Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Bottom" 
+                                                     Margin="16,0,16,4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Name" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <materialDesign:PackIcon Kind="Phone"
+                                                     Grid.Column="0"
+                                                     Grid.Row="1"
+                                                     Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Bottom" 
+                                                     Margin="16,0,16,4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Phone 1" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Grid.Row="1"
-                                     Width="24"
-                                     Height="24"
-                                     VerticalAlignment="Bottom" 
-                                     Margin="16,0,16,4"/>
-                    <TextBox materialDesign:HintAssist.Hint="Phone 1" 
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Grid.Row="1"
-                             Grid.Column="1"
-                             Margin="0,16,0,4"/>
-                    <materialDesign:PackIcon Kind="Phone"
-                                     Grid.Column="0"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <materialDesign:PackIcon Kind="Phone"
+                                                     Grid.Column="0"
+                                                     Grid.Row="2"
+                                                     Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Bottom" 
+                                                     Margin="16,0,16,4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Phone 2" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Grid.Row="2"
-                                     Width="24"
-                                     Height="24"
-                                     VerticalAlignment="Bottom" 
-                                     Margin="16,0,16,4"/>
-                    <TextBox materialDesign:HintAssist.Hint="Phone 2" 
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Grid.Row="2"
-                             Grid.Column="1"
-                             Margin="0,16,0,4"/>
-                    <materialDesign:PackIcon Kind="Email"
-                                             Grid.Column="0"
-                                             Grid.Row="3"
-                                             Width="24"
-                                             Height="24"
-                                             VerticalAlignment="Bottom" 
-                                             Margin="16,0,16,4"/>
-                    <TextBox materialDesign:HintAssist.Hint="Email" 
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Grid.Row="3"
-                             Grid.Column="1"
-                             Margin="0,16,0,4"/>
-                    <materialDesign:PackIcon Kind="Thermometer"
-                                             Grid.Column="0"
-                                             Grid.Row="4"
-                                             Width="24"
-                                             Height="24"
-                                             VerticalAlignment="Bottom" 
-                                             Margin="16,0,16,4"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Search" 
-                              IsEditable="False" 
-                              IsEnabled="False"
-                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                              Grid.Row="4"
-                              Grid.Column="1"
-                              Margin="0,16,0,4">
-                        <ComboBoxItem IsSelected="True">Apple</ComboBoxItem>
-                        <ComboBoxItem>Banana</ComboBoxItem>
-                        <ComboBoxItem>Pear</ComboBoxItem>
-                        <ComboBoxItem>Orange</ComboBoxItem>
-                    </ComboBox>
-                    <TextBox TextWrapping="Wrap" 
-                     VerticalAlignment="Top"
-                     MinWidth="280"
-                     AcceptsReturn="True"
-                     VerticalScrollBarVisibility="Auto"
-                     SpellCheck.IsEnabled="True"
-                     materialDesign:HintAssist.Hint="Multiline text"
-                     Height="80"
-                     Grid.Column="1"
-                     Grid.Row="5" 
-                     BorderThickness="1" 
-                     BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                     Text="123123"
-                     VerticalContentAlignment="Top" Margin="0,16,0,0" Style="{DynamicResource TextBoxStyle1}"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
-
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <materialDesign:PackIcon Kind="Email"
+                                                     Grid.Column="0"
+                                                     Grid.Row="3"
+                                                     Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Bottom" 
+                                                     Margin="16,0,16,4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Email" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="3"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox TextWrapping="Wrap" 
+                                     AcceptsReturn="True"
+                                     materialDesign:HintAssist.Hint="Description"
+                                     materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     VerticalScrollBarVisibility="Auto"
+                                     Grid.Column="1"
+                                     Grid.Row="5"
+                                     Margin="0,16,0,4" 
+                                     Height="300"
+                                     materialDesign:HintAssist.FloatingScale="1"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Height="48"
+                             Width="90"
+                             Style="{DynamicResource MaterialTab}">
+                        <TabItem.Header>
+                            <Label Content="CONTACTS"/>
+                        </TabItem.Header>
+                        
+                    </TabItem>
+                    <TabItem Style="{DynamicResource MaterialTab}"
+                             Width="90">
+                        <TabItem.Header>
+                            <Label Content="BILLING"/>
+                        </TabItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="370"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <materialDesign:PackIcon Kind="MapMarker"
+                                                     Grid.Column="0" 
+                                                     Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Bottom" 
+                                                     Margin="16,0,16,4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Address 1" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="Address 2" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="City" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="3"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="County" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="4"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="Postcode" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="5"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     Width="155"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18" 
+                                     HorizontalAlignment="Left"/>
+                            <TextBox materialDesign:HintAssist.Hint="Account Number" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="6"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     Width="155"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18" 
+                                     HorizontalAlignment="Left"/>
+                            <ComboBox Grid.Row="7"
+                                      Grid.Column="1"
+                                      Margin="0,16,0,4"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                      materialDesign:HintAssist.Hint="Default Carriage"
+                                      materialDesign:HintAssist.FloatingScale="1"
+                                      materialDesign:HintAssist.FloatingOffset="0,-18">
+                                <ComboBoxItem Content="T0"/>
+                                <ComboBoxItem Content="T1" IsSelected="True"/>
+                                <ComboBoxItem Content="T2"/>
+                                <ComboBoxItem Content="T4"/>
+                                <ComboBoxItem Content="T5"/>
+                                <ComboBoxItem Content="T7"/>
+                                <ComboBoxItem Content="T8"/>
+                                <ComboBoxItem Content="T9"/>
+                                <ComboBoxItem Content="T20"/>
+                                <ComboBoxItem Content="T22"/>
+                                <ComboBoxItem Content="T23"/>
+                                <ComboBoxItem Content="T24"/>
+                                <ComboBoxItem Content="T25"/>
+                            </ComboBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Style="{DynamicResource MaterialTab}"
+                             Width="90">
+                        <TabItem.Header>
+                            <Label Content="SHIPPING"/>
+                        </TabItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="370"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <materialDesign:PackIcon Kind="MapMarker"
+                                                     Grid.Column="0" 
+                                                     Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Bottom" 
+                                                     Margin="16,0,16,4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Address 1" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="Address 2" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="City" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="3"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="County" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="4"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18"/>
+                            <TextBox materialDesign:HintAssist.Hint="Postcode" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Grid.Row="5"
+                                     Grid.Column="1"
+                                     Margin="0,16,0,4"
+                                     Width="155"
+                                     materialDesign:HintAssist.FloatingScale="1"
+                                     materialDesign:HintAssist.FloatingOffset="0,-18" 
+                                     HorizontalAlignment="Left"/>
+                            <ComboBox Grid.Row="6"
+                                      Grid.Column="1"
+                                      Margin="0,16,0,4"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                      materialDesign:HintAssist.Hint="Default Carriage"
+                                      materialDesign:HintAssist.FloatingScale="1"
+                                      materialDesign:HintAssist.FloatingOffset="0,-18">
+                                <ComboBoxItem Content="Collection" IsSelected="True"/>
+                                <ComboBoxItem Content="Courier"/>
+                                <ComboBoxItem Content="BIE Magnum Delivery"/>
+                            </ComboBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Style="{DynamicResource MaterialTab}"
+                             Width="90">
+                        <TabItem.Header>
+                            <Label Content="OTHER"/>
+                        </TabItem.Header>
+                    </TabItem>
+                </TabControl>
+            </materialDesign:Card>
+        </Grid>
+        <StatusBar Grid.Row="2" Height="20"/>
     </Grid>
 </Window>

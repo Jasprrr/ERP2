@@ -37,7 +37,7 @@ namespace ERP
             InitializeComponent();
             _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "View/AccountsView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Account", NavPage = "View/AccountsView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Domain", NavPage = "View/AccountsView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "SuppliersView" });
             _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "OrdersView" });
             _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "OrdersView" });

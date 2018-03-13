@@ -99,8 +99,10 @@ namespace ERP.View
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Debug.Print(selectedItem.name.ToString());
-            var newWindow = new AccountView(1);
-            newWindow.Show();
+            Dispatcher.BeginInvoke(new Action(() => {
+                var editwindow = new AccountView(1);
+                editwindow.Show();
+            }));
         }
     }
 }
