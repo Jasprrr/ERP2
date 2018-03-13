@@ -23,5 +23,14 @@ namespace ERP.View
         {
             InitializeComponent();
         }
+
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() => {
+                var editwindow = new MainWindow();
+                editwindow.Show();
+                this.Close();
+            }));
+        }
     }
 }

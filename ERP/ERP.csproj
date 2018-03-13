@@ -158,7 +158,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resource\bie-logo.svg" />
+    <Resource Include="Resource\icon.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\test.png" />
   </ItemGroup>

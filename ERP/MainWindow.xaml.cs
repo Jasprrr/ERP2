@@ -33,7 +33,6 @@ namespace ERP
         {
             Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
             //SQLiteConnection.CreateFile("ERPData.sqlite");
-            Application.Current.MainWindow.WindowState = WindowState.Maximized;
             InitializeComponent();
             _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "View/AccountsView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "View/TasksView.xaml" });

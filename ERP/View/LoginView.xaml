@@ -6,33 +6,58 @@
         xmlns:local="clr-namespace:ERP.View"
         mc:Ignorable="d"
         Title="Login" 
-        Height="600" 
-        Width="300" 
+        Height="500" 
+        Width="454" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf" 
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
-        TextElement.Foreground="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="Black"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        ResizeMode="NoResize" Icon="/ERP;component/Resource/icon.ico">
     <Grid>
-        <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
             <Image Source="/ERP;component/Resource/test.png" 
                    VerticalAlignment="Top"
-                   Height="100" 
-                   Stretch="UniformToFill"/>
-            <TextBox Margin="0,20" 
-                     Width="280"
-                     materialDesign:HintAssist.Hint="Phone 2" 
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <PasswordBox Margin="0,20" 
-                     Width="280"
-                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-            <Button Content="Sign In"
-                    Width="280"/>
-        </StackPanel>
+                   Height="100"
+                   Grid.Row="0" Stretch="None"/>
+            <StackPanel Grid.Row="1" 
+                        Width="256" VerticalAlignment="Center">
+                <TextBox materialDesign:HintAssist.Hint="Name" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:HintAssist.IsFloating="True"
+                         Grid.Row="1"
+                         Margin="0,12,0,4"
+                         materialDesign:HintAssist.FloatingScale="1"
+                         materialDesign:HintAssist.FloatingOffset="0,-18"
+                         Height="38" 
+                         Width="370"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Password" 
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                             materialDesign:HintAssist.IsFloating="True"
+                             Grid.Row="2"
+                             Margin="0,12,0,4"
+                             materialDesign:HintAssist.FloatingScale="1"
+                             materialDesign:HintAssist.FloatingOffset="0,-18"
+                             Height="38" 
+                             Width="370"/>
+                <Button x:Name="SignIn" 
+                        Content="Sign In"
+                        Grid.Row="3" 
+                        Margin="0,12,0,4"
+                        Padding="16,4" 
+                        Click="SignIn_Click"/>
+            </StackPanel>
+                
+        </Grid>
     </Grid>
 </Window>
