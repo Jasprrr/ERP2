@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP"
+        xmlns:properties="clr-namespace:ERP.Properties"
         mc:Ignorable="d"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -82,7 +83,7 @@
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" 
                                FontSize="22"
-                               Text="Main"
+                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
                                Style="{StaticResource MaterialDesignTitleTextBlock}"/>
                 </Grid>
             </materialDesign:ColorZone>
@@ -97,7 +98,9 @@
                                      HorizontalAlignment="Right"
                                      Margin="16" 
                                      Panel.ZIndex="1" 
-                                     PopupMode="MouseOver" Width="38">
+                                     PopupMode="MouseOver" 
+                                     Width="38"
+                                     Height="38">
                 <StackPanel>
                     <Button ToolTip="Log">
                         <materialDesign:PackIcon Kind="Message"/>

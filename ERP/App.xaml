@@ -1,9 +1,14 @@
-﻿<Application
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ERP"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf" xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ERP.App"
-             StartupUri="View/LoginView.xaml">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf" 
+             xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:properties="clr-namespace:ERP.Properties"
+             x:Class="ERP.App"
+             StartupUri="View/LoginView.xaml" 
+             ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -208,6 +213,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <properties:Settings x:Key="Username"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

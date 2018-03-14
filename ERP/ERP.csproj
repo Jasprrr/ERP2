@@ -88,6 +88,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\ToDo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="View\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\bie-logo.svg" />
+    <Resource Include="Resource\logo.png" />
     <Resource Include="Resource\icon.ico" />
   </ItemGroup>
   <ItemGroup>
