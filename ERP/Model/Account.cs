@@ -24,7 +24,6 @@ namespace ERP.Model
             }
         }
         
-
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

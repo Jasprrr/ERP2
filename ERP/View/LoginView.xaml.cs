@@ -47,7 +47,7 @@ namespace ERP.View
             }
             loginTimer = new DispatcherTimer();
             loginTimer.Tick += loginTimer_Tick;
-            loginTimer.Interval = new TimeSpan(0, 0, 5);
+            loginTimer.Interval = new TimeSpan(0, 0, 1);
             loginTimer.Start();
             LoginProgress.Visibility = Visibility.Visible;
         }

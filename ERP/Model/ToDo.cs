@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,10 @@ namespace ERP.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public DateTime DueDate { get; set; }
-        public string Account { get; set; }
-        public string Description { get; set; }
-        public bool Complete { get; set; }
+        public DateTime dueDate { get; set; }
+        public string account { get; set; }
+        public string description { get; set; }
+        public bool complete { get; set; }
 
         protected void OnPropertyChanged(string name)
         {

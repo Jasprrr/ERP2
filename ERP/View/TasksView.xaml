@@ -35,14 +35,14 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="{Binding Path=Account}"
+                                <TextBlock Text="{Binding Path=account}"
                                        Style="{StaticResource MaterialDesignHeadlineTextBlock}" 
                                        Margin="16,24,16,0"/>
-                                <TextBlock Text="{Binding DueDate, StringFormat=\{0:D\}}"
+                                <TextBlock Text="{Binding dueDate, StringFormat=\{0:D\}}"
                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                        Grid.Row="1" 
                                        Margin="16,0,16,16"/>
-                                <TextBlock Text="{Binding Path=Description}"
+                                <TextBlock Text="{Binding Path=description}"
                                        Grid.Row="2" 
                                        Margin="16,0,16,16" 
                                        TextWrapping="WrapWithOverflow" 
