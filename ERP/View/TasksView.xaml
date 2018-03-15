@@ -36,8 +36,8 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="{Binding Path=account}"
-                                       Style="{StaticResource MaterialDesignHeadlineTextBlock}" 
-                                       Margin="16,24,16,0"/>
+                                           Style="{StaticResource MaterialDesignHeadlineTextBlock}" 
+                                           Margin="16,24,16,0"/>
                                 <TextBlock Text="{Binding dueDate, StringFormat=\{0:D\}}"
                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                        Grid.Row="1" 

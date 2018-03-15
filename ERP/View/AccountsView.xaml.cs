@@ -92,7 +92,7 @@ namespace ERP.View
             var button = sender as Button;
             string theValue = button.Tag.ToString();
             Debug.Print(theValue);
-            var newWindow = new AccountView(1);
+            var newWindow = new AccountView();
             newWindow.Show();
         }
 
@@ -100,7 +100,7 @@ namespace ERP.View
         {
             Debug.Print(selectedItem.name.ToString());
             Dispatcher.BeginInvoke(new Action(() => {
-                var editwindow = new AccountView(1);
+                var editwindow = new AccountView();
                 editwindow.Show();
             }));
         }

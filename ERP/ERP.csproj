@@ -101,6 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\ToDo.cs" />
     <Compile Include="Resource\ColourGenerator.cs" />

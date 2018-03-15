@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ERP.View"
-        mc:Ignorable="d"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf" 
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
-        Title="Wyatt"
+        xmlns:SelfConverters="clr-namespace:ERP.Converters"
+        xmlns:local="clr-namespace:ERP.View"
+        mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -20,37 +20,46 @@
         Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
-        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}" x:Key="MaterialDesignFloatingHintTextBoxFull">
-            <Setter Property="Height" Value="38"/>
-            <Setter Property="Width" Value="256"/>
-            <Setter Property="Margin" Value="0,12,16,4"/>
+        <Style x:Key="ChipStyle1" TargetType="{x:Type materialDesign:Chip}">
+            <Setter Property="Height" Value="16"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="materialDesign:HintAssist.FloatingScale" Value="1"/>
-            <Setter Property="materialDesign:HintAssist.FloatingOffset" Value="0,-18"/>
-        </Style>
-        <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" x:Key="MaterialDesignFloatingHintComboBoxFull">
-            <Setter Property="Height" Value="38"/>
-            <Setter Property="Width" Value="256"/>
-            <Setter Property="Margin" Value="0,12,16,4"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="materialDesign:HintAssist.FloatingScale" Value="1"/>
-            <Setter Property="materialDesign:HintAssist.FloatingOffset" Value="0,-18"/>
-        </Style>
-        <Style x:Key="MaterialDesignTextBoxIconWrapper" TargetType="{x:Type ContentControl}">
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="Width" Value="24"/>
-            <Setter Property="Margin" Value="16,8,16,4"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="IsTabStop" Value="False"/>
-        </Style>
-        <Style x:Key="MaterialDesignTextBoxIconWrapperTop" TargetType="{x:Type ContentControl}">
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="Width" Value="24"/>
-            <Setter Property="Margin" Value="16,29,16,4"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="{DynamicResource MaterialDesignChipBackground}"/>
+            <Setter Property="IconBackground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="IconForeground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type materialDesign:Chip}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="{TemplateBinding Background}" Grid.ColumnSpan="3" CornerRadius="8"/>
+                            <ContentControl x:Name="IconControl" Background="{TemplateBinding IconBackground}" Content="{TemplateBinding Icon}" Foreground="{TemplateBinding IconForeground}" FontWeight="Normal" FontSize="12" HorizontalContentAlignment="Center" Height="16" IsTabStop="False" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="16">
+                                <ContentControl.Clip>
+                                    <EllipseGeometry Center="8,8" RadiusY="8" RadiusX="8"/>
+                                </ContentControl.Clip>
+                                <ContentControl.Template>
+                                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ContentControl.Template>
+                            </ContentControl>
+                            <ContentControl x:Name="TextBlock" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="1" ContentStringFormat="{TemplateBinding ContentTemplateSelector}" IsTabStop="False" Margin="8,0,12,0" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Visibility" SourceName="IconControl" Value="Collapsed">
+                                <Setter Property="Margin" TargetName="TextBlock" Value="6,0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -445,49 +454,104 @@
                     </materialDesign:ColorZone>
                 </StackPanel>
             </ScrollViewer>
-            <Grid Grid.Column="1" MaxWidth="800">
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                           Margin="6,12">
-                    <Grid>
+                    <Grid x:Name="grid">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Name="QuoteRow">
+                                <RowDefinition.Style>
+                                    <Style TargetType="{x:Type RowDefinition}">
+                                        <Setter Property="Height" Value="*" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=QuoteExpander, Path=IsExpanded}" Value="True">
+                                                <Setter Property="Height" Value="*" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RowDefinition.Style>
+                            </RowDefinition>
+                            <RowDefinition Name="OrderRow">
+                                <RowDefinition.Style>
+                                    <Style TargetType="{x:Type RowDefinition}">
+                                        <Setter Property="Height" Value="Auto" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=OrderExpander, Path=IsExpanded}" Value="True">
+                                                <Setter Property="Height" Value="*" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RowDefinition.Style>
+                            </RowDefinition>
+                            <RowDefinition Name="DeliveryRow">
+                                <RowDefinition.Style>
+                                    <Style TargetType="{x:Type RowDefinition}">
+                                        <Setter Property="Height" Value="Auto" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=DeliveryExpander, Path=IsExpanded}" Value="True">
+                                                <Setter Property="Height" Value="*" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RowDefinition.Style>
+                            </RowDefinition>
+                            <RowDefinition Name="InvoiceRow">
+                                <RowDefinition.Style>
+                                    <Style TargetType="{x:Type RowDefinition}">
+                                        <Setter Property="Height" Value="Auto" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=InvoiceExpander, Path=IsExpanded}" Value="True">
+                                                <Setter Property="Height" Value="*" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RowDefinition.Style>
+                            </RowDefinition>
+                            <RowDefinition Name="NcrRow">
+                                <RowDefinition.Style>
+                                    <Style TargetType="{x:Type RowDefinition}">
+                                        <Setter Property="Height" Value="Auto" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=NcrExpander, Path=IsExpanded}" Value="True">
+                                                <Setter Property="Height" Value="*" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RowDefinition.Style>
+                            </RowDefinition>
                         </Grid.RowDefinitions>
-                        <Expander Grid.Row="0" ScrollViewer.CanContentScroll="True">
+                        <Expander x:Name="QuoteExpander" 
+                                  Grid.Row="0" 
+                                  IsExpanded="True">
                             <Expander.Header>
                                 <TextBlock Text="Quotes" 
                                            VerticalAlignment="Center"
                                            Style="{StaticResource MaterialDesignTitleTextBlock}"/>
                             </Expander.Header>
-                            <Grid x:Name="TheGrid" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <DataGrid Margin="0 8 0 0" 
-                                          ItemsSource="{Binding accountList}" 
-                                          CanUserSortColumns="True" 
-                                          AutoGenerateColumns="False"
-                                          materialDesign:DataGridAssist.CellPadding="13 8 8 8" 
-                                          materialDesign:DataGridAssist.ColumnHeaderPadding="8">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding name}"
-                                                        Header="Name"
-                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding email}"
+                            <DataGrid Margin="0,8,0,0" 
+                                      Padding="0,0,0,60"
+                                      ItemsSource="{Binding accountList}" 
+                                      CanUserSortColumns="True" 
+                                      AutoGenerateColumns="False"
+                                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" 
+                                      materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                                      MaxHeight="{Binding ElementName=QuoteExpander, Path=ActualHeight}"
+                                      IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding name}"
+                                                                               Header="Name"/>
+                                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding email}"
                                                                                Header="Email"/>
-                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding telephone}"
+                                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding telephone}"
                                                                                Header="Telephone"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </Grid>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Expander>
-                        <Expander Grid.Row="1">
+                        <Expander x:Name="OrderExpander"
+                                  Grid.Row="1">
                             <Expander.Header>
                                 <TextBlock Text="Orders" 
                                            VerticalAlignment="Center"
@@ -497,7 +561,8 @@
 
                             </StackPanel>
                         </Expander>
-                        <Expander Grid.Row="2">
+                        <Expander x:Name="DeliveryExpander"
+                                  Grid.Row="2">
                             <Expander.Header>
                                 <TextBlock Text="Deliveries" 
                                            VerticalAlignment="Center"
@@ -507,7 +572,8 @@
 
                             </StackPanel>
                         </Expander>
-                        <Expander Grid.Row="3">
+                        <Expander x:Name="InvoiceExpander"
+                                  Grid.Row="3">
                             <Expander.Header>
                                 <TextBlock Text="Invoices" 
                                            VerticalAlignment="Center"
@@ -517,7 +583,8 @@
 
                             </StackPanel>
                         </Expander>
-                        <Expander Grid.Row="4">
+                        <Expander x:Name="NcrExpander"
+                                  Grid.Row="4">
                             <Expander.Header>
                                 <TextBlock Text="NCRs" 
                                            VerticalAlignment="Center"
@@ -536,8 +603,7 @@
                                               Margin="6"
                                               materialDesign:ShadowAssist.ShadowDepth="Depth1">
                         <Expander HorizontalAlignment="Stretch" 
-                                  IsExpanded="True"
-                                  Margin="6">
+                                  IsExpanded="false">
                             <Expander.Header>
                                 <TextBlock Text="Contacts" 
                                        VerticalAlignment="Center"
@@ -545,12 +611,13 @@
                             </Expander.Header>
                             <ListView HorizontalContentAlignment="Stretch" 
                                       ScrollViewer.CanContentScroll="True"
-                                      Grid.Row="1">
+                                      Grid.Row="1" Margin="0,0,0,4">
                                 <ListViewItem Padding="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="72"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
@@ -578,14 +645,10 @@
                                                 jasper@schoolsmailing.co.uk
                                             </TextBlock>
                                         </StackPanel>
-                                        <materialDesign:PopupBox Grid.Column="3" 
-                                                                 PlacementMode="BottomAndAlignRightEdges" 
-                                                                 StaysOpen="True"
-                                                                 Height="34"
-                                                                 Margin="4,4,4,0" VerticalAlignment="Top">
-                                            <materialDesign:PopupBox.ToggleCheckedContent>
-                                                <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
-                                            </materialDesign:PopupBox.ToggleCheckedContent>
+                                        <Button BorderThickness="0" Style="{StaticResource MaterialDesignToolForegroundButton}" Grid.Column="2" VerticalAlignment="Top" Margin="4,4,4,0" Padding="0" Height="34" Width="34">
+                                            <materialDesign:PackIcon Kind="StarOutline" Height="24" Width="24" />
+                                        </Button>
+                                        <materialDesign:PopupBox Grid.Column="3" PlacementMode="BottomAndAlignRightEdges" StaysOpen="True" Height="34" Margin="4,4,4,0" VerticalAlignment="Top">
                                             <StackPanel>
                                                 <Button Content="Hello World" />
                                                 <Button Content="Nice Popup" />
@@ -594,6 +657,7 @@
                                                 <Button Content="Goodbye"/>
                                             </StackPanel>
                                         </materialDesign:PopupBox>
+
                                     </Grid>
                                 </ListViewItem>
                                 <ListViewItem Padding="0">
@@ -601,6 +665,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="72"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
@@ -754,153 +819,62 @@
                                               materialDesign:ShadowAssist.ShadowDepth="Depth1">
                         <Expander Grid.Row="1" 
                                   HorizontalAlignment="Stretch" 
-                                  IsExpanded="True"
-                                  Margin="6">
+                                  IsExpanded="True">
                             <Expander.Header>
-                                <TextBlock Text="Billing" 
+                                <TextBlock Text="Tasks" 
                                            VerticalAlignment="Center"
                                            Style="{StaticResource MaterialDesignTitleTextBlock}"/>
                             </Expander.Header>
-                            <TextBlock>
-                                Content
-                            </TextBlock>
+
+                            <ItemsControl  ItemsSource="{Binding todoList}"
+                                           Grid.IsSharedSizeScope="True"
+                                           HorizontalContentAlignment="Stretch">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="72"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="72"/>
+                                            </Grid.RowDefinitions>
+                                            <CheckBox IsChecked="{Binding complete}" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,11,0,0" Cursor="Hand"/>
+                                            <StackPanel Margin="8 0 0 0" Grid.Column="1" >
+                                                <TextBlock x:Name="taskHeader" Style="{StaticResource MaterialDesignSubheadingTextBlock}" FontWeight="Bold" Text="{Binding taskType}"/>
+                                                <TextBlock x:Name="taskSubheader" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding description}" />
+                                                <TextBlock x:Name="taskDetail"  Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{Binding dueDate, StringFormat=\{0:D\}}"/>
+                                            </StackPanel>
+                                            <Border Grid.Column="2" VerticalAlignment="Top" Margin="12,10,12,0" Padding="0" Width="24" Height="24" Background="{StaticResource PrimaryHueMidBrush}" CornerRadius="12">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding userInitials}" Foreground="White"/>
+                                            </Border>
+                                            <materialDesign:PopupBox Grid.Column="3" 
+                                                                PlacementMode="BottomAndAlignRightEdges" 
+                                                                StaysOpen="True"
+                                                                Height="34"
+                                                                Margin="4,4,4,0" VerticalAlignment="Top" BorderThickness="1">
+                                                <StackPanel>
+                                                    <Button Content="Hello World" />
+                                                    <Button Content="Nice Popup" />
+                                                    <Button Content="Can't Touch This" IsEnabled="False" />
+                                                    <Separator/>
+                                                    <Button Content="Goodbye"/>
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </Expander>
                     </materialDesign:ColorZone>
                 </StackPanel>
             </ScrollViewer>
-            
-            <!--<materialDesign:DrawerHost Margin="0" 
-                                       HorizontalAlignment="Right" 
-                                       Grid.Column="2"
-                                       VerticalAlignment="Center" 
-                                       IsRightDrawerOpen="False">
-                <Button Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                        CommandParameter="{x:Static Dock.Right}"
-                        Grid.Row="1" 
-                        Grid.Column="2" 
-                        Margin="4">
-                    <materialDesign:PackIcon Kind="AccountMultiple" />
-                </Button>
-                <materialDesign:DrawerHost.RightDrawerContent>
-                    <materialDesign:Card Grid.Column="2"  
-                                         VerticalAlignment="Top"
-                                         Padding="0,8"
-                                         Margin="10,0,0,10"
-                                         Height="426">
-
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="64"
-                                               MinHeight="64"
-                                               MaxHeight="64"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="48"
-                                               MinHeight="48"
-                                               MaxHeight="48"/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="64"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Text="Contacts" 
-                                           VerticalAlignment="Center"
-                                           Margin="24,0,0,0"
-                                           Style="{StaticResource MaterialDesignTitleTextBlock}"/>
-                                <Button Grid.Column="1" 
-                                        Width="32" 
-                                        Padding="0"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        Margin="12,0">
-                                    <materialDesign:PackIcon Kind="FilterVariant" 
-                                                             Width="24" 
-                                                             Height="24"/>
-                                </Button>
-                                <Button Grid.Column="2" 
-                                        Width="32" 
-                                        Padding="0"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        Margin="12,0,14,0"
-                                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                                        CommandParameter="{x:Static Dock.Right}">
-                                    <materialDesign:PackIcon Kind="Close" 
-                                                             Width="24" 
-                                                             Height="24"/>
-                                </Button>
-                            </Grid>
-                            <ListView HorizontalContentAlignment="Stretch" 
-                                      ScrollViewer.CanContentScroll="True"
-                                      Grid.Row="1">
-                                <ListViewItem Padding="0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="72"/>
-                                            <ColumnDefinition Width="180"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="72"/>
-                                        </Grid.RowDefinitions>
-                                        <Border Background="#FFA81515"
-                                                Height="40"
-                                                Width="40"
-                                                CornerRadius="20" 
-                                                VerticalAlignment="Top"
-                                                Margin="0,11,0,0">
-                                            <TextBlock Text="JF" 
-                                                        VerticalAlignment="Center" 
-                                                        HorizontalAlignment="Center"
-                                                        Foreground="White"/>
-                                        </Border>
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                            <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">
-                                        Jasper Friend
-                                            </TextBlock>
-                                            <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">
-                                        ERP Designer
-                                            </TextBlock>
-                                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}">
-                                        jasper@schoolsmailing.co.uk
-                                            </TextBlock>
-                                        </StackPanel>
-                                        <materialDesign:PopupBox Grid.Column="3" 
-                                                                 PlacementMode="BottomAndAlignRightEdges" 
-                                                                 StaysOpen="True"
-                                                                 Height="34"
-                                                                 Margin="4,4,4,0" VerticalAlignment="Top">
-                                            <materialDesign:PopupBox.ToggleCheckedContent>
-                                                <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
-                                            </materialDesign:PopupBox.ToggleCheckedContent>
-                                            <StackPanel>
-                                                <Button Content="Hello World" />
-                                                <Button Content="Nice Popup" />
-                                                <Button Content="Can't Touch This" IsEnabled="False" />
-                                                <Separator/>
-                                                <Button Content="Goodbye"/>
-                                            </StackPanel>
-                                        </materialDesign:PopupBox>
-                                    </Grid>
-                                </ListViewItem>
-                            </ListView>
-                            <Grid Grid.Row="2">
-                                <Button Content="New" Margin="12,0"/>
-                            </Grid>
-                        </Grid>
-                    </materialDesign:Card>
-                </materialDesign:DrawerHost.RightDrawerContent>
-            </materialDesign:DrawerHost>-->
-
-
         </Grid>
-        <!--<StatusBar Grid.Row="3" 
-                   Height="20"/>-->
         <materialDesign:Snackbar Grid.Row="2" 
                                  MessageQueue="{materialDesign:MessageQueue}"
                                  x:Name="SnackbarThree" 
-                                 Panel.ZIndex="1" />
+                                 Panel.ZIndex="1" Margin="0,0,0,4" />
     </Grid>
 </Window>

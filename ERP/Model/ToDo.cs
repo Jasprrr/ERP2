@@ -15,7 +15,37 @@ namespace ERP.Model
         public DateTime dueDate { get; set; }
         public string account { get; set; }
         public string description { get; set; }
+        public string taskType { get; set; }
         public bool complete { get; set; }
+        public string users { get; set; }
+
+        public string userInitials {
+            get
+            {
+                if (todoUsers.Count() > 1)
+                {
+                    return todoUsers.Count().ToString();
+                }
+                else if (todoUsers.Count() == 1){
+                    return todoUsers.FirstOrDefault().Substring(0,2);
+                }
+                return null;
+            }
+        }
+        public List<string> todoUsers
+        {
+            get
+            {
+                if (users != null)
+                {
+                    return users.Split(',').ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         protected void OnPropertyChanged(string name)
         {
