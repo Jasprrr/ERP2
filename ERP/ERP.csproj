@@ -103,6 +103,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\ToDo.cs" />
     <Compile Include="Resource\ColourGenerator.cs" />
     <Compile Include="Settings.cs" />
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskView.xaml.cs">
+      <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TasksView.xaml.cs">
       <DependentUpon>TasksView.xaml</DependentUpon>
@@ -139,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

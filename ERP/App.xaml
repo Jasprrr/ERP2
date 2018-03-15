@@ -7,7 +7,7 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:properties="clr-namespace:ERP.Properties"
              x:Class="ERP.App"
-             StartupUri="View/AccountView.xaml" 
+             StartupUri="View/LoginView.xaml" 
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
@@ -216,7 +216,7 @@
             <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}" x:Key="MaterialDesignFloatingHintTextBoxFull">
                 <Setter Property="Height" Value="38"/>
                 <Setter Property="Width" Value="256"/>
-                <Setter Property="Margin" Value="0,12,16,4"/>
+                <Setter Property="Margin" Value="0,12,0,4"/>
                 <Setter Property="HorizontalAlignment" Value="Left"/>
                 <Setter Property="materialDesign:HintAssist.FloatingScale" Value="1"/>
                 <Setter Property="materialDesign:HintAssist.FloatingOffset" Value="0,-18"/>
