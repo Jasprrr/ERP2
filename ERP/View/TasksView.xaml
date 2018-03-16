@@ -26,7 +26,6 @@
                     <DataTemplate>
                         <materialDesign:Card HorizontalContentAlignment="Center"
                                              Width="310"
-                                             UniformCornerRadius="5" 
                                              Margin="3">
                             <Grid>
                                 <Grid.RowDefinitions>

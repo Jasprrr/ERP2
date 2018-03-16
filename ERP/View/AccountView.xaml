@@ -216,7 +216,8 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <ContentControl Style="{StaticResource MaterialDesignTextBoxIconWrapper}"
-                                                Grid.Row="0">
+                                                Grid.Row="0"
+                                                HorizontalAlignment="Right">
                                     <materialDesign:PackIcon Kind="Domain"
                                                              Width="24"
                                                              Height="24" />
@@ -337,7 +338,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="5"
                                          Grid.Column="1"
-                                         Width="155"
+                                         Width="92"
                                          materialDesign:HintAssist.FloatingScale="1"
                                          materialDesign:HintAssist.FloatingOffset="0,-18"
                                          HorizontalAlignment="Left" />
@@ -345,7 +346,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="6"
                                          Grid.Column="1"
-                                         Width="155"
+                                         Width="128"
                                          materialDesign:HintAssist.FloatingScale="1"
                                          materialDesign:HintAssist.FloatingOffset="0,-18"
                                          HorizontalAlignment="Left" />
@@ -891,11 +892,6 @@
                                                                  Height="34"
                                                                  Margin="4,4,4,0"
                                                                  VerticalAlignment="Top">
-                                            <materialDesign:PopupBox.ToggleCheckedContent>
-                                                <materialDesign:PackIcon Kind="Pencil"
-                                                                         Width="24"
-                                                                         Height="24" />
-                                            </materialDesign:PopupBox.ToggleCheckedContent>
                                             <StackPanel>
                                                 <Button Content="Hello World" />
                                                 <Button Content="Nice Popup" />
@@ -943,8 +939,7 @@
                                                       VerticalAlignment="Top"
                                                       Margin="0,11,0,0"
                                                       Cursor="Hand" />
-                                            <StackPanel Margin="8 0 0 0"
-                                                        Grid.Column="1">
+                                            <StackPanel Grid.Column="1">
                                                 <TextBlock x:Name="taskHeader"
                                                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                                            FontWeight="Bold"

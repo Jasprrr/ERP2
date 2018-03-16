@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:ERP.View"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -13,12 +14,207 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Width="400"
-        Height="600"
         Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Task">
-    <Grid>
-        
+        Title="Task"
+        ResizeMode="CanMinimize"
+        SizeToContent="WidthAndHeight">
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Top">
+        <materialDesign:DialogHost DialogClosing="Sample1_DialogHost_OnDialogClosing"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="3"
+                                   BorderBrush="Black">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="12">
+                    <TextBlock>Add a new fruit.</TextBlock>
+                    <TextBox Margin="0 8 0 0"
+                             HorizontalAlignment="Stretch"
+                             x:Name="FruitTextBox" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                IsDefault="True"
+                                Margin="0 8 8 0"
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>True</system:Boolean>
+                            </Button.CommandParameter>
+                            ACCEPT
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                IsCancel="True"
+                                Margin="0 8 8 0"
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>False</system:Boolean>
+                            </Button.CommandParameter>
+                            CANCEL
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <materialDesign:ColorZone Grid.Column="0"
+                                          Grid.ColumnSpan="5"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                    <Grid>
+                        <Image Grid.Row="0"
+                               Source="/ERP;component/Resource/test.png"
+                               Height="100"
+                               Stretch="Fill"/>
+                        <TextBlock Text="Task"
+                                   Style="{StaticResource MaterialDesignDisplay3TextBlock}"
+                                   VerticalAlignment="Bottom"
+                                   Foreground="#DDFFFFFF"
+                                   Grid.ColumnSpan="4"
+                                   Margin="16,0,0,0" />
+                    </Grid>
+                </materialDesign:ColorZone>
+                <ScrollViewer Grid.Row="1"
+                              VerticalScrollBarVisibility="Auto"
+                              Height="452">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="56" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="56" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="56" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <DatePicker Grid.Row="2"
+                                    Grid.Column="1"
+                                    materialDesign:HintAssist.Hint="Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                    Margin="0,24,0,4"
+                                    VerticalAlignment="Bottom" />
+                        <materialDesign:TimePicker Grid.Row="2"
+                                                   Grid.Column="3"
+                                                   Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                                                   Margin="0,12,0,4"
+                                                   VerticalAlignment="Bottom" />
+                        <TextBox materialDesign:HintAssist.Hint="Email"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                 Grid.Row="3"
+                                 Grid.ColumnSpan="3"
+                                 Grid.Column="1" />
+                        <TextBox TextWrapping="Wrap"
+                                 AcceptsReturn="True"
+                                 materialDesign:HintAssist.Hint="Description"
+                                 materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                 Grid.Column="1"
+                                 Grid.Row="4"
+                                 Grid.ColumnSpan="3"
+                                 Height="150"
+                                 VerticalScrollBarVisibility="Auto" />
+                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                  Grid.Row="5"
+                                  Grid.Column="1"
+                                  Grid.ColumnSpan="3"
+                                  materialDesign:HintAssist.Hint="Company"
+                                  VerticalAlignment="Bottom"
+                                  IsEditable="True"
+                                  ItemsSource="{Binding LongListToTestComboVirtualization}">
+                            <ComboBoxItem>Apple</ComboBoxItem>
+                            <ComboBoxItem>Banana</ComboBoxItem>
+                            <ComboBoxItem>Pear</ComboBoxItem>
+                            <ComboBoxItem>Orange</ComboBoxItem>
+                        </ComboBox>
+                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                  Grid.Row="6"
+                                  Grid.Column="1"
+                                  Grid.ColumnSpan="3"
+                                  materialDesign:HintAssist.Hint="Company"
+                                  VerticalAlignment="Bottom"
+                                  IsEditable="True"
+                                  ItemsSource="{Binding LongListToTestComboVirtualization}">
+                            <ComboBoxItem>Apple</ComboBoxItem>
+                            <ComboBoxItem>Banana</ComboBoxItem>
+                            <ComboBoxItem>Pear</ComboBoxItem>
+                            <ComboBoxItem>Orange</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text="Assigned"
+                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                   Foreground="#89000000"
+                                   VerticalAlignment="Bottom"
+                                   Margin="0,0,0,8"
+                                   Grid.Column="1"
+                                   Grid.Row="7" />
+                        <Button Grid.Column="3"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                Padding="0"
+                                Height="32"
+                                Width="32"
+                                Grid.Row="7"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="Plus"
+                                                     Width="24"
+                                                     Height="24" />
+                        </Button>
+                        <ItemsControl Grid.Row="8"
+                                      Grid.Column="1"
+                                      ItemsSource="{Binding userList}"
+                                      Grid.ColumnSpan="3"
+                                      BorderBrush="#89000000"
+                                      BorderThickness="0,0,0,1"
+                                      Margin="0,0,0,12">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <materialDesign:Chip Content="{Binding forename}"
+                                                         Margin="4"
+                                                         Icon="$"
+                                                         IsDeletable="True" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Grid>
+                </ScrollViewer>
+                <materialDesign:ColorZone Grid.Row="8"
+                                          Grid.ColumnSpan="5"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                    <StackPanel Grid.Row="8"
+                                Grid.ColumnSpan="5"
+                                Orientation="Horizontal">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Content="ADD"
+                                Margin="8,8,4,8" />
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Content="DISCARD"
+                                Margin="4,8,8,8" />
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Content="DELETE"
+                                Margin="4,8,8,8" />
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </Grid>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>
