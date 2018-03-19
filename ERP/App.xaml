@@ -7,7 +7,7 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:properties="clr-namespace:ERP.Properties"
              x:Class="ERP.App"
-             StartupUri="View/TaskView.xaml"
+             StartupUri="View/QuoteView.xaml"
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
@@ -395,22 +395,22 @@
                    x:Key="MaterialDesignFloatingHintTextBoxFull">
                 <Setter Property="Height"
                         Value="38" />
-                <Setter Property="Width"
-                        Value="256" />
                 <Setter Property="Margin"
                         Value="0,12,0,4" />
                 <Setter Property="HorizontalAlignment"
-                        Value="Left" />
+                        Value="Stretch" />
+                <Setter Property="VerticalAlignment"
+                        Value="Bottom" />
             </Style>
             <Style TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}"
                    x:Key="MaterialDesignFloatingHintComboBoxFull">
-                <Setter Property="Width"
-                        Value="256" />
                 <Setter Property="Margin"
                         Value="0,6,0,4" />
                 <Setter Property="HorizontalAlignment"
-                        Value="Left" />
+                        Value="Stretch" />
+                <Setter Property="VerticalAlignment"
+                        Value="Bottom" />
             </Style>
             <Style x:Key="MaterialDesignTextBoxIconWrapper"
                    TargetType="{x:Type ContentControl}">
@@ -441,6 +441,112 @@
                         Value="Top" />
                 <Setter Property="IsTabStop"
                         Value="False" />
+            </Style>
+            <Style x:Key="MaterialDesignCustomButton"
+                   TargetType="{x:Type Button}">
+                <Setter Property="FocusVisualStyle">
+                    <Setter.Value>
+                        <Style>
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <Rectangle Margin="2"
+                                                   SnapsToDevicePixels="True"
+                                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                                   StrokeThickness="1"
+                                                   StrokeDashArray="1 2" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground"
+                        Value="#747474" />
+                <Setter Property="Cursor"
+                        Value="Hand" />
+                <Setter Property="FontWeight"
+                        Value="Medium" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Padding"
+                        Value="16,4" />
+                <Setter Property="Height"
+                        Value="32" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <AdornerDecorator CacheMode="{Binding (materialDesign:ShadowAssist.CacheMode), RelativeSource={RelativeSource Self}}">
+                                    <Grid>
+                                        <Border x:Name="border"
+                                                CornerRadius="2">
+                                            <Border.Effect>
+                                                <Binding Path="(materialDesign:ShadowAssist.ShadowDepth)"
+                                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                                    <Binding.Converter>
+                                                        <Converters:ShadowConverter />
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border Background="{DynamicResource MaterialDesignBackground}"
+                                                HorizontalAlignment="Left"
+                                                Opacity="0.4">
+                                            <Border.Width>
+                                                <MultiBinding UpdateSourceTrigger="Default">
+                                                    <MultiBinding.Converter>
+                                                        <Converters:RangeLengthConverter />
+                                                    </MultiBinding.Converter>
+                                                    <Binding Path="(materialDesign:ButtonProgressAssist.Minimum)"
+                                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    <Binding Path="(materialDesign:ButtonProgressAssist.Maximum)"
+                                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    <Binding Path="(materialDesign:ButtonProgressAssist.Value)"
+                                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    <Binding Path="ActualWidth"
+                                                             RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ButtonBase}}" />
+                                                </MultiBinding>
+                                            </Border.Width>
+                                        </Border>
+                                    </Grid>
+                                </AdornerDecorator>
+                                <materialDesign:Ripple ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                       Content="{TemplateBinding Content}"
+                                                       Focusable="False"
+                                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                       Padding="{TemplateBinding Padding}"
+                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="materialDesign:ShadowAssist.Darken"
+                                            TargetName="border"
+                                            Value="True" />
+                                    <Setter Property="Foreground"
+                                            Value="{StaticResource PrimaryHueMidBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused"
+                                         Value="True">
+                                    <Setter Property="materialDesign:ShadowAssist.Darken"
+                                            TargetName="border"
+                                            Value="True" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled"
+                                         Value="False">
+                                    <Setter Property="Opacity"
+                                            Value="0.23" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
             <properties:Settings x:Key="Username" />
         </ResourceDictionary>

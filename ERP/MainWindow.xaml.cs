@@ -24,11 +24,8 @@ namespace ERP
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public MainWindow()
         {
             Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());

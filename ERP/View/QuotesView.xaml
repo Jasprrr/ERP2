@@ -1,0 +1,195 @@
+﻿<Window x:Class="ERP.View.QuotesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.View"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+        xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Width="1000"
+        Height="1000"
+        Background="{DynamicResource MaterialDesignPaper}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                      Margin="6,12">
+                <Grid x:Name="grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Name="ItemRow">
+                            <RowDefinition.Style>
+                                <Style TargetType="{x:Type RowDefinition}">
+                                    <Setter Property="Height"
+                                            Value="*" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=ItemExpander, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Height"
+                                                    Value="*" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RowDefinition.Style>
+                        </RowDefinition>
+                        <RowDefinition Name="TimeRow">
+                            <RowDefinition.Style>
+                                <Style TargetType="{x:Type RowDefinition}">
+                                    <Setter Property="Height"
+                                            Value="Auto" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=TimeExpander, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Height"
+                                                    Value="*" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RowDefinition.Style>
+                        </RowDefinition>
+                        <RowDefinition Name="DeliveryRow">
+                            <RowDefinition.Style>
+                                <Style TargetType="{x:Type RowDefinition}">
+                                    <Setter Property="Height"
+                                            Value="Auto" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=DeliveryExpander, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Height"
+                                                    Value="*" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RowDefinition.Style>
+                        </RowDefinition>
+                        <RowDefinition Name="SubContractRow">
+                            <RowDefinition.Style>
+                                <Style TargetType="{x:Type RowDefinition}">
+                                    <Setter Property="Height"
+                                            Value="Auto" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=SubContractExpander, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Height"
+                                                    Value="*" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RowDefinition.Style>
+                        </RowDefinition>
+                        <RowDefinition Name="NcrRow">
+                            <RowDefinition.Style>
+                                <Style TargetType="{x:Type RowDefinition}">
+                                    <Setter Property="Height"
+                                            Value="Auto" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=NcrExpander, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Height"
+                                                    Value="*" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RowDefinition.Style>
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Expander x:Name="ItemExpander"
+                              Grid.Row="0"
+                              IsExpanded="True">
+                        <Expander.Header>
+                            <TextBlock Text="Items"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        </Expander.Header>
+                        <DataGrid Margin="0,8,0,0"
+                                  Padding="0,0,0,60"
+                                  CanUserSortColumns="True"
+                                  AutoGenerateColumns="False"
+                                  materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                                  materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                                  ItemsSource="{Binding quoteList}"
+                                  MaxHeight="{Binding ElementName=ItemExpander, Path=ActualHeight}">
+                            <DataGrid.Columns>
+                                <!--<DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="123" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>-->
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding name}"
+                                                                           Header="Name" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding name}"
+                                                                           Header="Name" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding name}"
+                                                                           Header="Name" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding name}"
+                                                                           Header="Name" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding email}"
+                                                                           Header="Email" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding telephone}"
+                                                                           Header="Telephone" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+                    <Expander x:Name="TimeExpander"
+                              Grid.Row="1">
+                        <Expander.Header>
+                            <TextBlock Text="Times"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        </Expander.Header>
+                        <StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="DeliveryExpander"
+                              Grid.Row="2">
+                        <Expander.Header>
+                            <TextBlock Text="Deliveries"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        </Expander.Header>
+                        <StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="SubContractExpander"
+                              Grid.Row="3">
+                        <Expander.Header>
+                            <TextBlock Text="Sub Contractors"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        </Expander.Header>
+                        <StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="NcrExpander"
+                              Grid.Row="4">
+                        <Expander.Header>
+                            <TextBlock Text="NCRs"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        </Expander.Header>
+                        <StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+                </Grid>
+            </materialDesign:ColorZone>
+        </Grid>
+    </Grid>
+</Window>

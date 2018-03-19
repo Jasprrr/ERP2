@@ -46,5 +46,11 @@ namespace ERP.View
         {
             get { return _todoList ?? (_todoList = new ObservableCollection<ToDo>()); }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var taskWindow = new TaskView();
+            taskWindow.Show();
+        }
     }
 }

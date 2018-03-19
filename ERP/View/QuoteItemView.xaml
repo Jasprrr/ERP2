@@ -1,0 +1,119 @@
+﻿<Page x:Class="ERP.View.QuoteItemView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ERP.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Quote item"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                   Margin="24,12"/>
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      Panel.ZIndex="-1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="56" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="56" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="56" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="51" />
+                    <RowDefinition Height="51" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="51" />
+                </Grid.RowDefinitions>
+                <ContentControl Grid.Row="0"
+                                Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
+                    <materialDesign:PackIcon Kind="Wrench"
+                                             Width="24"
+                                             Height="24" />
+                </ContentControl>
+                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                          Grid.Row="0"
+                          Grid.Column="1"
+                          Grid.ColumnSpan="3"
+                          materialDesign:HintAssist.Hint="Item code"
+                          IsEditable="True">
+                    <ComboBoxItem>Apple</ComboBoxItem>
+                    <ComboBoxItem>Banana</ComboBoxItem>
+                    <ComboBoxItem>Pear</ComboBoxItem>
+                    <ComboBoxItem>Orange</ComboBoxItem>
+                </ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                          Grid.Row="1"
+                          Grid.Column="1"
+                          Grid.ColumnSpan="3"
+                          materialDesign:HintAssist.Hint="Nominal code"
+                          IsEditable="True">
+                    <ComboBoxItem>4010</ComboBoxItem>
+                    <ComboBoxItem>4020</ComboBoxItem>
+                    <ComboBoxItem>4030</ComboBoxItem>
+                    <ComboBoxItem>4040</ComboBoxItem>
+                    <ComboBoxItem>4050</ComboBoxItem>
+                    <ComboBoxItem>4060</ComboBoxItem>
+                </ComboBox>
+                <TextBox TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         materialDesign:HintAssist.Hint="Internal description"
+                         materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Grid.Column="1"
+                         Grid.Row="2"
+                         Grid.ColumnSpan="3"
+                         Height="150"
+                         HorizontalAlignment="Stretch"
+                         VerticalScrollBarVisibility="Auto" />
+                <TextBox TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         materialDesign:HintAssist.Hint="External description"
+                         materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Grid.Column="1"
+                         Grid.Row="3"
+                         Grid.ColumnSpan="3"
+                         Height="150"
+                         HorizontalAlignment="Stretch"
+                         VerticalScrollBarVisibility="Auto" />
+                <TextBox TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         materialDesign:HintAssist.Hint="Comments"
+                         materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Grid.Column="1"
+                         Grid.Row="4"
+                         Grid.ColumnSpan="3"
+                         Height="100"
+                         HorizontalAlignment="Stretch"
+                         VerticalScrollBarVisibility="Auto" />
+                <TextBox Grid.Row="5"
+                         Grid.Column="1"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         materialDesign:HintAssist.Hint="Quantity" />
+                <TextBox Grid.Row="5"
+                         Grid.Column="3"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         materialDesign:HintAssist.Hint="Cost" />
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

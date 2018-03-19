@@ -19,6 +19,9 @@
         Title="Task"
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Top">
         <materialDesign:DialogHost DialogClosing="Sample1_DialogHost_OnDialogClosing"
@@ -55,33 +58,40 @@
                 </StackPanel>
             </materialDesign:DialogHost.DialogContent>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <materialDesign:ColorZone Grid.Column="0"
-                                          Grid.ColumnSpan="5"
-                                          materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                          Padding="16"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                          Mode="PrimaryMid"
+                                          Grid.ColumnSpan="2">
                     <Grid>
-                        <Image Grid.Row="0"
-                               Source="/ERP;component/Resource/test.png"
-                               Height="100"
-                               Stretch="Fill"/>
-                        <TextBlock Text="Task"
-                                   Style="{StaticResource MaterialDesignDisplay3TextBlock}"
-                                   VerticalAlignment="Bottom"
-                                   Foreground="#DDFFFFFF"
-                                   Grid.ColumnSpan="4"
-                                   Margin="16,0,0,0" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="22"
+                                   Text="Task"
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        <materialDesign:PopupBox Grid.Column="1"
+                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                 StaysOpen="False">
+                            <StackPanel>
+                                <Button Content="Delete task" />
+                            </StackPanel>
+                        </materialDesign:PopupBox>
                     </Grid>
                 </materialDesign:ColorZone>
                 <ScrollViewer Grid.Row="1"
                               VerticalScrollBarVisibility="Auto"
-                              Height="452">
+                              Panel.ZIndex="-1"
+                              Height="578">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="56" />
@@ -91,6 +101,7 @@
                             <ColumnDefinition Width="56" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="51" />
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -99,88 +110,138 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="51" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <DatePicker Grid.Row="2"
+                        <ContentControl Grid.Row="0"
+                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
+                            <materialDesign:PackIcon Kind="CalendarCheck"
+                                                     Width="24"
+                                                     Height="24" />
+                        </ContentControl>
+                        <DatePicker Grid.Row="0"
                                     Grid.Column="1"
-                                    materialDesign:HintAssist.Hint="Date"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                    Margin="0,24,0,4"
+                                    materialDesign:HintAssist.Hint="Date"
+                                    Margin="0,6,0,4"
                                     VerticalAlignment="Bottom" />
-                        <materialDesign:TimePicker Grid.Row="2"
+                        <materialDesign:TimePicker Grid.Row="0"
                                                    Grid.Column="3"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-                                                   Margin="0,12,0,4"
+                                                   Margin="0,6,0,4"
                                                    VerticalAlignment="Bottom" />
-                        <TextBox materialDesign:HintAssist.Hint="Email"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                 Grid.Row="3"
-                                 Grid.ColumnSpan="3"
-                                 Grid.Column="1" />
                         <TextBox TextWrapping="Wrap"
                                  AcceptsReturn="True"
                                  materialDesign:HintAssist.Hint="Description"
                                  materialDesign:TextFieldAssist.HasTextAreaBox="True"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                  Grid.Column="1"
-                                 Grid.Row="4"
+                                 Grid.Row="1"
                                  Grid.ColumnSpan="3"
                                  Height="150"
+                                 HorizontalAlignment="Stretch"
                                  VerticalScrollBarVisibility="Auto" />
+                        <Separator Grid.Row="2"
+                                   Grid.ColumnSpan="5"
+                                   Margin="0,12,0,6" />
+                        <ContentControl Grid.Row="3"
+                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
+                            <materialDesign:PackIcon Kind="Domain"
+                                                     Width="24"
+                                                     Height="24" />
+                        </ContentControl>
                         <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                  Grid.Row="5"
+                                  Grid.Row="3"
                                   Grid.Column="1"
                                   Grid.ColumnSpan="3"
                                   materialDesign:HintAssist.Hint="Company"
-                                  VerticalAlignment="Bottom"
-                                  IsEditable="True"
-                                  ItemsSource="{Binding LongListToTestComboVirtualization}">
+                                  IsEditable="True">
                             <ComboBoxItem>Apple</ComboBoxItem>
                             <ComboBoxItem>Banana</ComboBoxItem>
                             <ComboBoxItem>Pear</ComboBoxItem>
                             <ComboBoxItem>Orange</ComboBoxItem>
                         </ComboBox>
+                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                  Grid.Row="4"
+                                  Grid.Column="1"
+                                  Grid.ColumnSpan="3"
+                                  materialDesign:HintAssist.Hint="Contact"
+                                  IsEditable="True">
+                            <ComboBoxItem>Apple</ComboBoxItem>
+                            <ComboBoxItem>Banana</ComboBoxItem>
+                            <ComboBoxItem>Pear</ComboBoxItem>
+                            <ComboBoxItem>Orange</ComboBoxItem>
+                        </ComboBox>
+                        <Separator Grid.Row="5"
+                                   Grid.ColumnSpan="5"
+                                   Margin="0,12,0,6" />
+                        <ContentControl Grid.Row="6"
+                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
+                            <materialDesign:PackIcon Kind="Palette"
+                                                     Width="24"
+                                                     Height="24" />
+                        </ContentControl>
                         <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                   Grid.Row="6"
                                   Grid.Column="1"
                                   Grid.ColumnSpan="3"
-                                  materialDesign:HintAssist.Hint="Company"
-                                  VerticalAlignment="Bottom"
-                                  IsEditable="True"
-                                  ItemsSource="{Binding LongListToTestComboVirtualization}">
+                                  materialDesign:HintAssist.Hint="Supplier"
+                                  IsEditable="True">
                             <ComboBoxItem>Apple</ComboBoxItem>
                             <ComboBoxItem>Banana</ComboBoxItem>
                             <ComboBoxItem>Pear</ComboBoxItem>
                             <ComboBoxItem>Orange</ComboBoxItem>
                         </ComboBox>
-                        <TextBlock Text="Assigned"
+                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                  Grid.Row="7"
+                                  Grid.Column="1"
+                                  Grid.ColumnSpan="3"
+                                  materialDesign:HintAssist.Hint="Contact"
+                                  IsEditable="True">
+                            <ComboBoxItem>Apple</ComboBoxItem>
+                            <ComboBoxItem>Banana</ComboBoxItem>
+                            <ComboBoxItem>Pear</ComboBoxItem>
+                            <ComboBoxItem>Orange</ComboBoxItem>
+                        </ComboBox>
+                        <Separator Grid.Row="8"
+                                   Grid.ColumnSpan="5"
+                                   Margin="0,12,0,6" />
+                        <ContentControl Grid.Row="9"
+                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
+                            <materialDesign:PackIcon Kind="Account"
+                                                     Width="24"
+                                                     Height="24" />
+                        </ContentControl>
+                        <TextBlock Text="Assigned to"
                                    Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                   Foreground="#89000000"
+                                   Foreground="#FF9A9A9A"
                                    VerticalAlignment="Bottom"
                                    Margin="0,0,0,8"
                                    Grid.Column="1"
-                                   Grid.Row="7" />
+                                   Grid.Row="9"
+                                   FontSize="10" />
                         <Button Grid.Column="3"
-                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                                Padding="0"
-                                Height="32"
-                                Width="32"
-                                Grid.Row="7"
+                                Margin="0,6,0,0"
+                                Grid.Row="9"
+                                VerticalAlignment="Bottom"
+                                Focusable="False"
                                 HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom">
-                            <materialDesign:PackIcon Kind="Plus"
-                                                     Width="24"
-                                                     Height="24" />
+                                Height="22"
+                                Width="22"
+                                Padding="0"
+                                Style="{DynamicResource MaterialDesignCustomButton}">
+                            <materialDesign:PackIcon Kind="AccountPlus"
+                                                     Width="18"
+                                                     Height="18" />
                         </Button>
-                        <ItemsControl Grid.Row="8"
+                        <ItemsControl Grid.Row="10"
                                       Grid.Column="1"
                                       ItemsSource="{Binding userList}"
                                       Grid.ColumnSpan="3"
                                       BorderBrush="#89000000"
                                       BorderThickness="0,0,0,1"
-                                      Margin="0,0,0,12">
+                                      Margin="0,0,0,4">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <materialDesign:Chip Content="{Binding forename}"
@@ -197,21 +258,17 @@
                         </ItemsControl>
                     </Grid>
                 </ScrollViewer>
-                <materialDesign:ColorZone Grid.Row="8"
-                                          Grid.ColumnSpan="5"
+                <materialDesign:ColorZone Grid.Row="3"
                                           materialDesign:ShadowAssist.ShadowDepth="Depth1">
                     <StackPanel Grid.Row="8"
                                 Grid.ColumnSpan="5"
-                                Orientation="Horizontal">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Content="ADD"
-                                Margin="8,8,4,8" />
-                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Content="DISCARD"
-                                Margin="4,8,8,8" />
-                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Content="DELETE"
-                                Margin="4,8,8,8" />
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <Button x:Name="doneButton"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Content="DONE"
+                                Margin="8,8,4,8"
+                                Click="doneButton_Click" />
                     </StackPanel>
                 </materialDesign:ColorZone>
             </Grid>

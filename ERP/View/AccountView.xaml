@@ -19,85 +19,6 @@
         Height="1000"
         Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <Window.Resources>
-        <Style x:Key="ChipStyle1"
-               TargetType="{x:Type materialDesign:Chip}">
-            <Setter Property="Height"
-                    Value="16" />
-            <Setter Property="HorizontalAlignment"
-                    Value="Left" />
-            <Setter Property="FontSize"
-                    Value="12" />
-            <Setter Property="Background"
-                    Value="{DynamicResource MaterialDesignChipBackground}" />
-            <Setter Property="IconBackground"
-                    Value="{DynamicResource PrimaryHueMidBrush}" />
-            <Setter Property="IconForeground"
-                    Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
-            <Setter Property="Cursor"
-                    Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type materialDesign:Chip}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Border Background="{TemplateBinding Background}"
-                                    Grid.ColumnSpan="3"
-                                    CornerRadius="8" />
-                            <ContentControl x:Name="IconControl"
-                                            Background="{TemplateBinding IconBackground}"
-                                            Content="{TemplateBinding Icon}"
-                                            Foreground="{TemplateBinding IconForeground}"
-                                            FontWeight="Normal"
-                                            FontSize="12"
-                                            HorizontalContentAlignment="Center"
-                                            Height="16"
-                                            IsTabStop="False"
-                                            VerticalAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Width="16">
-                                <ContentControl.Clip>
-                                    <EllipseGeometry Center="8,8"
-                                                     RadiusY="8"
-                                                     RadiusX="8" />
-                                </ContentControl.Clip>
-                                <ContentControl.Template>
-                                    <ControlTemplate TargetType="{x:Type ContentControl}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter Content="{TemplateBinding Content}"
-                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                        </Border>
-                                    </ControlTemplate>
-                                </ContentControl.Template>
-                            </ContentControl>
-                            <ContentControl x:Name="TextBlock"
-                                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                                            Content="{TemplateBinding Content}"
-                                            Grid.Column="1"
-                                            ContentStringFormat="{TemplateBinding ContentTemplateSelector}"
-                                            IsTabStop="False"
-                                            Margin="8,0,12,0"
-                                            VerticalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="Visibility"
-                                     SourceName="IconControl"
-                                     Value="Collapsed">
-                                <Setter Property="Margin"
-                                        TargetName="TextBlock"
-                                        Value="6,0" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -226,9 +147,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          materialDesign:HintAssist.IsFloating="True"
                                          Grid.Row="0"
-                                         Grid.Column="1"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1" />
                                 <ContentControl Style="{StaticResource MaterialDesignTextBoxIconWrapper}"
                                                 Grid.Row="1">
                                     <materialDesign:PackIcon Kind="Phone"
@@ -273,8 +192,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Column="1"
                                          Grid.Row="5"
-                                         Height="300"
-                                         materialDesign:HintAssist.FloatingScale="1" />
+                                         Height="300"/>
                             </Grid>
                         </Expander>
                     </materialDesign:ColorZone>
@@ -313,50 +231,36 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          materialDesign:HintAssist.IsFloating="True"
                                          Grid.Row="0"
-                                         Grid.Column="1"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1" />
                                 <TextBox materialDesign:HintAssist.Hint="Address 2"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="2"
-                                         Grid.Column="1"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1"/>
                                 <TextBox materialDesign:HintAssist.Hint="City"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="3"
-                                         Grid.Column="1"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1"/>
                                 <TextBox materialDesign:HintAssist.Hint="County"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="4"
-                                         Grid.Column="1"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1"/>
                                 <TextBox materialDesign:HintAssist.Hint="Postcode"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="5"
                                          Grid.Column="1"
                                          Width="92"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18"
                                          HorizontalAlignment="Left" />
                                 <TextBox materialDesign:HintAssist.Hint="Account Number"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="6"
                                          Grid.Column="1"
                                          Width="128"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18"
                                          HorizontalAlignment="Left" />
                                 <ComboBox Grid.Row="7"
                                           Grid.Column="1"
                                           HorizontalAlignment="Left"
                                           Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                           materialDesign:HintAssist.Hint="Default Carriage"
-                                          materialDesign:HintAssist.FloatingScale="1"
-                                          materialDesign:HintAssist.FloatingOffset="0,-18"
                                           Width="256">
                                     <ComboBoxItem Content="T0" />
                                     <ComboBoxItem Content="T1"
@@ -410,47 +314,29 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          materialDesign:HintAssist.IsFloating="True"
                                          Grid.Row="0"
-                                         Grid.Column="1"
-                                         Margin="0,16,0,4"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1" />
                                 <TextBox materialDesign:HintAssist.Hint="Address 2"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="2"
-                                         Grid.Column="1"
-                                         Margin="0,16,0,4"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1" />
                                 <TextBox materialDesign:HintAssist.Hint="City"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="3"
-                                         Grid.Column="1"
-                                         Margin="0,16,0,4"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1" />
                                 <TextBox materialDesign:HintAssist.Hint="County"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="4"
-                                         Grid.Column="1"
-                                         Margin="0,16,0,4"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1" />
                                 <TextBox materialDesign:HintAssist.Hint="Postcode"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          Grid.Row="5"
                                          Grid.Column="1"
-                                         Margin="0,16,0,4"
                                          Width="155"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18"
                                          HorizontalAlignment="Left" />
                                 <ComboBox Grid.Row="6"
                                           Grid.Column="1"
-                                          Margin="0,16,0,4"
                                           Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                           materialDesign:HintAssist.Hint="Default Carriage"
-                                          materialDesign:HintAssist.FloatingScale="1"
-                                          materialDesign:HintAssist.FloatingOffset="0,-18"
                                           Width="256">
                                     <ComboBoxItem Content="Collection"
                                                   IsSelected="True" />
@@ -495,9 +381,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
                                          materialDesign:HintAssist.IsFloating="True"
                                          Grid.Row="0"
-                                         Grid.Column="1"
-                                         materialDesign:HintAssist.FloatingScale="1"
-                                         materialDesign:HintAssist.FloatingOffset="0,-18" />
+                                         Grid.Column="1"/>
                             </Grid>
                         </Expander>
                     </materialDesign:ColorZone>

@@ -22,7 +22,7 @@ namespace ERP.View
     /// </summary>
     public partial class TaskView : Window
     {
-        public TaskView()
+        public TaskView(int todoID = 0)
         {
             InitializeComponent();
         }
@@ -45,6 +45,11 @@ namespace ERP.View
         public ObservableCollection<User> userList
         {
             get { return _userList ?? (_userList = new ObservableCollection<User>()); }
+        }
+
+        private void doneButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
