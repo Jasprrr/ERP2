@@ -6,16 +6,13 @@
              xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:properties="clr-namespace:ERP.Properties"
-             xmlns:CustomerControls="clr-namespace:ERP.Control"
-             xmlns:Converters2="clr-namespace:ERP.Converters"
+             xmlns:CustomControls="clr-namespace:ERP.Control"
              x:Class="ERP.App"
-             StartupUri="View/LoginView.xaml"
+             StartupUri="View/QuoteView.xaml"
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
 
-            <Converters2:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
-            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -564,40 +561,83 @@
                 </Setter>
             </Style>
             <Style x:Name="Stepper"
-                   TargetType="{x:Type CustomerControls:Stepper}">
+                   TargetType="{x:Type CustomControls:Stepper}">
                 <Setter Property="HorizontalAlignment"
                         Value="Left" />
                 <Setter Property="IconBackground"
                         Value="{StaticResource PrimaryHueMidBrush}" />
+                <Setter Property="Foreground"
+                        Value="#616161" />
                 <Setter Property="Cursor"
                         Value="Hand" />
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type CustomerControls:Stepper}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Border CornerRadius="12"
-                                        Height="24"
-                                        Width="24"
-                                        Background="{TemplateBinding IconBackground}">
-                                    <ContentControl Content="{TemplateBinding IconText}"
-                                                    x:Name="IconText"
-                                                    FontSize="17"
-                                                    FontWeight="Regular"
-                                                    IsTabStop="False"
-                                                    Visibility="{TemplateBinding Icon, Converter={StaticResource NullableToVisibilityConverter}}" 
-                                                    VerticalAlignment="Center"
-                                                    VerticalContentAlignment="Center"
-                                                    HorizontalContentAlignment="Center"/>
-
-                                </Border>
-                            </Grid>
+                        <ControlTemplate TargetType="{x:Type CustomControls:Stepper}">
+                            <Border x:Name="border">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="24" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="72" />
+                                    </Grid.RowDefinitions>
+                                    <Border BorderBrush="#616161"
+                                            BorderThickness="0,1,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Grid.Column="0"
+                                            x:Name="LeftBorder"
+                                            Width="16" />
+                                    <Border Grid.Column="1"
+                                            x:Name="IconBackground"
+                                            CornerRadius="12"
+                                            Height="24"
+                                            Width="24"
+                                            Margin="0,0,8,0"
+                                            Background="{TemplateBinding IconBackground}">
+                                        <ContentControl Content="{TemplateBinding Icon}"
+                                                        x:Name="IconControl"
+                                                        FontSize="13"
+                                                        FontWeight="Regular"
+                                                        IsTabStop="False"
+                                                        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                                        Visibility="{TemplateBinding Icon, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                        VerticalAlignment="Center"
+                                                        VerticalContentAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        HorizontalContentAlignment="Center" />
+                                    </Border>
+                                    <ContentControl Content="{TemplateBinding StepperLabel}"
+                                                    x:Name="StepperLabel"
+                                                    Grid.Column="2"
+                                                    VerticalAlignment="Center" 
+                                                    IsTabStop="False"/>
+                                    <Border BorderBrush="#616161"
+                                            BorderThickness="0,1,0,0"
+                                            HorizontalAlignment="right"
+                                            VerticalAlignment="Center"
+                                            Grid.Column="3"
+                                            Width="16" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="true"
+                                         SourceName="border">
+                                    <Setter Property="Background"
+                                            TargetName="border"
+                                            Value="{DynamicResource MaterialDesignFlatButtonClick}" />
+                                </Trigger>
+                                <Trigger Property="IsFirst"
+                                         Value="true">
+                                    <Setter Property="Visibility"
+                                            TargetName="LeftBorder"
+                                            Value="Collapsed" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

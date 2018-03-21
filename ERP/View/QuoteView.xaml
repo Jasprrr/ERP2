@@ -53,6 +53,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
+                <Border />
                 <materialDesign:ColorZone Grid.Row="0"
                                           Padding="16"
                                           materialDesign:ShadowAssist.ShadowDepth="Depth1"
@@ -84,7 +85,11 @@
                         </materialDesign:PopupBox>
                     </Grid>
                 </materialDesign:ColorZone>
-                <UserControl:Stepper Grid.Row="1"/>
+                <UserControl:Stepper Grid.Row="1"
+                                     Icon="1"
+                                     IsFirst="True"
+                                     StepperLabel="Some text"
+                                     Width="200"/>
                 <ProgressBar Grid.Row="1"
                              IsIndeterminate="True"
                              Visibility="Collapsed" />

@@ -61,13 +61,13 @@ namespace ERP.Control
             set { SetValue(IconProperty, value); }
         }
 
-        public static readonly DependencyProperty IconTextProperty = DependencyProperty.Register(
-            "IconText", typeof(object), typeof(Stepper), new PropertyMetadata(default(object)));
+        public static readonly DependencyProperty StepperLabelProperty = DependencyProperty.Register(
+            "StepperLabel", typeof(object), typeof(Stepper), new PropertyMetadata(default(object)));
 
-        public object IconText
+        public object StepperLabel
         {
-            get { return (object)GetValue(IconTextProperty); }
-            set { SetValue(IconTextProperty, value); }
+            get { return (object)GetValue(StepperLabelProperty); }
+            set { SetValue(StepperLabelProperty, value); }
         }
 
         public static readonly DependencyProperty IconBackgroundProperty = DependencyProperty.Register(
@@ -87,5 +87,15 @@ namespace ERP.Control
             get { return (Brush)GetValue(IconForegroundProperty); }
             set { SetValue(IconForegroundProperty, value); }
         }
+
+        public static readonly DependencyProperty IsFirstProperty = DependencyProperty.Register(
+            "IsFirst", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
+
+        public bool IsFirst
+        {
+            get { return (bool)GetValue(IsFirstProperty); }
+            set { SetValue(IsFirstProperty, value); }
+        }
+
     }
 }
