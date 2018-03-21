@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ERP.Model
 {
-    public class QuoteItem
+    public class QuoteItem : INotifyPropertyChanged
     {
         public int quoteItemID { get; set; }
         public int quoteID { get; set; }
@@ -39,5 +40,11 @@ namespace ERP.Model
         public DateTime? dateModified { get; set; }
         public bool visisbility { get; set; }
         public bool selected { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

@@ -83,6 +83,8 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.108.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,12 +103,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\Stepper.cs" />
     <Compile Include="Converters\ExpanderConverter.cs" />
+    <Compile Include="Converters\NullableToVisibilityConverter.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Quote.cs" />
     <Compile Include="Model\QuoteItem.cs" />
+    <Compile Include="Model\QuoteMaterial.cs" />
+    <Compile Include="Model\QuoteSubcontractor.cs" />
+    <Compile Include="Model\QuoteTime.cs" />
     <Compile Include="Model\ToDo.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Resource\ColourGenerator.cs" />
@@ -123,8 +130,17 @@
     <Compile Include="View\QuoteItemView.xaml.cs">
       <DependentUpon>QuoteItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\QuoteMaterialView.xaml.cs">
+      <DependentUpon>QuoteMaterialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuoteSubcontractorView.xaml.cs">
+      <DependentUpon>QuoteSubcontractorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\QuotesView.xaml.cs">
       <DependentUpon>QuotesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuoteTimeView.xaml.cs">
+      <DependentUpon>QuoteTimeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuoteView.xaml.cs">
       <DependentUpon>QuoteView.xaml</DependentUpon>
@@ -163,7 +179,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\QuoteMaterialView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuoteSubcontractorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\QuotesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuoteTimeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,6 +256,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets')" />

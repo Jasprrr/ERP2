@@ -64,5 +64,11 @@ namespace ERP
         {
             MainFrame.Navigate(new Uri(selectedItem.NavPage.ToString(), UriKind.Relative));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var QuoteWindow = new QuoteView();
+            QuoteWindow.Show();
+        }
     }
 }
