@@ -97,5 +97,31 @@ namespace ERP.Control
             set { SetValue(IsFirstProperty, value); }
         }
 
+        public static readonly DependencyProperty IsLastProperty = DependencyProperty.Register(
+            "IsLast", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
+
+        public bool IsLast
+        {
+            get { return (bool)GetValue(IsLastProperty); }
+            set { SetValue(IsLastProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsCompleteProperty = DependencyProperty.Register(
+            "IsComplete", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
+
+        public bool IsComplete
+        {
+            get { return (bool)GetValue(IsCompleteProperty); }
+            set { SetValue(IsCompleteProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
+            "IsSelected", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
+
+        public bool IsSelected
+        {
+            get { return (bool)GetValue(IsSelectedProperty); }
+            set { SetValue(IsSelectedProperty, value); }
+        }
     }
 }

@@ -53,7 +53,6 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Border />
                 <materialDesign:ColorZone Grid.Row="0"
                                           Padding="16"
                                           materialDesign:ShadowAssist.ShadowDepth="Depth1"
@@ -85,14 +84,30 @@
                         </materialDesign:PopupBox>
                     </Grid>
                 </materialDesign:ColorZone>
-                <UserControl:Stepper Grid.Row="1"
-                                     Icon="1"
-                                     IsFirst="True"
-                                     StepperLabel="Some text"
-                                     Width="200"/>
                 <ProgressBar Grid.Row="1"
                              IsIndeterminate="True"
                              Visibility="Collapsed" />
+                <materialDesign:ColorZone Grid.Row="1"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Margin="0,0,0,4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <UserControl:Stepper Grid.Column="0"
+                                             Icon="1"
+                                             StepperLabel="Quote created"
+                                             HorizontalAlignment="Stretch"
+                                             IsFirst="True" 
+                                             IsSelected="True"/>
+                        <UserControl:Stepper Grid.Column="1"
+                                             Icon="2"
+                                             StepperLabel="Quote closed"
+                                             HorizontalAlignment="Stretch" 
+                                             IsLast="True"/>
+                    </Grid>
+                </materialDesign:ColorZone>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />

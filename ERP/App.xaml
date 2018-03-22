@@ -568,73 +568,138 @@
                         Value="{StaticResource PrimaryHueMidBrush}" />
                 <Setter Property="Foreground"
                         Value="#616161" />
+                <Setter Property="materialDesign:RippleAssist.Feedback"
+                        Value="{DynamicResource MaterialDesignFlatButtonRipple}" />
                 <Setter Property="Cursor"
                         Value="Hand" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CustomControls:Stepper}">
-                            <Border x:Name="border">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="24" />
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="24" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="72" />
-                                    </Grid.RowDefinitions>
-                                    <Border BorderBrush="#616161"
-                                            BorderThickness="0,1,0,0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            Grid.Column="0"
-                                            x:Name="LeftBorder"
-                                            Width="16" />
-                                    <Border Grid.Column="1"
-                                            x:Name="IconBackground"
-                                            CornerRadius="12"
-                                            Height="24"
-                                            Width="24"
-                                            Margin="0,0,8,0"
-                                            Background="{TemplateBinding IconBackground}">
-                                        <ContentControl Content="{TemplateBinding Icon}"
-                                                        x:Name="IconControl"
-                                                        FontSize="13"
-                                                        FontWeight="Regular"
-                                                        IsTabStop="False"
-                                                        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
-                                                        Visibility="{TemplateBinding Icon, Converter={StaticResource NullableToVisibilityConverter}}"
+                            <Grid x:Name="MainGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"
+                                                      x:Name="FirstColumn" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*"
+                                                      x:Name="LastColumn" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="72" />
+                                </Grid.RowDefinitions>
+                                <Border Grid.Column="0"
+                                        BorderBrush="#1E000000"
+                                        BorderThickness="0,0,0,1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"
+                                        Visibility="Visible"
+                                        Margin="0,0,-8,0"
+                                        x:Name="LeftBorder"
+                                        Panel.ZIndex="1" />
+                                <materialDesign:Ripple Grid.Column="1"
+                                                       Height="72">
+                                    <Grid x:Name="SubGrid">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Grid.Column="0"
+                                                x:Name="IconBackground"
+                                                CornerRadius="12"
+                                                Height="24"
+                                                Width="24"
+                                                Margin="16,8,8,8"
+                                                Background="{TemplateBinding IconBackground}">
+                                            <Grid>
+                                                <ContentControl Content="{TemplateBinding Icon}"
+                                                                x:Name="IconText"
+                                                                FontSize="16"
+                                                                FontWeight="Regular"
+                                                                IsTabStop="False"
+                                                                Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                                                Visibility="Visible"
+                                                                VerticalAlignment="Center"
+                                                                VerticalContentAlignment="Center"
+                                                                HorizontalAlignment="Center"
+                                                                HorizontalContentAlignment="Center" />
+                                                <materialDesign:PackIcon x:Name="IconControl"
+                                                                         Kind="Check"
+                                                                         FontWeight="Regular"
+                                                                         IsTabStop="False"
+                                                                         Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                                                         Height="16"
+                                                                         Width="16"
+                                                                         VerticalAlignment="Center"
+                                                                         HorizontalAlignment="Center"
+                                                                         Visibility="Collapsed"
+                                                                         Panel.ZIndex="1" />
+                                            </Grid>
+                                        </Border>
+                                        <ContentControl Content="{TemplateBinding StepperLabel}"
+                                                        x:Name="StepperLabel"
+                                                        Grid.Column="1"
                                                         VerticalAlignment="Center"
                                                         VerticalContentAlignment="Center"
-                                                        HorizontalAlignment="Center"
-                                                        HorizontalContentAlignment="Center" />
-                                    </Border>
-                                    <ContentControl Content="{TemplateBinding StepperLabel}"
-                                                    x:Name="StepperLabel"
-                                                    Grid.Column="2"
-                                                    VerticalAlignment="Center" 
-                                                    IsTabStop="False"/>
-                                    <Border BorderBrush="#616161"
-                                            BorderThickness="0,1,0,0"
-                                            HorizontalAlignment="right"
-                                            VerticalAlignment="Center"
-                                            Grid.Column="3"
-                                            Width="16" />
-                                </Grid>
-                            </Border>
+                                                        IsTabStop="False"
+                                                        Margin="0,0,16,2" />
+                                    </Grid>
+                                </materialDesign:Ripple>
+                                <Border Grid.Column="2"
+                                        BorderBrush="#1E000000"
+                                        BorderThickness="0,0,0,1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Stretch"
+                                        Visibility="Visible"
+                                        x:Name="RightBorder"
+                                        Margin="-8,0,0,0"
+                                        Panel.ZIndex="1" />
+                            </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver"
                                          Value="true"
-                                         SourceName="border">
+                                         SourceName="MainGrid">
                                     <Setter Property="Background"
-                                            TargetName="border"
+                                            TargetName="SubGrid"
                                             Value="{DynamicResource MaterialDesignFlatButtonClick}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed"
+                                         Value="true"
+                                         SourceName="MainGrid">
+                                    <Setter Property="Background"
+                                            TargetName="SubGrid"
+                                            Value="{DynamicResource MaterialDesignFlatButtonClick}" />
+                                </Trigger>
+                                <Trigger Property="IsSelected"
+                                         Value="false">
+                                    <Setter Property="Background"
+                                            TargetName="IconBackground"
+                                            Value="#61000000" />
+                                </Trigger>
+                                <Trigger Property="IsComplete"
+                                         Value="true">
+                                    <Setter Property="Visibility"
+                                            TargetName="IconControl"
+                                            Value="Visible" />
+                                    <Setter Property="Visibility"
+                                            TargetName="IconText"
+                                            Value="Collapsed" />
                                 </Trigger>
                                 <Trigger Property="IsFirst"
                                          Value="true">
+                                    <Setter Property="Width"
+                                            TargetName="FirstColumn"
+                                            Value="0" />
                                     <Setter Property="Visibility"
                                             TargetName="LeftBorder"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsLast"
+                                         Value="true">
+                                    <Setter Property="Width"
+                                            TargetName="LastColumn"
+                                            Value="0" />
+                                    <Setter Property="Visibility"
+                                            TargetName="RightBorder"
                                             Value="Collapsed" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
