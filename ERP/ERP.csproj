@@ -239,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\bie-logo.svg" />
+    <Resource Include="Resource\layout-desktop-whiteframe copy2.png" />
     <Resource Include="Resource\logo.png" />
     <Resource Include="Resource\icon.ico" />
   </ItemGroup>

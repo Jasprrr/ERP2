@@ -108,143 +108,230 @@
                                              IsLast="True"/>
                     </Grid>
                 </materialDesign:ColorZone>-->
-                <ScrollViewer Grid.Row="2">
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="368" />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <TextBlock Text="Details"
-                                       VerticalAlignment="Center"
-                                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                       Margin="56,24,56,0" />
-                            <Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Details"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                   Margin="56,24,56,0" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="56" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="56" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="56" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                                <RowDefinition Height="51" />
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0"
+                                     Grid.Column="1"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Quote no."
+                                     Text="12000"
+                                     IsEnabled="False" />
+                            <TextBox Grid.Row="0"
+                                     Grid.Column="3"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Date"
+                                     IsEnabled="False"
+                                     Text="19/03/18" />
+                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                      Grid.Row="1"
+                                      Grid.Column="1"
+                                      Grid.ColumnSpan="3"
+                                      materialDesign:HintAssist.Hint="Company *"
+                                      IsEditable="True">
+                                <ComboBoxItem Content="Apple" />
+                                <ComboBoxItem Content="Banana" />
+                                <ComboBoxItem Content="Pear" />
+                                <ComboBoxItem Content="Orange" />
+                            </ComboBox>
+                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                      Grid.Row="2"
+                                      Grid.Column="1"
+                                      Grid.ColumnSpan="3"
+                                      materialDesign:HintAssist.Hint="Contact"
+                                      IsEditable="True">
+                                <ComboBoxItem Content="Apple" />
+                                <ComboBoxItem Content="Banana" />
+                                <ComboBoxItem Content="Pear" />
+                                <ComboBoxItem Content="Orange" />
+                            </ComboBox>
+                            <TextBox Grid.Row="3"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="3"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="PO no." />
+                            <TextBox Grid.Row="4"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="3"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Description" />
+                            <TextBox Grid.Row="5"
+                                     Grid.Column="1"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Lead days" />
+                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                      Grid.Row="6"
+                                      Grid.Column="1"
+                                      Grid.ColumnSpan="3"
+                                      materialDesign:HintAssist.Hint="Carriage option">
+                                <ComboBoxItem IsSelected="True"
+                                              Content="Collection" />
+                                <ComboBoxItem Content="Courier" />
+                                <ComboBoxItem Content="BIE Magnum delivery" />
+                            </ComboBox>
+                            <TextBox Grid.Row="7"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="3"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Carriage notes" />
+                            <TextBox Grid.Row="8"
+                                     Grid.Column="1"
+                                     Text="12.00"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Carriage cost" />
+                            <TextBox Grid.Row="9"
+                                     Grid.Column="1"
+                                     Text="12.00"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Total cost" />
+                            <DatePicker Grid.Row="10"
+                                        Grid.Column="1"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        materialDesign:HintAssist.Hint="Due date"
+                                        Margin="0,6,0,4"
+                                        VerticalAlignment="Bottom" />
+                            <TextBox Grid.Row="10"
+                                     Grid.Column="3"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Success chance" />
+                            <TextBox Grid.Row="11"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="3"
+                                     Text="Jasper Friend"
+                                     IsEnabled="False"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Owner" />
+                        </Grid>
+                    </StackPanel>
+                    <Grid Grid.Column="1"
+                          Background="{StaticResource MaterialDesignBackground}">
+                        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                  Margin="6,12">
+                            <Grid x:Name="grid">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="56" />
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="56" />
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="56" />
+                                    <ColumnDefinition Width="24*" />
+                                    <ColumnDefinition Width="571*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
+                                    <RowDefinition x:Name="ItemRow">
+                                        <RowDefinition.Style>
+                                            <Style TargetType="{x:Type RowDefinition}">
+                                                <Setter Property="Height"
+                                                        Value="auto" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsExpanded, ElementName=ItemExpander}"
+                                                                 Value="True">
+                                                        <Setter Property="Height"
+                                                                Value="*" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </RowDefinition.Style>
+                                    </RowDefinition>
+                                    <RowDefinition x:Name="TimeRow">
+                                        <RowDefinition.Style>
+                                            <Style TargetType="{x:Type RowDefinition}">
+                                                <Setter Property="Height"
+                                                        Value="Auto" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsExpanded, ElementName=TimeExpander}"
+                                                                 Value="True">
+                                                        <Setter Property="Height"
+                                                                Value="*" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </RowDefinition.Style>
+                                    </RowDefinition>
+                                    <RowDefinition x:Name="MaterialRow">
+                                        <RowDefinition.Style>
+                                            <Style TargetType="{x:Type RowDefinition}">
+                                                <Setter Property="Height"
+                                                        Value="Auto" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsExpanded, ElementName=MaterialExpander}"
+                                                                 Value="True">
+                                                        <Setter Property="Height"
+                                                                Value="*" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </RowDefinition.Style>
+                                    </RowDefinition>
+                                    <RowDefinition x:Name="SubcontractorRow">
+                                        <RowDefinition.Style>
+                                            <Style TargetType="{x:Type RowDefinition}">
+                                                <Setter Property="Height"
+                                                        Value="Auto" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsExpanded, ElementName=SubcontractorExpander}"
+                                                                 Value="True">
+                                                        <Setter Property="Height"
+                                                                Value="*" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </RowDefinition.Style>
+                                    </RowDefinition>
+                                    <!--<RowDefinition x:Name="NcrRow">
+                                        <RowDefinition.Style>
+                                            <Style TargetType="{x:Type RowDefinition}">
+                                                <Setter Property="Height"
+                                                        Value="Auto" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsExpanded, ElementName=NcrExpander}"
+                                                                 Value="True">
+                                                        <Setter Property="Height"
+                                                                Value="*" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </RowDefinition.Style>
+                                    </RowDefinition>-->
                                 </Grid.RowDefinitions>
-                                <TextBox Grid.Row="0"
-                                         Grid.Column="1"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Quote no."
-                                         Text="12000"
-                                         IsEnabled="False" />
-                                <TextBox Grid.Row="0"
-                                         Grid.Column="3"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Date"
-                                         IsEnabled="False"
-                                         Text="19/03/18" />
-                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                          Grid.Row="1"
-                                          Grid.Column="1"
-                                          Grid.ColumnSpan="3"
-                                          materialDesign:HintAssist.Hint="Company *"
-                                          IsEditable="True">
-                                    <ComboBoxItem Content="Apple" />
-                                    <ComboBoxItem Content="Banana" />
-                                    <ComboBoxItem Content="Pear" />
-                                    <ComboBoxItem Content="Orange" />
-                                </ComboBox>
-                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                          Grid.Row="2"
-                                          Grid.Column="1"
-                                          Grid.ColumnSpan="3"
-                                          materialDesign:HintAssist.Hint="Contact"
-                                          IsEditable="True">
-                                    <ComboBoxItem Content="Apple" />
-                                    <ComboBoxItem Content="Banana" />
-                                    <ComboBoxItem Content="Pear" />
-                                    <ComboBoxItem Content="Orange" />
-                                </ComboBox>
-                                <TextBox Grid.Row="3"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="3"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="PO no." />
-                                <TextBox Grid.Row="4"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="3"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Description" />
-                                <TextBox Grid.Row="5"
-                                         Grid.Column="1"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Lead days" />
-                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                          Grid.Row="6"
-                                          Grid.Column="1"
-                                          Grid.ColumnSpan="3"
-                                          materialDesign:HintAssist.Hint="Carriage option">
-                                    <ComboBoxItem IsSelected="True"
-                                                  Content="Collection" />
-                                    <ComboBoxItem Content="Courier" />
-                                    <ComboBoxItem Content="BIE Magnum delivery" />
-                                </ComboBox>
-                                <TextBox Grid.Row="7"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="3"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Carriage notes" />
-                                <TextBox Grid.Row="8"
-                                         Grid.Column="1"
-                                         Text="12.00"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Carriage cost" />
-                                <TextBox Grid.Row="9"
-                                         Grid.Column="1"
-                                         Text="12.00"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Total cost" />
-                                <DatePicker Grid.Row="10"
-                                            Grid.Column="1"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                            materialDesign:HintAssist.Hint="Due date"
-                                            Margin="0,6,0,4"
-                                            VerticalAlignment="Bottom" />
-                                <TextBox Grid.Row="10"
-                                         Grid.Column="3"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Success chance" />
-                                <TextBox Grid.Row="11"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="3"
-                                         Text="Jasper Friend"
-                                         IsEnabled="False"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Owner" />
-                            </Grid>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <Expander >
+                                <Expander x:Name="ItemExpander"
+                                          Grid.Row="0"
+                                          IsExpanded="True"
+                                          Grid.ColumnSpan="2">
                                     <Expander.Header>
-                                        <TextBlock Text="Items"
-                                                   VerticalAlignment="Center"
-                                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Items"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        </StackPanel>
                                     </Expander.Header>
                                     <DataGrid Margin="0"
+                                              Padding="0,0,0,60"
                                               CanUserSortColumns="True"
                                               AutoGenerateColumns="False"
                                               RowHeight="48"
@@ -252,8 +339,7 @@
                                               materialDesign:DataGridAssist.ColumnHeaderPadding="8"
                                               MaxHeight="{Binding ActualHeight, ElementName=ItemExpander}"
                                               ItemsSource="{Binding quoteItemList}"
-                                              CanUserAddRows="True"
-                                              ScrollViewer.CanContentScroll="False">
+                                              CanUserAddRows="True">
                                         <DataGrid.CellStyle>
                                             <Style TargetType="{x:Type DataGridCell}"
                                                    BasedOn="{StaticResource MaterialDesignDataGridCell}">
@@ -402,16 +488,37 @@
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </Expander>
-                            </materialDesign:Card>
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}">
-                                <Expander>
+                                <Expander x:Name="TimeExpander"
+                                          Grid.Row="1"
+                                          Grid.ColumnSpan="2">
                                     <Expander.Header>
-                                        <TextBlock Text="Times"
-                                                   VerticalAlignment="Center"
-                                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Times"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                            <!--<Button Height="26"
+                                                    Width="26"
+                                                    Padding="0">
+                                                <Button.Style>
+                                                    <Style TargetType="Button"
+                                                           BasedOn="{StaticResource MaterialDesignCustomButton}">
+                                                        <Setter Property="Visibility"
+                                                                Value="Hidden" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=TimeExpander, Path=IsExpanded}"
+                                                                         Value="True">
+                                                                <Setter Property="Visibility"
+                                                                        Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                                <materialDesign:PackIcon Kind="filter" />
+                                            </Button>-->
+                                        </StackPanel>
                                     </Expander.Header>
                                     <DataGrid Margin="0"
+                                              Padding="0,0,0,60"
                                               CanUserSortColumns="True"
                                               AutoGenerateColumns="False"
                                               RowHeight="48"
@@ -537,16 +644,18 @@
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </Expander>
-                            </materialDesign:Card>
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}">
-                                <Expander>
+                                <Expander x:Name="MaterialExpander"
+                                          Grid.Row="2"
+                                          Grid.ColumnSpan="2">
                                     <Expander.Header>
-                                        <TextBlock Text="Materials"
-                                                   VerticalAlignment="Center"
-                                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Materials"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        </StackPanel>
                                     </Expander.Header>
                                     <DataGrid Margin="0"
+                                              Padding="0,0,0,60"
                                               CanUserSortColumns="True"
                                               AutoGenerateColumns="False"
                                               RowHeight="48"
@@ -669,16 +778,18 @@
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </Expander>
-                            </materialDesign:Card>
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}">
-                                <Expander>
+                                <Expander x:Name="SubcontractorExpander"
+                                          Grid.Row="3"
+                                          Grid.ColumnSpan="2">
                                     <Expander.Header>
-                                        <TextBlock Text="Subcontractors"
-                                                   VerticalAlignment="Center"
-                                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Subcontractors"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                        </StackPanel>
                                     </Expander.Header>
                                     <DataGrid Margin="0"
+                                              Padding="0,0,0,60"
                                               CanUserSortColumns="True"
                                               AutoGenerateColumns="False"
                                               RowHeight="48"
@@ -801,29 +912,38 @@
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </Expander>
-                            </materialDesign:Card>
-                        </StackPanel>
+                                <!--<Expander x:Name="NcrExpander"
+                                          Grid.Row="4">
+                                    <Expander.Header>
+                                        <TextBlock Text="NCRs"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                    </Expander.Header>
+                                    <StackPanel />
+                                </Expander>-->
+                            </Grid>
+                        </materialDesign:ColorZone>
                     </Grid>
-                </ScrollViewer>
-                <Grid Grid.Column="2">
-                    <Grid x:Name="grid2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition x:Name="ItemRow2">
-                                <RowDefinition.Style>
-                                    <Style TargetType="{x:Type RowDefinition}">
-                                        <Setter Property="Height"
-                                                Value="auto" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsExpanded, ElementName=ItemExpander}"
-                                                         Value="True">
-                                                <Setter Property="Height"
-                                                        Value="*" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </RowDefinition.Style>
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
+                    <Grid Grid.Column="2">
+                        <Grid x:Name="grid2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="ItemRow2">
+                                    <RowDefinition.Style>
+                                        <Style TargetType="{x:Type RowDefinition}">
+                                            <Setter Property="Height"
+                                                    Value="auto" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsExpanded, ElementName=ItemExpander}"
+                                                             Value="True">
+                                                    <Setter Property="Height"
+                                                            Value="*" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </RowDefinition.Style>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <materialDesign:Snackbar Grid.Row="2"
@@ -831,8 +951,7 @@
                                          x:Name="SnackbarThree"
                                          Panel.ZIndex="1"
                                          Margin="0,0,0,4" />
-
             </Grid>
-    </materialDesign:DrawerHost>
+        </materialDesign:DrawerHost>
     </Grid>
 </Window>
