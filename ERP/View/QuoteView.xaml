@@ -15,13 +15,12 @@
         TextOptions.TextRenderingMode="Auto"
         Width="1000"
         Height="600"
-        Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         xmlns:UserControl="clr-namespace:ERP.Control">
     <Grid>
         <materialDesign:DrawerHost x:Name="MainDrawer">
             <materialDesign:DrawerHost.RightDrawerContent>
-                <Grid Width="368">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -46,7 +45,7 @@
                     </materialDesign:ColorZone>
                 </Grid>
             </materialDesign:DrawerHost.RightDrawerContent>
-            <Grid>
+            <Grid Background="{DynamicResource MaterialDesignPaper}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -61,21 +60,31 @@
                                           Panel.ZIndex="1">
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock VerticalAlignment="Center"
+                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                Padding="4">
+                            <materialDesign:PackIcon Kind="Menu" 
+                                                     Height="24"
+                                                     Width="24"/>
+                        </Button>
+                        <TextBlock Grid.Column="1"
+                            VerticalAlignment="Center"
                                    FontSize="22"
                                    Text="Quote"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                   Margin="56,0,0,0" />
+                                   Margin="48,0,0,0" />
                         <materialDesign:PopupBox Grid.Column="3"
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="True"
-                                                 Margin="10,0">
+                                                 Margin="10,0"
+                                                 Width="32"
+                                                 Height="32">
                             <StackPanel>
                                 <Button Content="Convert quote" />
                                 <Separator />
@@ -87,54 +96,150 @@
                 <ProgressBar Grid.Row="1"
                              IsIndeterminate="True"
                              Visibility="Collapsed" />
-                <!--<materialDesign:ColorZone Grid.Row="1"
-                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                          Margin="0,0,0,4">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <UserControl:Stepper Grid.Column="0"
-                                             Icon="1"
-                                             StepperLabel="Quote created"
-                                             HorizontalAlignment="Stretch"
-                                             IsFirst="True" 
-                                             IsSelected="True"/>
-                        <UserControl:Stepper Grid.Column="1"
-                                             Icon="2"
-                                             StepperLabel="Quote closed"
-                                             HorizontalAlignment="Stretch" 
-                                             IsLast="True"/>
-                    </Grid>
-                </materialDesign:ColorZone>-->
-                <ScrollViewer Grid.Row="2">
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="368" />
-                        </Grid.ColumnDefinitions>
+                <ScrollViewer Grid.Row="2"
+                              Background="#FFFAFAFA"
+                              Padding="4">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
                         <StackPanel>
-                            <TextBlock Text="Details"
+                            <materialDesign:Card Margin="4"
+                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                 HorizontalAlignment="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="56" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="32" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="51" />
+                                    </Grid.RowDefinitions>
+                                    
+                                    <TextBlock Text="Details"
+                                               VerticalAlignment="Center"
+                                               Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                               Grid.Column="1"
+                                               Grid.ColumnSpan="3"
+                                               Margin="0,12" />
+                                    <TextBox Grid.Row="1"
+                                             Grid.Column="1"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Quote no."
+                                             Text="12000"
+                                             IsEnabled="False" />
+                                    <TextBox Grid.Row="1"
+                                             Grid.Column="3"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Date"
+                                             IsEnabled="False"
+                                             Text="19/03/18" />
+                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                              Grid.Row="2"
+                                              Grid.Column="1"
+                                              Grid.ColumnSpan="3"
+                                              materialDesign:HintAssist.Hint="Company *"
+                                              IsEditable="True">
+                                        <ComboBoxItem Content="Apple" />
+                                        <ComboBoxItem Content="Banana" />
+                                        <ComboBoxItem Content="Pear" />
+                                        <ComboBoxItem Content="Orange" />
+                                    </ComboBox>
+                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                              Grid.Row="3"
+                                              Grid.Column="1"
+                                              Grid.ColumnSpan="3"
+                                              materialDesign:HintAssist.Hint="Contact"
+                                              IsEditable="True">
+                                        <ComboBoxItem Content="Apple" />
+                                        <ComboBoxItem Content="Banana" />
+                                        <ComboBoxItem Content="Pear" />
+                                        <ComboBoxItem Content="Orange" />
+                                    </ComboBox>
+                                    <TextBox Grid.Row="4"
+                                             Grid.Column="1"
+                                             Grid.ColumnSpan="3"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="PO no." />
+                                    <TextBox Grid.Row="5"
+                                             Grid.Column="1"
+                                             Grid.ColumnSpan="3"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Description" />
+                                    <TextBox Grid.Row="6"
+                                             Grid.Column="1"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Lead days" />
+                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                              Grid.Row="7"
+                                              Grid.Column="1"
+                                              Grid.ColumnSpan="3"
+                                              materialDesign:HintAssist.Hint="Carriage option">
+                                        <ComboBoxItem IsSelected="True"
+                                                      Content="Collection" />
+                                        <ComboBoxItem Content="Courier" />
+                                        <ComboBoxItem Content="BIE Magnum delivery" />
+                                    </ComboBox>
+                                    <TextBox Grid.Row="8"
+                                             Grid.Column="1"
+                                             Grid.ColumnSpan="3"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Carriage notes" />
+                                    <TextBox Grid.Row="9"
+                                             Grid.Column="1"
+                                             Text="12.00"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Carriage cost" />
+                                    <TextBox Grid.Row="10"
+                                             Grid.Column="1"
+                                             Text="12.00"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Total cost" />
+                                    <DatePicker Grid.Row="11"
+                                                Grid.Column="1"
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                materialDesign:HintAssist.Hint="Due date"
+                                                Margin="0,6,0,4"
+                                                VerticalAlignment="Bottom" />
+                                    <TextBox Grid.Row="11"
+                                             Grid.Column="3"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Success chance" />
+                                    <TextBox Grid.Row="12"
+                                             Grid.Column="1"
+                                             Grid.ColumnSpan="3"
+                                             Text="Jasper Friend"
+                                             IsEnabled="False"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                             materialDesign:HintAssist.Hint="Owner" />
+                                </Grid>
+                            </materialDesign:Card>
+                            <TextBlock Text="Billing"
                                        VerticalAlignment="Center"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                       Margin="56,24,56,0" />
+                                       Margin="56,20,56,0" />
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="56" />
+                                    <ColumnDefinition Width="24" />
                                     <ColumnDefinition Width="100" />
                                     <ColumnDefinition Width="56" />
                                     <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="56" />
+                                    <ColumnDefinition Width="24" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
-                                    <RowDefinition Height="51" />
                                     <RowDefinition Height="51" />
                                     <RowDefinition Height="51" />
                                     <RowDefinition Height="51" />
@@ -144,115 +249,103 @@
                                 </Grid.RowDefinitions>
                                 <TextBox Grid.Row="0"
                                          Grid.Column="1"
+                                         Grid.ColumnSpan="3"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Quote no."
-                                         Text="12000"
-                                         IsEnabled="False" />
-                                <TextBox Grid.Row="0"
-                                         Grid.Column="3"
+                                         materialDesign:HintAssist.Hint="Address 1" />
+                                <TextBox Grid.Row="1"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="3"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Date"
-                                         IsEnabled="False"
-                                         Text="19/03/18" />
-                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                          Grid.Row="1"
-                                          Grid.Column="1"
-                                          Grid.ColumnSpan="3"
-                                          materialDesign:HintAssist.Hint="Company *"
-                                          IsEditable="True">
-                                    <ComboBoxItem Content="Apple" />
-                                    <ComboBoxItem Content="Banana" />
-                                    <ComboBoxItem Content="Pear" />
-                                    <ComboBoxItem Content="Orange" />
-                                </ComboBox>
-                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                          Grid.Row="2"
-                                          Grid.Column="1"
-                                          Grid.ColumnSpan="3"
-                                          materialDesign:HintAssist.Hint="Contact"
-                                          IsEditable="True">
-                                    <ComboBoxItem Content="Apple" />
-                                    <ComboBoxItem Content="Banana" />
-                                    <ComboBoxItem Content="Pear" />
-                                    <ComboBoxItem Content="Orange" />
-                                </ComboBox>
+                                         materialDesign:HintAssist.Hint="Address 2" />
+                                <TextBox Grid.Row="2"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="3"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="City" />
                                 <TextBox Grid.Row="3"
                                          Grid.Column="1"
                                          Grid.ColumnSpan="3"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="PO no." />
+                                         materialDesign:HintAssist.Hint="County" />
                                 <TextBox Grid.Row="4"
                                          Grid.Column="1"
-                                         Grid.ColumnSpan="3"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Description" />
+                                         materialDesign:HintAssist.Hint="Postcode" />
                                 <TextBox Grid.Row="5"
                                          Grid.Column="1"
+                                         Grid.ColumnSpan="3"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Lead days" />
-                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                          Grid.Row="6"
-                                          Grid.Column="1"
-                                          Grid.ColumnSpan="3"
-                                          materialDesign:HintAssist.Hint="Carriage option">
-                                    <ComboBoxItem IsSelected="True"
-                                                  Content="Collection" />
-                                    <ComboBoxItem Content="Courier" />
-                                    <ComboBoxItem Content="BIE Magnum delivery" />
-                                </ComboBox>
-                                <TextBox Grid.Row="7"
+                                         materialDesign:HintAssist.Hint="Country" />
+                            </Grid>
+                            <TextBlock Text="Shipping"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                       Margin="56,20,56,0" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="56" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="24" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="51" />
+                                    <RowDefinition Height="51" />
+                                    <RowDefinition Height="51" />
+                                    <RowDefinition Height="51" />
+                                    <RowDefinition Height="51" />
+                                    <RowDefinition Height="51" />
+                                </Grid.RowDefinitions>
+                                <TextBox Grid.Row="0"
                                          Grid.Column="1"
                                          Grid.ColumnSpan="3"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Carriage notes" />
-                                <TextBox Grid.Row="8"
-                                         Grid.Column="1"
-                                         Text="12.00"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Carriage cost" />
-                                <TextBox Grid.Row="9"
-                                         Grid.Column="1"
-                                         Text="12.00"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Total cost" />
-                                <DatePicker Grid.Row="10"
-                                            Grid.Column="1"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                            materialDesign:HintAssist.Hint="Due date"
-                                            Margin="0,6,0,4"
-                                            VerticalAlignment="Bottom" />
-                                <TextBox Grid.Row="10"
-                                         Grid.Column="3"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Success chance" />
-                                <TextBox Grid.Row="11"
+                                         materialDesign:HintAssist.Hint="Address 1" />
+                                <TextBox Grid.Row="1"
                                          Grid.Column="1"
                                          Grid.ColumnSpan="3"
-                                         Text="Jasper Friend"
-                                         IsEnabled="False"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                                         materialDesign:HintAssist.Hint="Owner" />
+                                         materialDesign:HintAssist.Hint="Address 2" />
+                                <TextBox Grid.Row="2"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="3"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="City" />
+                                <TextBox Grid.Row="3"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="3"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="County" />
+                                <TextBox Grid.Row="4"
+                                         Grid.Column="1"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="Postcode" />
+                                <TextBox Grid.Row="5"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="3"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="Country" />
                             </Grid>
                         </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <Expander>
+                        <StackPanel>
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                 Margin="4">
+                                <Expander Background="White">
                                     <Expander.Header>
                                         <TextBlock Text="Items"
                                                    VerticalAlignment="Center"
                                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                     </Expander.Header>
-                                    <DataGrid Margin="0"
-                                              CanUserSortColumns="True"
+                                    <DataGrid CanUserSortColumns="True"
                                               AutoGenerateColumns="False"
                                               RowHeight="48"
                                               materialDesign:DataGridAssist.CellPadding="13 14 8 14"
                                               materialDesign:DataGridAssist.ColumnHeaderPadding="8"
                                               ItemsSource="{Binding quoteItemList}"
                                               CanUserAddRows="True"
-                                              ScrollViewer.CanContentScroll="False">
+                                              ScrollViewer.CanContentScroll="False"
+                                              Margin="0,0,0,20">
                                         <DataGrid.CellStyle>
                                             <Style TargetType="{x:Type DataGridCell}"
                                                    BasedOn="{StaticResource MaterialDesignDataGridCell}">
@@ -402,8 +495,10 @@
                                     </DataGrid>
                                 </Expander>
                             </materialDesign:Card>
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}">
+                            <materialDesign:Card Background="{StaticResource MaterialDesignBackground}"
+                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                 Margin="4">
                                 <Expander>
                                     <Expander.Header>
                                         <TextBlock Text="Times"
@@ -536,8 +631,10 @@
                                     </DataGrid>
                                 </Expander>
                             </materialDesign:Card>
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}">
+                            <materialDesign:Card Background="{StaticResource MaterialDesignBackground}"
+                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                 Margin="4">
                                 <Expander>
                                     <Expander.Header>
                                         <TextBlock Text="Materials"
@@ -667,8 +764,10 @@
                                     </DataGrid>
                                 </Expander>
                             </materialDesign:Card>
-                            <materialDesign:Card Margin="8,4"
-                                                 Background="{StaticResource MaterialDesignBackground}">
+                            <materialDesign:Card Background="{StaticResource MaterialDesignBackground}"
+                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                 Margin="4">
                                 <Expander>
                                     <Expander.Header>
                                         <TextBlock Text="Subcontractors"
@@ -799,23 +898,22 @@
                                 </Expander>
                             </materialDesign:Card>
                         </StackPanel>
-
-                        <Grid Grid.Column="2">
-                            <StackPanel>
-                                <UserControl:Stepper StepperLabel="Quote created"
-                                                     VerticalContentAlignment="Stretch"
-                                                     HorizontalContentAlignment="Stretch"
-                                                     Height="100" />
-                                <!--<UserControl:Stepper StepperLabel="Quote created"
-                                                     IsSelected="True"
-                                                     Icon="1"
-                                                     HorizontalAlignment="Stretch"
-                                                     HorizontalContentAlignment="Stretch"
-                                                     VerticalContentAlignment="Stretch"
-                                                     Margin="0,4,0,0" />-->
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
+                        <StackPanel Width="368">
+                            <TextBlock Text="Status"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                       Margin="12,20,0,0" />
+                            <UserControl:Stepper StepperLabel="Quote created"
+                                                 Icon="1"
+                                                 Height="72"
+                                                 IsFirst="True"
+                                                 IsSelected="True" />
+                            <UserControl:Stepper StepperLabel="Quote won"
+                                                 Icon="2"
+                                                 Height="72"
+                                                 IsLast="True" />
+                        </StackPanel>
+                    </StackPanel>
                 </ScrollViewer>
                 <materialDesign:Snackbar Grid.Row="2"
                                          MessageQueue="{materialDesign:MessageQueue}"

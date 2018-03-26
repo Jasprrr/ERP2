@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf" 
+        xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
         Height="500"
         Width="800"
@@ -16,7 +16,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
@@ -24,12 +24,12 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                       Mode="Standard"
@@ -39,78 +39,91 @@
                                       Background="{StaticResource MaterialDesignBackground}">
                 <ListView ItemsSource="{Binding navMenu}"
                           SelectedIndex="0"
-                          SelectedItem="{Binding selectedItem}" 
-                          Margin="6,6,6,0" 
+                          SelectedItem="{Binding selectedItem}"
+                          Margin="6,6,6,0"
                           Background="{DynamicResource MaterialDesignBackground}"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           SelectionChanged="ListView_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="{Binding NavIcon}"
-                                                        VerticalAlignment="Center" 
-                                                        Width="20" 
-                                                        Height="20"/>
-                                <Label Content="{Binding NavTitle}"/>
+                                                         VerticalAlignment="Center"
+                                                         Width="20"
+                                                         Height="20" />
+                                <Label Content="{Binding NavTitle}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:ColorZone>
             <materialDesign:ColorZone Grid.Column="0"
-                                        Padding="16" 
-                                        materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                        Mode="PrimaryMid"
-                                        Grid.ColumnSpan="2">
+                                      Padding="16"
+                                      materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                      Mode="PrimaryMid"
+                                      Grid.ColumnSpan="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PopupBox Grid.Column="4" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <materialDesign:Badged Badge=""
+                                           Grid.Column="3">
+                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                Padding="4"
+                                Grid.Column="3">
+                            <materialDesign:PackIcon Kind="Bell"
+                                                     Height="24"
+                                                     Width="24" />
+                        </Button>
+                    </materialDesign:Badged>
+                    <materialDesign:PopupBox Grid.Column="4"
+                                             PlacementMode="BottomAndAlignRightEdges"
+                                             StaysOpen="False">
                         <StackPanel>
                             <Button Content="Hello World" />
                             <Button Content="Nice Popup" />
-                            <Button Content="Can't Touch This" IsEnabled="False" />
-                            <Separator/>
-                            <Button Content="Goodbye"/>
+                            <Button Content="Can't Touch This"
+                                    IsEnabled="False" />
+                            <Separator />
+                            <Button Content="Goodbye" />
                         </StackPanel>
                     </materialDesign:PopupBox>
                     <TextBlock Grid.Column="1"
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
                                FontSize="22"
                                Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
-                               Style="{StaticResource MaterialDesignTitleTextBlock}"/>
+                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
                 </Grid>
             </materialDesign:ColorZone>
 
             <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
                                      Content="{materialDesign:PackIcon Kind=Pencil}"
-                                     PlacementMode="TopAndAlignRightEdges" 
-                                     StaysOpen="False" 
+                                     PlacementMode="TopAndAlignRightEdges"
+                                     StaysOpen="False"
                                      Grid.Row="1"
-                                     Grid.Column="1" 
-                                     VerticalAlignment="Bottom" 
+                                     Grid.Column="1"
+                                     VerticalAlignment="Bottom"
                                      HorizontalAlignment="Right"
-                                     Margin="16" 
-                                     Panel.ZIndex="1" 
+                                     Margin="16"
+                                     Panel.ZIndex="1"
                                      PopupMode="MouseOver"
                                      Width="56"
                                      Height="56">
                 <StackPanel>
                     <Button ToolTip="Log"
                             Click="Button_Click">
-                        <materialDesign:PackIcon Kind="Message"/>
+                        <materialDesign:PackIcon Kind="Message" />
                     </Button>
                     <Button ToolTip="Appointment">
-                        <materialDesign:PackIcon Kind="MapMarker"/>
+                        <materialDesign:PackIcon Kind="MapMarker" />
                     </Button>
                     <Button ToolTip="Order">
-                        <materialDesign:PackIcon Kind="Send"/>
+                        <materialDesign:PackIcon Kind="Send" />
                     </Button>
                 </StackPanel>
             </materialDesign:PopupBox>
@@ -118,12 +131,12 @@
             <Frame x:Name="MainFrame"
                    Grid.Row="1"
                    Grid.Column="1"
-                   Source="{Binding mainFrame}" 
-                   HorizontalContentAlignment="Stretch" 
-                   VerticalContentAlignment="Stretch" 
-                   Padding="6" 
+                   Source="{Binding mainFrame}"
+                   HorizontalContentAlignment="Stretch"
+                   VerticalContentAlignment="Stretch"
+                   Padding="6"
                    Margin="24"
-                   NavigationUIVisibility="Hidden"/>
+                   NavigationUIVisibility="Hidden" />
         </Grid>
     </Grid>
 </Window>
