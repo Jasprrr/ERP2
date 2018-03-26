@@ -238,7 +238,7 @@
                             <materialDesign:Card Margin="8,4"
                                                  Background="{StaticResource MaterialDesignBackground}"
                                                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <Expander >
+                                <Expander>
                                     <Expander.Header>
                                         <TextBlock Text="Items"
                                                    VerticalAlignment="Center"
@@ -250,7 +250,6 @@
                                               RowHeight="48"
                                               materialDesign:DataGridAssist.CellPadding="13 14 8 14"
                                               materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              MaxHeight="{Binding ActualHeight, ElementName=ItemExpander}"
                                               ItemsSource="{Binding quoteItemList}"
                                               CanUserAddRows="True"
                                               ScrollViewer.CanContentScroll="False">
@@ -417,7 +416,6 @@
                                               RowHeight="48"
                                               materialDesign:DataGridAssist.CellPadding="13 14 8 14"
                                               materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              MaxHeight="{Binding ActualHeight, ElementName=TimeExpander}"
                                               ItemsSource="{Binding quoteTimeList}"
                                               CanUserAddRows="True">
                                         <DataGrid.CellStyle>
@@ -552,7 +550,6 @@
                                               RowHeight="48"
                                               materialDesign:DataGridAssist.CellPadding="13 14 8 14"
                                               materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              MaxHeight="{Binding ActualHeight, ElementName=MaterialExpander}"
                                               ItemsSource="{Binding quoteMaterialList}"
                                               CanUserAddRows="True">
                                         <DataGrid.CellStyle>
@@ -684,7 +681,6 @@
                                               RowHeight="48"
                                               materialDesign:DataGridAssist.CellPadding="13 14 8 14"
                                               materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              MaxHeight="{Binding ActualHeight, ElementName=SubcontractorExpander}"
                                               ItemsSource="{Binding quoteSubcontractorList}"
                                               CanUserAddRows="True">
                                         <DataGrid.CellStyle>
@@ -803,29 +799,24 @@
                                 </Expander>
                             </materialDesign:Card>
                         </StackPanel>
+
+                        <Grid Grid.Column="2">
+                            <StackPanel>
+                                <UserControl:Stepper StepperLabel="Quote created"
+                                                     VerticalContentAlignment="Stretch"
+                                                     HorizontalContentAlignment="Stretch"
+                                                     Height="100" />
+                                <!--<UserControl:Stepper StepperLabel="Quote created"
+                                                     IsSelected="True"
+                                                     Icon="1"
+                                                     HorizontalAlignment="Stretch"
+                                                     HorizontalContentAlignment="Stretch"
+                                                     VerticalContentAlignment="Stretch"
+                                                     Margin="0,4,0,0" />-->
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                 </ScrollViewer>
-                <Grid Grid.Column="2">
-                    <Grid x:Name="grid2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition x:Name="ItemRow2">
-                                <RowDefinition.Style>
-                                    <Style TargetType="{x:Type RowDefinition}">
-                                        <Setter Property="Height"
-                                                Value="auto" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsExpanded, ElementName=ItemExpander}"
-                                                         Value="True">
-                                                <Setter Property="Height"
-                                                        Value="*" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </RowDefinition.Style>
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </Grid>
                 <materialDesign:Snackbar Grid.Row="2"
                                          MessageQueue="{materialDesign:MessageQueue}"
                                          x:Name="SnackbarThree"
@@ -833,6 +824,6 @@
                                          Margin="0,0,0,4" />
 
             </Grid>
-    </materialDesign:DrawerHost>
+        </materialDesign:DrawerHost>
     </Grid>
 </Window>
