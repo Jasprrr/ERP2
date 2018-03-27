@@ -30,6 +30,19 @@
                        VerticalAlignment="Center"
                        Style="{StaticResource MaterialDesignTitleTextBlock}"
                        Margin="0,12" />
+
+            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges"
+                                     StaysOpen="False"
+                                     HorizontalAlignment="Right">
+                <StackPanel>
+                    <Button Content="Hello World" />
+                    <Button Content="Nice Popup" />
+                    <Button Content="Can't Touch This"
+                            IsEnabled="False" />
+                    <Separator />
+                    <Button Content="Goodbye" />
+                </StackPanel>
+            </materialDesign:PopupBox>
         </StackPanel>
         <ScrollViewer Grid.Row="1"
                       VerticalScrollBarVisibility="Auto"

@@ -94,11 +94,11 @@
                               Height="578">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="56" />
+                            <ColumnDefinition Width="32" />
                             <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="56" />
                             <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="56" />
+                            <ColumnDefinition Width="32" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="51" />
@@ -113,12 +113,6 @@
                             <RowDefinition Height="51" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <ContentControl Grid.Row="0"
-                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
-                            <materialDesign:PackIcon Kind="CalendarCheck"
-                                                     Width="24"
-                                                     Height="24" />
-                        </ContentControl>
                         <DatePicker Grid.Row="0"
                                     Grid.Column="1"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -144,12 +138,6 @@
                         <Separator Grid.Row="2"
                                    Grid.ColumnSpan="5"
                                    Margin="0,12,0,6" />
-                        <ContentControl Grid.Row="3"
-                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
-                            <materialDesign:PackIcon Kind="Domain"
-                                                     Width="24"
-                                                     Height="24" />
-                        </ContentControl>
                         <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                   Grid.Row="3"
                                   Grid.Column="1"
@@ -175,12 +163,6 @@
                         <Separator Grid.Row="5"
                                    Grid.ColumnSpan="5"
                                    Margin="0,12,0,6" />
-                        <ContentControl Grid.Row="6"
-                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
-                            <materialDesign:PackIcon Kind="Palette"
-                                                     Width="24"
-                                                     Height="24" />
-                        </ContentControl>
                         <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                   Grid.Row="6"
                                   Grid.Column="1"
@@ -206,12 +188,6 @@
                         <Separator Grid.Row="8"
                                    Grid.ColumnSpan="5"
                                    Margin="0,12,0,6" />
-                        <ContentControl Grid.Row="9"
-                                        Style="{StaticResource MaterialDesignTextBoxIconWrapper}">
-                            <materialDesign:PackIcon Kind="Account"
-                                                     Width="24"
-                                                     Height="24" />
-                        </ContentControl>
                         <TextBlock Text="Assigned to"
                                    Style="{StaticResource MaterialDesignBody1TextBlock}"
                                    Foreground="#FF9A9A9A"

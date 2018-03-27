@@ -6,6 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+        xmlns:UserControl="clr-namespace:ERP.Control"
+        xmlns:Converters1="clr-namespace:ERP.Converters"
         x:Class="ERP.View.QuoteView"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -15,8 +17,10 @@
         TextOptions.TextRenderingMode="Auto"
         Width="1280"
         Height="900"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        xmlns:UserControl="clr-namespace:ERP.Control">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <Converters1:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
+    </Window.Resources>
     <Grid>
         <materialDesign:DrawerHost x:Name="MainDrawer">
             <materialDesign:DrawerHost.RightDrawerContent>
@@ -96,16 +100,48 @@
                 <ProgressBar Grid.Row="1"
                              IsIndeterminate="True"
                              Visibility="Collapsed" />
-                <ScrollViewer Grid.Row="2"
-                              Background="#FFFAFAFA"
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+                                         Content="{materialDesign:PackIcon Kind=Pencil}"
+                                         PlacementMode="TopAndAlignRightEdges"
+                                         StaysOpen="False"
+                                         Grid.Row="2"
+                                         Panel.ZIndex="1"
+                                         VerticalAlignment="Bottom"
+                                         HorizontalAlignment="Right"
+                                         Margin="24"
+                                         PopupMode="MouseOver"
+                                         Width="56"
+                                         Height="56">
+                    <StackPanel>
+                        <Button ToolTip="Subcontractor">
+                            <materialDesign:PackIcon Kind="Factory" />
+                        </Button>
+                        <Button ToolTip="Material">
+                            <materialDesign:PackIcon Kind="Flask" />
+                        </Button>
+                        <Button ToolTip="Time">
+                            <materialDesign:PackIcon Kind="Clock" />
+                        </Button>
+                        <Button ToolTip="Item">
+                            <materialDesign:PackIcon Kind="Wrench" />
+                        </Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <ScrollViewer Background="#FFFAFAFA"
                               Padding="4"
-                              HorizontalContentAlignment="Center">
-                    <WrapPanel>
-                        <StackPanel MinWidth="336">
-                            <materialDesign:Card Margin="4"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 HorizontalAlignment="Center"
-                                                 Padding="0,0,0,12">
+                              Grid.Row="2"
+                              HorizontalContentAlignment="Center"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"
+                                              MinWidth="336" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                 Padding="0,12">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="32" />
@@ -116,25 +152,24 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
-                                        <RowDefinition Height="51" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
                                     </Grid.RowDefinitions>
                                     <TextBlock Text="Details"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                Grid.Column="1"
-                                               Grid.ColumnSpan="3"
-                                               Margin="0,12" />
+                                               Grid.ColumnSpan="3" />
                                     <TextBox Grid.Row="1"
                                              Grid.Column="1"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
@@ -227,10 +262,8 @@
                                              materialDesign:HintAssist.Hint="Owner" />
                                 </Grid>
                             </materialDesign:Card>
-                            <materialDesign:Card Margin="4"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 HorizontalAlignment="Center"
-                                                 Padding="0,0,0,12">
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                 Padding="0,12">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="32" />
@@ -249,13 +282,12 @@
                                         <RowDefinition Height="51" />
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Text="Details"
+                                    <TextBlock Text="Billing"
                                                Grid.Row="0"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                Grid.Column="1"
-                                               Grid.ColumnSpan="3"
-                                               Margin="0,12" />
+                                               Grid.ColumnSpan="3" />
                                     <TextBox Grid.Row="1"
                                              Grid.Column="1"
                                              Grid.ColumnSpan="3"
@@ -287,9 +319,7 @@
                                              materialDesign:HintAssist.Hint="Country" />
                                 </Grid>
                             </materialDesign:Card>
-                            <materialDesign:Card Margin="4"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 HorizontalAlignment="Center"
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
                                                  Padding="0,12">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -347,69 +377,19 @@
                                 </Grid>
                             </materialDesign:Card>
                         </StackPanel>
-                        <StackPanel>
-                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 Margin="4"
-                                                 MaxWidth="1000">
-                                <Expander Background="White">
+                        <StackPanel Grid.Column="1">
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                <Expander Background="White"
+                                          IsExpanded="True">
                                     <Expander.Header>
                                         <TextBlock Text="Items"
                                                    VerticalAlignment="Center"
                                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                     </Expander.Header>
-                                    <DataGrid CanUserSortColumns="True"
-                                              AutoGenerateColumns="False"
-                                              RowHeight="48"
-                                              materialDesign:DataGridAssist.CellPadding="13 14 8 14"
-                                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              ItemsSource="{Binding quoteItemList}"
-                                              CanUserAddRows="True"
-                                              ScrollViewer.CanContentScroll="False"
-                                              Margin="0,0,0,20">
-                                        <DataGrid.CellStyle>
-                                            <Style TargetType="{x:Type DataGridCell}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.CellStyle>
-                                        <DataGrid.RowStyle>
-                                            <Style TargetType="{x:Type DataGridRow}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.RowStyle>
+                                    <DataGrid ItemsSource="{Binding quoteItemList}"
+                                              Style="{StaticResource MaterialDesignGrid}"
+                                              CellStyle="{StaticResource MaterialDesignCell}"
+                                              RowStyle="{StaticResource MaterialDesignRow}">
                                         <DataGrid.Columns>
                                             <DataGridTemplateColumn x:Name="itemButton"
                                                                     materialDesign:DataGridAssist.CellPadding="0"
@@ -417,14 +397,8 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Button x:Name="editQuoteItem"
-                                                                Style="{StaticResource MaterialDesignFlatButton}"
-                                                                Padding="0,4"
-                                                                Margin="0,-7"
-                                                                Height="32"
-                                                                Width="32"
                                                                 Click="EditQuoteItem_Click"
-                                                                VerticalAlignment="Top"
-                                                                HorizontalAlignment="Center">
+                                                                Style="{StaticResource MaterialDesignGridButton}">
                                                             <materialDesign:PackIcon Kind="Pencil"
                                                                                      Width="16"
                                                                                      Height="16"
@@ -455,13 +429,8 @@
                                                     <DataTemplate>
                                                         <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.standardItems}}"
                                                                   DisplayMemberPath="itemCode"
-                                                                  IsEditable="True"
-                                                                  Margin="0,-7,0,-8"
-                                                                  Text="{Binding itemCode}"
-                                                                  Background="White"
-                                                                  StaysOpenOnEdit="True"
-                                                                  IsDropDownOpen="True"
-                                                                  Padding="0,7,0,8" />
+                                                                  Style="{StaticResource MaterialDesignCustomGridComboBox}"
+                                                                  Text="{Binding itemCode}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellEditingTemplate>
                                             </DataGridTemplateColumn>
@@ -489,13 +458,8 @@
                                                     <DataTemplate>
                                                         <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.departments}}"
                                                                   DisplayMemberPath="nominalCode"
-                                                                  IsEditable="True"
-                                                                  Margin="0,-1,0,-8"
-                                                                  Text="{Binding nominalCode}"
-                                                                  Background="White"
-                                                                  StaysOpenOnEdit="True"
-                                                                  IsDropDownOpen="True"
-                                                                  Padding="0,1,0,8" />
+                                                                  Style="{StaticResource MaterialDesignCustomGridComboBox}"
+                                                                  Text="{Binding nominalCode}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellEditingTemplate>
                                             </DataGridTemplateColumn>
@@ -515,68 +479,18 @@
                                     </DataGrid>
                                 </Expander>
                             </materialDesign:Card>
-                            <materialDesign:Card Background="{StaticResource MaterialDesignBackground}"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 Margin="4">
-                                <Expander>
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                <Expander Background="White"
+                                          IsExpanded="True">
                                     <Expander.Header>
                                         <TextBlock Text="Times"
                                                    VerticalAlignment="Center"
                                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                     </Expander.Header>
-                                    <DataGrid Margin="0"
-                                              CanUserSortColumns="True"
-                                              AutoGenerateColumns="False"
-                                              RowHeight="48"
-                                              materialDesign:DataGridAssist.CellPadding="13 14 8 14"
-                                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              ItemsSource="{Binding quoteTimeList}"
-                                              CanUserAddRows="True">
-                                        <DataGrid.CellStyle>
-                                            <Style TargetType="{x:Type DataGridCell}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.CellStyle>
-                                        <DataGrid.RowStyle>
-                                            <Style TargetType="{x:Type DataGridRow}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.RowStyle>
+                                    <DataGrid Style="{StaticResource MaterialDesignGrid}"
+                                              CellStyle="{StaticResource MaterialDesignCell}"
+                                              RowStyle="{StaticResource MaterialDesignRow}"
+                                              ItemsSource="{Binding quoteTimeList}">
                                         <DataGrid.Columns>
                                             <DataGridTemplateColumn x:Name="timeButton"
                                                                     materialDesign:DataGridAssist.CellPadding="0"
@@ -584,13 +498,7 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Button x:Name="editQuoteTime"
-                                                                Style="{StaticResource MaterialDesignFlatButton}"
-                                                                Padding="0,4"
-                                                                Margin="0,-7"
-                                                                Height="32"
-                                                                Width="32"
-                                                                VerticalAlignment="Top"
-                                                                HorizontalAlignment="Center"
+                                                                Style="{StaticResource MaterialDesignGridButton}"
                                                                 Click="editQuoteTime_Click">
                                                             <materialDesign:PackIcon Kind="Pencil"
                                                                                      Width="16"
@@ -621,13 +529,9 @@
                                                 <DataGridTemplateColumn.CellEditingTemplate>
                                                     <DataTemplate>
                                                         <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.departments}}"
+                                                                  Style="{StaticResource MaterialDesignCustomGridComboBox}"
                                                                   DisplayMemberPath="department"
-                                                                  IsEditable="True"
-                                                                  Margin="0,-7,0,-8"
-                                                                  Text="{Binding department}"
-                                                                  StaysOpenOnEdit="True"
-                                                                  IsDropDownOpen="True"
-                                                                  Padding="0,7,0,8" />
+                                                                  Text="{Binding department}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellEditingTemplate>
                                             </DataGridTemplateColumn>
@@ -651,68 +555,18 @@
                                     </DataGrid>
                                 </Expander>
                             </materialDesign:Card>
-                            <materialDesign:Card Background="{StaticResource MaterialDesignBackground}"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 Margin="4">
-                                <Expander>
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                <Expander Background="White"
+                                          IsExpanded="True">
                                     <Expander.Header>
                                         <TextBlock Text="Materials"
                                                    VerticalAlignment="Center"
                                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                     </Expander.Header>
-                                    <DataGrid Margin="0"
-                                              CanUserSortColumns="True"
-                                              AutoGenerateColumns="False"
-                                              RowHeight="48"
-                                              materialDesign:DataGridAssist.CellPadding="13 14 8 14"
-                                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              ItemsSource="{Binding quoteMaterialList}"
-                                              CanUserAddRows="True">
-                                        <DataGrid.CellStyle>
-                                            <Style TargetType="{x:Type DataGridCell}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.CellStyle>
-                                        <DataGrid.RowStyle>
-                                            <Style TargetType="{x:Type DataGridRow}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.RowStyle>
+                                    <DataGrid Style="{StaticResource MaterialDesignGrid}"
+                                              CellStyle="{StaticResource MaterialDesignCell}"
+                                              RowStyle="{StaticResource MaterialDesignRow}"
+                                              ItemsSource="{Binding quoteMaterialList}">
                                         <DataGrid.Columns>
                                             <DataGridTemplateColumn x:Name="editMaterialButton"
                                                                     materialDesign:DataGridAssist.CellPadding="0"
@@ -720,13 +574,7 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Button x:Name="editQuoteMaterial"
-                                                                Style="{StaticResource MaterialDesignFlatButton}"
-                                                                Padding="0,4"
-                                                                Margin="0,-7"
-                                                                Height="32"
-                                                                Width="32"
-                                                                VerticalAlignment="Top"
-                                                                HorizontalAlignment="Center"
+                                                                Style="{StaticResource MaterialDesignGridButton}"
                                                                 Click="editQuoteMaterial_Click">
                                                             <materialDesign:PackIcon Kind="Pencil"
                                                                                      Width="16"
@@ -754,12 +602,8 @@
                                                     <DataTemplate>
                                                         <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.departments}}"
                                                                   DisplayMemberPath="supplier"
-                                                                  IsEditable="True"
-                                                                  Margin="0,-7,0,-8"
                                                                   Text="{Binding supplier}"
-                                                                  StaysOpenOnEdit="True"
-                                                                  IsDropDownOpen="True"
-                                                                  Padding="0,7,0,8" />
+                                                                  Style="{StaticResource MaterialDesignCustomGridComboBox}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellEditingTemplate>
                                             </DataGridTemplateColumn>
@@ -784,68 +628,18 @@
                                     </DataGrid>
                                 </Expander>
                             </materialDesign:Card>
-                            <materialDesign:Card Background="{StaticResource MaterialDesignBackground}"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 Margin="4">
-                                <Expander>
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                <Expander Background="White"
+                                          IsExpanded="True">
                                     <Expander.Header>
                                         <TextBlock Text="Subcontractors"
                                                    VerticalAlignment="Center"
                                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                     </Expander.Header>
-                                    <DataGrid Margin="0"
-                                              CanUserSortColumns="True"
-                                              AutoGenerateColumns="False"
-                                              RowHeight="48"
-                                              materialDesign:DataGridAssist.CellPadding="13 14 8 14"
-                                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                              ItemsSource="{Binding quoteSubcontractorList}"
-                                              CanUserAddRows="True">
-                                        <DataGrid.CellStyle>
-                                            <Style TargetType="{x:Type DataGridCell}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.CellStyle>
-                                        <DataGrid.RowStyle>
-                                            <Style TargetType="{x:Type DataGridRow}"
-                                                   BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                                                <Style.Triggers>
-                                                    <Trigger  Property="IsSelected"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-
-                                                    <Trigger  Property="IsMouseOver"
-                                                              Value="true">
-                                                        <Setter Property="Background"
-                                                                Value="Transparent" />
-                                                        <Setter Property="BorderBrush"
-                                                                Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGrid.RowStyle>
+                                    <DataGrid ItemsSource="{Binding quoteSubcontractorList}"
+                                              Style="{StaticResource MaterialDesignGrid}"
+                                              CellStyle="{StaticResource MaterialDesignCell}"
+                                              RowStyle="{StaticResource MaterialDesignRow}">
                                         <DataGrid.Columns>
                                             <DataGridTemplateColumn x:Name="editSubcontractorButton"
                                                                     materialDesign:DataGridAssist.CellPadding="0"
@@ -853,13 +647,7 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Button x:Name="editQuoteSubcontractor"
-                                                                Style="{StaticResource MaterialDesignFlatButton}"
-                                                                Padding="0,4"
-                                                                Margin="0,-7"
-                                                                Height="32"
-                                                                Width="32"
-                                                                VerticalAlignment="Top"
-                                                                HorizontalAlignment="Center"
+                                                                Style="{StaticResource MaterialDesignGridButton}"
                                                                 Click="editQuoteSubcontractor_Click">
                                                             <materialDesign:PackIcon Kind="Pencil"
                                                                                      Width="16"
@@ -918,49 +706,142 @@
                                 </Expander>
                             </materialDesign:Card>
                         </StackPanel>
-                        <StackPanel>
-                            <materialDesign:Card Margin="4"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                                 HorizontalAlignment="Center"
-                                                 Padding="0,0,0,12">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="32" />
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="56" />
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="32" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="Status"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                               Grid.Column="1"
-                                               Grid.ColumnSpan="3"
-                                               Margin="0,12" />
-                                    <UserControl:Stepper StepperLabel="Quote created"
-                                                         Grid.Row="1"
-                                                         Grid.Column="1"
-                                                         Grid.ColumnSpan="3"
-                                                         Icon="1"
-                                                         Height="72"
-                                                         IsFirst="True"
-                                                         IsSelected="True" />
-                                    <UserControl:Stepper StepperLabel="Quote won"
-                                                         Grid.Row="2"
-                                                         Grid.Column="1"
-                                                         Grid.ColumnSpan="3"
-                                                         Icon="2"
-                                                         Height="72"
-                                                         IsLast="True" />
-                                </Grid>
+                        <StackPanel Grid.Column="2">
+                            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                 Padding="0,12"
+                                                 Width="328"
+                                                 VerticalAlignment="Stretch"
+                                                 VerticalContentAlignment="Stretch">
+                                <StackPanel>
+                                    <Grid VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Style="{StaticResource MaterialDesignCustomButton}"
+                                                Padding="0"
+                                                HorizontalContentAlignment="Left"
+                                                Height="40">
+                                            <StackPanel Orientation="Horizontal">
+                                                <UserControl:Stepper Height="40"
+                                                                     IsSelected="True"
+                                                                     Icon="1" />
+                                                <TextBlock Text="Quote created"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button Style="{StaticResource MaterialDesignCustomButton}"
+                                                VerticalAlignment="Stretch"
+                                                Grid.Column="1"
+                                                Height="40"
+                                                Width="40"
+                                                Padding="0">
+                                            <materialDesign:PackIcon Kind="Plus"
+                                                                     Height="24"
+                                                                     Width="24" />
+                                        </Button>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="24" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Line x:Name="TopLine"
+                                              Fill="#1E000000"
+                                              Stroke="#1E000000"
+                                              StrokeThickness="1"
+                                              Stretch="Fill"
+                                              Y1="1"
+                                              MinHeight="50"
+                                              HorizontalAlignment="Right" />
+                                        <ItemsControl  ItemsSource="{Binding todoList}"
+                                                       Grid.IsSharedSizeScope="True"
+                                                       Grid.Column="1"
+                                                       VerticalContentAlignment="Stretch"
+                                                       Margin="0,8">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="0,4">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <CheckBox IsChecked="{Binding complete}"
+                                                                  Grid.Column="0"
+                                                                  HorizontalAlignment="Center"
+                                                                  Cursor="Hand"
+                                                                  VerticalAlignment="Center" />
+                                                        <StackPanel Grid.Column="1">
+                                                            <TextBlock x:Name="taskHeader"
+                                                                       Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                       FontWeight="Bold"
+                                                                       Text="{Binding taskType}" />
+                                                            <TextBlock x:Name="taskSubheader"
+                                                                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                       Text="{Binding description}"
+                                                                       TextTrimming="CharacterEllipsis" />
+                                                            <TextBlock x:Name="taskDetail"
+                                                                       Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                       Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                        </StackPanel>
+                                                        <Border Grid.Column="2"
+                                                                VerticalAlignment="Top"
+                                                                Margin="12,10,12,0"
+                                                                Padding="0"
+                                                                Width="24"
+                                                                Height="24"
+                                                                Background="{StaticResource PrimaryHueMidBrush}"
+                                                                CornerRadius="12">
+                                                            <TextBlock HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Center"
+                                                                       Text="{Binding userInitials}"
+                                                                       Foreground="White" />
+                                                        </Border>
+                                                        <materialDesign:PopupBox Grid.Column="3"
+                                                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                                                 StaysOpen="True"
+                                                                                 Height="34"
+                                                                                 Margin="4,4,4,0"
+                                                                                 VerticalAlignment="Top"
+                                                                                 BorderThickness="1">
+                                                            <StackPanel>
+                                                                <Button Content="Hello World" />
+                                                                <Button Content="Nice Popup" />
+                                                                <Separator />
+                                                                <Button Content="Goodbye" />
+                                                            </StackPanel>
+                                                        </materialDesign:PopupBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Style="{StaticResource MaterialDesignCustomButton}"
+                                                Padding="0"
+                                                HorizontalContentAlignment="Left"
+                                                Height="40">
+                                            <StackPanel Orientation="Horizontal">
+                                                <UserControl:Stepper Height="40"
+                                                                     Icon="2" />
+                                                <TextBlock Text="Quote completed"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+                                </StackPanel>
                             </materialDesign:Card>
                         </StackPanel>
-                    </WrapPanel>
+                    </Grid>
                 </ScrollViewer>
                 <materialDesign:Snackbar Grid.Row="2"
                                          MessageQueue="{materialDesign:MessageQueue}"

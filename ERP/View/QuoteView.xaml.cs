@@ -81,16 +81,13 @@ namespace ERP.View
             _quoteSubcontractorList.Add(new QuoteSubcontractor() { supplier = "Jim Co.", subcontractorCost = 100, rate = 35, notes = "Lorem ipsum." });
 
             _todoList = new ObservableCollection<ToDo>();
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Tim" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Call Tim about the thing that does the thing so we can get this quote on the go.", complete = false, taskType = "Task", users = "Tim" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Bob" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Rob, Bob, Tim" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Jim, Rob, Bob" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Sam, Jim, Rob" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Tim, Sam, Jim" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Bob, Tim, Sam" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 8, 1), account = "Acc 08", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Rob, Bob, Tim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Jim, Rob, Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Sam, Jim, Rob" });
 
             InitializeComponent();
         }

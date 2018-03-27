@@ -802,9 +802,11 @@
                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
                             </Expander.Header>
 
-                            <ItemsControl  ItemsSource="{Binding todoList}"
+                            <!--<ItemsControl  ItemsSource="{Binding todoList}"
                                            Grid.IsSharedSizeScope="True"
-                                           HorizontalContentAlignment="Stretch">
+                                           HorizontalContentAlignment="Stretch"
+                                           Height="30"
+                                           Style="{DynamicResource ItemsControlStyle1}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -867,7 +869,7 @@
                                         </Grid>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                            </ItemsControl>-->
                         </Expander>
                     </materialDesign:ColorZone>
                 </StackPanel>

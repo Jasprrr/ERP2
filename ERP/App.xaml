@@ -392,21 +392,21 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="TextBox"
-                   BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   x:Key="MaterialDesignFloatingHintTextBoxFull">
+            <Style x:Key="MaterialDesignFloatingHintTextBoxFull"
+                   TargetType="TextBox"
+                   BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
                 <Setter Property="Height"
                         Value="38" />
                 <Setter Property="Margin"
-                        Value="0,12,0,4" />
+                        Value="0,8,0,4" />
                 <Setter Property="HorizontalAlignment"
                         Value="Stretch" />
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
             </Style>
-            <Style TargetType="ComboBox"
-                   BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}"
-                   x:Key="MaterialDesignFloatingHintComboBoxFull">
+            <Style x:Key="MaterialDesignFloatingHintComboBoxFull"
+                   TargetType="ComboBox"
+                   BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <Setter Property="Margin"
                         Value="0,6,0,4" />
                 <Setter Property="HorizontalAlignment"
@@ -414,9 +414,9 @@
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
             </Style>
-            <Style TargetType="ComboBox"
-                   BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}"
-                   x:Key="MaterialDesignDataGridComboBox">
+            <Style x:Key="MaterialDesignDataGridComboBox"
+                   TargetType="ComboBox"
+                   BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <Setter Property="Margin"
                         Value="0,6,0,4" />
                 <Setter Property="HorizontalAlignment"
@@ -560,6 +560,111 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="MaterialDesignCard"
+                   TargetType="materialDesign:Card">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
+                        Value="Depth1" />
+                <Setter Property="Background"
+                        Value="White" />
+            </Style>
+            <Style x:Key="MaterialDesignGrid"
+                   TargetType="{x:Type DataGrid}"
+                   BasedOn="{StaticResource MaterialDesignDataGrid}">
+                <Setter Property="CanUserSortColumns"
+                        Value="True" />
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="AutoGenerateColumns"
+                        Value="False" />
+                <Setter Property="RowHeight"
+                        Value="48" />
+                <Setter Property="materialDesign:DataGridAssist.CellPadding"
+                        Value="13 14 8 14" />
+                <Setter Property="materialDesign:DataGridAssist.ColumnHeaderPadding"
+                        Value="8" />
+                <Setter Property="Margin"
+                        Value="0,0,0,48" />
+                <Setter Property="CanUserAddRows"
+                        Value="True" />
+                <Setter Property="ScrollViewer.CanContentScroll"
+                        Value="False" />
+            </Style>
+            <Style x:Key="MaterialDesignCustomGridComboBox"
+                   TargetType="ComboBox"
+                   BasedOn="{StaticResource MaterialDesignComboBox}">
+                <Setter Property="IsEditable"
+                        Value="True" />
+                <Setter Property="Margin"
+                        Value="0,-7,0,-8" />
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="StaysOpenOnEdit"
+                        Value="True" />
+                <Setter Property="IsDropDownOpen"
+                        Value="True" />
+                <Setter Property="Padding"
+                        Value="0,7,0,8" />
+            </Style>
+            <Style x:Key="MaterialDesignGridButton"
+                   BasedOn="{StaticResource MaterialDesignFlatButton}"
+                   TargetType="Button">
+                <Setter Property="Padding"
+                        Value="0,4" />
+                <Setter Property="Margin"
+                        Value="0,-7" />
+                <Setter Property="Height"
+                        Value="32" />
+                <Setter Property="Width"
+                        Value="32" />
+                <Setter Property="VerticalAlignment"
+                        Value="Top" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+            </Style>
+            <Style x:Key="MaterialDesignCell"
+                   TargetType="{x:Type DataGridCell}"
+                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                <Style.Triggers>
+                    <Trigger Property="IsSelected"
+                             Value="true">
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                    </Trigger>
+
+                    <Trigger Property="IsMouseOver"
+                             Value="true">
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="MaterialDesignRow"
+                   TargetType="{x:Type DataGridRow}"
+                   BasedOn="{StaticResource MaterialDesignDataGridRow}">
+                <Style.Triggers>
+                    <Trigger Property="IsSelected"
+                             Value="true">
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                    </Trigger>
+
+                    <Trigger Property="IsMouseOver"
+                             Value="true">
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
             <!--<Style x:Name="HorizontalStepper"
                    TargetType="{x:Type CustomControls:Stepper}">
                 <Setter Property="HorizontalAlignment"
@@ -691,24 +796,22 @@
                                             TargetName="RightBorder"
                                             Value="Collapsed" />
                                 </Trigger>
-                                -->
-            <!--<Trigger Property="IsPressed"
+                                
+            <Trigger Property="IsPressed"
                                          Value="true"
                                          SourceName="MainGrid">
                                     <Setter Property="Background"
                                             TargetName="SubGrid"
                                             Value="{DynamicResource MaterialDesignFlatButtonClick}" />
-                                </Trigger>-->
-            <!--
+                                </Trigger>
+            
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>-->
-            <Style x:Name="Stepper"
+            <Style x:Name="StepperButton"
                    TargetType="{x:Type CustomControls:Stepper}">
-                <Setter Property="IconBackground"
-                        Value="{StaticResource PrimaryHueMidBrush}" />
                 <Setter Property="Foreground"
                         Value="#616161" />
                 <Setter Property="materialDesign:RippleAssist.Feedback"
@@ -717,100 +820,43 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CustomControls:Stepper}">
                             <Grid x:Name="MainGrid">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"
-                                                   x:Name="FirstRow" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="*"
-                                                   x:Name="LastRow" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Line Grid.Row="0"
-                                      x:Name="TopLine"
-                                      Fill="#1E000000"
-                                      Stroke="#1E000000"
-                                      StrokeThickness="1"
-                                      Stretch="Fill"
-                                      Y1="1"
-                                      Margin="24,-1,0,-8" />
-                                <Grid Grid.Row="1"
-                                      Grid.ColumnSpan="2"
-                                      Cursor="Hand"
-                                      x:Name="SubGrid"
-                                      Panel.ZIndex="-1">
-                                    <materialDesign:Ripple x:Name="Ripple">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Border Grid.Column="0"
-                                                    x:Name="IconBackground"
-                                                    CornerRadius="12"
-                                                    Height="24"
-                                                    Width="24"
-                                                    Background="#61000000"
-                                                    HorizontalAlignment="Center"
-                                                    Margin="12,16,0,16">
-                                                <Grid>
-                                                    <ContentControl Content="{TemplateBinding Icon}"
-                                                                    x:Name="IconText"
-                                                                    FontSize="15"
-                                                                    FontWeight="Regular"
-                                                                    IsTabStop="False"
-                                                                    Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
-                                                                    Visibility="Visible"
-                                                                    VerticalAlignment="Center"
-                                                                    VerticalContentAlignment="Center"
-                                                                    HorizontalAlignment="Center"
-                                                                    HorizontalContentAlignment="Center" />
-                                                    <materialDesign:PackIcon x:Name="IconControl"
-                                                                             Kind="Check"
-                                                                             FontWeight="Regular"
-                                                                             IsTabStop="False"
-                                                                             Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
-                                                                             Height="16"
-                                                                             Width="16"
-                                                                             VerticalAlignment="Center"
-                                                                             HorizontalAlignment="Center"
-                                                                             Visibility="Collapsed"
-                                                                             Panel.ZIndex="1" />
-                                                </Grid>
-                                            </Border>
-                                            <ContentControl Content="{TemplateBinding StepperLabel}"
-                                                            x:Name="StepperLabel"
-                                                            Grid.Column="1"
-                                                            IsTabStop="False"
-                                                            Margin="12,0,16,2"
-                                                            VerticalAlignment="Center" />
-                                        </Grid>
-                                    </materialDesign:Ripple>
-                                </Grid>
-                                <Line Grid.Row="2"
-                                      x:Name="BottomLine"
-                                      Fill="#1E000000"
-                                      Stroke="#1E000000"
-                                      StrokeThickness="1"
-                                      Stretch="Fill"
-                                      Y1="1"
-                                      Margin="24,-8,0,0" />
+                                <Border Grid.Column="0"
+                                        x:Name="IconBackground"
+                                        CornerRadius="12"
+                                        Height="24"
+                                        Width="24"
+                                        Background="#61000000"
+                                        HorizontalAlignment="Center"
+                                        Margin="12,8">
+                                    <Grid>
+                                        <ContentControl Content="{TemplateBinding Icon}"
+                                                        x:Name="IconText"
+                                                        FontSize="15"
+                                                        FontWeight="Regular"
+                                                        IsTabStop="False"
+                                                        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                                        Visibility="Visible"
+                                                        VerticalAlignment="Center"
+                                                        VerticalContentAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        HorizontalContentAlignment="Center" />
+                                        <materialDesign:PackIcon x:Name="IconControl"
+                                                                 Kind="Check"
+                                                                 FontWeight="Regular"
+                                                                 IsTabStop="False"
+                                                                 Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                                                 Height="16"
+                                                                 Width="16"
+                                                                 VerticalAlignment="Center"
+                                                                 HorizontalAlignment="Center"
+                                                                 Visibility="Collapsed"
+                                                                 Panel.ZIndex="1" />
+                                    </Grid>
+                                </Border>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="true"
-                                         SourceName="SubGrid">
-                                    <Setter Property="Background"
-                                            TargetName="SubGrid"
-                                            Value="{DynamicResource MaterialDesignFlatButtonClick}" />
-                                </Trigger>
                                 <Trigger Property="IsSelected"
                                          Value="true">
-                                    <Setter Property="FontWeight"
-                                            TargetName="StepperLabel"
-                                            Value="Bold" />
                                     <Setter Property="Background"
                                             TargetName="IconBackground"
                                             Value="{StaticResource PrimaryHueMidBrush}" />
@@ -826,24 +872,6 @@
                                     <Setter Property="Background"
                                             TargetName="IconBackground"
                                             Value="{StaticResource PrimaryHueMidBrush}" />
-                                </Trigger>
-                                <Trigger Property="IsFirst"
-                                         Value="true">
-                                    <Setter Property="Height"
-                                            TargetName="FirstRow"
-                                            Value="0" />
-                                    <Setter Property="Visibility"
-                                            TargetName="TopLine"
-                                            Value="Collapsed" />
-                                </Trigger>
-                                <Trigger Property="IsLast"
-                                         Value="true">
-                                    <Setter Property="Height"
-                                            TargetName="LastRow"
-                                            Value="0" />
-                                    <Setter Property="Visibility"
-                                            TargetName="BottomLine"
-                                            Value="Collapsed" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

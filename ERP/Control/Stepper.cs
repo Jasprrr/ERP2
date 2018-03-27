@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,51 +62,6 @@ namespace ERP.Control
             set { SetValue(IconProperty, value); }
         }
 
-        public static readonly DependencyProperty StepperLabelProperty = DependencyProperty.Register(
-            "StepperLabel", typeof(object), typeof(Stepper), new PropertyMetadata(default(object)));
-
-        public object StepperLabel
-        {
-            get { return (object)GetValue(StepperLabelProperty); }
-            set { SetValue(StepperLabelProperty, value); }
-        }
-
-        public static readonly DependencyProperty IconBackgroundProperty = DependencyProperty.Register(
-            "IconBackground", typeof(Brush), typeof(Stepper), new PropertyMetadata(default(Brush)));
-
-        public Brush IconBackground
-        {
-            get { return (Brush)GetValue(IconBackgroundProperty); }
-            set { SetValue(IconBackgroundProperty, value); }
-        }
-
-        public static readonly DependencyProperty IconForegroundProperty = DependencyProperty.Register(
-            "IconForeground", typeof(Brush), typeof(Stepper), new PropertyMetadata(default(Brush)));
-
-        public Brush IconForeground
-        {
-            get { return (Brush)GetValue(IconForegroundProperty); }
-            set { SetValue(IconForegroundProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsFirstProperty = DependencyProperty.Register(
-            "IsFirst", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
-
-        public bool IsFirst
-        {
-            get { return (bool)GetValue(IsFirstProperty); }
-            set { SetValue(IsFirstProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsLastProperty = DependencyProperty.Register(
-            "IsLast", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
-
-        public bool IsLast
-        {
-            get { return (bool)GetValue(IsLastProperty); }
-            set { SetValue(IsLastProperty, value); }
-        }
-
         public static readonly DependencyProperty IsCompleteProperty = DependencyProperty.Register(
             "IsComplete", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
 
@@ -124,4 +80,5 @@ namespace ERP.Control
             set { SetValue(IsSelectedProperty, value); }
         }
     }
+
 }
