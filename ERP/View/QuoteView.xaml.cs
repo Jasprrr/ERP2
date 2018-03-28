@@ -161,6 +161,7 @@ namespace ERP.View
 
             DialogFrame.Navigate(new QuoteItemView(value));
             MainDialog.IsOpen = true;
+            
         }
 
         private void editQuoteTime_Click(object sender, RoutedEventArgs e)
