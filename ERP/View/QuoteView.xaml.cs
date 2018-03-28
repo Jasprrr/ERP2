@@ -39,17 +39,16 @@ namespace ERP.View
             _departments.Add(new Department() { departmentID = 11, department = "Printing", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
 
             _quoteItemList = new ObservableCollection<QuoteItem>();
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 1, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 2, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 3, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 4, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 5, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 6, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 7, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 8, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 9, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 10, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 11, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 1, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 1, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 2, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 2, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 3, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 3, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 4, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 4, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 5, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 5, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 6, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 6, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 7, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 7, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 8, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 8, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 9, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 9, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 10, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 10, batchNumber = "789-XYZ" });
 
             _standardItems = new ObservableCollection<QuoteItem>();
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", itemCost = 250, quantity = 4, line = 1, batchNumber = "789-XYZ" });
@@ -152,42 +151,90 @@ namespace ERP.View
 
         private void EditQuoteItem_Click(object sender, RoutedEventArgs e)
         {
-            MainDrawer.IsRightDrawerOpen = true;
-            if (DrawerFrame.CanGoBack)
+            var button = sender as Button;
+            int value = (int)button.Tag;
+
+            if (DialogFrame.CanGoBack)
             {
-                DrawerFrame.RemoveBackEntry();
+                DialogFrame.RemoveBackEntry();
             }
-            DrawerFrame.Navigate(new QuoteItemView());
+
+            DialogFrame.Navigate(new QuoteItemView(value));
+            MainDialog.IsOpen = true;
         }
 
         private void editQuoteTime_Click(object sender, RoutedEventArgs e)
         {
-            MainDrawer.IsRightDrawerOpen = true;
-            if (DrawerFrame.CanGoBack)
-            {
-                DrawerFrame.RemoveBackEntry();
-            }
-            DrawerFrame.Navigate(new QuoteTimeView());
+            //MainDrawer.IsRightDrawerOpen = true;
+            //if (DrawerFrame.CanGoBack)
+            //{
+            //    DrawerFrame.RemoveBackEntry();
+            //}
+            //DrawerFrame.Navigate(new QuoteTimeView());
         }
 
         private void editQuoteMaterial_Click(object sender, RoutedEventArgs e)
         {
-            MainDrawer.IsRightDrawerOpen = true;
-            if (DrawerFrame.CanGoBack)
-            {
-                DrawerFrame.RemoveBackEntry();
-            }
-            DrawerFrame.Navigate(new QuoteMaterialView());
+            //MainDrawer.IsRightDrawerOpen = true;
+            //if (DrawerFrame.CanGoBack)
+            //{
+            //    DrawerFrame.RemoveBackEntry();
+            //}
+            //DrawerFrame.Navigate(new QuoteMaterialView());
         }
 
         private void editQuoteSubcontractor_Click(object sender, RoutedEventArgs e)
         {
-            MainDrawer.IsRightDrawerOpen = true;
-            if (DrawerFrame.CanGoBack)
+            //MainDrawer.IsRightDrawerOpen = true;
+            //if (DrawerFrame.CanGoBack)
+            //{
+            //    DrawerFrame.RemoveBackEntry();
+            //}
+            //DrawerFrame.Navigate(new QuoteSubcontractorView());
+        }
+
+        private void NewItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (DialogFrame.CanGoBack)
             {
-                DrawerFrame.RemoveBackEntry();
+                DialogFrame.RemoveBackEntry();
             }
-            DrawerFrame.Navigate(new QuoteSubcontractorView());
+
+            DialogFrame.Navigate(new QuoteItemView(0));
+            MainDialog.IsOpen = true;
+        }
+
+        private void NewTime_Click(object sender, RoutedEventArgs e)
+        {
+            if (DialogFrame.CanGoBack)
+            {
+                DialogFrame.RemoveBackEntry();
+            }
+
+            DialogFrame.Navigate(new QuoteTimeView());
+            MainDialog.IsOpen = true;
+        }
+
+        private void NewMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (DialogFrame.CanGoBack)
+            {
+                DialogFrame.RemoveBackEntry();
+            }
+
+            DialogFrame.Navigate(new QuoteMaterialView());
+            MainDialog.IsOpen = true;
+        }
+
+        private void NewSubcontractor_Click(object sender, RoutedEventArgs e)
+        {
+            if (DialogFrame.CanGoBack)
+            {
+                DialogFrame.RemoveBackEntry();
+            }
+
+            DialogFrame.Navigate(new QuoteSubcontractorView());
+            MainDialog.IsOpen = true;
         }
     }
 }

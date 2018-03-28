@@ -12,40 +12,63 @@
       TextElement.FontSize="13"
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
-      Background="{DynamicResource MaterialDesignPaper}"
+      Background="White"
       DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <materialDesign:PackIcon Kind="Clock"
-                                     Width="24"
-                                     Margin="12,0"
-                                     Height="24"
-                                     HorizontalAlignment="Center"
-                                     VerticalAlignment="Center" />
-            <TextBlock Text="Time"
-                       VerticalAlignment="Center"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       Margin="0,12" />
-        </StackPanel>
-        <ScrollViewer Grid.Row="1"
-                      VerticalScrollBarVisibility="Auto"
-                      Panel.ZIndex="-1">
+
+        <materialDesign:ColorZone Grid.Row="0"
+                                  Padding="16"
+                                  Mode="PrimaryMid"
+                                  Grid.ColumnSpan="2"
+                                  Panel.ZIndex="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="56" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           FontSize="22"
+                           Text="Time"
+                           Style="{StaticResource MaterialDesignTitleTextBlock}"
+                           Margin="12,0,0,0" />
+                <materialDesign:PopupBox Grid.Column="3"
+                                         PlacementMode="BottomAndAlignRightEdges"
+                                         Margin="10,0"
+                                         Width="32"
+                                         Height="32">
+                    <StackPanel>
+                        <Button Content="Convert quote" />
+                        <Separator />
+                        <Button Content="Delete quote" />
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </Grid>
+        </materialDesign:ColorZone>
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      Panel.ZIndex="-1"
+                      Padding="0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32" />
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="56" />
                     <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="56" />
+                    <ColumnDefinition Width="32" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="51" />
-                    <RowDefinition Height="51" />
-                    <RowDefinition Height="51" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
                 <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                           Grid.Row="0"
@@ -61,20 +84,15 @@
                 <TextBox Grid.Row="1"
                          Grid.Column="1"
                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                         materialDesign:HintAssist.Hint="Initial cost" />
-                <TextBox Grid.Row="1"
-                         Grid.Column="3"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                         materialDesign:HintAssist.Hint="Rate cost" />
+                         materialDesign:HintAssist.Hint="Est. time" />
                 <TextBox Grid.Row="2"
                          Grid.Column="1"
                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                         materialDesign:HintAssist.Hint="Est. time" />
+                         materialDesign:HintAssist.Hint="Initial cost" />
                 <TextBox Grid.Row="2"
                          Grid.Column="3"
                          Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
-                         materialDesign:HintAssist.Hint="Total"
-                         IsEnabled="False" />
+                         materialDesign:HintAssist.Hint="Rate cost" />
             </Grid>
         </ScrollViewer>
     </Grid>
