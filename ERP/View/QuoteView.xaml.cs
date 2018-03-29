@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -21,10 +22,17 @@ namespace ERP.View
     /// <summary>
     /// Interaction logic for QuoteView.xaml
     /// </summary>
-    public partial class QuoteView : Window
+    public partial class QuoteView : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public QuoteView()
         {
+            selectedQuote = new Quote() { quoteID = 1, quoteCost };
             _departments = new ObservableCollection<Department>();
             _departments.Add(new Department() { departmentID = 1, department = "Masking", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
             _departments.Add(new Department() { departmentID = 2, department = "Wet Paint", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
@@ -80,7 +88,7 @@ namespace ERP.View
             _quoteSubcontractorList.Add(new QuoteSubcontractor() { supplier = "Jim Co.", subcontractorCost = 100, rate = 35, notes = "Lorem ipsum." });
 
             _todoList = new ObservableCollection<ToDo>();
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Call Tim about the thing that does the thing so we can get this quote on the go.", complete = false, taskType = "Task", users = "Tim" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Tim" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Bob" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Rob, Bob, Tim" });
             _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Jim, Rob, Bob" });
@@ -91,10 +99,63 @@ namespace ERP.View
             InitializeComponent();
         }
 
+        private Quote _selectedQuote;
+        public Quote selectedQuote
+        {
+            get { return _selectedQuote; }
+            set { if (value != null) { _selectedQuote = value; OnPropertyChanged("selectedQuote"); } }
+        }
+
         private ObservableCollection<ToDo> _todoList;
         public ObservableCollection<ToDo> todoList
         {
             get { return _todoList ?? (_todoList = new ObservableCollection<ToDo>()); }
+        }
+        
+        private ToDo _selectedToDo;
+        public ToDo selectedToDo
+        {
+            get { return _selectedToDo; }
+            set { if (value != null) { _selectedToDo = value; } }
+        }
+
+        private ObservableCollection<QuoteItem> _quoteItemList;
+        public ObservableCollection<QuoteItem> quoteItemList
+        {
+            get { return _quoteItemList ?? (_quoteItemList = new ObservableCollection<QuoteItem>()); }
+        }
+
+        private QuoteItem _selectedItem;
+        public QuoteItem selectedItem
+        {
+            get { return _selectedItem; }
+            set { if (value != null) { _selectedItem = value; OnPropertyChanged("selectedItem"); } }
+        }
+
+        private ObservableCollection<QuoteTime> _quoteTimeList;
+        public ObservableCollection<QuoteTime> quoteTimeList
+        {
+            get { return _quoteTimeList ?? (_quoteTimeList = new ObservableCollection<QuoteTime>()); }
+        }
+
+        private QuoteTime _selectedTime;
+        public QuoteTime selectedTime
+        {
+            get { return _selectedTime; }
+            set { if (value != null) { _selectedTime = value; } }
+        }
+
+        private ObservableCollection<QuoteMaterial> _quoteMaterialList;
+        public ObservableCollection<QuoteMaterial> quoteMaterialList
+        {
+            get { return _quoteMaterialList ?? (_quoteMaterialList = new ObservableCollection<QuoteMaterial>()); }
+        }
+
+        private QuoteMaterial _selectedMaterial;
+        public QuoteMaterial selectedMaterial
+        {
+            get { return _selectedMaterial; }
+            set { if (value != null) { _selectedMaterial = value; } }
         }
 
         private ObservableCollection<QuoteSubcontractor> _quoteSubcontractorList;
@@ -103,16 +164,11 @@ namespace ERP.View
             get { return _quoteSubcontractorList ?? (_quoteSubcontractorList = new ObservableCollection<QuoteSubcontractor>()); }
         }
 
-        private ObservableCollection<QuoteMaterial> _quoteMaterialList;
-        public ObservableCollection<QuoteMaterial> quoteMaterialList
+        private QuoteSubcontractor _selectedSubcontractor;
+        public QuoteSubcontractor selectedSubcontractor
         {
-            get { return _quoteMaterialList ?? (_quoteMaterialList = new ObservableCollection<QuoteMaterial>()); }
-        }
-        
-        private ObservableCollection<QuoteTime> _quoteTimeList;
-        public ObservableCollection<QuoteTime> quoteTimeList
-        {
-            get { return _quoteTimeList ?? (_quoteTimeList = new ObservableCollection<QuoteTime>()); }
+            get { return _selectedSubcontractor; }
+            set { if (value != null) { _selectedSubcontractor = value; } }
         }
 
         private static ObservableCollection<Department> _departments;
@@ -127,115 +183,156 @@ namespace ERP.View
             get { return _standardItems ?? (_standardItems = new ObservableCollection<QuoteItem>()); }
         }
 
-        private Account _selectedItem;
-        public Account selectedItem
+        private ObservableCollection<User> _userList;
+        public ObservableCollection<User> userList
         {
-            get { return _selectedItem; }
-            set { if (value != null) { _selectedItem = value; } }
+            get { return _userList ?? (_userList = new ObservableCollection<User>()); }
         }
 
-        private ObservableCollection<QuoteItem> _quoteItemList;
-        public ObservableCollection<QuoteItem> quoteItemList
-        {
-            get { return _quoteItemList ?? (_quoteItemList = new ObservableCollection<QuoteItem>()); }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            string theValue = button.Tag.ToString();
-            Debug.Print(theValue);
-            var newWindow = new AccountView();
-            newWindow.Show();
-        }
-
+        #region Events
         private void EditQuoteItem_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            int value = (int)button.Tag;
 
-            if (DialogFrame.CanGoBack)
+            if(button.Tag != null)
             {
-                DialogFrame.RemoveBackEntry();
+                selectedItem = quoteItemList.Single(x => x.quoteItemID == (int)button.Tag);
             }
-
-            DialogFrame.Navigate(new QuoteItemView(value));
-            MainDialog.IsOpen = true;
+            else
+            {
+                selectedItem = new QuoteItem();
+            }
             
+            ItemDialog.IsOpen = true;
         }
 
-        private void editQuoteTime_Click(object sender, RoutedEventArgs e)
+        private void SaveItem_Click(object sender, RoutedEventArgs e)
         {
-            //MainDrawer.IsRightDrawerOpen = true;
-            //if (DrawerFrame.CanGoBack)
+            quoteItemList.Remove(quoteItemList.SingleOrDefault(x => x.quoteItemID == selectedItem.quoteItemID));
+
+            if(selectedItem.quoteItemID == 0)
+            {
+                selectedItem.line = quoteItemList.Max(x => x.line) + 1;
+            }
+
+            quoteItemList.Add(selectedItem);
+            quoteItemList.OrderBy(x => x.line);
+        }
+
+        private void EditQuoteTime_Click(object sender, RoutedEventArgs e)
+        {
+            int value;
+            var button = sender as Button;
+
+            if (button.Tag != null)
+            {
+                value = (int)button.Tag;
+            }
+            else
+            {
+                value = 0;
+            }
+            TimeDialog.IsOpen = true;
+        }
+
+        private void SaveTime_Click(object sender, RoutedEventArgs e)
+        {
+            quoteTimeList.Remove(quoteTimeList.SingleOrDefault(x => x.quoteTimeID == selectedTime.quoteTimeID));
+
+            if (selectedTime.quoteTimeID == 0)
+            {
+                //selectedTime.quoteID
+                selectedTime.line = quoteItemList.Max(x => x.line) + 1;
+            }
+
+            quoteTimeList.Add(selectedTime);
+            quoteTimeList.OrderBy(x => x.line);
+        }
+
+        private void EditQuoteMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            int value;
+            var button = sender as Button;
+
+            if (button.Tag != null)
+            {
+                value = (int)button.Tag;
+            }
+            else
+            {
+                value = 0;
+            }
+            MaterialDialog.IsOpen = true;
+        }
+
+        private void SaveMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            quoteMaterialList.Remove(quoteMaterialList.SingleOrDefault(x => x.quoteMaterialID == selectedMaterial.quoteMaterialID));
+
+            if (selectedMaterial.quoteMaterialID == 0)
+            {
+                //selectedTime.quoteID
+            }
+
+            quoteMaterialList.Add(selectedMaterial);
+        }
+
+        private void EditQuoteSubcontractor_Click(object sender, RoutedEventArgs e)
+        {
+            int value;
+            var button = sender as Button;
+
+            if (button.Tag != null)
+            {
+                value = (int)button.Tag;
+            }
+            else
+            {
+                value = 0;
+            }
+            SubcontractorDialog.IsOpen = true;
+        }
+
+        private void SaveSubcontractor_Click(object sender, RoutedEventArgs e)
+        {
+            quoteSubcontractorList.Remove(quoteSubcontractorList.SingleOrDefault(x => x.quoteSubcontractorID == selectedSubcontractor.quoteSubcontractorID));
+
+            if (selectedSubcontractor.quoteSubcontractorID == 0)
+            {
+                //selectedTime.quoteID
+            }
+
+            quoteSubcontractorList.Add(selectedSubcontractor);
+        }
+
+        private void EditTaskItem_Click(object sender, RoutedEventArgs e)
+        {
+            int value;
+            var button = sender as Button;
+
+            if (button.Tag != null)
+            {
+                value = (int)button.Tag;
+            }
+            else
+            {
+                value = 0;
+            }
+            TaskDialog.IsOpen = true;
+        }
+
+        private void SaveTask_Click(object sender, RoutedEventArgs e)
+        {
+            //todoList.Remove(quoteSubcontractorList.SingleOrDefault(x => x.quoteSubcontractorID == selectedSubcontractor.quoteSubcontractorID));
+
+            //if (selectedSubcontractor.quoteSubcontractorID == 0)
             //{
-            //    DrawerFrame.RemoveBackEntry();
+            //    //selectedTime.quoteID
             //}
-            //DrawerFrame.Navigate(new QuoteTimeView());
+
+            //quoteSubcontractorList.Add(selectedSubcontractor);
         }
+        #endregion
 
-        private void editQuoteMaterial_Click(object sender, RoutedEventArgs e)
-        {
-            //MainDrawer.IsRightDrawerOpen = true;
-            //if (DrawerFrame.CanGoBack)
-            //{
-            //    DrawerFrame.RemoveBackEntry();
-            //}
-            //DrawerFrame.Navigate(new QuoteMaterialView());
-        }
-
-        private void editQuoteSubcontractor_Click(object sender, RoutedEventArgs e)
-        {
-            //MainDrawer.IsRightDrawerOpen = true;
-            //if (DrawerFrame.CanGoBack)
-            //{
-            //    DrawerFrame.RemoveBackEntry();
-            //}
-            //DrawerFrame.Navigate(new QuoteSubcontractorView());
-        }
-
-        private void NewItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (DialogFrame.CanGoBack)
-            {
-                DialogFrame.RemoveBackEntry();
-            }
-
-            DialogFrame.Navigate(new QuoteItemView(0));
-            MainDialog.IsOpen = true;
-        }
-
-        private void NewTime_Click(object sender, RoutedEventArgs e)
-        {
-            if (DialogFrame.CanGoBack)
-            {
-                DialogFrame.RemoveBackEntry();
-            }
-
-            DialogFrame.Navigate(new QuoteTimeView());
-            MainDialog.IsOpen = true;
-        }
-
-        private void NewMaterial_Click(object sender, RoutedEventArgs e)
-        {
-            if (DialogFrame.CanGoBack)
-            {
-                DialogFrame.RemoveBackEntry();
-            }
-
-            DialogFrame.Navigate(new QuoteMaterialView());
-            MainDialog.IsOpen = true;
-        }
-
-        private void NewSubcontractor_Click(object sender, RoutedEventArgs e)
-        {
-            if (DialogFrame.CanGoBack)
-            {
-                DialogFrame.RemoveBackEntry();
-            }
-
-            DialogFrame.Navigate(new QuoteSubcontractorView());
-            MainDialog.IsOpen = true;
-        }
     }
 }

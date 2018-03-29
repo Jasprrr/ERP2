@@ -56,7 +56,7 @@
                       VerticalScrollBarVisibility="Auto"
                       Panel.ZIndex="-1"
                       Padding="0,12">
-            <Grid>
+            <!--<Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32" />
                     <ColumnDefinition Width="100" />
@@ -84,7 +84,7 @@
                          AcceptsReturn="True"
                          materialDesign:HintAssist.Hint="Notes"
                          materialDesign:TextFieldAssist.HasTextAreaBox="True"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBox}"
                          Grid.Column="1"
                          Grid.Row="1"
                          Grid.ColumnSpan="3"
@@ -93,14 +93,14 @@
                          VerticalScrollBarVisibility="Auto" />
                 <TextBox Grid.Row="2"
                          Grid.Column="1"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBox}"
                          materialDesign:HintAssist.Hint="Cost (£)" />
                 <TextBox Grid.Row="2"
                          Grid.Column="3"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBox}"
                          materialDesign:HintAssist.Hint="Rate (%)"
                          IsEnabled="True" />
-            </Grid>
+            </Grid>-->
         </ScrollViewer>
     </Grid>
 </Page>

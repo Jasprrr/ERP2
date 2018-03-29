@@ -26,7 +26,7 @@ namespace ERP.View
             InitializeComponent();
         }
 
-        public void Save()
+        public static void Save()
         {
             Debug.Write("Saved");
         }

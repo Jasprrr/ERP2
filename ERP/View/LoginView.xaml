@@ -44,7 +44,7 @@
                         Width="256"
                         VerticalAlignment="Center">
                 <TextBox materialDesign:HintAssist.Hint="Name"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBox}"
                          materialDesign:HintAssist.IsFloating="True"
                          Grid.Row="1"
                          Text="{Binding username, Mode=TwoWay}" />

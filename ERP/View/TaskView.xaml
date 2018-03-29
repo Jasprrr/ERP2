@@ -128,7 +128,7 @@
                                  AcceptsReturn="True"
                                  materialDesign:HintAssist.Hint="Description"
                                  materialDesign:TextFieldAssist.HasTextAreaBox="True"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                                 Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                  Grid.Column="1"
                                  Grid.Row="1"
                                  Grid.ColumnSpan="3"

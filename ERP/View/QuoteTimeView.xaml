@@ -83,15 +83,15 @@
                 </ComboBox>
                 <TextBox Grid.Row="1"
                          Grid.Column="1"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                          materialDesign:HintAssist.Hint="Est. time" />
                 <TextBox Grid.Row="2"
                          Grid.Column="1"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                          materialDesign:HintAssist.Hint="Initial cost" />
                 <TextBox Grid.Row="2"
                          Grid.Column="3"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBoxFull}"
+                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                          materialDesign:HintAssist.Hint="Rate cost" />
             </Grid>
         </ScrollViewer>
