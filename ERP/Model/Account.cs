@@ -11,7 +11,8 @@ namespace ERP.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string name { get; set; }
+        public int accountID { get; set; }
+        public string accountName { get; set; }
         public string email { get; set; }
         public string telephone { get; set; }
         public string accountCode { get; set; }
@@ -20,7 +21,7 @@ namespace ERP.Model
         {
             get
             {
-                return name.Substring(0, 1);
+                return accountName.Substring(0, 1);
             }
         }
         

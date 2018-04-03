@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Model
 {
-    class Contact
+    public class Contact
     {
         public int contactID { get; set; }
         public string forename { get; set; }
@@ -15,6 +15,11 @@ namespace ERP.Model
         public string mobile { get; set; }
         public string primaryEmail { get; set; }
         public string secondaryEmail { get; set; }
-        public string accountID { get; set; }
+        public int accountID { get; set; }
+
+        public string fullName
+        {
+            get { return forename + " " + surname; }
+        }
     }
 }

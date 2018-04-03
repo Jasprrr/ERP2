@@ -77,7 +77,7 @@ namespace ERP.View
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Debug.Print(selectedItem.name.ToString());
+            Debug.Print(selectedItem.accountName.ToString());
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 var editwindow = new AccountView();

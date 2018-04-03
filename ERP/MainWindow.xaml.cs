@@ -30,6 +30,8 @@ namespace ERP
         {
             Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
             //SQLiteConnection.CreateFile("ERPData.sqlite");
+            //SQLiteConnection.CreateFile(@"C:\users\Jasper\Desktop\test.sqlite");
+            //SetUpDb();
             InitializeComponent();
             _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "View/AccountsView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "View/TasksView.xaml" });
@@ -70,5 +72,7 @@ namespace ERP
             var QuoteWindow = new QuoteView();
             QuoteWindow.Show();
         }
+
+
     }
 }

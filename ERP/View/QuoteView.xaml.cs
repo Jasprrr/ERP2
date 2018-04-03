@@ -32,7 +32,16 @@ namespace ERP.View
 
         public QuoteView()
         {
-            selectedQuote = new Quote() { quoteID = 1, quoteCost };
+            selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, quoteCost = 35, userName = "Jasper", accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
+
+            _accountList = new ObservableCollection<Account>();
+            _accountList.Add(new Account() { accountID = 1, accountName = "123" });
+            _accountList.Add(new Account() { accountID = 1, accountName = "123" });
+
+            _contactList = new ObservableCollection<Contact>();
+            _contactList.Add(new Contact() { contactID = 1, accountID = 1, forename = "Jasper", surname = "Friend" });
+            _contactList.Add(new Contact() { contactID = 1, accountID = 1, forename = "Repsaj", surname = "Dneirf" });
+
             _departments = new ObservableCollection<Department>();
             _departments.Add(new Department() { departmentID = 1, department = "Masking", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
             _departments.Add(new Department() { departmentID = 2, department = "Wet Paint", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
@@ -45,6 +54,14 @@ namespace ERP.View
             _departments.Add(new Department() { departmentID = 9, department = "Laser engraving", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
             _departments.Add(new Department() { departmentID = 10, department = "Engraving", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
             _departments.Add(new Department() { departmentID = 11, department = "Printing", nominalCode = 4060, defaultRate = (decimal)35.00, initalCost = 0 });
+
+            _userList = new ObservableCollection<User>();
+            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
+            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
+            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
+            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
+            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
+            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
 
             _quoteItemList = new ObservableCollection<QuoteItem>();
             _quoteItemList.Add(new QuoteItem() { quoteItemID = 1, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 1, batchNumber = "789-XYZ" });
@@ -88,15 +105,39 @@ namespace ERP.View
             _quoteSubcontractorList.Add(new QuoteSubcontractor() { supplier = "Jim Co.", subcontractorCost = 100, rate = 35, notes = "Lorem ipsum." });
 
             _todoList = new ObservableCollection<ToDo>();
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Tim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Rob, Bob, Tim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Jim, Rob, Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Sam, Jim, Rob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Tim, Sam, Jim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task", users = "Bob, Tim, Sam" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Rob, Bob, Tim" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Jim, Rob, Bob" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Sam, Jim, Rob" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim, Sam, Jim" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob, Tim, Sam" });
 
             InitializeComponent();
+        }
+        #region
+        private ObservableCollection<Account> _accountList;
+        public ObservableCollection<Account> accountList
+        {
+            get { return _accountList ?? (_accountList = new ObservableCollection<Account>()); }
+        }
+
+        private ObservableCollection<Contact> _contactList;
+        public ObservableCollection<Contact> contactList
+        {
+            get { return _contactList ?? (_contactList = new ObservableCollection<Contact>()); }
+        }
+
+        private ObservableCollection<User> _userList;
+        public ObservableCollection<User> userList
+        {
+            get { return _userList ?? (_userList = new ObservableCollection<User>()); }
+        }
+
+        private ObservableCollection<User> _userTaskList;
+        public ObservableCollection<User> userTaskList
+        {
+            get { return _userList ?? (_userList = new ObservableCollection<User>()); }
         }
 
         private Quote _selectedQuote;
@@ -111,7 +152,7 @@ namespace ERP.View
         {
             get { return _todoList ?? (_todoList = new ObservableCollection<ToDo>()); }
         }
-        
+
         private ToDo _selectedToDo;
         public ToDo selectedToDo
         {
@@ -182,19 +223,14 @@ namespace ERP.View
         {
             get { return _standardItems ?? (_standardItems = new ObservableCollection<QuoteItem>()); }
         }
-
-        private ObservableCollection<User> _userList;
-        public ObservableCollection<User> userList
-        {
-            get { return _userList ?? (_userList = new ObservableCollection<User>()); }
-        }
+        #endregion
 
         #region Events
         private void EditQuoteItem_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
 
-            if(button.Tag != null)
+            if (button.Tag != null)
             {
                 selectedItem = quoteItemList.Single(x => x.quoteItemID == (int)button.Tag);
             }
@@ -202,7 +238,7 @@ namespace ERP.View
             {
                 selectedItem = new QuoteItem();
             }
-            
+
             ItemDialog.IsOpen = true;
         }
 
@@ -210,7 +246,7 @@ namespace ERP.View
         {
             quoteItemList.Remove(quoteItemList.SingleOrDefault(x => x.quoteItemID == selectedItem.quoteItemID));
 
-            if(selectedItem.quoteItemID == 0)
+            if (selectedItem.quoteItemID == 0)
             {
                 selectedItem.line = quoteItemList.Max(x => x.line) + 1;
             }
@@ -334,5 +370,9 @@ namespace ERP.View
         }
         #endregion
 
+        private void userButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserDialog.IsOpen = true;
+        }
     }
 }

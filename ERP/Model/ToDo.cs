@@ -17,7 +17,8 @@ namespace ERP.Model
         public string description { get; set; }
         public string taskType { get; set; }
         public bool complete { get; set; }
-        public string users { get; set; }
+        public string userID { get; set; }
+        public string user { get; set; }
 
         public string userInitials {
             get
@@ -36,9 +37,23 @@ namespace ERP.Model
         {
             get
             {
-                if (users != null)
+                if (user != null)
                 {
-                    return users.Split(',').ToList();
+                    return user.Split(',').ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public List<string> todoUserIDs
+        {
+            get
+            {
+                if (userID != null)
+                {
+                    return userID.Split(',').ToList();
                 }
                 else
                 {
