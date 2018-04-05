@@ -64,16 +64,16 @@ namespace ERP.View
             _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
 
             _quoteItemList = new ObservableCollection<QuoteItem>();
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 1, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 1, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 2, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 2, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 3, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 3, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 4, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 4, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 5, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 5, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 6, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 6, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 7, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 7, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 8, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 8, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 9, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 9, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { quoteItemID = 10, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 10, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 1, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 1, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 2, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 2, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 3, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 3, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 4, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 4, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 5, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 5, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 6, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 6, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 7, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 7, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 8, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 8, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 9, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 9, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { quoteItemID = 10, itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 10, internalDescription = "789-XYZ" });
 
             _standardItems = new ObservableCollection<QuoteItem>();
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", itemCost = 250, quantity = 4, line = 1, batchNumber = "789-XYZ" });
@@ -115,7 +115,7 @@ namespace ERP.View
 
             InitializeComponent();
         }
-        #region
+        #region Variables
         private ObservableCollection<Account> _accountList;
         public ObservableCollection<Account> accountList
         {
@@ -145,6 +145,27 @@ namespace ERP.View
         {
             get { return _selectedQuote; }
             set { if (value != null) { _selectedQuote = value; OnPropertyChanged("selectedQuote"); } }
+        }
+
+        private Account _selectedAccount;
+        public Account selectedAccount
+        {
+            get { return _selectedAccount; }
+            set { if (value != null) { _selectedAccount = value; OnPropertyChanged("selectedAccount"); } }
+        }
+
+        private Contact _selectedContact;
+        public Contact selectedContact
+        {
+            get { return _selectedContact; }
+            set { if (value != null) { _selectedContact = value; OnPropertyChanged("selectedContact"); } }
+        }
+
+        private QuoteItem _selectedStandardItem;
+        public QuoteItem selectedStandardItem
+        {
+            get { return _selectedStandardItem; }
+            set { if (value != null) { _selectedStandardItem = value; OnPropertyChanged("selectedStandardItem"); } }
         }
 
         private ObservableCollection<ToDo> _todoList;
@@ -226,6 +247,7 @@ namespace ERP.View
         #endregion
 
         #region Events
+        //Item
         private void EditQuoteItem_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -242,12 +264,29 @@ namespace ERP.View
             ItemDialog.IsOpen = true;
         }
 
+        private void ItemInternalDescription_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ItemInternalDescription.Text != null && ItemExternalDescription.Text == "")
+            {
+                ItemExternalDescription.Text = ItemInternalDescription.Text;
+            }
+        }
+
+        private void ItemExternalDescription_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ItemExternalDescription.Text != null && ItemInternalDescription.Text == "")
+            {
+                ItemInternalDescription.Text = ItemExternalDescription.Text;
+            }
+        }
+
         private void SaveItem_Click(object sender, RoutedEventArgs e)
         {
             quoteItemList.Remove(quoteItemList.SingleOrDefault(x => x.quoteItemID == selectedItem.quoteItemID));
 
             if (selectedItem.quoteItemID == 0)
             {
+                selectedItem.quoteID = selectedQuote.quoteID;
                 selectedItem.line = quoteItemList.Max(x => x.line) + 1;
             }
 
@@ -255,6 +294,7 @@ namespace ERP.View
             quoteItemList.OrderBy(x => x.line);
         }
 
+        //Time
         private void EditQuoteTime_Click(object sender, RoutedEventArgs e)
         {
             int value;
@@ -277,14 +317,15 @@ namespace ERP.View
 
             if (selectedTime.quoteTimeID == 0)
             {
-                //selectedTime.quoteID
+                selectedTime.quoteID = selectedQuote.quoteID;
                 selectedTime.line = quoteItemList.Max(x => x.line) + 1;
             }
 
             quoteTimeList.Add(selectedTime);
             quoteTimeList.OrderBy(x => x.line);
         }
-
+        
+        //Material
         private void EditQuoteMaterial_Click(object sender, RoutedEventArgs e)
         {
             int value;
@@ -313,6 +354,7 @@ namespace ERP.View
             quoteMaterialList.Add(selectedMaterial);
         }
 
+        //Subcontractor
         private void EditQuoteSubcontractor_Click(object sender, RoutedEventArgs e)
         {
             int value;
@@ -341,6 +383,7 @@ namespace ERP.View
             quoteSubcontractorList.Add(selectedSubcontractor);
         }
 
+        //Task
         private void EditTaskItem_Click(object sender, RoutedEventArgs e)
         {
             int value;
@@ -368,11 +411,17 @@ namespace ERP.View
 
             //quoteSubcontractorList.Add(selectedSubcontractor);
         }
+
         #endregion
 
         private void userButton_Click(object sender, RoutedEventArgs e)
         {
             UserDialog.IsOpen = true;
+        }
+
+        private void ItemCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItem.internalDescription = "Some description.";
         }
     }
 }

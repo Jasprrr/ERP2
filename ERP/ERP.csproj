@@ -132,19 +132,19 @@
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuoteItemView.xaml.cs">
+    <Compile Include="View\Deprecated\QuoteItemView.xaml.cs">
       <DependentUpon>QuoteItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuoteMaterialView.xaml.cs">
+    <Compile Include="View\Deprecated\QuoteMaterialView.xaml.cs">
       <DependentUpon>QuoteMaterialView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuoteSubcontractorView.xaml.cs">
+    <Compile Include="View\Deprecated\QuoteSubcontractorView.xaml.cs">
       <DependentUpon>QuoteSubcontractorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuotesView.xaml.cs">
       <DependentUpon>QuotesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuoteTimeView.xaml.cs">
+    <Compile Include="View\Deprecated\QuoteTimeView.xaml.cs">
       <DependentUpon>QuoteTimeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuoteView.xaml.cs">
@@ -180,15 +180,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuoteItemView.xaml">
+    <Page Include="View\Deprecated\QuoteItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuoteMaterialView.xaml">
+    <Page Include="View\Deprecated\QuoteMaterialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuoteSubcontractorView.xaml">
+    <Page Include="View\Deprecated\QuoteSubcontractorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,7 +196,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuoteTimeView.xaml">
+    <Page Include="View\Deprecated\QuoteTimeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

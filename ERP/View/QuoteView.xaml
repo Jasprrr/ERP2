@@ -70,23 +70,32 @@
                             </Grid>
                         </materialDesign:ColorZone>
                         <StackPanel Margin="36,12">
-                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                            <ComboBox x:Name="ItemCode"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                       materialDesign:HintAssist.Hint="Item code"
-                                      SelectedItem="{Binding selectedItem}"
-                                      IsEditable="True" />
-                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                      Text="{Binding selectedItem.itemCode}"
+                                      IsEditable="True"
+                                      DisplayMemberPath="itemCode"
+                                      ItemsSource="{Binding standardItems}"
+                                      SelectedItem="{Binding selectedStandardItem}"
+                                      SelectionChanged="ItemCode_SelectionChanged" />
+                            <ComboBox x:Name="ItemNominalCode"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                       materialDesign:HintAssist.Hint="Nominal code"
                                       IsEditable="True" />
-                            <TextBox TextWrapping="Wrap"
+                            <TextBox x:Name="ItemInternalDescription"
+                                     LostFocus="ItemInternalDescription_LostFocus"
+                                     TextWrapping="Wrap"
                                      AcceptsReturn="True"
                                      Text="{Binding selectedItem.internalDescription}"
                                      materialDesign:HintAssist.Hint="Internal description"
                                      materialDesign:TextFieldAssist.HasTextAreaBox="True"
                                      Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                      Height="150"
-                                     HorizontalAlignment="Stretch"
                                      VerticalScrollBarVisibility="Auto" />
-                            <TextBox TextWrapping="Wrap"
+                            <TextBox x:Name="ItemExternalDescription"
+                                     LostFocus="ItemExternalDescription_LostFocus"
+                                     TextWrapping="Wrap"
                                      AcceptsReturn="True"
                                      Text="{Binding selectedItem.externalDescription}"
                                      materialDesign:HintAssist.Hint="External description"
@@ -558,19 +567,37 @@
                                                     <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                                        Padding="4">
-                                                    <materialDesign:PackIcon Kind="Menu"
-                                                                             Height="24"
-                                                                             Width="24" />
-                                                </Button>
                                                 <TextBlock Grid.Column="1"
                                                            VerticalAlignment="Center"
                                                            FontSize="22"
                                                            Text="Quote"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                            Margin="48,0,0,0" />
-                                                <materialDesign:PopupBox Grid.Column="3"
+                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                                        Margin="10,0"
+                                                        Padding="4"
+                                                        Grid.Column="2">
+                                                    <materialDesign:PackIcon Kind="Download"
+                                                                             Height="24"
+                                                                             Width="24" />
+                                                </Button>
+                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                                        Margin="10,0"
+                                                        Padding="4"
+                                                        Grid.Column="3">
+                                                    <materialDesign:PackIcon Kind="Forward"
+                                                                             Height="24"
+                                                                             Width="24" />
+                                                </Button>
+                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                                        Margin="10,0"
+                                                        Padding="4"
+                                                        Grid.Column="4">
+                                                    <materialDesign:PackIcon Kind="Delete"
+                                                                             Height="24"
+                                                                             Width="24" />
+                                                </Button>
+                                                <materialDesign:PopupBox Grid.Column="5"
                                                                          PlacementMode="BottomAndAlignRightEdges"
                                                                          StaysOpen="True"
                                                                          Margin="10,0"
@@ -622,22 +649,20 @@
                                                                       materialDesign:HintAssist.Hint="Company *"
                                                                       ItemsSource="{Binding accountList}"
                                                                       DisplayMemberPath="accountName"
-                                                                      SelectedValuePath="accountID"
-                                                                      SelectedValue="{Binding selectedQuote.accountID}"
+                                                                      SelectedItem="{Binding selectedAccount}"
                                                                       IsEditable="True" />
                                                             <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                                                       materialDesign:HintAssist.Hint="Contact"
                                                                       ItemsSource="{Binding contactList}"
                                                                       DisplayMemberPath="fullName"
-                                                                      SelectedValuePath="contactID"
-                                                                      SelectedValue="{Binding selectedQuote.contactID}"
+                                                                      SelectedItem="{Binding selectedContact}"
                                                                       IsEditable="True" />
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="PO no." 
-                                                                     Text="{Binding selectedQuote.purchaseOrder}"/>
+                                                                     materialDesign:HintAssist.Hint="PO no."
+                                                                     Text="{Binding selectedQuote.purchaseOrder}" />
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Description" 
-                                                                     Text="{Binding selectedQuote.description}"/>
+                                                                     materialDesign:HintAssist.Hint="Description"
+                                                                     Text="{Binding selectedQuote.description}" />
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                                      materialDesign:HintAssist.Hint="Lead days"
                                                                      Text="{Binding selectedQuote.leadTime}"
@@ -651,15 +676,15 @@
                                                                 <ComboBoxItem Content="BIE Magnum delivery" />
                                                             </ComboBox>
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Carriage notes" 
-                                                                     Text="{Binding selectedQuote.carriageNotes}"/>
-                                                            <TextBox Text="12.00"
-                                                                     Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                     materialDesign:HintAssist.Hint="Carriage notes"
+                                                                     Text="{Binding selectedQuote.carriageNotes}" />
+                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                                      materialDesign:HintAssist.Hint="Carriage cost"
+                                                                     Text="{Binding selectedQuote.carriageCost}"
                                                                      HorizontalAlignment="Left" />
-                                                            <TextBox Text="12.00"
-                                                                     Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                                      materialDesign:HintAssist.Hint="Total cost"
+                                                                     Text="{Binding selectedQuote.quoteTotal}"
                                                                      HorizontalAlignment="Left" />
                                                             <Grid>
                                                                 <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
@@ -782,7 +807,7 @@
                                                                     <DataGridTemplateColumn x:Name="itemCode"
                                                                                             CanUserSort="True"
                                                                                             SortMemberPath="itemCode"
-                                                                                            Width="120"
+                                                                                            Width="180"
                                                                                             materialDesign:DataGridAssist.CellPadding="13,14,8,14">
                                                                         <DataGridTemplateColumn.Header>
                                                                             <TextBlock Text="Item code" />
@@ -806,7 +831,7 @@
                                                                                                                Header="Internal description"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
                                                                                                                MaxLength="255"
-                                                                                                               Width="350" />
+                                                                                                               Width="530" />
                                                                     <DataGridTemplateColumn x:Name="nominalCode"
                                                                                             CanUserSort="True"
                                                                                             SortMemberPath="itemNominalCode"
@@ -852,7 +877,7 @@
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
                                                                                         Margin="0,-7"
                                                                                         Tag="{Binding quoteItemID}">
-                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                    <materialDesign:PackIcon Kind="Delete"
                                                                                                              Width="16"
                                                                                                              Height="16"
                                                                                                              VerticalContentAlignment="Center"
@@ -1253,7 +1278,7 @@
                                                                     <StackPanel Orientation="Horizontal">
                                                                         <UserControl:Stepper Height="40"
                                                                                              Icon="2" />
-                                                                        <TextBlock Text="Quote completed"
+                                                                        <TextBlock Text="{Binding 123, FallbackValue=Quote Complete}"
                                                                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                                                    VerticalAlignment="Center" />
                                                                     </StackPanel>
