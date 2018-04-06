@@ -23,17 +23,6 @@ namespace ERP.View
     {
         public QuoteItemView(int quoteItemID = 0)
         {
-            if (quoteItemID == 0)
-            {
-                //TODO: create new
-                Debug.Print(quoteItemID.ToString());
-            }
-            else
-            {
-                //TODO: fetch quote item
-                Debug.Print(quoteItemID.ToString());
-            }
-
             InitializeComponent();
         }
     }

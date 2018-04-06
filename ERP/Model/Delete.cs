@@ -7,19 +7,24 @@ using System.Threading.Tasks;
 
 namespace ERP.Model
 {
-    public class Department : INotifyPropertyChanged
+    public class Delete : INotifyPropertyChanged
     {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public string fieldName { get; set; }
+        public string deleteString {
+            get
+            {
+                return "Are you sure you want to delete this " + type + "?";
+            }
+        }
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public int departmentID { get; set; }
-        public string department { get; set; }
-        public int nominalCode { get; set; }
-        public decimal initalCost { get; set; }
-        public decimal rateCost { get; set; }
     }
 }
