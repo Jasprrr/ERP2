@@ -9,13 +9,13 @@ namespace ERP.Model
 {
     public class QuoteSubcontractor : INotifyPropertyChanged
     {
-        public int quoteSubcontractorID { get; set; }
+        public int ID { get; set; }
         public int quoteID { get; set; }
         public int supplierID { get; set; }
         public string supplier { get; set; }
-        public decimal subcontractorCost { get; set; }
+        public decimal cost { get; set; }
         public double rate { get; set; }
-        public decimal subcontractorTotal { get; set; }
+        public decimal total { get; set; }
         public string notes { get; set; }
         public DateTime? dateCreated { get; set; }
         public DateTime? dateModified { get; set; }

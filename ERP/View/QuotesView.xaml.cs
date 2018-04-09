@@ -28,17 +28,17 @@ namespace ERP.View
             _quoteItemList = new ObservableCollection<QuoteItem>();
             _quoteList = new ObservableCollection<Quote>();
             InitializeComponent();
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 1, batchNumber="789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 2, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 3, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 4, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 5, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 6, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 7, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 8, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 9, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 10, batchNumber = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", itemCost = 250, quantity = 4, line = 11, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 1, batchNumber="789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 2, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 3, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 4, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 5, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 6, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 7, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 8, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 9, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 10, batchNumber = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 11, batchNumber = "789-XYZ" });
         }
 
         private ObservableCollection<ToDo> _todoList;

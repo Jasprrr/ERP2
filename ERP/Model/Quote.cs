@@ -33,9 +33,9 @@ namespace ERP.Model
         public string carriageNotes { get; set; }
         public decimal carriageCost { get; set; }
 
-        public decimal quoteCost { get; set; }
-        public decimal quoteVAT { get; set; }
-        public decimal quoteTotal { get; set; }
+        public decimal cost { get; set; }
+        public decimal VAT { get; set; }
+        public decimal total { get; set; }
 
         public string billingAddress1 { get; set; }
         public string billingAddress2 { get; set; }

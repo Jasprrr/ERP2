@@ -9,29 +9,35 @@ namespace ERP.Model
 {
     public class QuoteItem : INotifyPropertyChanged
     {
-        public int quoteItemID { get; set; }
+        public int ID { get; set; }
         public int quoteID { get; set; }
         public int line { get; set; }
         public string itemCode { get; set; }
         public int nominalCode { get; set; }
+        public string department { get; set; }
         public string batchNumber { get; set; }
         public string externalDescription { get; set; }
         public string internalDescription { get; set; }
         public string comments { get; set; }
 
+        public string nominalCodeWithDepartment
+        {
+            get { return nominalCode + " " + department; }
+        }
+
         public int quantity { get; set; }
-        public decimal itemCost { get; set; }
-        public decimal itemTotal
+        public decimal cost { get; set; }
+        public decimal total
         {
             get
             {
-                if (quantity == 0 || itemCost == 0)
+                if (quantity == 0 || cost == 0)
                 {
                     return 0;
                 }
                 else
                 {
-                    return quantity * itemCost;
+                    return quantity * cost;
                 }
             }
         }

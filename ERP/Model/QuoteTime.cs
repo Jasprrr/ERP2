@@ -9,16 +9,22 @@ namespace ERP.Model
 {
     public class QuoteTime : INotifyPropertyChanged
     {
-        public int quoteTimeID { get; set; }
+        public int ID { get; set; }
         public int quoteID { get; set; }
         public string department { get; set; }
         public double estatimatedTime { get; set; }
         public int nominalCode { get; set; }
         public string notes { get; set; }
         public int line { get; set; }
-        public decimal rateCost { get; set; }
-        public decimal initialCost { get; set; }
-        public decimal timeTotal { get; set; }
+        
+        public string nominalCodeWithDepartment
+        {
+            get { return nominalCode + " " + department; }
+        }
+
+        public decimal rate { get; set; }
+        public decimal cost { get; set; }
+        public decimal total { get; set; }
 
         public DateTime? dateCreated { get; set; }
         public DateTime? dateModified { get; set; }

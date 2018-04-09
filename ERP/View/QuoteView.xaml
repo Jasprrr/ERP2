@@ -80,12 +80,12 @@
                                         <Button x:Name="UploadItem"
                                                 Click="UploadItem_Click"
                                                 Content="Save as standard item"
-                                                Tag="{Binding selectedItem.quoteItemID}" />
+                                                Tag="{Binding selectedItem.ID}" />
                                         <Separator />
                                         <Button x:Name="DeleteItem"
                                                 Click="DeleteItem_Click"
                                                 Content="Delete item"
-                                                Tag="{Binding selectedItem.quoteItemID}" />
+                                                Tag="{Binding selectedItem.ID}" />
                                     </StackPanel>
                                 </materialDesign:PopupBox>
                             </Grid>
@@ -102,10 +102,10 @@
                             <ComboBox x:Name="ItemNominalCode"
                                       Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                       materialDesign:HintAssist.Hint="Nominal code"
-                                      Text="{Binding selectedItem.nominalCode}"
-                                      DisplayMemberPath="nominalCode"
+                                      Text="{Binding selectedItem.nominalCodeWithDepartment, Mode=OneWay}"
+                                      DisplayMemberPath="nominalCodeWithDepartment"
                                       ItemsSource="{Binding departments}"
-                                      SelectedItem="{Binding selectedDepartment}"
+                                      SelectedItem="{Binding selectedItemDepartment}"
                                       IsEditable="True" />
                             <TextBox x:Name="ItemInternalDescription"
                                      LostFocus="ItemInternalDescription_LostFocus"
@@ -142,7 +142,7 @@
                                          HorizontalAlignment="Left" />
                                 <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                          materialDesign:HintAssist.Hint="Cost"
-                                         Text="{Binding selectedItem.itemCost, Mode=TwoWay}"
+                                         Text="{Binding selectedItem.cost, Mode=TwoWay}"
                                          HorizontalAlignment="Right" />
                             </Grid>
                         </StackPanel>
@@ -153,16 +153,14 @@
                                     Style="{StaticResource MaterialDesignFlatButton}"
                                     IsDefault="True"
                                     Margin="8"
-                                    CommandParameter="true"
-                                    Command="materialDesign:DialogHost.CloseDialogCommand"
                                     HorizontalAlignment="Right">
                                 DONE
                             </Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                            <Button x:Name="CloseItem"
+                                    Click="CloseItem_Click"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
                                     IsDefault="True"
                                     Margin="8"
-                                    CommandParameter="true"
-                                    Command="materialDesign:DialogHost.CloseDialogCommand"
                                     HorizontalAlignment="Left">
                                 CANCEL
                             </Button>
@@ -183,7 +181,7 @@
                                     <TextBlock Grid.Column="1"
                                                VerticalAlignment="Center"
                                                FontSize="22"
-                                               Text="Item"
+                                               Text="Time"
                                                Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                Margin="12,0,0,0" />
                                     <materialDesign:PopupBox Grid.Column="3"
@@ -194,7 +192,9 @@
                                         <StackPanel>
                                             <Button Content="Convert quote" />
                                             <Separator />
-                                            <Button Content="Delete quote" />
+                                            <Button x:Name="DeleteTime"
+                                                    Click="DeleteTime_Click"
+                                                    Content="Delete quote" />
                                         </StackPanel>
                                     </materialDesign:PopupBox>
                                 </Grid>
@@ -203,10 +203,10 @@
                                 <ComboBox x:Name="TimeDepartment"
                                           Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                           materialDesign:HintAssist.Hint="Department"
-                                          Text="{Binding selectedTime.department}"
-                                          DisplayMemberPath="department"
+                                          Text="{Binding selectedTime.nominalCodeWithDepartment, Mode=OneWay}"
+                                          DisplayMemberPath="nominalCodeWithDepartment"
                                           ItemsSource="{Binding departments}"
-                                          SelectedItem="{Binding selectedDepartment}"
+                                          SelectedItem="{Binding selectedTimeDepartment}"
                                           SelectionChanged="TimeDepartment_SelectionChanged"
                                           IsEditable="True" />
                                 <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
@@ -216,30 +216,27 @@
                                 <Grid>
                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                              materialDesign:HintAssist.Hint="Initial cost"
-                                             Text="{Binding selectedTime.initialCost}"
+                                             Text="{Binding selectedTime.cost}"
                                              HorizontalAlignment="Left" />
                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                              materialDesign:HintAssist.Hint="Rate cost"
-                                             Text="{Binding selectedTime.rateCost}"
+                                             Text="{Binding selectedTime.rate}"
                                              HorizontalAlignment="Right" />
                                 </Grid>
                             </StackPanel>
-
                             <StackPanel Orientation="Horizontal"
                                         FlowDirection="RightToLeft">
-                                <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                        IsDefault="True"
+                                <Button x:Name="SaveTime"
+                                        Click="SaveTime_Click"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
                                         Margin="8"
-                                        CommandParameter="true"
-                                        Command="materialDesign:DialogHost.CloseDialogCommand"
                                         HorizontalAlignment="Right">
                                     DONE
                                 </Button>
-                                <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                        IsDefault="True"
+                                <Button x:Name="CloseTime"
+                                        Click="CloseTime_Click"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
                                         Margin="8"
-                                        CommandParameter="true"
-                                        Command="materialDesign:DialogHost.CloseDialogCommand"
                                         HorizontalAlignment="Left">
                                     CANCEL
                                 </Button>
@@ -271,21 +268,23 @@
                                             <StackPanel>
                                                 <Button Content="Convert quote" />
                                                 <Separator />
-                                                <Button Content="Delete quote" />
+                                                <Button x:Name="DeleteMaterial"
+                                                        Click="DeleteMaterial_Click"
+                                                        Content="Delete quote" />
                                             </StackPanel>
                                         </materialDesign:PopupBox>
                                     </Grid>
                                 </materialDesign:ColorZone>
                                 <StackPanel Margin="36,12">
-                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                    <ComboBox Text="{Binding selectedMaterial.supplier}"
+                                              Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                               materialDesign:HintAssist.Hint="Supplier"
-                                              IsEditable="True">
-                                        <ComboBoxItem>Apple</ComboBoxItem>
-                                        <ComboBoxItem>Banana</ComboBoxItem>
-                                        <ComboBoxItem>Pear</ComboBoxItem>
-                                        <ComboBoxItem>Orange</ComboBoxItem>
-                                    </ComboBox>
-                                    <TextBox TextWrapping="Wrap"
+                                              DisplayMemberPath="name"
+                                              ItemsSource="{Binding supplierList}"
+                                              SelectedItem="{Binding selectedMaterialSupplier}"
+                                              IsEditable="True" />
+                                    <TextBox Text="{Binding selectedMaterial.notes}"
+                                             TextWrapping="Wrap"
                                              AcceptsReturn="True"
                                              materialDesign:HintAssist.Hint="Notes"
                                              materialDesign:TextFieldAssist.HasTextAreaBox="True"
@@ -293,32 +292,33 @@
                                              Height="150"
                                              VerticalScrollBarVisibility="Auto" />
                                     <Grid>
-                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                        <TextBox Text="{Binding selectedMaterial.cost}"
+                                                 Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                  materialDesign:HintAssist.Hint="Cost (£)"
                                                  HorizontalAlignment="Left" />
-                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                        <TextBox Text="{Binding selectedMaterial.rate}"
+                                                 Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                  materialDesign:HintAssist.Hint="Rate (%)"
                                                  HorizontalAlignment="Right" />
                                     </Grid>
                                 </StackPanel>
-                                <Grid>
-                                    <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                            IsDefault="True"
+                                <StackPanel Orientation="Horizontal"
+                                            FlowDirection="RightToLeft">
+                                    <Button x:Name="SaveMaterial"
+                                            Click="SaveMaterial_Click"
+                                            Style="{StaticResource MaterialDesignFlatButton}"
                                             Margin="8"
-                                            CommandParameter="true"
-                                            Command="materialDesign:DialogHost.CloseDialogCommand"
-                                            HorizontalAlignment="Left">
-                                        CANCEL
-                                    </Button>
-                                    <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                            IsDefault="True"
-                                            Margin="8"
-                                            CommandParameter="true"
-                                            Command="materialDesign:DialogHost.CloseDialogCommand"
                                             HorizontalAlignment="Right">
                                         DONE
                                     </Button>
-                                </Grid>
+                                    <Button x:Name="CloseMaterial"
+                                            Click="CloseMaterial_Click"
+                                            Style="{StaticResource MaterialDesignFlatButton}"
+                                            Margin="8"
+                                            HorizontalAlignment="Right">
+                                        CANCEL
+                                    </Button>
+                                </StackPanel>
                             </StackPanel>
                         </materialDesign:DialogHost.DialogContent>
                         <materialDesign:DialogHost x:Name="SubcontractorDialog">
@@ -344,7 +344,9 @@
                                                                      Width="32"
                                                                      Height="32">
                                                 <StackPanel>
-                                                    <Button Content="Convert quote" />
+                                                    <Button x:Name="DeleteSubcontractor"
+                                                            Click="DeleteSubcontractor_Click"
+                                                            Content="Convert quote" />
                                                     <Separator />
                                                     <Button Content="Delete quote" />
                                                 </StackPanel>
@@ -352,14 +354,13 @@
                                         </Grid>
                                     </materialDesign:ColorZone>
                                     <StackPanel Margin="36,12">
-                                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                        <ComboBox Text="{Binding selectedSubcontractor.supplier}"
+                                                  Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                                   materialDesign:HintAssist.Hint="Supplier"
-                                                  IsEditable="True">
-                                            <ComboBoxItem>Apple</ComboBoxItem>
-                                            <ComboBoxItem>Banana</ComboBoxItem>
-                                            <ComboBoxItem>Pear</ComboBoxItem>
-                                            <ComboBoxItem>Orange</ComboBoxItem>
-                                        </ComboBox>
+                                                  DisplayMemberPath="name"
+                                                  ItemsSource="{Binding supplierList}"
+                                                  SelectedItem="{Binding selectedSubcontractorSupplier}"
+                                                  IsEditable="True" />
                                         <TextBox TextWrapping="Wrap"
                                                  AcceptsReturn="True"
                                                  materialDesign:HintAssist.Hint="Notes"
@@ -368,32 +369,33 @@
                                                  Height="150"
                                                  VerticalScrollBarVisibility="Auto" />
                                         <Grid>
-                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                            <TextBox Text="{Binding selectedSubcontractor.cost}"
+                                                     Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                      materialDesign:HintAssist.Hint="Cost (£)"
                                                      HorizontalAlignment="Left" />
-                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                            <TextBox Text="{Binding selectedSubcontractor.rate}"
+                                                     Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                      materialDesign:HintAssist.Hint="Rate (%)"
                                                      HorizontalAlignment="Right" />
                                         </Grid>
                                     </StackPanel>
-                                    <Grid>
-                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                                IsDefault="True"
+                                    <StackPanel Orientation="Horizontal"
+                                                FlowDirection="RightToLeft">
+                                        <Button x:Name="SaveSubcontractor"
+                                                Click="SaveSubcontractor_Click"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
                                                 Margin="8"
-                                                CommandParameter="true"
-                                                Command="materialDesign:DialogHost.CloseDialogCommand"
-                                                HorizontalAlignment="Left">
-                                            CANCEL
-                                        </Button>
-                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                                IsDefault="True"
-                                                Margin="8"
-                                                CommandParameter="true"
-                                                Command="materialDesign:DialogHost.CloseDialogCommand"
                                                 HorizontalAlignment="Right">
                                             DONE
                                         </Button>
-                                    </Grid>
+                                        <Button x:Name="CloseSubcontractor"
+                                                Click="CloseSubcontractor_Click"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="8"
+                                                HorizontalAlignment="Right">
+                                            CANCEL
+                                        </Button>
+                                    </StackPanel>
                                 </StackPanel>
                             </materialDesign:DialogHost.DialogContent>
                             <materialDesign:DialogHost x:Name="TaskDialog">
@@ -602,26 +604,21 @@
                                                            Text="Quote"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                            Margin="48,0,0,0" />
-                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                                        Margin="10,0"
-                                                        Padding="4"
-                                                        Grid.Column="2">
+                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                        Grid.Column="2"
+                                                        Click="Button_Click">
                                                     <materialDesign:PackIcon Kind="Download"
                                                                              Height="24"
                                                                              Width="24" />
                                                 </Button>
-                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                                        Margin="10,0"
-                                                        Padding="4"
+                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
                                                         Grid.Column="3"
                                                         ToolTip="Stage forward">
                                                     <materialDesign:PackIcon Kind="Forward"
                                                                              Height="24"
                                                                              Width="24" />
                                                 </Button>
-                                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                                        Margin="10,0"
-                                                        Padding="4"
+                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
                                                         Grid.Column="4">
                                                     <materialDesign:PackIcon Kind="Delete"
                                                                              Height="24"
@@ -641,7 +638,8 @@
                                                 </materialDesign:PopupBox>
                                             </Grid>
                                         </materialDesign:ColorZone>
-                                        <ProgressBar Grid.Row="1"
+                                        <ProgressBar x:Name="progressBar"
+                                                     Grid.Row="1"
                                                      IsIndeterminate="True"
                                                      Visibility="Collapsed" />
                                         <ScrollViewer Background="#FFFAFAFA"
@@ -714,7 +712,7 @@
                                                                      HorizontalAlignment="Left" />
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                                      materialDesign:HintAssist.Hint="Total cost"
-                                                                     Text="{Binding selectedQuote.quoteTotal}"
+                                                                     Text="{Binding selectedQuote.total}"
                                                                      HorizontalAlignment="Left" />
                                                             <Grid>
                                                                 <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
@@ -794,7 +792,7 @@
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                                                     <Button x:Name="NewItem"
-                                                                            Click="EditQuoteItem_Click"
+                                                                            Click="EditItem_Click"
                                                                             Style="{StaticResource MaterialDesignCustomNewButton}"
                                                                             Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
                                                                             ToolTip="New item">
@@ -815,11 +813,11 @@
                                                                                             CanUserResize="False">
                                                                         <DataGridTemplateColumn.CellTemplate>
                                                                             <DataTemplate>
-                                                                                <Button x:Name="EditQuoteItem"
-                                                                                        Click="EditQuoteItem_Click"
+                                                                                <Button x:Name="EditItem"
+                                                                                        Click="EditItem_Click"
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
                                                                                         Margin="0,-7"
-                                                                                        Tag="{Binding quoteItemID}">
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Pencil"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -890,11 +888,11 @@
                                                                                                                Header="Quantity"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="itemCost"
-                                                                                                               Binding="{Binding itemCost}"
+                                                                                                               Binding="{Binding cost}"
                                                                                                                Header="Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="itemTotal"
-                                                                                                               Binding="{Binding itemTotal}"
+                                                                                                               Binding="{Binding total}"
                                                                                                                Header="Total"
                                                                                                                IsReadOnly="True" />
                                                                     <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
@@ -906,7 +904,7 @@
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
                                                                                         Click="DeleteItem_Click"
                                                                                         Margin="0,-7"
-                                                                                        Tag="{Binding quoteItemID}">
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Delete"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -932,7 +930,8 @@
                                                                             Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
                                                                             ToolTip="New time"
                                                                             x:Name="NewTime"
-                                                                            Click="EditQuoteTime_Click">
+                                                                            Click="EditTime_Click"
+                                                                            Tag="{Binding selectedTime.ID}">
                                                                         <materialDesign:PackIcon Kind="Plus"
                                                                                                  Height="24"
                                                                                                  Width="24" />
@@ -949,10 +948,10 @@
                                                                                             IsReadOnly="True">
                                                                         <DataGridTemplateColumn.CellTemplate>
                                                                             <DataTemplate>
-                                                                                <Button x:Name="EditQuoteTime"
+                                                                                <Button x:Name="EditTime"
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="EditQuoteTime_Click"
-                                                                                        Tag="{Binding quoteTimeID}">
+                                                                                        Click="EditTime_Click"
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Pencil"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -993,15 +992,15 @@
                                                                                                                Header="Est Time"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="timeInitialCost"
-                                                                                                               Binding="{Binding initialCost}"
+                                                                                                               Binding="{Binding cost}"
                                                                                                                Header="Initial Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="timeRateCost"
-                                                                                                               Binding="{Binding rateCost}"
+                                                                                                               Binding="{Binding rate}"
                                                                                                                Header="Rate Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="timeTotal"
-                                                                                                               Binding="{Binding timeTotal}"
+                                                                                                               Binding="{Binding total}"
                                                                                                                Header="Total (£)"
                                                                                                                IsReadOnly="True" />
                                                                     <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
@@ -1013,7 +1012,7 @@
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
                                                                                         Click="DeleteTime_Click"
                                                                                         Margin="0,-7"
-                                                                                        Tag="{Binding quoteTimeID}">
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Delete"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -1039,7 +1038,7 @@
                                                                             Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
                                                                             ToolTip="New material"
                                                                             x:Name="NewMaterial"
-                                                                            Click="EditQuoteMaterial_Click">
+                                                                            Click="EditMaterial_Click">
                                                                         <materialDesign:PackIcon Kind="Plus"
                                                                                                  Height="24"
                                                                                                  Width="24" />
@@ -1056,9 +1055,10 @@
                                                                                             IsReadOnly="True">
                                                                         <DataGridTemplateColumn.CellTemplate>
                                                                             <DataTemplate>
-                                                                                <Button x:Name="EditQuoteMaterial"
+                                                                                <Button x:Name="EditMaterial"
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="EditQuoteMaterial_Click">
+                                                                                        Click="EditMaterial_Click"
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Pencil"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -1096,7 +1096,7 @@
                                                                                                                Width="200"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="materialCost"
-                                                                                                               Binding="{Binding materialCost}"
+                                                                                                               Binding="{Binding cost}"
                                                                                                                Header="Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="materialRate"
@@ -1104,7 +1104,7 @@
                                                                                                                Header="Rate (%)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="materialTotal"
-                                                                                                               Binding="{Binding materialTotal}"
+                                                                                                               Binding="{Binding total}"
                                                                                                                Header="Total Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
@@ -1116,7 +1116,7 @@
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
                                                                                         Click="DeleteMaterial_Click"
                                                                                         Margin="0,-7"
-                                                                                        Tag="{Binding quoteMaterialID}">
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Delete"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -1142,7 +1142,7 @@
                                                                             Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
                                                                             ToolTip="New subcontractor"
                                                                             x:Name="NewSubcontractor"
-                                                                            Click="EditQuoteSubcontractor_Click">
+                                                                            Click="EditSubcontractor_Click">
                                                                         <materialDesign:PackIcon Kind="Plus"
                                                                                                  Height="24"
                                                                                                  Width="24" />
@@ -1154,14 +1154,14 @@
                                                                       CellStyle="{StaticResource MaterialDesignCell}"
                                                                       RowStyle="{StaticResource MaterialDesignRow}">
                                                                 <DataGrid.Columns>
-                                                                    <DataGridTemplateColumn x:Name="editSubcontractorButton"
-                                                                                            materialDesign:DataGridAssist.CellPadding="0"
+                                                                    <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
                                                                                             IsReadOnly="True">
                                                                         <DataGridTemplateColumn.CellTemplate>
                                                                             <DataTemplate>
-                                                                                <Button x:Name="editQuoteSubcontractor"
+                                                                                <Button x:Name="EditSubcontractor"
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="EditQuoteSubcontractor_Click">
+                                                                                        Click="EditSubcontractor_Click"
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Pencil"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -1203,7 +1203,7 @@
                                                                                                                Width="200"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorCost"
-                                                                                                               Binding="{Binding subcontractorCost}"
+                                                                                                               Binding="{Binding cost}"
                                                                                                                Header="Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorRate"
@@ -1211,7 +1211,7 @@
                                                                                                                Header="Rate (%)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorTotal"
-                                                                                                               Binding="{Binding subcontractorTotal}"
+                                                                                                               Binding="{Binding total}"
                                                                                                                Header="Total Cost (£)"
                                                                                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                                                                     <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
@@ -1223,7 +1223,7 @@
                                                                                         Style="{StaticResource MaterialDesignGridButton}"
                                                                                         Click="DeleteSubcontractor_Click"
                                                                                         Margin="0,-7"
-                                                                                        Tag="{Binding quoteSubcontractorID}">
+                                                                                        Tag="{Binding ID}">
                                                                                     <materialDesign:PackIcon Kind="Delete"
                                                                                                              Width="16"
                                                                                                              Height="16"
@@ -1378,7 +1378,7 @@
                                         </ScrollViewer>
                                         <materialDesign:Snackbar Grid.Row="2"
                                                                  MessageQueue="{materialDesign:MessageQueue}"
-                                                                 x:Name="SnackbarThree"
+                                                                 x:Name="SnackBar"
                                                                  Panel.ZIndex="1"
                                                                  Margin="0,0,0,4" />
                                     </Grid>

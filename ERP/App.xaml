@@ -97,7 +97,22 @@
             </Style>
 
             <!--Buttons-->
-            
+            <Style x:Key="MaterialDesignCustomerHeaderButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
+                        Value="Depth0" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+                <Setter Property="Padding"
+                        Value="4" />
+                <Setter Property="materialDesign:RippleAssist.ClipToBounds"
+                        Value="False" />
+                <Setter Property="materialDesign:RippleAssist.IsCentered"
+                        Value="True" />
+                <Setter Property="materialDesign:RippleAssist.Feedback"
+                        Value="{StaticResource MaterialDesignFlatButtonRipple}" />
+            </Style>
             <!--DataGrid-->
             
             <Style x:Key="MaterialDesignDataGridComboBox"

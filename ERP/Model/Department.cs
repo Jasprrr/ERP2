@@ -21,5 +21,10 @@ namespace ERP.Model
         public int nominalCode { get; set; }
         public decimal initalCost { get; set; }
         public decimal rateCost { get; set; }
+
+        public string nominalCodeWithDepartment
+        {
+            get { return nominalCode + " " + department; }
+        }
     }
 }
