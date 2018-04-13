@@ -113,13 +113,13 @@ namespace ERP.View
             _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 6, supplier = "Jim Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
 
             _todoList = new ObservableCollection<ToDo>();
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Rob, Bob, Tim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Jim, Rob, Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Sam, Jim, Rob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim, Sam, Jim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob, Tim, Sam" });
+            _todoList.Add(new ToDo() { ID = 1, dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim" });
+            _todoList.Add(new ToDo() { ID = 2, dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob" });
+            _todoList.Add(new ToDo() { ID = 3, dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "RobTim" });
+            _todoList.Add(new ToDo() { ID = 4, dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Jim, Rob, Bob" });
+            _todoList.Add(new ToDo() { ID = 5, dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Sam, Jim, Rob" });
+            _todoList.Add(new ToDo() { ID = 6, dueDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim, Sam, Jim" });
+            _todoList.Add(new ToDo() { ID = 7, dueDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob, Tim, Sam" });
 
             InitializeComponent();
         }
@@ -203,7 +203,7 @@ namespace ERP.View
             get { return _selectedToDo; }
             set { if (value != null) { _selectedToDo = value; } }
         }
-        
+
         //Items
         private ObservableCollection<QuoteItem> _quoteItemList;
         public ObservableCollection<QuoteItem> quoteItemList
@@ -303,14 +303,40 @@ namespace ERP.View
         public Supplier selectedMaterialSupplier
         {
             get { return _selectedMaterialSupplier; }
-            set { if (value != null) { _selectedMaterialSupplier = value; OnPropertyChanged("selectedMaterialSupplier"); } }
+            set
+            {
+                if (value != null)
+                {
+                    _selectedMaterialSupplier = value;
+                    OnPropertyChanged("selectedMaterialSupplier");
+                }
+
+                if (selectedMaterial.supplier != _selectedMaterialSupplier.name)
+                {
+                    selectedMaterial.supplier = _selectedMaterialSupplier.name;
+                    selectedMaterial.supplierID = _selectedMaterialSupplier.ID;
+                }
+            }
         }
 
         private Supplier _selectedSubcontractorSupplier;
         public Supplier selectedSubcontractorSupplier
         {
             get { return _selectedSubcontractorSupplier; }
-            set { if (value != null) { _selectedSubcontractorSupplier = value; OnPropertyChanged("selectedSubcontractorSupplier"); } }
+            set
+            {
+                if (value != null)
+                {
+                    _selectedSubcontractorSupplier = value;
+                    OnPropertyChanged("selectedSubcontractorSupplier");
+                }
+
+                if (selectedSubcontractor.supplier != _selectedSubcontractorSupplier.name)
+                {
+                    selectedSubcontractor.supplier = _selectedSubcontractorSupplier.name;
+                    selectedSubcontractor.supplierID = _selectedSubcontractorSupplier.ID;
+                }
+            }
         }
 
         //Departments
@@ -330,14 +356,14 @@ namespace ERP.View
                 {
                     _selectedItemDepartment = value;
                     OnPropertyChanged("selectedItemDepartment");
+                }
 
-                    if (selectedItem.nominalCode != _selectedItemDepartment.nominalCode)
-                    {
-                        selectedItem.nominalCode = _selectedItemDepartment.nominalCode;
-                        selectedItem.department = _selectedItemDepartment.department;
+                if (selectedItem.nominalCode != _selectedItemDepartment.nominalCode)
+                {
+                    selectedItem.nominalCode = _selectedItemDepartment.nominalCode;
+                    selectedItem.department = _selectedItemDepartment.department;
 
-                        OnPropertyChanged("selectedItem");
-                    }
+                    OnPropertyChanged("selectedItem");
                 }
             }
         }
@@ -352,16 +378,16 @@ namespace ERP.View
                 {
                     _selectedTimeDepartment = value;
                     OnPropertyChanged("selectedTimeDepartment");
+                }
 
-                    if (selectedTime.nominalCode != _selectedTimeDepartment.nominalCode)
-                    {
-                        selectedTime.nominalCode = _selectedTimeDepartment.nominalCode;
-                        selectedTime.department = _selectedTimeDepartment.department;
-                        selectedTime.cost = _selectedTimeDepartment.initalCost;
-                        selectedTime.rate = _selectedTimeDepartment.rateCost;
+                if (selectedTime.nominalCode != _selectedTimeDepartment.nominalCode)
+                {
+                    selectedTime.nominalCode = _selectedTimeDepartment.nominalCode;
+                    selectedTime.department = _selectedTimeDepartment.department;
+                    selectedTime.cost = _selectedTimeDepartment.initalCost;
+                    selectedTime.rate = _selectedTimeDepartment.rateCost;
 
-                        OnPropertyChanged("selectedTime");
-                    }
+                    OnPropertyChanged("selectedTime");
                 }
             }
         }
@@ -432,14 +458,12 @@ namespace ERP.View
         {
             deleteObject = new Delete();
             var button = sender as Button;
-
-            if (ItemDialog.IsOpen == true)
-            {
-                ItemDialog.IsOpen = false;
-            }
-
+            
             deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
             deleteObject.type = "Item";
+            deleteObject.dialogOpen = ItemDialog.IsOpen;
+
+            ItemDialog.IsOpen = false;
 
             DeleteDialog.IsOpen = true;
         }
@@ -605,7 +629,6 @@ namespace ERP.View
             }
             deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
             deleteObject.type = "Subcontractor";
-            DeleteDialog.IsOpen = true;
         }
 
         //Task
@@ -657,6 +680,7 @@ namespace ERP.View
                     case "Quote":
                         break;
                     case "Item":
+                        quoteItemList.Remove(quoteItemList.SingleOrDefault(x => x.ID == selectedItem.ID));
                         ItemDialog.IsOpen = true;
                         break;
                     case "Time":
@@ -674,12 +698,13 @@ namespace ERP.View
                 }
             }
         }
-        
+
         private DispatcherTimer loginTimer;
 
         private void loginTimer_Tick(object sender, EventArgs e)
         {
-            Dispatcher.BeginInvoke(new Action(() => {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
                 loginTimer.Stop();
                 progressBar.Visibility = Visibility.Collapsed;
             }));
@@ -692,6 +717,22 @@ namespace ERP.View
             loginTimer.Interval = new TimeSpan(0, 0, 5);
             loginTimer.Start();
             progressBar.Visibility = Visibility.Visible;
+        }
+
+        private void CompleteToDo_Checked(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Complete!");
+            //var checkbox = sender as CheckBox;
+            //int value = (int)checkbox.Tag;
+            //if(value != 0)
+            //{
+            //    todoList.Remove(todoList.SingleOrDefault(x => x.ID == value));
+            //}
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine("Selection Changed");
         }
     }
 }

@@ -73,7 +73,5 @@ namespace ERP
             var QuoteWindow = new QuoteView();
             QuoteWindow.Show();
         }
-
-
     }
 }

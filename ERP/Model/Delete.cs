@@ -13,6 +13,7 @@ namespace ERP.Model
         public string name { get; set; }
         public string type { get; set; }
         public string fieldName { get; set; }
+        public bool dialogOpen { get; set; }
         public string deleteString {
             get
             {

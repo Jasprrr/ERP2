@@ -12,6 +12,7 @@ namespace ERP.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public int ID { get; set; }
         public DateTime dueDate { get; set; }
         public string account { get; set; }
         public string description { get; set; }

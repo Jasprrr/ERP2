@@ -1289,12 +1289,13 @@
                                                                       Y1="1"
                                                                       MinHeight="50"
                                                                       HorizontalAlignment="Right" />
-                                                                <ItemsControl  ItemsSource="{Binding todoList}"
+                                                                <ListView  ItemsSource="{Binding todoList}"
                                                                                Grid.IsSharedSizeScope="True"
                                                                                Grid.Column="1"
                                                                                VerticalContentAlignment="Stretch"
-                                                                               Margin="0,8">
-                                                                    <ItemsControl.ItemTemplate>
+                                                                               Margin="8,8,0,8"
+                                                                           SelectionChanged="ListView_SelectionChanged">
+                                                                    <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0,4">
                                                                                 <Grid.ColumnDefinitions>
@@ -1307,7 +1308,10 @@
                                                                                           Grid.Column="0"
                                                                                           HorizontalAlignment="Center"
                                                                                           Cursor="Hand"
-                                                                                          VerticalAlignment="Center" />
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked"/>
                                                                                 <StackPanel Grid.Column="1">
                                                                                     <TextBlock x:Name="taskHeader"
                                                                                                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
@@ -1321,20 +1325,30 @@
                                                                                                Style="{StaticResource MaterialDesignCaptionTextBlock}"
                                                                                                Text="{Binding dueDate, StringFormat=\{0:D\}}" />
                                                                                 </StackPanel>
+                                                                                <!--<Button Grid.Column="2" 
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>-->
                                                                                 <Border Grid.Column="2"
-                                                                                        VerticalAlignment="Top"
+                                                                                        VerticalAlignment="Center"
                                                                                         Margin="12,10,12,0"
                                                                                         Padding="0"
                                                                                         Width="24"
                                                                                         Height="24"
-                                                                                        Background="{StaticResource PrimaryHueMidBrush}"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
                                                                                         CornerRadius="12">
                                                                                     <TextBlock HorizontalAlignment="Center"
                                                                                                VerticalAlignment="Center"
                                                                                                Text="{Binding userInitials}"
                                                                                                Foreground="White" />
                                                                                 </Border>
-                                                                                <materialDesign:PopupBox Grid.Column="3"
+                                                                                <!--<materialDesign:PopupBox Grid.Column="3"
                                                                                                          PlacementMode="BottomAndAlignRightEdges"
                                                                                                          StaysOpen="True"
                                                                                                          Height="34"
@@ -1347,11 +1361,11 @@
                                                                                         <Separator />
                                                                                         <Button Content="Goodbye" />
                                                                                     </StackPanel>
-                                                                                </materialDesign:PopupBox>
+                                                                                </materialDesign:PopupBox>-->
                                                                             </Grid>
                                                                         </DataTemplate>
-                                                                    </ItemsControl.ItemTemplate>
-                                                                </ItemsControl>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
                                                             </Grid>
                                                             <Grid VerticalAlignment="Center">
                                                                 <Grid.ColumnDefinitions>
