@@ -349,21 +349,21 @@
                    TargetType="{x:Type DataGridRow}"
                    BasedOn="{StaticResource MaterialDesignDataGridRow}">
                 <Style.Triggers>
-                    <Trigger Property="IsSelected"
+                    <!--<Trigger Property="IsSelected"
                              Value="true">
                         <Setter Property="Background"
                                 Value="Transparent" />
                         <Setter Property="BorderBrush"
                                 Value="Transparent" />
-                    </Trigger>
+                    </Trigger>-->
 
-                    <Trigger Property="IsMouseOver"
+                    <!--<Trigger Property="IsMouseOver"
                              Value="true">
                         <Setter Property="Background"
                                 Value="Transparent" />
                         <Setter Property="BorderBrush"
                                 Value="Transparent" />
-                    </Trigger>
+                    </Trigger>-->
                 </Style.Triggers>
             </Style>
             <!--<Style x:Name="HorizontalStepper"

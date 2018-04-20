@@ -19,7 +19,8 @@
         Height="900"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         MinWidth="1056"
-        MinHeight="768">
+        MinHeight="768"
+        Language="en-GB">
     <Window.Resources>
         <Converters:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
         <Converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -708,11 +709,11 @@
                                                                      Text="{Binding selectedQuote.carriageNotes}" />
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                                      materialDesign:HintAssist.Hint="Carriage cost"
-                                                                     Text="{Binding selectedQuote.carriageCost}"
+                                                                     Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
                                                                      HorizontalAlignment="Left" />
                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                                      materialDesign:HintAssist.Hint="Total cost"
-                                                                     Text="{Binding selectedQuote.total}"
+                                                                     Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
                                                                      HorizontalAlignment="Left" />
                                                             <Grid>
                                                                 <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
@@ -1290,18 +1291,18 @@
                                                                       MinHeight="50"
                                                                       HorizontalAlignment="Right" />
                                                                 <ListView  ItemsSource="{Binding todoList}"
-                                                                               Grid.IsSharedSizeScope="True"
-                                                                               Grid.Column="1"
-                                                                               VerticalContentAlignment="Stretch"
-                                                                               Margin="8,8,0,8"
-                                                                           SelectionChanged="ListView_SelectionChanged">
+                                                                           Grid.IsSharedSizeScope="True"
+                                                                           Grid.Column="1"
+                                                                           VerticalContentAlignment="Stretch"
+                                                                           Margin="8,8,0,8"
+                                                                           SelectionChanged="ListView_SelectionChanged"
+                                                                           HorizontalContentAlignment="Stretch">
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
-                                                                            <Grid Margin="0,4">
+                                                                            <Grid Margin="0">
                                                                                 <Grid.ColumnDefinitions>
                                                                                     <ColumnDefinition Width="50" />
                                                                                     <ColumnDefinition Width="*" />
-                                                                                    <ColumnDefinition Width="Auto" />
                                                                                     <ColumnDefinition Width="Auto" />
                                                                                 </Grid.ColumnDefinitions>
                                                                                 <CheckBox IsChecked="{Binding complete}"
@@ -1311,7 +1312,7 @@
                                                                                           VerticalAlignment="Center"
                                                                                           Tag="{Binding ID}"
                                                                                           Panel.ZIndex="1"
-                                                                                          Checked="CompleteToDo_Checked"/>
+                                                                                          Checked="CompleteToDo_Checked" />
                                                                                 <StackPanel Grid.Column="1">
                                                                                     <TextBlock x:Name="taskHeader"
                                                                                                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
@@ -1336,8 +1337,8 @@
                                                                                                              Width="18" />
                                                                                 </Button>-->
                                                                                 <Border Grid.Column="2"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Margin="12,10,12,0"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
                                                                                         Padding="0"
                                                                                         Width="24"
                                                                                         Height="24"
@@ -1363,6 +1364,7 @@
                                                                                     </StackPanel>
                                                                                 </materialDesign:PopupBox>-->
                                                                             </Grid>
+
                                                                         </DataTemplate>
                                                                     </ListView.ItemTemplate>
                                                                 </ListView>
