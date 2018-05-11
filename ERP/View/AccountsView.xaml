@@ -43,15 +43,15 @@
                     <TextBlock Text="Customers" 
                                VerticalAlignment="Center"
                                Margin="24,0,0,0"
-                               Style="{StaticResource MaterialDesignTitleTextBlock}"/>
-                    <Button Grid.Column="1" 
-                            Width="32" 
+                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                    <Button Grid.Column="1"
+                            Width="32"
                             Padding="0"
                             Style="{StaticResource MaterialDesignFlatButton}"
                             Margin="12,0">
-                        <materialDesign:PackIcon Kind="FilterVariant" 
-                                                 Width="24" 
-                                                 Height="24"/>
+                        <materialDesign:PackIcon Kind="FilterVariant"
+                                                 Width="24"
+                                                 Height="24" />
                     </Button>
                     <Button Grid.Column="2" 
                             Width="32" 

@@ -645,7 +645,7 @@
                                                      IsIndeterminate="True"
                                                      Visibility="Collapsed" />
                                         <ScrollViewer Background="#FFFAFAFA"
-                                                      Padding="4"
+                                                      Padding="4,0,4,4"
                                                       Grid.Row="2"
                                                       HorizontalContentAlignment="Center"
                                                       VerticalScrollBarVisibility="Auto">
@@ -656,154 +656,177 @@
                                                                       MinWidth="336" />
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <StackPanel Grid.Column="0">
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <StackPanel Margin="36,12">
-                                                            <TextBlock Text="Details"
-                                                                       VerticalAlignment="Center"
-                                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                            <Grid>
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Quote no."
-                                                                         Text="{Binding selectedQuote.quoteID}"
-                                                                         IsEnabled="False"
-                                                                         HorizontalAlignment="Left" />
+                                                <StackPanel Grid.Column="0"
+                                                            Width="336">
+                                                    <TabControl Style="{DynamicResource TabControlStyle1}">
+                                                        <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                 Width="112">
+                                                            <TabItem.Header>
+                                                                <TextBlock Text="Details" />
+                                                            </TabItem.Header>
+                                                            <StackPanel Width="256"
+                                                                        Margin="0,12,0,0">
+                                                                <Grid>
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Quote no."
+                                                                             Text="{Binding selectedQuote.quoteID}"
+                                                                             IsEnabled="False"
+                                                                             HorizontalAlignment="Left" />
 
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Date"
+                                                                             Text="{Binding selectedQuote.dateCreated, StringFormat=\{0:d\}}"
+                                                                             IsEnabled="False"
+                                                                             HorizontalAlignment="Right" />
+                                                                </Grid>
+                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                          materialDesign:HintAssist.Hint="Company *"
+                                                                          ItemsSource="{Binding accountList}"
+                                                                          DisplayMemberPath="accountName"
+                                                                          SelectedItem="{Binding selectedAccount}"
+                                                                          IsEditable="True"
+                                                                          Margin="0,6,0,4" />
+                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                          materialDesign:HintAssist.Hint="Contact"
+                                                                          ItemsSource="{Binding contactList}"
+                                                                          DisplayMemberPath="fullName"
+                                                                          SelectedItem="{Binding selectedContact}"
+                                                                          IsEditable="True" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="PO no."
+                                                                         Text="{Binding selectedQuote.purchaseOrder}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Description"
+                                                                         Text="{Binding selectedQuote.description}" />
                                                                 <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Date"
-                                                                         Text="{Binding selectedQuote.dateCreated, StringFormat=\{0:d\}}"
+                                                                         materialDesign:HintAssist.Hint="Lead days"
+                                                                         Text="{Binding selectedQuote.leadTime}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                          materialDesign:HintAssist.Hint="Carriage option"
+                                                                          SelectedValue="{Binding selectedQuote.carriageOption}">
+                                                                    <ComboBoxItem IsSelected="True"
+                                                                                  Content="Collection" />
+                                                                    <ComboBoxItem Content="Courier" />
+                                                                    <ComboBoxItem Content="BIE Magnum delivery" />
+                                                                </ComboBox>
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Carriage notes"
+                                                                         Text="{Binding selectedQuote.carriageNotes}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                         materialDesign:HintAssist.Hint="Carriage cost"
+                                                                         Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                         materialDesign:HintAssist.Hint="Total cost"
+                                                                         Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <Grid>
+                                                                    <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
+                                                                                materialDesign:HintAssist.Hint="Due date"
+                                                                                Text="{Binding selectedQuote.dueDate}"
+                                                                                HorizontalAlignment="Left" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Success chance"
+                                                                             Text="{Binding selectedQuote.successChance, StringFormat=\{0:P\}}"
+                                                                             HorizontalAlignment="Right" />
+                                                                </Grid>
+                                                                <TextBox Text="{Binding selectedQuote.userName}"
                                                                          IsEnabled="False"
-                                                                         HorizontalAlignment="Right" />
-                                                            </Grid>
-                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                      materialDesign:HintAssist.Hint="Company *"
-                                                                      ItemsSource="{Binding accountList}"
-                                                                      DisplayMemberPath="accountName"
-                                                                      SelectedItem="{Binding selectedAccount}"
-                                                                      IsEditable="True" />
-                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                      materialDesign:HintAssist.Hint="Contact"
-                                                                      ItemsSource="{Binding contactList}"
-                                                                      DisplayMemberPath="fullName"
-                                                                      SelectedItem="{Binding selectedContact}"
-                                                                      IsEditable="True" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="PO no."
-                                                                     Text="{Binding selectedQuote.purchaseOrder}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Description"
-                                                                     Text="{Binding selectedQuote.description}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Lead days"
-                                                                     Text="{Binding selectedQuote.leadTime}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                      materialDesign:HintAssist.Hint="Carriage option"
-                                                                      SelectedValue="{Binding selectedQuote.carriageOption}">
-                                                                <ComboBoxItem IsSelected="True"
-                                                                              Content="Collection" />
-                                                                <ComboBoxItem Content="Courier" />
-                                                                <ComboBoxItem Content="BIE Magnum delivery" />
-                                                            </ComboBox>
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Carriage notes"
-                                                                     Text="{Binding selectedQuote.carriageNotes}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Carriage cost"
-                                                                     Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Total cost"
-                                                                     Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <Grid>
-                                                                <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
-                                                                            materialDesign:HintAssist.Hint="Due date"
-                                                                            Text="{Binding selectedQuote.dueDate}"
-                                                                            HorizontalAlignment="Left" />
+                                                                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Owner" />
+                                                            </StackPanel>
+                                                        </TabItem>
+                                                        <TabItem Header="Billing"
+                                                                 Style="{DynamicResource TabItemStyle1}"
+                                                                 Width="112">
+                                                            <StackPanel Margin="0,12,0,0">
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 1"
+                                                                         Text="{Binding selectedQuote.billingAddress1}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 2"
+                                                                         Text="{Binding selectedQuote.billingAddress2}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="City"
+                                                                         Text="{Binding selectedQuote.billingCity}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="County"
+                                                                         Text="{Binding selectedQuote.billingCounty}" />
                                                                 <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Success chance"
-                                                                         Text="{Binding selectedQuote.successChance, StringFormat=\{0:P\}}"
-                                                                         HorizontalAlignment="Right" />
-                                                            </Grid>
-                                                            <TextBox Text="{Binding selectedQuote.userName}"
-                                                                     IsEnabled="False"
-                                                                     Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Owner" />
-                                                        </StackPanel>
-                                                    </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <StackPanel Margin="36,12">
-                                                            <TextBlock Text="Billing"
-                                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                     Text="{Binding selectedQuote.billingAddress1}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                     Text="{Binding selectedQuote.billingAddress2}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="City"
-                                                                     Text="{Binding selectedQuote.billingCity}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="County"
-                                                                     Text="{Binding selectedQuote.billingCounty}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                     Text="{Binding selectedQuote.billingPostcode}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                     Text="{Binding selectedQuote.billingCountry}" />
-                                                        </StackPanel>
-                                                    </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <StackPanel Margin="36,12">
-                                                            <TextBlock Text="Shipping"
-                                                                       VerticalAlignment="Center"
-                                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                     Text="{Binding selectedQuote.shippingAddress1}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                     Text="{Binding selectedQuote.shippingAddress2}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="City"
-                                                                     Text="{Binding selectedQuote.shippingCity}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="County"
-                                                                     Text="{Binding selectedQuote.shippingCounty}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                     Text="{Binding selectedQuote.shippingPostcode}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                     Text="{Binding selectedQuote.shippingCountry}" />
-                                                        </StackPanel>
-                                                    </materialDesign:Card>
+                                                                         materialDesign:HintAssist.Hint="Postcode"
+                                                                         Text="{Binding selectedQuote.billingPostcode}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Country"
+                                                                         Text="{Binding selectedQuote.billingCountry}" />
+                                                            </StackPanel>
+                                                        </TabItem>
+                                                        <TabItem Header="Shipping"
+                                                                 Style="{DynamicResource TabItemStyle1}"
+                                                                 Width="112">
+                                                            <StackPanel Margin="0,12,0,0">
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 1"
+                                                                         Text="{Binding selectedQuote.shippingAddress1}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 2"
+                                                                         Text="{Binding selectedQuote.shippingAddress2}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="City"
+                                                                         Text="{Binding selectedQuote.shippingCity}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="County"
+                                                                         Text="{Binding selectedQuote.shippingCounty}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                         materialDesign:HintAssist.Hint="Postcode"
+                                                                         Text="{Binding selectedQuote.shippingPostcode}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Country"
+                                                                         Text="{Binding selectedQuote.shippingCountry}" />
+                                                            </StackPanel>
+                                                        </TabItem>
+                                                    </TabControl>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="1">
                                                     <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <Expander Background="White"
-                                                                  IsExpanded="True">
-                                                            <Expander.Header>
-                                                                <Grid Height="32">
-                                                                    <TextBlock Text="Items"
-                                                                               VerticalAlignment="Center"
-                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button x:Name="NewItem"
-                                                                            Click="EditItem_Click"
-                                                                            Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                            Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                            ToolTip="New item">
-                                                                        <materialDesign:PackIcon Kind="Plus"
-                                                                                                 Height="24"
-                                                                                                 Width="24" />
-                                                                    </Button>
-                                                                </Grid>
-                                                            </Expander.Header>
+                                                        <TextBlock Text="Status Stepper"
+                                                                   HorizontalAlignment="Center"
+                                                                   Padding="0,4" />
+                                                    </materialDesign:Card>
+                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                                        <StackPanel>
+                                                            <Grid Height="32"
+                                                                  Margin="24,20">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Text="Items"
+                                                                           VerticalAlignment="Center"
+                                                                           Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                <Button x:Name="NewItem"
+                                                                        Click="EditItem_Click"
+                                                                        Grid.Column="1"
+                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                        Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
+                                                                        ToolTip="New item">
+                                                                    <materialDesign:PackIcon Kind="Plus"
+                                                                                             Height="24"
+                                                                                             Width="24" />
+                                                                </Button>
+                                                                <Button x:Name="FilterItem"
+                                                                        Grid.Column="2"
+                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                        Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
+                                                                        ToolTip="New item">
+                                                                    <materialDesign:PackIcon Kind="FilterVariant"
+                                                                                             Height="24"
+                                                                                             Width="24" />
+                                                                </Button>
+                                                            </Grid>
                                                             <DataGrid ItemsSource="{Binding quoteItemList}"
                                                                       Style="{StaticResource MaterialDesignGrid}"
                                                                       CellStyle="{StaticResource MaterialDesignCell}"
@@ -919,481 +942,122 @@
                                                                     </DataGridTemplateColumn>
                                                                 </DataGrid.Columns>
                                                             </DataGrid>
-                                                        </Expander>
-                                                    </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <Expander Background="White"
-                                                                  IsExpanded="True">
-                                                            <Expander.Header>
-                                                                <Grid Height="32">
-                                                                    <TextBlock Text="Times"
-                                                                               VerticalAlignment="Center"
-                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                            Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                            ToolTip="New time"
-                                                                            x:Name="NewTime"
-                                                                            Click="EditTime_Click"
-                                                                            Tag="{Binding selectedTime.ID}">
-                                                                        <materialDesign:PackIcon Kind="Plus"
-                                                                                                 Height="24"
-                                                                                                 Width="24" />
-                                                                    </Button>
-                                                                </Grid>
-                                                            </Expander.Header>
-                                                            <DataGrid Style="{StaticResource MaterialDesignGrid}"
-                                                                      CellStyle="{StaticResource MaterialDesignCell}"
-                                                                      RowStyle="{StaticResource MaterialDesignRow}"
-                                                                      ItemsSource="{Binding quoteTimeList}">
-                                                                <DataGrid.Columns>
-                                                                    <DataGridTemplateColumn x:Name="timeButton"
-                                                                                            materialDesign:DataGridAssist.CellPadding="0"
-                                                                                            IsReadOnly="True">
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <Button x:Name="EditTime"
-                                                                                        Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="EditTime_Click"
-                                                                                        Tag="{Binding ID}">
-                                                                                    <materialDesign:PackIcon Kind="Pencil"
-                                                                                                             Width="16"
-                                                                                                             Height="16"
-                                                                                                             VerticalContentAlignment="Center"
-                                                                                                             HorizontalContentAlignment="Center" />
-                                                                                </Button>
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="timeLine"
-                                                                                                               Binding="{Binding line}"
-                                                                                                               Header="Line"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <DataGridTemplateColumn x:Name="timeDepartment"
-                                                                                            CanUserSort="True"
-                                                                                            SortMemberPath="department"
-                                                                                            Width="120"
-                                                                                            materialDesign:DataGridAssist.CellPadding="13,14,8,14">
-                                                                        <DataGridTemplateColumn.Header>
-                                                                            <TextBlock Text="Department" />
-                                                                        </DataGridTemplateColumn.Header>
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <TextBlock Text="{Binding department}" />
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                                                            <DataTemplate>
-                                                                                <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.departments}}"
-                                                                                          Style="{StaticResource MaterialDesignCustomGridComboBox}"
-                                                                                          DisplayMemberPath="department"
-                                                                                          Text="{Binding department}" />
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="timeEstimatedTime"
-                                                                                                               Binding="{Binding estatimatedTime}"
-                                                                                                               Header="Est Time"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="timeInitialCost"
-                                                                                                               Binding="{Binding cost}"
-                                                                                                               Header="Initial Cost (£)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="timeRateCost"
-                                                                                                               Binding="{Binding rate}"
-                                                                                                               Header="Rate Cost (£)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="timeTotal"
-                                                                                                               Binding="{Binding total}"
-                                                                                                               Header="Total (£)"
-                                                                                                               IsReadOnly="True" />
-                                                                    <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
-                                                                                            IsReadOnly="True"
-                                                                                            CanUserResize="False">
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <Button x:Name="DeleteQuoteTime"
-                                                                                        Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="DeleteTime_Click"
-                                                                                        Margin="0,-7"
-                                                                                        Tag="{Binding ID}">
-                                                                                    <materialDesign:PackIcon Kind="Delete"
-                                                                                                             Width="16"
-                                                                                                             Height="16"
-                                                                                                             VerticalContentAlignment="Center"
-                                                                                                             HorizontalContentAlignment="Center" />
-                                                                                </Button>
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                </DataGrid.Columns>
-                                                            </DataGrid>
-                                                        </Expander>
-                                                    </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <Expander Background="White"
-                                                                  IsExpanded="True">
-                                                            <Expander.Header>
-                                                                <Grid Height="32">
-                                                                    <TextBlock Text="Materials"
-                                                                               VerticalAlignment="Center"
-                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                            Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                            ToolTip="New material"
-                                                                            x:Name="NewMaterial"
-                                                                            Click="EditMaterial_Click">
-                                                                        <materialDesign:PackIcon Kind="Plus"
-                                                                                                 Height="24"
-                                                                                                 Width="24" />
-                                                                    </Button>
-                                                                </Grid>
-                                                            </Expander.Header>
-                                                            <DataGrid Style="{StaticResource MaterialDesignGrid}"
-                                                                      CellStyle="{StaticResource MaterialDesignCell}"
-                                                                      RowStyle="{StaticResource MaterialDesignRow}"
-                                                                      ItemsSource="{Binding quoteMaterialList}">
-                                                                <DataGrid.Columns>
-                                                                    <DataGridTemplateColumn x:Name="editMaterialButton"
-                                                                                            materialDesign:DataGridAssist.CellPadding="0"
-                                                                                            IsReadOnly="True">
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <Button x:Name="EditMaterial"
-                                                                                        Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="EditMaterial_Click"
-                                                                                        Tag="{Binding ID}">
-                                                                                    <materialDesign:PackIcon Kind="Pencil"
-                                                                                                             Width="16"
-                                                                                                             Height="16"
-                                                                                                             VerticalContentAlignment="Center"
-                                                                                                             HorizontalContentAlignment="Center" />
-                                                                                </Button>
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                    <DataGridTemplateColumn x:Name="materialSupplier"
-                                                                                            CanUserSort="True"
-                                                                                            SortMemberPath="supplier"
-                                                                                            Width="200"
-                                                                                            materialDesign:DataGridAssist.CellPadding="13,14,8,14">
-                                                                        <DataGridTemplateColumn.Header>
-                                                                            <TextBlock Text="Supplier" />
-                                                                        </DataGridTemplateColumn.Header>
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <TextBlock Text="{Binding supplier}" />
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                                                            <DataTemplate>
-                                                                                <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.departments}}"
-                                                                                          DisplayMemberPath="supplier"
-                                                                                          Text="{Binding supplier}"
-                                                                                          Style="{StaticResource MaterialDesignCustomGridComboBox}" />
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="materialNotes"
-                                                                                                               Binding="{Binding notes}"
-                                                                                                               Header="Notes"
-                                                                                                               Width="200"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="materialCost"
-                                                                                                               Binding="{Binding cost}"
-                                                                                                               Header="Cost (£)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="materialRate"
-                                                                                                               Binding="{Binding rate}"
-                                                                                                               Header="Rate (%)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="materialTotal"
-                                                                                                               Binding="{Binding total}"
-                                                                                                               Header="Total Cost (£)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
-                                                                                            IsReadOnly="True"
-                                                                                            CanUserResize="False">
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <Button x:Name="DeleteMaterialTime"
-                                                                                        Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="DeleteMaterial_Click"
-                                                                                        Margin="0,-7"
-                                                                                        Tag="{Binding ID}">
-                                                                                    <materialDesign:PackIcon Kind="Delete"
-                                                                                                             Width="16"
-                                                                                                             Height="16"
-                                                                                                             VerticalContentAlignment="Center"
-                                                                                                             HorizontalContentAlignment="Center" />
-                                                                                </Button>
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                </DataGrid.Columns>
-                                                            </DataGrid>
-                                                        </Expander>
-                                                    </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
-                                                        <Expander Background="White"
-                                                                  IsExpanded="True">
-                                                            <Expander.Header>
-                                                                <Grid Height="32">
-                                                                    <TextBlock Text="Subcontractors"
-                                                                               VerticalAlignment="Center"
-                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                            Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                            ToolTip="New subcontractor"
-                                                                            x:Name="NewSubcontractor"
-                                                                            Click="EditSubcontractor_Click">
-                                                                        <materialDesign:PackIcon Kind="Plus"
-                                                                                                 Height="24"
-                                                                                                 Width="24" />
-                                                                    </Button>
-                                                                </Grid>
-                                                            </Expander.Header>
-                                                            <DataGrid ItemsSource="{Binding quoteSubcontractorList}"
-                                                                      Style="{StaticResource MaterialDesignGrid}"
-                                                                      CellStyle="{StaticResource MaterialDesignCell}"
-                                                                      RowStyle="{StaticResource MaterialDesignRow}">
-                                                                <DataGrid.Columns>
-                                                                    <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
-                                                                                            IsReadOnly="True">
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <Button x:Name="EditSubcontractor"
-                                                                                        Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="EditSubcontractor_Click"
-                                                                                        Tag="{Binding ID}">
-                                                                                    <materialDesign:PackIcon Kind="Pencil"
-                                                                                                             Width="16"
-                                                                                                             Height="16"
-                                                                                                             VerticalContentAlignment="Center"
-                                                                                                             HorizontalContentAlignment="Center" />
-                                                                                </Button>
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                    <DataGridTemplateColumn x:Name="subcontractorSupplier"
-                                                                                            CanUserSort="True"
-                                                                                            SortMemberPath="supplier"
-                                                                                            Width="200"
-                                                                                            materialDesign:DataGridAssist.CellPadding="13,14,8,14">
-                                                                        <DataGridTemplateColumn.Header>
-                                                                            <TextBlock Text="Supplier" />
-                                                                        </DataGridTemplateColumn.Header>
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <TextBlock Text="{Binding supplier}" />
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                                                            <DataTemplate>
-                                                                                <ComboBox ItemsSource="{Binding Source={x:Static local:QuoteView.departments}}"
-                                                                                          DisplayMemberPath="supplier"
-                                                                                          IsEditable="True"
-                                                                                          Margin="0,-7,0,-8"
-                                                                                          Text="{Binding supplier}"
-                                                                                          StaysOpenOnEdit="True"
-                                                                                          IsDropDownOpen="True"
-                                                                                          Padding="0,7,0,8" />
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorNotes"
-                                                                                                               Binding="{Binding notes}"
-                                                                                                               Header="Notes"
-                                                                                                               Width="200"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorCost"
-                                                                                                               Binding="{Binding cost}"
-                                                                                                               Header="Cost (£)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorRate"
-                                                                                                               Binding="{Binding rate}"
-                                                                                                               Header="Rate (%)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <materialDesign:MaterialDataGridTextColumn x:Name="subcontractorTotal"
-                                                                                                               Binding="{Binding total}"
-                                                                                                               Header="Total Cost (£)"
-                                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                                    <DataGridTemplateColumn materialDesign:DataGridAssist.CellPadding="0"
-                                                                                            IsReadOnly="True"
-                                                                                            CanUserResize="False">
-                                                                        <DataGridTemplateColumn.CellTemplate>
-                                                                            <DataTemplate>
-                                                                                <Button x:Name="DeleteSubcontractorTime"
-                                                                                        Style="{StaticResource MaterialDesignGridButton}"
-                                                                                        Click="DeleteSubcontractor_Click"
-                                                                                        Margin="0,-7"
-                                                                                        Tag="{Binding ID}">
-                                                                                    <materialDesign:PackIcon Kind="Delete"
-                                                                                                             Width="16"
-                                                                                                             Height="16"
-                                                                                                             VerticalContentAlignment="Center"
-                                                                                                             HorizontalContentAlignment="Center" />
-                                                                                </Button>
-                                                                            </DataTemplate>
-                                                                        </DataGridTemplateColumn.CellTemplate>
-                                                                    </DataGridTemplateColumn>
-                                                                </DataGrid.Columns>
-                                                            </DataGrid>
-                                                        </Expander>
+                                                        </StackPanel>
                                                     </materialDesign:Card>
                                                 </StackPanel>
-                                                <StackPanel Grid.Column="2"
-                                                            Width="336">
-                                                    <materialDesign:ColorZone>
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="auto" />
-                                                            </Grid.ColumnDefinitions>
-                                                            <Button Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                    ToolTip="New item"
-                                                                    Panel.ZIndex="1"
-                                                                    VerticalAlignment="Top"
-                                                                    Margin="0,12"
-                                                                    Grid.Column="2">
-                                                                <materialDesign:PackIcon Kind="Plus"
-                                                                                         Height="24"
-                                                                                         Width="24" />
-                                                            </Button>
-                                                            <Expander Margin="0">
-                                                                <Expander.Header>
-                                                                    <StackPanel Orientation="Horizontal">
-                                                                        <Grid Height="32">
-                                                                            <TextBlock Text="Tasks"
-                                                                                       VerticalAlignment="Center"
-                                                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                        </Grid>
-                                                                    </StackPanel>
-                                                                </Expander.Header>
-                                                                <Expander.Content>
-                                                                    <ListView ItemsSource="{Binding todoList}"
-                                                                              Grid.IsSharedSizeScope="True"
-                                                                              Grid.ColumnSpan="2"
-                                                                              VerticalContentAlignment="Stretch"
-                                                                              Margin="8,8,0,8"
-                                                                              SelectionChanged="ListView_SelectionChanged"
-                                                                              HorizontalContentAlignment="Stretch">
-                                                                        <ListView.ItemTemplate>
-                                                                            <DataTemplate>
-                                                                                <Grid Margin="0">
-                                                                                    <Grid.ColumnDefinitions>
-                                                                                        <ColumnDefinition Width="50" />
-                                                                                        <ColumnDefinition Width="*" />
-                                                                                        <ColumnDefinition Width="Auto" />
-                                                                                    </Grid.ColumnDefinitions>
-                                                                                    <CheckBox IsChecked="{Binding complete}"
-                                                                                              Grid.Column="0"
-                                                                                              HorizontalAlignment="Center"
-                                                                                              Cursor="Hand"
-                                                                                              VerticalAlignment="Center"
-                                                                                              Tag="{Binding ID}"
-                                                                                              Panel.ZIndex="1"
-                                                                                              Checked="CompleteToDo_Checked" />
-                                                                                    <StackPanel Grid.Column="1">
-                                                                                        <TextBlock x:Name="taskHeader"
-                                                                                                   Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                                                                                                   FontWeight="Bold"
-                                                                                                   Text="{Binding taskType}" />
-                                                                                        <TextBlock x:Name="taskSubheader"
-                                                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                                                   Text="{Binding description}"
-                                                                                                   TextTrimming="CharacterEllipsis" />
-                                                                                        <TextBlock x:Name="taskDetail"
-                                                                                                   Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                                                                                   Text="{Binding dueDate, StringFormat=\{0:D\}}" />
-                                                                                    </StackPanel>
-                                                                                    <Button Grid.Column="2"
-                                                                                            x:Name="NewTas2k"
-                                                                                            Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                                            ToolTip="New item"
-                                                                                            Margin="0,0,8,0"
-                                                                                            VerticalAlignment="Center">
-                                                                                        <materialDesign:PackIcon Kind="Pencil"
-                                                                                                                 Height="18"
-                                                                                                                 Width="18" />
-                                                                                    </Button>
-                                                                                    <Border Grid.Column="2"
-                                                                                            VerticalAlignment="Top"
-                                                                                            Margin="12,4,12,0"
-                                                                                            Padding="0"
-                                                                                            Width="24"
-                                                                                            Height="24"
-                                                                                            Background="{StaticResource SecondaryAccentBrush}"
-                                                                                            CornerRadius="12">
-                                                                                        <TextBlock HorizontalAlignment="Center"
-                                                                                                   VerticalAlignment="Center"
-                                                                                                   Text="{Binding userInitials}"
-                                                                                                   Foreground="White" />
-                                                                                    </Border>
-                                                                                </Grid>
-                                                                            </DataTemplate>
-                                                                        </ListView.ItemTemplate>
-                                                                    </ListView>
-                                                                </Expander.Content>
-                                                            </Expander>
-                                                        </Grid>
-                                                    </materialDesign:ColorZone>
-                                                    <!--<materialDesign:Card Style="{StaticResource MaterialDesignCard}"
-                                                                         Padding="0,12"
-                                                                         Width="328"
-                                                                         VerticalAlignment="Stretch"
-                                                                         VerticalContentAlignment="Stretch">
-                                                        <StackPanel>
-                                                            <Grid VerticalAlignment="Center">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Button Style="{StaticResource MaterialDesignCustomButton}"
-                                                                        Padding="0"
-                                                                        HorizontalContentAlignment="Left"
-                                                                        Height="40">
-                                                                    <StackPanel Orientation="Horizontal">
-                                                                        <UserControl:Stepper Height="40"
-                                                                                             IsSelected="True"
-                                                                                             Icon="1" />
-                                                                        <TextBlock Text="Quote created"
-                                                                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                                                   VerticalAlignment="Center" />
-                                                                    </StackPanel>
-                                                                </Button>
-                                                                <Button x:Name="NewTask"
-                                                                        Click="EditTaskItem_Click"
-                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                        ToolTip="New item"
-                                                                        Margin="0,0,8,0">
-                                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                                             Height="24"
-                                                                                             Width="24" />
-                                                                </Button>
-                                                            </Grid>
-                                                            <Grid VerticalAlignment="Stretch">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="auto" />
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="24" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Line x:Name="TopLine"
-                                                                      Fill="#1E000000"
-                                                                      Stroke="#1E000000"
-                                                                      StrokeThickness="1"
-                                                                      Stretch="Fill"
-                                                                      Y1="1"
-                                                                      MinHeight="50"
-                                                                      HorizontalAlignment="Right" />
-                                                                <ListView  ItemsSource="{Binding todoList}"
-                                                                           Grid.IsSharedSizeScope="True"
-                                                                           Grid.Column="1"
-                                                                           VerticalContentAlignment="Stretch"
-                                                                           Margin="8,8,0,8"
-                                                                           SelectionChanged="ListView_SelectionChanged"
-                                                                           HorizontalContentAlignment="Stretch">
+                                                <materialDesign:ColorZone Grid.Column="2"
+                                                                          Width="336"
+                                                                          BorderThickness="1,0,0,0"
+                                                                          BorderBrush="#1e000000"
+                                                                          Background="White"
+                                                                          VerticalAlignment="Stretch"
+                                                                          Margin="4,0,0,0">
+                                                    <StackPanel>
+                                                        <Expander Margin="0"
+                                                                  Background="White">
+                                                            <Expander.Header>
+                                                                <Grid>
+                                                                    <TextBlock Text="Tasks"
+                                                                               VerticalAlignment="Center"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                            ToolTip="New item"
+                                                                            Panel.ZIndex="1"
+                                                                            VerticalAlignment="Top">
+                                                                        <materialDesign:PackIcon Kind="Plus"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <Expander.Content>
+                                                                <ListView ItemsSource="{Binding todoList}"
+                                                                          Grid.IsSharedSizeScope="True"
+                                                                          Grid.ColumnSpan="2"
+                                                                          VerticalContentAlignment="Stretch"
+                                                                          Margin="8,0,0,8"
+                                                                          SelectionChanged="ListView_SelectionChanged"
+                                                                          HorizontalContentAlignment="Stretch">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid Margin="0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="50" />
+                                                                                    <ColumnDefinition Width="*" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <CheckBox IsChecked="{Binding complete}"
+                                                                                          Grid.Column="0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          Cursor="Hand"
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked" />
+                                                                                <StackPanel Grid.Column="1">
+                                                                                    <TextBlock x:Name="taskSubheader"
+                                                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                               Text="{Binding description}"
+                                                                                               TextTrimming="CharacterEllipsis" />
+                                                                                    <TextBlock x:Name="taskDetail"
+                                                                                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                </StackPanel>
+                                                                                <Button Grid.Column="2"
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>
+                                                                                <Border Grid.Column="2"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
+                                                                                        Padding="0"
+                                                                                        Width="24"
+                                                                                        Height="24"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
+                                                                                        CornerRadius="12">
+                                                                                    <TextBlock HorizontalAlignment="Center"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Text="{Binding userInitials}"
+                                                                                               Foreground="White" />
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </Expander.Content>
+                                                        </Expander>
+                                                        <Separator Background="#1e000000" />
+                                                        <Expander Margin="0"
+                                                                  Background="White">
+                                                            <Expander.Header>
+                                                                <Grid>
+                                                                    <TextBlock Text="Orders"
+                                                                               VerticalAlignment="Center"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                            ToolTip="New item"
+                                                                            Panel.ZIndex="1"
+                                                                            VerticalAlignment="Top">
+                                                                        <materialDesign:PackIcon Kind="Plus"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <Expander.Content>
+                                                                <ListView ItemsSource="{Binding todoList}"
+                                                                          Grid.IsSharedSizeScope="True"
+                                                                          Grid.ColumnSpan="2"
+                                                                          VerticalContentAlignment="Stretch"
+                                                                          Margin="8,8,0,8"
+                                                                          SelectionChanged="ListView_SelectionChanged"
+                                                                          HorizontalContentAlignment="Stretch">
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1423,8 +1087,7 @@
                                                                                                Style="{StaticResource MaterialDesignCaptionTextBlock}"
                                                                                                Text="{Binding dueDate, StringFormat=\{0:D\}}" />
                                                                                 </StackPanel>
-                                                                                -->
-                                                    <!--<Button Grid.Column="2" 
+                                                                                <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
                                                                                         Style="{StaticResource MaterialDesignCustomNewButton}"
                                                                                         ToolTip="New item"
@@ -1433,8 +1096,7 @@
                                                                                     <materialDesign:PackIcon Kind="Pencil"
                                                                                                              Height="18"
                                                                                                              Width="18" />
-                                                                                </Button>-->
-                                                    <!--
+                                                                                </Button>
                                                                                 <Border Grid.Column="2"
                                                                                         VerticalAlignment="Top"
                                                                                         Margin="12,4,12,0"
@@ -1448,49 +1110,351 @@
                                                                                                Text="{Binding userInitials}"
                                                                                                Foreground="White" />
                                                                                 </Border>
-                                                                                -->
-                                                    <!--<materialDesign:PopupBox Grid.Column="3"
-                                                                                                         PlacementMode="BottomAndAlignRightEdges"
-                                                                                                         StaysOpen="True"
-                                                                                                         Height="34"
-                                                                                                         Margin="4,4,4,0"
-                                                                                                         VerticalAlignment="Top"
-                                                                                                         BorderThickness="1">
-                                                                                    <StackPanel>
-                                                                                        <Button Content="Hello World" />
-                                                                                        <Button Content="Nice Popup" />
-                                                                                        <Separator />
-                                                                                        <Button Content="Goodbye" />
-                                                                                    </StackPanel>
-                                                                                </materialDesign:PopupBox>-->
-                                                    <!--
                                                                             </Grid>
-
                                                                         </DataTemplate>
                                                                     </ListView.ItemTemplate>
                                                                 </ListView>
-                                                            </Grid>
-                                                            <Grid VerticalAlignment="Center">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Button Style="{StaticResource MaterialDesignCustomButton}"
-                                                                        Padding="0"
-                                                                        HorizontalContentAlignment="Left"
-                                                                        Height="40">
-                                                                    <StackPanel Orientation="Horizontal">
-                                                                        <UserControl:Stepper Height="40"
-                                                                                             Icon="2" />
-                                                                        <TextBlock Text="{Binding 123, FallbackValue=Quote Complete}"
-                                                                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                                                   VerticalAlignment="Center" />
-                                                                    </StackPanel>
-                                                                </Button>
-                                                            </Grid>
-                                                        </StackPanel>
-                                                    </materialDesign:Card>-->
-                                                </StackPanel>
+                                                            </Expander.Content>
+                                                        </Expander>
+                                                        <Separator Background="#1e000000" />
+                                                        <Expander Margin="0"
+                                                                  Background="White">
+                                                            <Expander.Header>
+                                                                <Grid>
+                                                                    <TextBlock Text="Deliveries"
+                                                                               VerticalAlignment="Center"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                            ToolTip="New item"
+                                                                            Panel.ZIndex="1"
+                                                                            VerticalAlignment="Top">
+                                                                        <materialDesign:PackIcon Kind="Plus"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <Expander.Content>
+                                                                <ListView ItemsSource="{Binding todoList}"
+                                                                          Grid.IsSharedSizeScope="True"
+                                                                          Grid.ColumnSpan="2"
+                                                                          VerticalContentAlignment="Stretch"
+                                                                          Margin="8,8,0,8"
+                                                                          SelectionChanged="ListView_SelectionChanged"
+                                                                          HorizontalContentAlignment="Stretch">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid Margin="0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="50" />
+                                                                                    <ColumnDefinition Width="*" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <CheckBox IsChecked="{Binding complete}"
+                                                                                          Grid.Column="0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          Cursor="Hand"
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked" />
+                                                                                <StackPanel Grid.Column="1">
+                                                                                    <TextBlock x:Name="taskHeader"
+                                                                                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                                               FontWeight="Bold"
+                                                                                               Text="{Binding taskType}" />
+                                                                                    <TextBlock x:Name="taskSubheader"
+                                                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                               Text="{Binding description}"
+                                                                                               TextTrimming="CharacterEllipsis" />
+                                                                                    <TextBlock x:Name="taskDetail"
+                                                                                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                </StackPanel>
+                                                                                <Button Grid.Column="2"
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>
+                                                                                <Border Grid.Column="2"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
+                                                                                        Padding="0"
+                                                                                        Width="24"
+                                                                                        Height="24"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
+                                                                                        CornerRadius="12">
+                                                                                    <TextBlock HorizontalAlignment="Center"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Text="{Binding userInitials}"
+                                                                                               Foreground="White" />
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </Expander.Content>
+                                                        </Expander>
+                                                        <Separator Background="#1e000000" />
+                                                        <Expander Margin="0"
+                                                                  Background="White">
+                                                            <Expander.Header>
+                                                                <Grid>
+                                                                    <TextBlock Text="Invoices"
+                                                                               VerticalAlignment="Center"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                            ToolTip="New item"
+                                                                            Panel.ZIndex="1"
+                                                                            VerticalAlignment="Top">
+                                                                        <materialDesign:PackIcon Kind="Plus"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <Expander.Content>
+                                                                <ListView ItemsSource="{Binding todoList}"
+                                                                          Grid.IsSharedSizeScope="True"
+                                                                          Grid.ColumnSpan="2"
+                                                                          VerticalContentAlignment="Stretch"
+                                                                          Margin="8,8,0,8"
+                                                                          SelectionChanged="ListView_SelectionChanged"
+                                                                          HorizontalContentAlignment="Stretch">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid Margin="0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="50" />
+                                                                                    <ColumnDefinition Width="*" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <CheckBox IsChecked="{Binding complete}"
+                                                                                          Grid.Column="0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          Cursor="Hand"
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked" />
+                                                                                <StackPanel Grid.Column="1">
+                                                                                    <TextBlock x:Name="taskHeader"
+                                                                                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                                               FontWeight="Bold"
+                                                                                               Text="{Binding taskType}" />
+                                                                                    <TextBlock x:Name="taskSubheader"
+                                                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                               Text="{Binding description}"
+                                                                                               TextTrimming="CharacterEllipsis" />
+                                                                                    <TextBlock x:Name="taskDetail"
+                                                                                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                </StackPanel>
+                                                                                <Button Grid.Column="2"
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>
+                                                                                <Border Grid.Column="2"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
+                                                                                        Padding="0"
+                                                                                        Width="24"
+                                                                                        Height="24"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
+                                                                                        CornerRadius="12">
+                                                                                    <TextBlock HorizontalAlignment="Center"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Text="{Binding userInitials}"
+                                                                                               Foreground="White" />
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </Expander.Content>
+                                                        </Expander>
+                                                        <Separator Background="#1e000000" />
+                                                        <Expander Margin="0"
+                                                                  Background="White">
+                                                            <Expander.Header>
+                                                                <Grid>
+                                                                    <TextBlock Text="Credits"
+                                                                               VerticalAlignment="Center"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                            ToolTip="New item"
+                                                                            Panel.ZIndex="1"
+                                                                            VerticalAlignment="Top">
+                                                                        <materialDesign:PackIcon Kind="Plus"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <Expander.Content>
+                                                                <ListView ItemsSource="{Binding todoList}"
+                                                                          Grid.IsSharedSizeScope="True"
+                                                                          Grid.ColumnSpan="2"
+                                                                          VerticalContentAlignment="Stretch"
+                                                                          Margin="8,8,0,8"
+                                                                          SelectionChanged="ListView_SelectionChanged"
+                                                                          HorizontalContentAlignment="Stretch">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid Margin="0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="50" />
+                                                                                    <ColumnDefinition Width="*" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <CheckBox IsChecked="{Binding complete}"
+                                                                                          Grid.Column="0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          Cursor="Hand"
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked" />
+                                                                                <StackPanel Grid.Column="1">
+                                                                                    <TextBlock x:Name="taskHeader"
+                                                                                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                                               FontWeight="Bold"
+                                                                                               Text="{Binding taskType}" />
+                                                                                    <TextBlock x:Name="taskSubheader"
+                                                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                               Text="{Binding description}"
+                                                                                               TextTrimming="CharacterEllipsis" />
+                                                                                    <TextBlock x:Name="taskDetail"
+                                                                                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                </StackPanel>
+                                                                                <Button Grid.Column="2"
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>
+                                                                                <Border Grid.Column="2"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
+                                                                                        Padding="0"
+                                                                                        Width="24"
+                                                                                        Height="24"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
+                                                                                        CornerRadius="12">
+                                                                                    <TextBlock HorizontalAlignment="Center"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Text="{Binding userInitials}"
+                                                                                               Foreground="White" />
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </Expander.Content>
+                                                        </Expander>
+                                                        <Separator Background="#1e000000" />
+                                                        <Expander Margin="0"
+                                                                  Background="White">
+                                                            <Expander.Header>
+                                                                <Grid>
+                                                                    <TextBlock Text="Purchases"
+                                                                               VerticalAlignment="Center"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                            ToolTip="New item"
+                                                                            Panel.ZIndex="1"
+                                                                            VerticalAlignment="Top">
+                                                                        <materialDesign:PackIcon Kind="Plus"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <Expander.Content>
+                                                                <ListView ItemsSource="{Binding todoList}"
+                                                                          Grid.IsSharedSizeScope="True"
+                                                                          Grid.ColumnSpan="2"
+                                                                          VerticalContentAlignment="Stretch"
+                                                                          Margin="8,8,0,8"
+                                                                          SelectionChanged="ListView_SelectionChanged"
+                                                                          HorizontalContentAlignment="Stretch">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid Margin="0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="50" />
+                                                                                    <ColumnDefinition Width="*" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <CheckBox IsChecked="{Binding complete}"
+                                                                                          Grid.Column="0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          Cursor="Hand"
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked" />
+                                                                                <StackPanel Grid.Column="1">
+                                                                                    <TextBlock x:Name="taskHeader"
+                                                                                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                                               FontWeight="Bold"
+                                                                                               Text="{Binding taskType}" />
+                                                                                    <TextBlock x:Name="taskSubheader"
+                                                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                               Text="{Binding description}"
+                                                                                               TextTrimming="CharacterEllipsis" />
+                                                                                    <TextBlock x:Name="taskDetail"
+                                                                                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                </StackPanel>
+                                                                                <Button Grid.Column="2"
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>
+                                                                                <Border Grid.Column="2"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
+                                                                                        Padding="0"
+                                                                                        Width="24"
+                                                                                        Height="24"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
+                                                                                        CornerRadius="12">
+                                                                                    <TextBlock HorizontalAlignment="Center"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Text="{Binding userInitials}"
+                                                                                               Foreground="White" />
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </Expander.Content>
+                                                        </Expander>
+                                                        <Separator Background="#1e000000" />
+                                                    </StackPanel>
+                                                </materialDesign:ColorZone>
                                             </Grid>
                                         </ScrollViewer>
                                         <materialDesign:Snackbar Grid.Row="2"

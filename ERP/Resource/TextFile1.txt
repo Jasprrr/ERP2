@@ -1,0 +1,154 @@
+﻿
+                                                    <!--<materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                                         Padding="0,12"
+                                                                         Width="328"
+                                                                         VerticalAlignment="Stretch"
+                                                                         VerticalContentAlignment="Stretch">
+                                                        <StackPanel>
+                                                            <Grid VerticalAlignment="Center">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button Style="{StaticResource MaterialDesignCustomButton}"
+                                                                        Padding="0"
+                                                                        HorizontalContentAlignment="Left"
+                                                                        Height="40">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <UserControl:Stepper Height="40"
+                                                                                             IsSelected="True"
+                                                                                             Icon="1" />
+                                                                        <TextBlock Text="Quote created"
+                                                                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                                                                   VerticalAlignment="Center" />
+                                                                    </StackPanel>
+                                                                </Button>
+                                                                <Button x:Name="NewTask"
+                                                                        Click="EditTaskItem_Click"
+                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                        ToolTip="New item"
+                                                                        Margin="0,0,8,0">
+                                                                    <materialDesign:PackIcon Kind="Plus"
+                                                                                             Height="24"
+                                                                                             Width="24" />
+                                                                </Button>
+                                                            </Grid>
+                                                            <Grid VerticalAlignment="Stretch">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="24" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Line x:Name="TopLine"
+                                                                      Fill="#1E000000"
+                                                                      Stroke="#1E000000"
+                                                                      StrokeThickness="1"
+                                                                      Stretch="Fill"
+                                                                      Y1="1"
+                                                                      MinHeight="50"
+                                                                      HorizontalAlignment="Right" />
+                                                                <ListView  ItemsSource="{Binding todoList}"
+                                                                           Grid.IsSharedSizeScope="True"
+                                                                           Grid.Column="1"
+                                                                           VerticalContentAlignment="Stretch"
+                                                                           Margin="8,8,0,8"
+                                                                           SelectionChanged="ListView_SelectionChanged"
+                                                                           HorizontalContentAlignment="Stretch">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid Margin="0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="50" />
+                                                                                    <ColumnDefinition Width="*" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <CheckBox IsChecked="{Binding complete}"
+                                                                                          Grid.Column="0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          Cursor="Hand"
+                                                                                          VerticalAlignment="Center"
+                                                                                          Tag="{Binding ID}"
+                                                                                          Panel.ZIndex="1"
+                                                                                          Checked="CompleteToDo_Checked" />
+                                                                                <StackPanel Grid.Column="1">
+                                                                                    <TextBlock x:Name="taskHeader"
+                                                                                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                                               FontWeight="Bold"
+                                                                                               Text="{Binding taskType}" />
+                                                                                    <TextBlock x:Name="taskSubheader"
+                                                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                               Text="{Binding description}"
+                                                                                               TextTrimming="CharacterEllipsis" />
+                                                                                    <TextBlock x:Name="taskDetail"
+                                                                                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                </StackPanel>
+                                                                                -->
+                                                    <!--<Button Grid.Column="2" 
+                                                                                        x:Name="NewTas2k"
+                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        ToolTip="New item"
+                                                                                        Margin="0,0,8,0"
+                                                                                        VerticalAlignment="Center">
+                                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                             Height="18"
+                                                                                                             Width="18" />
+                                                                                </Button>-->
+                                                    <!--
+                                                                                <Border Grid.Column="2"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Margin="12,4,12,0"
+                                                                                        Padding="0"
+                                                                                        Width="24"
+                                                                                        Height="24"
+                                                                                        Background="{StaticResource SecondaryAccentBrush}"
+                                                                                        CornerRadius="12">
+                                                                                    <TextBlock HorizontalAlignment="Center"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Text="{Binding userInitials}"
+                                                                                               Foreground="White" />
+                                                                                </Border>
+                                                                                -->
+                                                    <!--<materialDesign:PopupBox Grid.Column="3"
+                                                                                                         PlacementMode="BottomAndAlignRightEdges"
+                                                                                                         StaysOpen="True"
+                                                                                                         Height="34"
+                                                                                                         Margin="4,4,4,0"
+                                                                                                         VerticalAlignment="Top"
+                                                                                                         BorderThickness="1">
+                                                                                    <StackPanel>
+                                                                                        <Button Content="Hello World" />
+                                                                                        <Button Content="Nice Popup" />
+                                                                                        <Separator />
+                                                                                        <Button Content="Goodbye" />
+                                                                                    </StackPanel>
+                                                                                </materialDesign:PopupBox>-->
+                                                    <!--
+                                                                            </Grid>
+
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </Grid>
+                                                            <Grid VerticalAlignment="Center">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button Style="{StaticResource MaterialDesignCustomButton}"
+                                                                        Padding="0"
+                                                                        HorizontalContentAlignment="Left"
+                                                                        Height="40">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <UserControl:Stepper Height="40"
+                                                                                             Icon="2" />
+                                                                        <TextBlock Text="{Binding 123, FallbackValue=Quote Complete}"
+                                                                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                                                                   VerticalAlignment="Center" />
+                                                                    </StackPanel>
+                                                                </Button>
+                                                            </Grid>
+                                                        </StackPanel>
+                                                    </materialDesign:Card>-->
