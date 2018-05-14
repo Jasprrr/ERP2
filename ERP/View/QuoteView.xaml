@@ -645,7 +645,6 @@
                                                      IsIndeterminate="True"
                                                      Visibility="Collapsed" />
                                         <ScrollViewer Background="#FFFAFAFA"
-                                                      Padding="4,0,4,4"
                                                       Grid.Row="2"
                                                       HorizontalContentAlignment="Center"
                                                       VerticalScrollBarVisibility="Auto">
@@ -657,137 +656,158 @@
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
                                                 <StackPanel Grid.Column="0"
-                                                            Width="336">
-                                                    <TabControl Style="{DynamicResource TabControlStyle1}">
-                                                        <TabItem Style="{DynamicResource TabItemStyle1}"
-                                                                 Width="112">
-                                                            <TabItem.Header>
-                                                                <TextBlock Text="Details" />
-                                                            </TabItem.Header>
-                                                            <StackPanel Width="256"
-                                                                        Margin="0,12,0,0">
-                                                                <Grid>
-                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                             materialDesign:HintAssist.Hint="Quote no."
-                                                                             Text="{Binding selectedQuote.quoteID}"
-                                                                             IsEnabled="False"
-                                                                             HorizontalAlignment="Left" />
+                                                            Width="337">
+                                                    <materialDesign:ColorZone Mode="PrimaryLight"
+                                                                              Height="150">
+                                                        <StackPanel>
+                                                            <Border Width="50"
+                                                                    Height="50"
+                                                                    CornerRadius="25"
+                                                                    Margin="0,10,0,0">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <TextBlock Text="Schools Mailing"
+                                                                       HorizontalAlignment="Center"
+                                                                       Margin="0,10,0,0"
+                                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                        </StackPanel>
+                                                    </materialDesign:ColorZone>
+                                                    <materialDesign:ColorZone BorderThickness="0,0,1,0"
+                                                                              BorderBrush="#1e000000"
+                                                                              VerticalAlignment="Stretch">
+                                                        <TabControl Style="{DynamicResource TabControlStyle1}">
+                                                            <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                     Width="112">
+                                                                <TabItem.Header>
+                                                                    <TextBlock Text="Details" />
+                                                                </TabItem.Header>
+                                                                <StackPanel Width="256"
+                                                                            Margin="0,12,0,0">
+                                                                    <Grid>
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Quote no."
+                                                                                 Text="{Binding selectedQuote.quoteID}"
+                                                                                 IsEnabled="False"
+                                                                                 HorizontalAlignment="Left" />
 
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Date"
+                                                                                 Text="{Binding selectedQuote.dateCreated, StringFormat=\{0:d\}}"
+                                                                                 IsEnabled="False"
+                                                                                 HorizontalAlignment="Right" />
+                                                                    </Grid>
+                                                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                              materialDesign:HintAssist.Hint="Company *"
+                                                                              ItemsSource="{Binding accountList}"
+                                                                              DisplayMemberPath="accountName"
+                                                                              SelectedItem="{Binding selectedAccount}"
+                                                                              IsEditable="True"
+                                                                              Margin="0,6,0,4" />
+                                                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                              materialDesign:HintAssist.Hint="Contact"
+                                                                              ItemsSource="{Binding contactList}"
+                                                                              DisplayMemberPath="fullName"
+                                                                              SelectedItem="{Binding selectedContact}"
+                                                                              IsEditable="True" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="PO no."
+                                                                             Text="{Binding selectedQuote.purchaseOrder}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Description"
+                                                                             Text="{Binding selectedQuote.description}" />
                                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                             materialDesign:HintAssist.Hint="Date"
-                                                                             Text="{Binding selectedQuote.dateCreated, StringFormat=\{0:d\}}"
+                                                                             materialDesign:HintAssist.Hint="Lead days"
+                                                                             Text="{Binding selectedQuote.leadTime}"
+                                                                             HorizontalAlignment="Left" />
+                                                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                              materialDesign:HintAssist.Hint="Carriage option"
+                                                                              SelectedValue="{Binding selectedQuote.carriageOption}">
+                                                                        <ComboBoxItem IsSelected="True"
+                                                                                      Content="Collection" />
+                                                                        <ComboBoxItem Content="Courier" />
+                                                                        <ComboBoxItem Content="BIE Magnum delivery" />
+                                                                    </ComboBox>
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Carriage notes"
+                                                                             Text="{Binding selectedQuote.carriageNotes}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Carriage cost"
+                                                                             Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
+                                                                             HorizontalAlignment="Left" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Total cost"
+                                                                             Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
+                                                                             HorizontalAlignment="Left" />
+                                                                    <Grid>
+                                                                        <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
+                                                                                    materialDesign:HintAssist.Hint="Due date"
+                                                                                    Text="{Binding selectedQuote.dueDate}"
+                                                                                    HorizontalAlignment="Left" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Success chance"
+                                                                                 Text="{Binding selectedQuote.successChance, StringFormat=\{0:P\}}"
+                                                                                 HorizontalAlignment="Right" />
+                                                                    </Grid>
+                                                                    <TextBox Text="{Binding selectedQuote.userName}"
                                                                              IsEnabled="False"
-                                                                             HorizontalAlignment="Right" />
-                                                                </Grid>
-                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                          materialDesign:HintAssist.Hint="Company *"
-                                                                          ItemsSource="{Binding accountList}"
-                                                                          DisplayMemberPath="accountName"
-                                                                          SelectedItem="{Binding selectedAccount}"
-                                                                          IsEditable="True"
-                                                                          Margin="0,6,0,4" />
-                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                          materialDesign:HintAssist.Hint="Contact"
-                                                                          ItemsSource="{Binding contactList}"
-                                                                          DisplayMemberPath="fullName"
-                                                                          SelectedItem="{Binding selectedContact}"
-                                                                          IsEditable="True" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="PO no."
-                                                                         Text="{Binding selectedQuote.purchaseOrder}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Description"
-                                                                         Text="{Binding selectedQuote.description}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Lead days"
-                                                                         Text="{Binding selectedQuote.leadTime}"
-                                                                         HorizontalAlignment="Left" />
-                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                          materialDesign:HintAssist.Hint="Carriage option"
-                                                                          SelectedValue="{Binding selectedQuote.carriageOption}">
-                                                                    <ComboBoxItem IsSelected="True"
-                                                                                  Content="Collection" />
-                                                                    <ComboBoxItem Content="Courier" />
-                                                                    <ComboBoxItem Content="BIE Magnum delivery" />
-                                                                </ComboBox>
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Carriage notes"
-                                                                         Text="{Binding selectedQuote.carriageNotes}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Carriage cost"
-                                                                         Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
-                                                                         HorizontalAlignment="Left" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Total cost"
-                                                                         Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
-                                                                         HorizontalAlignment="Left" />
-                                                                <Grid>
-                                                                    <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
-                                                                                materialDesign:HintAssist.Hint="Due date"
-                                                                                Text="{Binding selectedQuote.dueDate}"
-                                                                                HorizontalAlignment="Left" />
+                                                                             Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Owner" />
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="Billing"
+                                                                     Style="{DynamicResource TabItemStyle1}"
+                                                                     Width="112">
+                                                                <StackPanel Margin="0,12,0,0">
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Address 1"
+                                                                             Text="{Binding selectedQuote.billingAddress1}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Address 2"
+                                                                             Text="{Binding selectedQuote.billingAddress2}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="City"
+                                                                             Text="{Binding selectedQuote.billingCity}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="County"
+                                                                             Text="{Binding selectedQuote.billingCounty}" />
                                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                             materialDesign:HintAssist.Hint="Success chance"
-                                                                             Text="{Binding selectedQuote.successChance, StringFormat=\{0:P\}}"
-                                                                             HorizontalAlignment="Right" />
-                                                                </Grid>
-                                                                <TextBox Text="{Binding selectedQuote.userName}"
-                                                                         IsEnabled="False"
-                                                                         Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Owner" />
-                                                            </StackPanel>
-                                                        </TabItem>
-                                                        <TabItem Header="Billing"
-                                                                 Style="{DynamicResource TabItemStyle1}"
-                                                                 Width="112">
-                                                            <StackPanel Margin="0,12,0,0">
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Address 1"
-                                                                         Text="{Binding selectedQuote.billingAddress1}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Address 2"
-                                                                         Text="{Binding selectedQuote.billingAddress2}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="City"
-                                                                         Text="{Binding selectedQuote.billingCity}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="County"
-                                                                         Text="{Binding selectedQuote.billingCounty}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Postcode"
-                                                                         Text="{Binding selectedQuote.billingPostcode}"
-                                                                         HorizontalAlignment="Left" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Country"
-                                                                         Text="{Binding selectedQuote.billingCountry}" />
-                                                            </StackPanel>
-                                                        </TabItem>
-                                                        <TabItem Header="Shipping"
-                                                                 Style="{DynamicResource TabItemStyle1}"
-                                                                 Width="112">
-                                                            <StackPanel Margin="0,12,0,0">
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Address 1"
-                                                                         Text="{Binding selectedQuote.shippingAddress1}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Address 2"
-                                                                         Text="{Binding selectedQuote.shippingAddress2}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="City"
-                                                                         Text="{Binding selectedQuote.shippingCity}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="County"
-                                                                         Text="{Binding selectedQuote.shippingCounty}" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                         materialDesign:HintAssist.Hint="Postcode"
-                                                                         Text="{Binding selectedQuote.shippingPostcode}"
-                                                                         HorizontalAlignment="Left" />
-                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                         materialDesign:HintAssist.Hint="Country"
-                                                                         Text="{Binding selectedQuote.shippingCountry}" />
-                                                            </StackPanel>
-                                                        </TabItem>
-                                                    </TabControl>
+                                                                             materialDesign:HintAssist.Hint="Postcode"
+                                                                             Text="{Binding selectedQuote.billingPostcode}"
+                                                                             HorizontalAlignment="Left" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Country"
+                                                                             Text="{Binding selectedQuote.billingCountry}" />
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="Shipping"
+                                                                     Style="{DynamicResource TabItemStyle1}"
+                                                                     Width="112">
+                                                                <StackPanel Margin="0,12,0,0">
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Address 1"
+                                                                             Text="{Binding selectedQuote.shippingAddress1}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Address 2"
+                                                                             Text="{Binding selectedQuote.shippingAddress2}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="City"
+                                                                             Text="{Binding selectedQuote.shippingCity}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="County"
+                                                                             Text="{Binding selectedQuote.shippingCounty}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Postcode"
+                                                                             Text="{Binding selectedQuote.shippingPostcode}"
+                                                                             HorizontalAlignment="Left" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Country"
+                                                                             Text="{Binding selectedQuote.shippingCountry}" />
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                        </TabControl>
+                                                    </materialDesign:ColorZone>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="1">
                                                     <materialDesign:Card Style="{StaticResource MaterialDesignCard}">

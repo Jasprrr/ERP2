@@ -245,6 +245,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\grey_silhouette.png" />
     <Resource Include="Resource\TextFile1.txt" />
     <Resource Include="icon.ico" />
     <Content Include="Resource\bie-logo.svg" />
