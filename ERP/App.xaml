@@ -610,9 +610,9 @@
             <SolidColorBrush x:Key="TabItem.MouseOver.Border"
                              Color="#7EB4EA" />
             <SolidColorBrush x:Key="TabItem.Selected.Border"
-                             Color="#2196f3" />
+                             Color="#4a148c" />
             <SolidColorBrush x:Key="TabItem.Selected.Background"
-                             Color="#FFFFFF" />
+                             Color="#7c43bd" />
             <Style x:Key="TabItemStyle1"
                    TargetType="{x:Type TabItem}">
                 <Setter Property="FocusVisualStyle"
@@ -631,14 +631,14 @@
                             <Grid x:Name="templateRoot"
                                   SnapsToDevicePixels="true">
                                 <Border x:Name="mainBorder"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderBrush="White"
                                         BorderThickness="0"
-                                        Background="{TemplateBinding Background}"
+                                        Background="#7c43bd"
                                         Margin="0">
                                     <Border x:Name="innerBorder"
                                             BorderBrush="{StaticResource TabItem.Selected.Border}"
                                             BorderThickness="0,0,0,2"
-                                            Background="{StaticResource TabItem.Selected.Background}"
+                                            Background="#7c43bd"
                                             Margin="0"
                                             Opacity="0" />
                                 </Border>
@@ -692,7 +692,7 @@
                 <Setter Property="VerticalContentAlignment"
                         Value="Center" />
                 <Setter Property="Background"
-                        Value="{StaticResource TabItem.Selected.Background}" />
+                        Value="White" />
                 <Setter Property="BorderBrush"
                         Value="{StaticResource TabItem.Selected.Border}" />
                 <Setter Property="BorderThickness"
@@ -758,7 +758,7 @@
                                             Value="Auto" />
                                     <Setter Property="Margin"
                                             TargetName="headerPanel"
-                                            Value="2,0,2,2" />
+                                            Value="0" />
                                 </Trigger>
                                 <Trigger Property="TabStripPlacement"
                                          Value="Left">
