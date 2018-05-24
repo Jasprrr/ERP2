@@ -587,7 +587,7 @@
                                         </Grid.RowDefinitions>
                                         <materialDesign:ColorZone Grid.Row="0"
                                                                   Padding="16"
-                                                                  Mode="PrimaryMid"
+                                                                  Mode="PrimaryDark"
                                                                   materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                                                   Grid.ColumnSpan="2"
                                                                   Panel.ZIndex="1">
@@ -615,7 +615,8 @@
                                                 </Button>
                                                 <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
                                                         Grid.Column="3"
-                                                        ToolTip="Stage forward">
+                                                        ToolTip="Stage forward"
+                                                        Click="Button_Click_1">
                                                     <materialDesign:PackIcon Kind="Forward"
                                                                              Height="24"
                                                                              Width="24" />
@@ -659,69 +660,147 @@
                                                                           BorderBrush="#1e000000"
                                                                           VerticalAlignment="Stretch"
                                                                           Background="White">
-                                                    <StackPanel Grid.Column="0"
-                                                                Width="337">
-
-                                                        <materialDesign:ColorZone Background="#FF4A148C">
-                                                            <Grid VerticalAlignment="Center">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="auto" />
-                                                                    <RowDefinition Height="auto" />
-                                                                </Grid.RowDefinitions>
-                                                                <Border Width="50"
-                                                                        Height="50"
-                                                                        CornerRadius="25"
-                                                                        VerticalAlignment="Center"
-                                                                        Grid.Row="0"
-                                                                        Margin="0,10,0,0">
-                                                                    <Border.Background>
-                                                                        <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
-                                                                    </Border.Background>
-                                                                </Border>
-                                                                <TextBlock Text="Schools Mailing"
-                                                                           HorizontalAlignment="Center"
-                                                                           Grid.Row="1"
-                                                                           Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                                           Margin="0,10"
-                                                                           Foreground="#DDFFFFFF" />
-                                                            </Grid>
+                                                    <StackPanel Width="336">
+                                                        <materialDesign:ColorZone Mode="PrimaryMid">
+                                                            <materialDesign:Transitioner x:Name="magicTransitioner"
+                                                                                         SelectedIndex="0"
+                                                                                         Height="180">
+                                                                <materialDesign:TransitionerSlide>
+                                                                    <materialDesign:TransitionerSlide.ForwardWipe>
+                                                                        <materialDesign:SlideWipe Direction="Left" />
+                                                                    </materialDesign:TransitionerSlide.ForwardWipe>
+                                                                    <materialDesign:TransitionerSlide.BackwardWipe>
+                                                                        <materialDesign:SlideWipe Direction="Left" />
+                                                                    </materialDesign:TransitionerSlide.BackwardWipe>
+                                                                    <Grid>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="auto" />
+                                                                            <RowDefinition Height="auto" />
+                                                                            <RowDefinition Height="auto" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                                HorizontalContentAlignment="Right"
+                                                                                VerticalAlignment="Top"
+                                                                                HorizontalAlignment="Right"
+                                                                                Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
+                                                                                Margin="0,10,10,0">
+                                                                            <materialDesign:PackIcon Kind="Pencil"
+                                                                                                     Height="24"
+                                                                                                     Width="24" />
+                                                                        </Button>
+                                                                        <Border Width="50"
+                                                                                Height="50"
+                                                                                CornerRadius="25"
+                                                                                Grid.Row="0"
+                                                                                VerticalAlignment="Center"
+                                                                                Margin="0,10,0,0"
+                                                                                BorderThickness="2"
+                                                                                BorderBrush="#FFC5C5C5">
+                                                                            <Border.Background>
+                                                                                <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                            </Border.Background>
+                                                                        </Border>
+                                                                        <TextBlock Text="{Binding selectedQuote.accountName}"
+                                                                                   HorizontalAlignment="Center"
+                                                                                   Grid.Row="1"
+                                                                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                                                                   Margin="0,10"
+                                                                                   Foreground="#FFFFFF" />
+                                                                        <Grid Height="70"
+                                                                              Grid.Row="2">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="auto" />
+                                                                                <ColumnDefinition Width="*" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Border Width="50"
+                                                                                    Height="50"
+                                                                                    CornerRadius="25"
+                                                                                    Grid.Row="0"
+                                                                                    Margin="10"
+                                                                                    HorizontalAlignment="Left"
+                                                                                    BorderThickness="2"
+                                                                                    BorderBrush="#FFC5C5C5">
+                                                                                <Border.Background>
+                                                                                    <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                                </Border.Background>
+                                                                            </Border>
+                                                                            <StackPanel Grid.Column="1"
+                                                                                        VerticalAlignment="Center"
+                                                                                        Margin="14,0">
+                                                                                <TextBlock Text="Jasper Friend"
+                                                                                           Foreground="#DDFFFFFF" />
+                                                                                <TextBlock Text="IT Dude"
+                                                                                           Foreground="#DDFFFFFF" />
+                                                                            </StackPanel>
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                </materialDesign:TransitionerSlide>
+                                                                <materialDesign:TransitionerSlide>
+                                                                    <materialDesign:TransitionerSlide.ForwardWipe>
+                                                                        <materialDesign:SlideWipe Direction="Right" />
+                                                                    </materialDesign:TransitionerSlide.ForwardWipe>
+                                                                    <materialDesign:TransitionerSlide.BackwardWipe>
+                                                                        <materialDesign:SlideWipe Direction="Right" />
+                                                                    </materialDesign:TransitionerSlide.BackwardWipe>
+                                                                    <materialDesign:ColorZone Background="White"
+                                                                                              VerticalAlignment="Stretch">
+                                                                        <Grid>
+                                                                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                                    HorizontalContentAlignment="Right"
+                                                                                    Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
+                                                                                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                                                    VerticalAlignment="Top"
+                                                                                    HorizontalAlignment="Right"
+                                                                                    Margin="0,10,10,0">
+                                                                                <materialDesign:PackIcon Kind="Check"
+                                                                                                         Height="24"
+                                                                                                         Width="24" />
+                                                                            </Button>
+                                                                            <StackPanel>
+                                                                                <Border Width="50"
+                                                                                        Height="50"
+                                                                                        CornerRadius="25"
+                                                                                        VerticalAlignment="Center"
+                                                                                        Margin="0,10,0,0"
+                                                                                        BorderThickness="2"
+                                                                                        BorderBrush="#FFC5C5C5">
+                                                                                    <Border.Background>
+                                                                                        <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                                    </Border.Background>
+                                                                                </Border>
+                                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                          materialDesign:HintAssist.Hint="Company *"
+                                                                                          ItemsSource="{Binding accountList}"
+                                                                                          Grid.Row="1"
+                                                                                          DisplayMemberPath="accountName"
+                                                                                          SelectedItem="{Binding selectedAccount}"
+                                                                                          IsEditable="True" />
+                                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                          materialDesign:HintAssist.Hint="Contact"
+                                                                                          ItemsSource="{Binding contactList}"
+                                                                                          DisplayMemberPath="fullName"
+                                                                                          SelectedItem="{Binding selectedContact}"
+                                                                                          IsEditable="True" />
+                                                                            </StackPanel>
+                                                                        </Grid>
+                                                                    </materialDesign:ColorZone>
+                                                                </materialDesign:TransitionerSlide>
+                                                            </materialDesign:Transitioner>
                                                         </materialDesign:ColorZone>
 
-                                                        <materialDesign:ColorZone Background="#FF4A148C">
-                                                            <Grid Margin="14,0">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="auto" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Border Width="50"
-                                                                        Height="50"
-                                                                        CornerRadius="25"
-                                                                        Grid.Row="0"
-                                                                        Margin="10"
-                                                                        HorizontalAlignment="Left">
-                                                                    <Border.Background>
-                                                                        <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
-                                                                    </Border.Background>
-                                                                </Border>
-                                                                <StackPanel Grid.Column="1"
-                                                                            VerticalAlignment="Center"
-                                                                            Margin="14,0">
-                                                                    <TextBlock Text="Jasper Friend"
-                                                                               Foreground="#DDFFFFFF" />
-                                                                    <TextBlock Text="IT Guy"
-                                                                               Foreground="#DDFFFFFF" />
-                                                                </StackPanel>
-                                                            </Grid>
-                                                        </materialDesign:ColorZone>
-                                                        <materialDesign:ColorZone>
+                                                        <materialDesign:ColorZone Background="White"
+                                                                                  SnapsToDevicePixels="True"
+                                                                                  VerticalAlignment="Stretch">
                                                             <StackPanel>
                                                                 <TabControl Style="{DynamicResource TabControlStyle1}"
-                                                                            Padding="0">
+                                                                            VerticalContentAlignment="Stretch"
+                                                                            SnapsToDevicePixels="True">
                                                                     <TabItem Style="{DynamicResource TabItemStyle1}"
-                                                                             Width="113"
-                                                                             Background="White">
+                                                                             Width="112"
+                                                                             VerticalContentAlignment="Stretch">
                                                                         <TabItem.Header>
-                                                                            <TextBlock Text="Details" />
+                                                                            <TextBlock Text="Details"
+                                                                                       Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
                                                                         </TabItem.Header>
                                                                         <StackPanel Width="256"
                                                                                     Margin="0,12,0,0">
@@ -796,11 +875,14 @@
                                                                                      materialDesign:HintAssist.Hint="Owner" />
                                                                         </StackPanel>
                                                                     </TabItem>
-                                                                    <TabItem Header="Billing"
-                                                                             Style="{DynamicResource TabItemStyle1}"
+                                                                    <TabItem Style="{DynamicResource TabItemStyle1}"
                                                                              Width="112"
                                                                              Background="White"
                                                                              BorderBrush="White">
+                                                                        <TabItem.Header>
+                                                                            <TextBlock Text="Billing"
+                                                                                       Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
+                                                                        </TabItem.Header>
                                                                         <StackPanel Margin="0,12,0,0">
                                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                                                      materialDesign:HintAssist.Hint="Address 1"
@@ -823,11 +905,14 @@
                                                                                      Text="{Binding selectedQuote.billingCountry}" />
                                                                         </StackPanel>
                                                                     </TabItem>
-                                                                    <TabItem Header="Shipping"
-                                                                             Style="{DynamicResource TabItemStyle1}"
+                                                                    <TabItem Style="{DynamicResource TabItemStyle1}"
                                                                              Width="112"
                                                                              Background="White"
                                                                              BorderBrush="White">
+                                                                        <TabItem.Header>
+                                                                            <TextBlock Text="Shipping"
+                                                                                       Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
+                                                                        </TabItem.Header>
                                                                         <StackPanel Margin="0,12,0,0">
                                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                                                      materialDesign:HintAssist.Hint="Address 1"
@@ -852,17 +937,18 @@
                                                                     </TabItem>
                                                                 </TabControl>
                                                             </StackPanel>
-
                                                         </materialDesign:ColorZone>
                                                     </StackPanel>
                                                 </materialDesign:ColorZone>
                                                 <StackPanel Grid.Column="1">
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                                         SnapsToDevicePixels="True">
                                                         <TextBlock Text="Status Stepper"
                                                                    HorizontalAlignment="Center"
                                                                    Padding="0,4" />
                                                     </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}">
+                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                                         SnapsToDevicePixels="True">
                                                         <StackPanel>
                                                             <Grid Height="32"
                                                                   Margin="24,20">
@@ -879,7 +965,8 @@
                                                                         Grid.Column="1"
                                                                         Style="{StaticResource MaterialDesignCustomNewButton}"
                                                                         Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                        ToolTip="New item">
+                                                                        ToolTip="New item"
+                                                                        Margin="12,0">
                                                                     <materialDesign:PackIcon Kind="Plus"
                                                                                              Height="24"
                                                                                              Width="24" />

@@ -45,7 +45,7 @@
                 <Setter Property="Margin"
                         Value="0,8,0,4" />
             </Style>
-            
+
             <!--Comboboxes-->
             <Style x:Key="MaterialDesignFloatingHintComboBoxFull"
                    TargetType="ComboBox"
@@ -71,7 +71,7 @@
                 <Setter Property="Width"
                         Value="92" />
             </Style>
-            
+
             <!--DatePicker-->
             <Style x:Key="MaterialDesignCustomFloatingDatePickerHalf"
                    TargetType="DatePicker"
@@ -106,6 +106,10 @@
                         Value="10,0" />
                 <Setter Property="Padding"
                         Value="4" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderBrush"
+                        Value="Transparent" />
                 <Setter Property="materialDesign:RippleAssist.ClipToBounds"
                         Value="False" />
                 <Setter Property="materialDesign:RippleAssist.IsCentered"
@@ -114,7 +118,7 @@
                         Value="{StaticResource MaterialDesignFlatButtonRipple}" />
             </Style>
             <!--DataGrid-->
-            
+
             <Style x:Key="MaterialDesignDataGridComboBox"
                    TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
@@ -605,14 +609,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
             <!-- Tab Control-->
-            <SolidColorBrush x:Key="TabItem.MouseOver.Border"
-                             Color="#7EB4EA" />
-            <SolidColorBrush x:Key="TabItem.Selected.Border"
-                             Color="#4a148c" />
-            <SolidColorBrush x:Key="TabItem.Selected.Background"
-                             Color="#7c43bd" />
             <Style x:Key="TabItemStyle1"
                    TargetType="{x:Type TabItem}">
                 <Setter Property="FocusVisualStyle"
@@ -631,14 +629,11 @@
                             <Grid x:Name="templateRoot"
                                   SnapsToDevicePixels="true">
                                 <Border x:Name="mainBorder"
-                                        BorderBrush="White"
-                                        BorderThickness="0"
-                                        Background="#7c43bd"
-                                        Margin="0">
+                                        Background="{DynamicResource PrimaryHueLightBrush}">
                                     <Border x:Name="innerBorder"
-                                            BorderBrush="{StaticResource TabItem.Selected.Border}"
+                                            BorderBrush="{DynamicResource SecondaryAccentBrush}"
                                             BorderThickness="0,0,0,2"
-                                            Background="#7c43bd"
+                                            Background="{DynamicResource PrimaryHueLightBrush}"
                                             Margin="0"
                                             Opacity="0" />
                                 </Border>
@@ -652,15 +647,6 @@
                                                   VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
-                                                   Value="true" />
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="BorderBrush"
-                                            TargetName="mainBorder"
-                                            Value="{StaticResource TabItem.MouseOver.Border}" />
-                                </MultiDataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
@@ -685,16 +671,14 @@
             </Style>
             <Style x:Key="TabControlStyle1"
                    TargetType="{x:Type TabControl}">
-                <Setter Property="Padding"
-                        Value="2" />
+                <Setter Property="Margin"
+                        Value="0" />
                 <Setter Property="HorizontalContentAlignment"
                         Value="Center" />
                 <Setter Property="VerticalContentAlignment"
                         Value="Center" />
                 <Setter Property="Background"
-                        Value="White" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource TabItem.Selected.Border}" />
+                        Value="Transparent" />
                 <Setter Property="BorderThickness"
                         Value="0" />
                 <Setter Property="Foreground"

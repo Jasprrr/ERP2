@@ -36,8 +36,10 @@ namespace ERP.View
             selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, userName = "Jasper", accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
             _accountList = new ObservableCollection<Account>();
-            _accountList.Add(new Account() { accountID = 1, accountName = "123" });
-            _accountList.Add(new Account() { accountID = 1, accountName = "123" });
+            _accountList.Add(new Account() { accountID = 1, accountName = "Bob Co." });
+            _accountList.Add(new Account() { accountID = 1, accountName = "Tim Co." });
+            _accountList.Add(new Account() { accountID = 1, accountName = "Rob Co." });
+            _accountList.Add(new Account() { accountID = 1, accountName = "Sam Co." });
 
             _contactList = new ObservableCollection<Contact>();
             _contactList.Add(new Contact() { contactID = 1, accountID = 1, forename = "Jasper", surname = "Friend" });
@@ -181,7 +183,7 @@ namespace ERP.View
         public Account selectedAccount
         {
             get { return _selectedAccount; }
-            set { if (value != null) { _selectedAccount = value; OnPropertyChanged("selectedAccount"); } }
+            set { if (value != null) { _selectedAccount = value; OnPropertyChanged("selectedAccount"); selectedQuote.accountName = selectedAccount.accountName; OnPropertyChanged("selectedQuote"); } }
         }
 
         private Contact _selectedContact;
@@ -733,6 +735,18 @@ namespace ERP.View
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Debug.WriteLine("Selection Changed");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (magicTransitioner.SelectedIndex == 1)
+            {
+                magicTransitioner.SelectedIndex = 0;
+            }
+            else
+            {
+                magicTransitioner.SelectedIndex = 1;
+            }
         }
     }
 }
