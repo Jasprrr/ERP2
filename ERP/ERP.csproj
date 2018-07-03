@@ -120,6 +120,7 @@
     <Compile Include="Model\QuoteMaterial.cs" />
     <Compile Include="Model\QuoteSubcontractor.cs" />
     <Compile Include="Model\QuoteTime.cs" />
+    <Compile Include="Model\StepperData.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\ToDo.cs" />
     <Compile Include="Model\User.cs" />

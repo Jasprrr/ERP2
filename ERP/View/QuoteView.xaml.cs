@@ -17,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Net.Mail;
+using System.Net;
 
 namespace ERP.View
 {
@@ -33,6 +35,10 @@ namespace ERP.View
 
         public QuoteView()
         {
+            stepperQuoteCreated = new StepperData() { stage = 1, label = "Quote Created" };
+            stepperQuoteClosed = new StepperData() { stage = 1, label = "Quote Closed" };
+            selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, userName = "Jasper", accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
+
             selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, userName = "Jasper", accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
             _accountList = new ObservableCollection<Account>();
@@ -84,6 +90,16 @@ namespace ERP.View
             _quoteItemList.Add(new QuoteItem() { ID = 8, itemCode = "123-ABC", cost = 250, quantity = 4, line = 8, internalDescription = "789-XYZ" });
             _quoteItemList.Add(new QuoteItem() { ID = 9, itemCode = "123-ABC", cost = 250, quantity = 4, line = 9, internalDescription = "789-XYZ" });
             _quoteItemList.Add(new QuoteItem() { ID = 10, itemCode = "123-ABC", cost = 250, quantity = 4, line = 10, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 11, itemCode = "123-ABC", cost = 250, quantity = 4, line = 11, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 12, itemCode = "123-ABC", cost = 250, quantity = 4, line = 12, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 13, itemCode = "123-ABC", cost = 250, quantity = 4, line = 13, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 14, itemCode = "123-ABC", cost = 250, quantity = 4, line = 14, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 15, itemCode = "123-ABC", cost = 250, quantity = 4, line = 15, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 16, itemCode = "123-ABC", cost = 250, quantity = 4, line = 16, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 17, itemCode = "123-ABC", cost = 250, quantity = 4, line = 17, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 18, itemCode = "123-ABC", cost = 250, quantity = 4, line = 18, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 19, itemCode = "123-ABC", cost = 250, quantity = 4, line = 19, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 20, itemCode = "123-ABC", cost = 250, quantity = 4, line = 20, internalDescription = "789-XYZ" });
 
             _standardItems = new ObservableCollection<QuoteItem>();
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 1, internalDescription = "Test internal description", externalDescription = "Test external description" });
@@ -141,6 +157,21 @@ namespace ERP.View
         }
 
         #region Variables
+
+        private StepperData _stepperQuoteCreated;
+        public StepperData stepperQuoteCreated
+        {
+            get { return _stepperQuoteCreated ?? (_stepperQuoteCreated = new StepperData()); }
+            set { if (value != null) { _stepperQuoteCreated = value; OnPropertyChanged("stepperQuoteCreated"); } }
+        }
+
+        private StepperData _stepperQuoteClosed;
+        public StepperData stepperQuoteClosed
+        {
+            get { return _stepperQuoteClosed ?? (_stepperQuoteClosed = new StepperData()); }
+            set { if (value != null) { _stepperQuoteClosed = value; OnPropertyChanged("stepperQuoteClosed"); } }
+        }
+
         private Delete _deleteObject;
         public Delete deleteObject
         {
@@ -403,7 +434,7 @@ namespace ERP.View
 
             if (button.Tag != null)
             {
-                selectedItem = quoteItemList.Single(x => x.ID == (int)button.Tag);
+                selectedItem = quoteItemList.SingleOrDefault(x => x.ID == (int)button.Tag);
             }
             else
             {
@@ -460,7 +491,7 @@ namespace ERP.View
         {
             deleteObject = new Delete();
             var button = sender as Button;
-            
+
             deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
             deleteObject.type = "Item";
             deleteObject.dialogOpen = ItemDialog.IsOpen;
@@ -710,6 +741,8 @@ namespace ERP.View
                 loginTimer.Stop();
                 progressBar.Visibility = Visibility.Collapsed;
             }));
+            var messageQueue = SnackBar.MessageQueue;
+            Task.Factory.StartNew(() => messageQueue.Enqueue("Saved"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -739,14 +772,41 @@ namespace ERP.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (magicTransitioner.SelectedIndex == 1)
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Stepper_Click(object sender, RoutedEventArgs e)
+        {
+            if (stepperQuoteClosed.stage == 1 || stepperQuoteClosed.stage == 3)
             {
-                magicTransitioner.SelectedIndex = 0;
+                stepperQuoteClosed.stage = 2;
+                stepperQuoteClosed.label = "Closed Won";
+                OnPropertyChanged("stepperQuoteClosed");
             }
-            else
+            else if (stepperQuoteClosed.stage == 2)
             {
-                magicTransitioner.SelectedIndex = 1;
+                stepperQuoteClosed.stage = 3;
+                stepperQuoteClosed.label = "Closed Lost";
+                OnPropertyChanged("stepperQuoteClosed");
             }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            loginTimer = new DispatcherTimer();
+            loginTimer.Tick += loginTimer_Tick;
+            loginTimer.Interval = new TimeSpan(0, 0, 5);
+            loginTimer.Start();
+            progressBar.Visibility = Visibility.Visible;
+        }
+
+        private void FlipFlipper_Click(object sender, RoutedEventArgs e)
+        {
+            flipper.IsFlipped = !flipper.IsFlipped;
         }
     }
 }

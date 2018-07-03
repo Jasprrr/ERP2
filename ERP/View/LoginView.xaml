@@ -61,7 +61,8 @@
                         Grid.Row="3"
                         Margin="0,12,0,4"
                         Padding="16,4"
-                        Click="SignIn_Click" />
+                        Click="SignIn_Click"
+                        IsDefault="True" />
             </StackPanel>
         </Grid>
     </Grid>

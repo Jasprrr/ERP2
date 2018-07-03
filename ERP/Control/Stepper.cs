@@ -52,32 +52,32 @@ namespace ERP.Control
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Stepper), new FrameworkPropertyMetadata(typeof(Stepper)));
         }
-        
-        public static readonly DependencyProperty IconProperty = DependencyProperty.Register(
-            "Icon", typeof(object), typeof(Stepper), new PropertyMetadata(default(object)));
 
-        public object Icon
+        public static readonly DependencyProperty LabelProperty = DependencyProperty.Register(
+            "Label", typeof(string), typeof(Stepper), new PropertyMetadata(default(string)));
+
+        public object Label
         {
-            get { return (object)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
+            get { return (string)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
         }
 
-        public static readonly DependencyProperty IsCompleteProperty = DependencyProperty.Register(
-            "IsComplete", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty StageProperty = DependencyProperty.Register(
+            "Stage", typeof(string), typeof(Stepper), new PropertyMetadata(default(string)));
 
-        public bool IsComplete
+        public object Stage
         {
-            get { return (bool)GetValue(IsCompleteProperty); }
-            set { SetValue(IsCompleteProperty, value); }
+            get { return (string)GetValue(StageProperty); }
+            set { SetValue(StageProperty, value); }
         }
 
-        public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
-            "IsSelected", typeof(bool), typeof(Stepper), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty ErrorProperty = DependencyProperty.Register(
+            "Error", typeof(string), typeof(Stepper), new PropertyMetadata(default(string)));
 
-        public bool IsSelected
+        public object Error
         {
-            get { return (bool)GetValue(IsSelectedProperty); }
-            set { SetValue(IsSelectedProperty, value); }
+            get { return (string)GetValue(ErrorProperty); }
+            set { SetValue(ErrorProperty, value); }
         }
     }
 

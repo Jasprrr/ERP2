@@ -599,6 +599,7 @@
                                                     <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="1"
                                                            VerticalAlignment="Center"
@@ -622,12 +623,20 @@
                                                                              Width="24" />
                                                 </Button>
                                                 <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
-                                                        Grid.Column="4">
+                                                        Grid.Column="4"
+                                                        Click="Button_Click_2">
                                                     <materialDesign:PackIcon Kind="Delete"
                                                                              Height="24"
                                                                              Width="24" />
                                                 </Button>
-                                                <materialDesign:PopupBox Grid.Column="5"
+                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                        Grid.Column="5"
+                                                        Click="Button_Click_3">
+                                                    <materialDesign:PackIcon Kind="ContentSave"
+                                                                             Height="24"
+                                                                             Width="24" />
+                                                </Button>
+                                                <materialDesign:PopupBox Grid.Column="6"
                                                                          PlacementMode="BottomAndAlignRightEdges"
                                                                          StaysOpen="True"
                                                                          Margin="10,0"
@@ -645,45 +654,42 @@
                                                      Grid.Row="1"
                                                      IsIndeterminate="True"
                                                      Visibility="Collapsed" />
-                                        <ScrollViewer Background="#FFFAFAFA"
-                                                      Grid.Row="2"
-                                                      HorizontalContentAlignment="Center"
-                                                      VerticalScrollBarVisibility="Auto">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="336" />
-                                                    <ColumnDefinition Width="*"
-                                                                      MinWidth="336" />
-                                                    <ColumnDefinition Width="336" />
-                                                </Grid.ColumnDefinitions>
-                                                <materialDesign:ColorZone BorderThickness="0,0,1,0"
-                                                                          BorderBrush="#1e000000"
-                                                                          VerticalAlignment="Stretch"
-                                                                          Background="White">
-                                                    <StackPanel Width="336">
-                                                        <materialDesign:ColorZone Mode="PrimaryMid">
-                                                            <materialDesign:Transitioner x:Name="magicTransitioner"
-                                                                                         SelectedIndex="0"
-                                                                                         Height="180">
-                                                                <materialDesign:TransitionerSlide>
-                                                                    <materialDesign:TransitionerSlide.ForwardWipe>
-                                                                        <materialDesign:SlideWipe Direction="Left" />
-                                                                    </materialDesign:TransitionerSlide.ForwardWipe>
-                                                                    <materialDesign:TransitionerSlide.BackwardWipe>
-                                                                        <materialDesign:SlideWipe Direction="Left" />
-                                                                    </materialDesign:TransitionerSlide.BackwardWipe>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="336" />
+                                                <ColumnDefinition Width="*"
+                                                                  MinWidth="336" />
+                                                <ColumnDefinition Width="336" />
+                                            </Grid.ColumnDefinitions>
+                                            <materialDesign:ColorZone BorderThickness="0,0,1,0"
+                                                                      BorderBrush="#1e000000"
+                                                                      VerticalAlignment="Stretch"
+                                                                      Background="White">
+                                                <StackPanel Width="336">
+                                                    <materialDesign:ColorZone Background="White"
+                                                                              Foreground="Black">
+                                                        <materialDesign:Flipper x:Name="flipper"
+                                                                                HorizontalAlignment="Stretch"
+                                                                                VerticalAlignment="Stretch"
+                                                                                VerticalContentAlignment="Center"
+                                                                                HorizontalContentAlignment="Center"
+                                                                                Foreground="Black"
+                                                                                Height="180">
+                                                            <materialDesign:Flipper.FrontContent>
+                                                                <materialDesign:ColorZone Mode="PrimaryMid">
                                                                     <Grid>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="auto" />
                                                                             <RowDefinition Height="auto" />
                                                                             <RowDefinition Height="auto" />
                                                                         </Grid.RowDefinitions>
-                                                                        <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                        <Button x:Name="EditFlipper"
+                                                                                Style="{StaticResource MaterialDesignCustomerHeaderButton}"
                                                                                 HorizontalContentAlignment="Right"
                                                                                 VerticalAlignment="Top"
                                                                                 HorizontalAlignment="Right"
-                                                                                Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
-                                                                                Margin="0,10,10,0">
+                                                                                Margin="0,10,10,0"
+                                                                                Click="FlipFlipper_Click">
                                                                             <materialDesign:PackIcon Kind="Pencil"
                                                                                                      Height="24"
                                                                                                      Width="24" />
@@ -734,90 +740,83 @@
                                                                             </StackPanel>
                                                                         </Grid>
                                                                     </Grid>
-                                                                </materialDesign:TransitionerSlide>
-                                                                <materialDesign:TransitionerSlide>
-                                                                    <materialDesign:TransitionerSlide.ForwardWipe>
-                                                                        <materialDesign:SlideWipe Direction="Right" />
-                                                                    </materialDesign:TransitionerSlide.ForwardWipe>
-                                                                    <materialDesign:TransitionerSlide.BackwardWipe>
-                                                                        <materialDesign:SlideWipe Direction="Right" />
-                                                                    </materialDesign:TransitionerSlide.BackwardWipe>
-                                                                    <materialDesign:ColorZone Background="White"
-                                                                                              VerticalAlignment="Stretch">
+                                                                </materialDesign:ColorZone>
+                                                            </materialDesign:Flipper.FrontContent>
+                                                            <materialDesign:Flipper.BackContent>
+                                                                <materialDesign:ColorZone Background="White">
+                                                                    <Grid>
+                                                                        <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                                HorizontalContentAlignment="Right"
+                                                                                Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                                                VerticalAlignment="Top"
+                                                                                HorizontalAlignment="Right"
+                                                                                Margin="0,10,10,0"
+                                                                                Click="FlipFlipper_Click">
+                                                                            <materialDesign:PackIcon Kind="Check"
+                                                                                                     Height="24"
+                                                                                                     Width="24" />
+                                                                        </Button>
+                                                                        <StackPanel>
+                                                                            <Border Width="50"
+                                                                                    Height="50"
+                                                                                    CornerRadius="25"
+                                                                                    VerticalAlignment="Center"
+                                                                                    Margin="0,10,0,0"
+                                                                                    BorderThickness="2"
+                                                                                    BorderBrush="#FFC5C5C5">
+                                                                                <Border.Background>
+                                                                                    <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                                </Border.Background>
+                                                                            </Border>
+                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                      materialDesign:HintAssist.Hint="Company *"
+                                                                                      ItemsSource="{Binding accountList}"
+                                                                                      Grid.Row="1"
+                                                                                      DisplayMemberPath="accountName"
+                                                                                      SelectedItem="{Binding selectedAccount}"
+                                                                                      IsEditable="True" />
+                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                      materialDesign:HintAssist.Hint="Contact"
+                                                                                      ItemsSource="{Binding contactList}"
+                                                                                      DisplayMemberPath="fullName"
+                                                                                      SelectedItem="{Binding selectedContact}"
+                                                                                      IsEditable="True" />
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </materialDesign:ColorZone>
+                                                            </materialDesign:Flipper.BackContent>
+                                                        </materialDesign:Flipper>
+                                                    </materialDesign:ColorZone>
+                                                    <materialDesign:ColorZone Background="White"
+                                                                              SnapsToDevicePixels="True"
+                                                                              VerticalAlignment="Stretch">
+                                                        <StackPanel>
+                                                            <TabControl Style="{DynamicResource TabControlStyle1}"
+                                                                        VerticalContentAlignment="Stretch"
+                                                                        SnapsToDevicePixels="True">
+                                                                <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                         Width="112"
+                                                                         VerticalContentAlignment="Stretch">
+                                                                    <TabItem.Header>
+                                                                        <TextBlock Text="Details"
+                                                                                   Foreground="#DDFFFFFF" />
+                                                                    </TabItem.Header>
+                                                                    <StackPanel Width="256"
+                                                                                Margin="0,12,0,0">
                                                                         <Grid>
-                                                                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
-                                                                                    HorizontalContentAlignment="Right"
-                                                                                    Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
-                                                                                    Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                                                    VerticalAlignment="Top"
-                                                                                    HorizontalAlignment="Right"
-                                                                                    Margin="0,10,10,0">
-                                                                                <materialDesign:PackIcon Kind="Check"
-                                                                                                         Height="24"
-                                                                                                         Width="24" />
-                                                                            </Button>
-                                                                            <StackPanel>
-                                                                                <Border Width="50"
-                                                                                        Height="50"
-                                                                                        CornerRadius="25"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Margin="0,10,0,0"
-                                                                                        BorderThickness="2"
-                                                                                        BorderBrush="#FFC5C5C5">
-                                                                                    <Border.Background>
-                                                                                        <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
-                                                                                    </Border.Background>
-                                                                                </Border>
-                                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                          materialDesign:HintAssist.Hint="Company *"
-                                                                                          ItemsSource="{Binding accountList}"
-                                                                                          Grid.Row="1"
-                                                                                          DisplayMemberPath="accountName"
-                                                                                          SelectedItem="{Binding selectedAccount}"
-                                                                                          IsEditable="True" />
-                                                                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                          materialDesign:HintAssist.Hint="Contact"
-                                                                                          ItemsSource="{Binding contactList}"
-                                                                                          DisplayMemberPath="fullName"
-                                                                                          SelectedItem="{Binding selectedContact}"
-                                                                                          IsEditable="True" />
-                                                                            </StackPanel>
+                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                     materialDesign:HintAssist.Hint="Quote no."
+                                                                                     Text="{Binding selectedQuote.quoteID}"
+                                                                                     IsEnabled="False"
+                                                                                     HorizontalAlignment="Left" />
+
+                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                     materialDesign:HintAssist.Hint="Date"
+                                                                                     Text="{Binding selectedQuote.dateCreated, StringFormat=\{0:d\}}"
+                                                                                     IsEnabled="False"
+                                                                                     HorizontalAlignment="Right" />
                                                                         </Grid>
-                                                                    </materialDesign:ColorZone>
-                                                                </materialDesign:TransitionerSlide>
-                                                            </materialDesign:Transitioner>
-                                                        </materialDesign:ColorZone>
-
-                                                        <materialDesign:ColorZone Background="White"
-                                                                                  SnapsToDevicePixels="True"
-                                                                                  VerticalAlignment="Stretch">
-                                                            <StackPanel>
-                                                                <TabControl Style="{DynamicResource TabControlStyle1}"
-                                                                            VerticalContentAlignment="Stretch"
-                                                                            SnapsToDevicePixels="True">
-                                                                    <TabItem Style="{DynamicResource TabItemStyle1}"
-                                                                             Width="112"
-                                                                             VerticalContentAlignment="Stretch">
-                                                                        <TabItem.Header>
-                                                                            <TextBlock Text="Details"
-                                                                                       Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
-                                                                        </TabItem.Header>
-                                                                        <StackPanel Width="256"
-                                                                                    Margin="0,12,0,0">
-                                                                            <Grid>
-                                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                         materialDesign:HintAssist.Hint="Quote no."
-                                                                                         Text="{Binding selectedQuote.quoteID}"
-                                                                                         IsEnabled="False"
-                                                                                         HorizontalAlignment="Left" />
-
-                                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                         materialDesign:HintAssist.Hint="Date"
-                                                                                         Text="{Binding selectedQuote.dateCreated, StringFormat=\{0:d\}}"
-                                                                                         IsEnabled="False"
-                                                                                         HorizontalAlignment="Right" />
-                                                                            </Grid>
-                                                                            <!--<ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                        <!--<ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                                                                       materialDesign:HintAssist.Hint="Company *"
                                                                                       ItemsSource="{Binding accountList}"
                                                                                       DisplayMemberPath="accountName"
@@ -830,162 +829,200 @@
                                                                                       DisplayMemberPath="fullName"
                                                                                       SelectedItem="{Binding selectedContact}"
                                                                                       IsEditable="True" />-->
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="PO no."
-                                                                                     Text="{Binding selectedQuote.purchaseOrder}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Description"
-                                                                                     Text="{Binding selectedQuote.description}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="PO no."
+                                                                                 Text="{Binding selectedQuote.purchaseOrder}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Description"
+                                                                                 Text="{Binding selectedQuote.description}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Lead days"
+                                                                                 Text="{Binding selectedQuote.leadTime}"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                  materialDesign:HintAssist.Hint="Carriage option"
+                                                                                  SelectedValue="{Binding selectedQuote.carriageOption}">
+                                                                            <ComboBoxItem IsSelected="True"
+                                                                                          Content="Collection" />
+                                                                            <ComboBoxItem Content="Courier" />
+                                                                            <ComboBoxItem Content="BIE Magnum delivery" />
+                                                                        </ComboBox>
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Carriage notes"
+                                                                                 Text="{Binding selectedQuote.carriageNotes}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Carriage cost"
+                                                                                 Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Total cost"
+                                                                                 Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <Grid>
+                                                                            <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
+                                                                                        materialDesign:HintAssist.Hint="Due date"
+                                                                                        Text="{Binding selectedQuote.dueDate}"
+                                                                                        HorizontalAlignment="Left" />
                                                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Lead days"
-                                                                                     Text="{Binding selectedQuote.leadTime}"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                      materialDesign:HintAssist.Hint="Carriage option"
-                                                                                      SelectedValue="{Binding selectedQuote.carriageOption}">
-                                                                                <ComboBoxItem IsSelected="True"
-                                                                                              Content="Collection" />
-                                                                                <ComboBoxItem Content="Courier" />
-                                                                                <ComboBoxItem Content="BIE Magnum delivery" />
-                                                                            </ComboBox>
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Carriage notes"
-                                                                                     Text="{Binding selectedQuote.carriageNotes}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Carriage cost"
-                                                                                     Text="{Binding selectedQuote.carriageCost, StringFormat=\{0:C\}}"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Total cost"
-                                                                                     Text="{Binding selectedQuote.total, StringFormat=\{0:C\}}"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <Grid>
-                                                                                <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
-                                                                                            materialDesign:HintAssist.Hint="Due date"
-                                                                                            Text="{Binding selectedQuote.dueDate}"
-                                                                                            HorizontalAlignment="Left" />
-                                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                         materialDesign:HintAssist.Hint="Success chance"
-                                                                                         Text="{Binding selectedQuote.successChance, StringFormat=\{0:P\}}"
-                                                                                         HorizontalAlignment="Right" />
-                                                                            </Grid>
-                                                                            <TextBox Text="{Binding selectedQuote.userName}"
-                                                                                     IsEnabled="False"
-                                                                                     Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Owner" />
-                                                                        </StackPanel>
-                                                                    </TabItem>
-                                                                    <TabItem Style="{DynamicResource TabItemStyle1}"
-                                                                             Width="112"
-                                                                             Background="White"
-                                                                             BorderBrush="White">
-                                                                        <TabItem.Header>
-                                                                            <TextBlock Text="Billing"
-                                                                                       Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
-                                                                        </TabItem.Header>
-                                                                        <StackPanel Margin="0,12,0,0">
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                                     Text="{Binding selectedQuote.billingAddress1}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                                     Text="{Binding selectedQuote.billingAddress2}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="City"
-                                                                                     Text="{Binding selectedQuote.billingCity}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="County"
-                                                                                     Text="{Binding selectedQuote.billingCounty}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                                     Text="{Binding selectedQuote.billingPostcode}"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                                     Text="{Binding selectedQuote.billingCountry}" />
-                                                                        </StackPanel>
-                                                                    </TabItem>
-                                                                    <TabItem Style="{DynamicResource TabItemStyle1}"
-                                                                             Width="112"
-                                                                             Background="White"
-                                                                             BorderBrush="White">
-                                                                        <TabItem.Header>
-                                                                            <TextBlock Text="Shipping"
-                                                                                       Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
-                                                                        </TabItem.Header>
-                                                                        <StackPanel Margin="0,12,0,0">
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                                     Text="{Binding selectedQuote.shippingAddress1}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                                     Text="{Binding selectedQuote.shippingAddress2}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="City"
-                                                                                     Text="{Binding selectedQuote.shippingCity}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="County"
-                                                                                     Text="{Binding selectedQuote.shippingCounty}" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                                     Text="{Binding selectedQuote.shippingPostcode}"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                                     Text="{Binding selectedQuote.shippingCountry}" />
-                                                                        </StackPanel>
-                                                                    </TabItem>
-                                                                </TabControl>
-                                                            </StackPanel>
-                                                        </materialDesign:ColorZone>
-                                                    </StackPanel>
-                                                </materialDesign:ColorZone>
-                                                <StackPanel Grid.Column="1">
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
-                                                                         SnapsToDevicePixels="True">
-                                                        <TextBlock Text="Status Stepper"
-                                                                   HorizontalAlignment="Center"
-                                                                   Padding="0,4" />
-                                                    </materialDesign:Card>
-                                                    <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
-                                                                         SnapsToDevicePixels="True">
-                                                        <StackPanel>
-                                                            <Grid Height="32"
-                                                                  Margin="24,20">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <TextBlock Text="Items"
-                                                                           VerticalAlignment="Center"
-                                                                           Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                <Button x:Name="NewItem"
-                                                                        Click="EditItem_Click"
-                                                                        Grid.Column="1"
-                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                        Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                        ToolTip="New item"
-                                                                        Margin="12,0">
-                                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                                             Height="24"
-                                                                                             Width="24" />
-                                                                </Button>
-                                                                <Button x:Name="FilterItem"
-                                                                        Grid.Column="2"
-                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
-                                                                        Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                        ToolTip="New item">
-                                                                    <materialDesign:PackIcon Kind="FilterVariant"
-                                                                                             Height="24"
-                                                                                             Width="24" />
-                                                                </Button>
-                                                            </Grid>
+                                                                                     materialDesign:HintAssist.Hint="Success chance"
+                                                                                     Text="{Binding selectedQuote.successChance, StringFormat=\{0:P\}}"
+                                                                                     HorizontalAlignment="Right" />
+                                                                        </Grid>
+                                                                        <TextBox Text="{Binding selectedQuote.userName}"
+                                                                                 IsEnabled="False"
+                                                                                 Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Owner" />
+                                                                    </StackPanel>
+                                                                </TabItem>
+                                                                <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                         Width="112"
+                                                                         Background="White"
+                                                                         BorderBrush="White">
+                                                                    <TabItem.Header>
+                                                                        <TextBlock Text="Billing"
+                                                                                   Foreground="#DDFFFFFF" />
+                                                                    </TabItem.Header>
+                                                                    <StackPanel Margin="0,12,0,0">
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Address 1"
+                                                                                 Text="{Binding selectedQuote.billingAddress1}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Address 2"
+                                                                                 Text="{Binding selectedQuote.billingAddress2}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="City"
+                                                                                 Text="{Binding selectedQuote.billingCity}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="County"
+                                                                                 Text="{Binding selectedQuote.billingCounty}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Postcode"
+                                                                                 Text="{Binding selectedQuote.billingPostcode}"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Country"
+                                                                                 Text="{Binding selectedQuote.billingCountry}" />
+                                                                    </StackPanel>
+                                                                </TabItem>
+                                                                <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                         Width="112"
+                                                                         Background="White"
+                                                                         BorderBrush="White">
+                                                                    <TabItem.Header>
+                                                                        <TextBlock Text="Shipping"
+                                                                                   Foreground="#DDFFFFFF" />
+                                                                    </TabItem.Header>
+                                                                    <StackPanel Margin="0,12,0,0">
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Address 1"
+                                                                                 Text="{Binding selectedQuote.shippingAddress1}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Address 2"
+                                                                                 Text="{Binding selectedQuote.shippingAddress2}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="City"
+                                                                                 Text="{Binding selectedQuote.shippingCity}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="County"
+                                                                                 Text="{Binding selectedQuote.shippingCounty}" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Postcode"
+                                                                                 Text="{Binding selectedQuote.shippingPostcode}"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                                 materialDesign:HintAssist.Hint="Country"
+                                                                                 Text="{Binding selectedQuote.shippingCountry}" />
+                                                                    </StackPanel>
+                                                                </TabItem>
+                                                            </TabControl>
+                                                        </StackPanel>
+                                                    </materialDesign:ColorZone>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Column="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                                     SnapsToDevicePixels="True"
+                                                                     Grid.Row="0">
+                                                    <ScrollViewer VerticalScrollBarVisibility="Disabled"
+                                                                  HorizontalScrollBarVisibility="Auto"
+                                                                  Padding="12">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <UserControl:Stepper Label="Quote Created"
+                                                                                 Stage="2" />
+                                                            <Line Fill="#19000000"
+                                                                  Stroke="#19000000"
+                                                                  Grid.Column="1"
+                                                                  Stretch="Fill"
+                                                                  VerticalAlignment="Center"
+                                                                  X2="1"
+                                                                  Margin="-4,0" />
+                                                            <UserControl:Stepper Grid.Column="2"
+                                                                                 Label="{Binding stepperQuoteClosed.label}"
+                                                                                 Stage="{Binding stepperQuoteClosed.stage}"
+                                                                                 Click="Stepper_Click" />
+                                                        </Grid>
+                                                    </ScrollViewer>
+                                                </materialDesign:Card>
+                                                <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                                     SnapsToDevicePixels="True"
+                                                                     VerticalAlignment="Stretch"
+                                                                     VerticalContentAlignment="Stretch"
+                                                                     Grid.Row="1">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Height="32"
+                                                              Margin="24,20"
+                                                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Text="Items"
+                                                                       VerticalAlignment="Center"
+                                                                       Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                                            <Button x:Name="NewItem"
+                                                                    Click="EditItem_Click"
+                                                                    Grid.Column="1"
+                                                                    Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
+                                                                    ToolTip="New item"
+                                                                    Margin="12,0">
+                                                                <materialDesign:PackIcon Kind="Plus"
+                                                                                         Height="24"
+                                                                                         Width="24" />
+                                                            </Button>
+                                                            <Button x:Name="FilterItem"
+                                                                    Grid.Column="2"
+                                                                    Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
+                                                                    ToolTip="New item">
+                                                                <materialDesign:PackIcon Kind="FilterVariant"
+                                                                                         Height="24"
+                                                                                         Width="24" />
+                                                            </Button>
+                                                        </Grid>
+                                                        <Grid Grid.Row="1">
                                                             <DataGrid ItemsSource="{Binding quoteItemList}"
                                                                       Style="{StaticResource MaterialDesignGrid}"
                                                                       CellStyle="{StaticResource MaterialDesignCell}"
                                                                       RowStyle="{StaticResource MaterialDesignRow}"
-                                                                      CanUserAddRows="False">
+                                                                      CanUserAddRows="False"
+                                                                      ScrollViewer.CanContentScroll="True"
+                                                                      VerticalContentAlignment="Stretch"
+                                                                      VerticalScrollBarVisibility="Visible">
                                                                 <DataGrid.Columns>
                                                                     <DataGridTemplateColumn x:Name="itemButton"
                                                                                             materialDesign:DataGridAssist.CellPadding="0"
@@ -1096,19 +1133,23 @@
                                                                     </DataGridTemplateColumn>
                                                                 </DataGrid.Columns>
                                                             </DataGrid>
-                                                        </StackPanel>
-                                                    </materialDesign:Card>
-                                                </StackPanel>
-                                                <materialDesign:ColorZone Grid.Column="2"
-                                                                          Width="336"
-                                                                          BorderThickness="1,0,0,0"
-                                                                          BorderBrush="#1e000000"
-                                                                          Background="White"
-                                                                          VerticalAlignment="Stretch"
-                                                                          Margin="4,0,0,0">
+                                                        </Grid>
+                                                    </Grid>
+                                                </materialDesign:Card>
+                                            </Grid>
+                                            <materialDesign:ColorZone Grid.Column="2"
+                                                                      Width="336"
+                                                                      BorderThickness="1,0,0,0"
+                                                                      BorderBrush="#1e000000"
+                                                                      Background="White"
+                                                                      VerticalAlignment="Stretch">
+                                                <ScrollViewer Grid.Row="2"
+                                                              HorizontalContentAlignment="Center"
+                                                              VerticalScrollBarVisibility="Auto">
                                                     <StackPanel>
                                                         <Expander Margin="0"
-                                                                  Background="White">
+                                                                  Background="White"
+                                                                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                                             <Expander.Header>
                                                                 <Grid>
                                                                     <TextBlock Text="Tasks"
@@ -1131,7 +1172,14 @@
                                                                           VerticalContentAlignment="Stretch"
                                                                           Margin="8,0,0,8"
                                                                           SelectionChanged="ListView_SelectionChanged"
-                                                                          HorizontalContentAlignment="Stretch">
+                                                                          HorizontalContentAlignment="Stretch"
+                                                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                                                    <ListView.Template>
+                                                                        <ControlTemplate>
+                                                                            <ItemsPresenter />
+                                                                        </ControlTemplate>
+                                                                    </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1186,7 +1234,8 @@
                                                                 </ListView>
                                                             </Expander.Content>
                                                         </Expander>
-                                                        <Separator Background="#1e000000" />
+                                                        <Separator Background="#1e000000"
+                                                                   Margin="0" />
                                                         <Expander Margin="0"
                                                                   Background="White">
                                                             <Expander.Header>
@@ -1212,6 +1261,11 @@
                                                                           Margin="8,8,0,8"
                                                                           SelectionChanged="ListView_SelectionChanged"
                                                                           HorizontalContentAlignment="Stretch">
+                                                                    <ListView.Template>
+                                                                        <ControlTemplate>
+                                                                            <ItemsPresenter />
+                                                                        </ControlTemplate>
+                                                                    </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1270,7 +1324,8 @@
                                                                 </ListView>
                                                             </Expander.Content>
                                                         </Expander>
-                                                        <Separator Background="#1e000000" />
+                                                        <Separator Background="#1e000000"
+                                                                   Margin="0" />
                                                         <Expander Margin="0"
                                                                   Background="White">
                                                             <Expander.Header>
@@ -1296,6 +1351,11 @@
                                                                           Margin="8,8,0,8"
                                                                           SelectionChanged="ListView_SelectionChanged"
                                                                           HorizontalContentAlignment="Stretch">
+                                                                    <ListView.Template>
+                                                                        <ControlTemplate>
+                                                                            <ItemsPresenter />
+                                                                        </ControlTemplate>
+                                                                    </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1354,7 +1414,8 @@
                                                                 </ListView>
                                                             </Expander.Content>
                                                         </Expander>
-                                                        <Separator Background="#1e000000" />
+                                                        <Separator Background="#1e000000"
+                                                                   Margin="0" />
                                                         <Expander Margin="0"
                                                                   Background="White">
                                                             <Expander.Header>
@@ -1380,6 +1441,11 @@
                                                                           Margin="8,8,0,8"
                                                                           SelectionChanged="ListView_SelectionChanged"
                                                                           HorizontalContentAlignment="Stretch">
+                                                                    <ListView.Template>
+                                                                        <ControlTemplate>
+                                                                            <ItemsPresenter />
+                                                                        </ControlTemplate>
+                                                                    </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1438,7 +1504,8 @@
                                                                 </ListView>
                                                             </Expander.Content>
                                                         </Expander>
-                                                        <Separator Background="#1e000000" />
+                                                        <Separator Background="#1e000000"
+                                                                   Margin="0" />
                                                         <Expander Margin="0"
                                                                   Background="White">
                                                             <Expander.Header>
@@ -1464,6 +1531,11 @@
                                                                           Margin="8,8,0,8"
                                                                           SelectionChanged="ListView_SelectionChanged"
                                                                           HorizontalContentAlignment="Stretch">
+                                                                    <ListView.Template>
+                                                                        <ControlTemplate>
+                                                                            <ItemsPresenter />
+                                                                        </ControlTemplate>
+                                                                    </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1522,7 +1594,8 @@
                                                                 </ListView>
                                                             </Expander.Content>
                                                         </Expander>
-                                                        <Separator Background="#1e000000" />
+                                                        <Separator Background="#1e000000"
+                                                                   Margin="0" />
                                                         <Expander Margin="0"
                                                                   Background="White">
                                                             <Expander.Header>
@@ -1548,6 +1621,11 @@
                                                                           Margin="8,8,0,8"
                                                                           SelectionChanged="ListView_SelectionChanged"
                                                                           HorizontalContentAlignment="Stretch">
+                                                                    <ListView.Template>
+                                                                        <ControlTemplate>
+                                                                            <ItemsPresenter />
+                                                                        </ControlTemplate>
+                                                                    </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
                                                                             <Grid Margin="0">
@@ -1606,16 +1684,18 @@
                                                                 </ListView>
                                                             </Expander.Content>
                                                         </Expander>
-                                                        <Separator Background="#1e000000" />
+                                                        <Separator Background="#1e000000"
+                                                                   Margin="0" />
                                                     </StackPanel>
-                                                </materialDesign:ColorZone>
-                                            </Grid>
-                                        </ScrollViewer>
+                                                </ScrollViewer>
+                                            </materialDesign:ColorZone>
+                                        </Grid>
                                         <materialDesign:Snackbar Grid.Row="2"
                                                                  MessageQueue="{materialDesign:MessageQueue}"
                                                                  x:Name="SnackBar"
                                                                  Panel.ZIndex="1"
-                                                                 Margin="0,0,0,4" />
+                                                                 Margin="4"
+                                                                 HorizontalAlignment="Left" />
                                     </Grid>
                                 </materialDesign:DialogHost>
                             </materialDesign:DialogHost>
