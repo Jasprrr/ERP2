@@ -446,6 +446,9 @@
                                     <Setter Property="Kind"
                                             TargetName="StepperIcon"
                                             Value="CloseCircle" />
+                                    <Setter Property="Foreground"
+                                            TargetName="StepperIcon"
+                                            Value="#ff0000" />
                                 </Trigger>
                                 <Trigger Property="Stage"
                                          Value="4">

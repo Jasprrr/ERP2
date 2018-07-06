@@ -732,13 +732,14 @@ namespace ERP.View
             }
         }
 
-        private DispatcherTimer loginTimer;
+        private DispatcherTimer loginTimer = new DispatcherTimer();
 
         private void loginTimer_Tick(object sender, EventArgs e)
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 loginTimer.Stop();
+                loginTimer.IsEnabled = false;
                 progressBar.Visibility = Visibility.Collapsed;
             }));
             var messageQueue = SnackBar.MessageQueue;
@@ -797,16 +798,21 @@ namespace ERP.View
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            if (loginTimer.IsEnabled == true)
+            {
+                loginTimer.Stop();
+            }
             loginTimer = new DispatcherTimer();
             loginTimer.Tick += loginTimer_Tick;
             loginTimer.Interval = new TimeSpan(0, 0, 5);
             loginTimer.Start();
+
             progressBar.Visibility = Visibility.Visible;
         }
 
         private void FlipFlipper_Click(object sender, RoutedEventArgs e)
         {
-            flipper.IsFlipped = !flipper.IsFlipped;
+            //flipper.IsFlipped = !flipper.IsFlipped;
         }
     }
 }
