@@ -1,0 +1,90 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:ERP.View"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+      xmlns:UserControl="clr-namespace:ERP.Control"
+      x:Class="ERP.View.TaskPreview"
+      mc:Ignorable="d"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextElement.FontFamily="Roboto"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Language="en-GB">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Calendar" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="16/01/12 09:30" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Domain" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="Schools Mailing" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Account" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="Jasper Friend" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="AccountCircle" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="Jasper Friend" />
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="FileDocumentBox" />
+
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat. "
+                           TextWrapping="Wrap"
+                           MaxHeight="140"
+                           TextTrimming="CharacterEllipsis" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

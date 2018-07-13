@@ -49,8 +49,6 @@ namespace ERP.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var taskWindow = new TaskView();
-            taskWindow.Show();
         }
     }
 }

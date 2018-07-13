@@ -37,17 +37,17 @@ namespace ERP
             _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "View/AccountsView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "View/TasksView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Domain", NavPage = "View/AccountsView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "SuppliersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Orders", NavIcon = "Send", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Deliveries", NavIcon = "Truck", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Invoices", NavIcon = "BookVariant", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Credits", NavIcon = "CreditCard", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Purchases", NavIcon = "Basket", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Stock", NavIcon = "Widgets", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "NCRs", NavIcon = "Alert", NavPage = "OrdersView" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Reports", NavIcon = "Finance", NavPage = "ReportsView" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Orders", NavIcon = "Send", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Deliveries", NavIcon = "Truck", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Invoices", NavIcon = "BookVariant", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Credits", NavIcon = "CreditCard", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Purchases", NavIcon = "Basket", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Stock", NavIcon = "Widgets", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "NCRs", NavIcon = "Alert", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Reports", NavIcon = "Finance", NavPage = "View/TasksView.xaml" });
         }
 
         private ObservableCollection<NavigationItem> _navMenu;

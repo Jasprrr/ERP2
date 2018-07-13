@@ -1,0 +1,117 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:ERP.View"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+      xmlns:UserControl="clr-namespace:ERP.Control"
+      x:Class="ERP.View.ContactPreview"
+      mc:Ignorable="d"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextElement.FontFamily="Roboto"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Language="en-GB">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Domain" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="Database Architect" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Phone" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="0117 954 9512" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Phone" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="0117 954 9512" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Cellphone" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="0745 6456 456" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Email"
+                                         Grid.Row="4" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomHyperLinkFull}"
+                           Grid.Column="1"
+                           Grid.Row="4"
+                           Cursor="Hand"
+                           Text="jasper@schoolsmailing.co.uk" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="Email"
+                                         Grid.Row="5" />
+                <TextBlock Style="{StaticResource MaterialDesignCustomHyperLinkFull}"
+                           Grid.Column="1"
+                           Grid.Row="5"
+                           Text="jasper@schoolsmailing.co.uk" />
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                         Kind="FileDocumentBox" />
+
+                <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                           Grid.Column="1"
+                           Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat. "
+                           TextWrapping="Wrap"
+                           MaxHeight="210"
+                           TextTrimming="CharacterEllipsis" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

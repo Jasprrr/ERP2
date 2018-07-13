@@ -112,6 +112,7 @@
     <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Delete.cs" />
     <Compile Include="Model\Department.cs" />
@@ -132,6 +133,9 @@
     <Compile Include="View\AccountsView.xaml.cs">
       <DependentUpon>AccountsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ContactPreview.xaml.cs">
+      <DependentUpon>ContactPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -144,6 +148,12 @@
     <Compile Include="View\Deprecated\QuoteSubcontractorView.xaml.cs">
       <DependentUpon>QuoteSubcontractorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\OrderPreview.xaml.cs">
+      <DependentUpon>OrderPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuotePreview.xaml.cs">
+      <DependentUpon>QuotePreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\QuotesView.xaml.cs">
       <DependentUpon>QuotesView.xaml</DependentUpon>
     </Compile>
@@ -152,6 +162,9 @@
     </Compile>
     <Compile Include="View\QuoteView.xaml.cs">
       <DependentUpon>QuoteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskPreview.xaml.cs">
+      <DependentUpon>TaskPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
@@ -179,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ContactPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +212,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\OrderPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuotePreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\QuotesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\QuoteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

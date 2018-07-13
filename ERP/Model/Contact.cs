@@ -16,7 +16,8 @@ namespace ERP.Model
         public string primaryEmail { get; set; }
         public string secondaryEmail { get; set; }
         public int accountID { get; set; }
-
+        public bool favourite { get; set; }
+        public bool accounts { get; set; }
         public string fullName
         {
             get { return forename + " " + surname; }

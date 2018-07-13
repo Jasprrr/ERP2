@@ -8,7 +8,7 @@
              xmlns:properties="clr-namespace:ERP.Properties"
              xmlns:CustomControls="clr-namespace:ERP.Control"
              x:Class="ERP.App"
-             StartupUri="View/QuoteView.xaml"
+             StartupUri="MainWindow.xaml"
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,7 +16,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Orange.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Pink.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
@@ -26,7 +26,45 @@
 
             <properties:Settings x:Key="Username" />
 
-            <!--TextBoxes-->
+            <!--#region Icons-->
+            <Style x:Key="MaterialDesignTextBlockIcon"
+                   TargetType="materialDesign:PackIcon">
+                <Setter Property="Height"
+                        Value="18" />
+                <Setter Property="Width"
+                        Value="20" />
+                <Setter Property="Margin"
+                        Value="10" />
+            </Style>
+            <!--#endregion Icons-->
+
+            <!--#region TextBlocks-->
+            <Style x:Key="MaterialDesignCustomTextBlockFull"
+                   TargetType="TextBlock"
+                   BasedOn="{StaticResource MaterialDesignBody1TextBlock}">
+                <Setter Property="Width"
+                        Value="256" />
+                <Setter Property="Margin"
+                        Value="10" />
+                <Setter Property="Padding"
+                        Value="0,1,0,0" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Left" />
+            </Style>
+            <Style x:Key="MaterialDesignCustomHyperLinkFull"
+                   TargetType="TextBlock"
+                   BasedOn="{StaticResource MaterialDesignCustomTextBlockFull}">
+                <Setter Property="Foreground"
+                        Value="#2962ff" />
+                <Setter Property="Cursor"
+                        Value="Hand" />
+                <Setter Property="Width"
+                        Value="auto" />
+                <Setter Property="MaxWidth"
+                        Value="256" />
+            </Style>
+            <!--#endregion TextBoxes-->
+
             <Style x:Key="MaterialDesignCustomFloatingHintTextBoxFull"
                    TargetType="TextBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -74,6 +112,15 @@
                         Value="92" />
             </Style>
 
+            <!--Seperator-->
+            <Style x:Key="MaterialDesignCustomSeperator"
+                   TargetType="Separator">
+                <Setter Property="Background"
+                        Value="{DynamicResource MaterialDesignDivider}" />
+                <Setter Property="Margin"
+                        Value="0" />
+            </Style>
+
             <!--DatePicker-->
             <Style x:Key="MaterialDesignCustomFloatingDatePickerHalf"
                    TargetType="DatePicker"
@@ -119,8 +166,8 @@
                 <Setter Property="materialDesign:RippleAssist.Feedback"
                         Value="{StaticResource MaterialDesignFlatButtonRipple}" />
             </Style>
-            <!--DataGrid-->
 
+            <!--DataGrid-->
             <Style x:Key="MaterialDesignDataGridComboBox"
                    TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
@@ -373,6 +420,7 @@
                 </Style.Triggers>
             </Style>
 
+            <!--Stepper-->
             <Style x:Name="StepperButton"
                    TargetType="{x:Type CustomControls:Stepper}">
                 <Setter Property="materialDesign:RippleAssist.Feedback"
@@ -403,7 +451,7 @@
                                                        Margin="4,0"
                                                        Style="{DynamicResource MaterialDesignTitleTextBlock}"
                                                        Text="{TemplateBinding Label}"
-                                                       FontSize="14"/>
+                                                       FontSize="14" />
                                             <TextBlock x:Name="ErrorLabel"
                                                        Foreground="Red"
                                                        Margin="4,0"
@@ -498,6 +546,19 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <!--Header-->
+            <Style x:Key="MaterialDesignColorZoneHeader"
+                   TargetType="materialDesign:ColorZone">
+                <Setter Property="Padding"
+                        Value="16" />
+                <Setter Property="Mode"
+                        Value="PrimaryDark" />
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
+                        Value="Depth1" />
+                <Setter Property="Panel.ZIndex"
+                        Value="1" />
             </Style>
 
             <!-- Tab Control-->

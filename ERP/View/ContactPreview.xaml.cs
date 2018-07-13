@@ -1,8 +1,5 @@
-﻿using ERP.Model;
-using MaterialDesignThemes.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ERP.View
 {
     /// <summary>
-    /// Interaction logic for Task.xaml
+    /// Interaction logic for ContactPreview.xaml
     /// </summary>
-    public partial class TaskView : Window
+    public partial class ContactPreview : Page
     {
-        public TaskView()
+        public ContactPreview()
         {
             InitializeComponent();
         }

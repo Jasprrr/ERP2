@@ -13,6 +13,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
+        TextElement.FontFamily="Roboto"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Width="1280"
@@ -606,7 +607,8 @@
                                                            FontSize="22"
                                                            Text="Quote"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                           Margin="48,0,0,0" />
+                                                           Margin="48,0,0,0"
+                                                           FontFamily="Roboto" />
                                                 <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
                                                         Grid.Column="2"
                                                         Click="Button_Click">
@@ -667,30 +669,93 @@
                                                                       Background="White">
                                                 <StackPanel Width="336">
                                                     <materialDesign:Transitioner SelectedIndex="0">
-                                                            <materialDesign:TransitionerSlide>
-                                                                <materialDesign:ColorZone Mode="PrimaryMid"
-                                                                                          Height="180">
-                                                                    <Grid>
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="auto" />
-                                                                            <RowDefinition Height="auto" />
-                                                                            <RowDefinition Height="auto" />
-                                                                        </Grid.RowDefinitions>
-                                                                        <Button x:Name="EditFlipper"
-                                                                                Style="{StaticResource MaterialDesignCustomerHeaderButton}"
-                                                                                HorizontalContentAlignment="Right"
-                                                                                VerticalAlignment="Top"
-                                                                                HorizontalAlignment="Right"
-                                                                                Margin="0,10,10,0"
-                                                                                Command="{x:Static materialDesign:Transitioner.MoveNextCommand}">
-                                                                            <materialDesign:PackIcon Kind="Pencil"
-                                                                                                     Height="24"
-                                                                                                     Width="24" />
-                                                                        </Button>
+                                                        <materialDesign:TransitionerSlide>
+                                                            <materialDesign:ColorZone Mode="PrimaryMid"
+                                                                                      Height="180">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="auto" />
+                                                                        <RowDefinition Height="auto" />
+                                                                        <RowDefinition Height="auto" />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Button x:Name="EditFlipper"
+                                                                            Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                            HorizontalContentAlignment="Right"
+                                                                            VerticalAlignment="Top"
+                                                                            HorizontalAlignment="Right"
+                                                                            Margin="0,10,10,0"
+                                                                            Command="{x:Static materialDesign:Transitioner.MoveNextCommand}">
+                                                                        <materialDesign:PackIcon Kind="Pencil"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                    <Border Width="50"
+                                                                            Height="50"
+                                                                            CornerRadius="25"
+                                                                            Grid.Row="0"
+                                                                            VerticalAlignment="Center"
+                                                                            Margin="0,10,0,0"
+                                                                            BorderThickness="2"
+                                                                            BorderBrush="#FFC5C5C5">
+                                                                        <Border.Background>
+                                                                            <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                        </Border.Background>
+                                                                    </Border>
+                                                                    <TextBlock Text="{Binding selectedQuote.accountName}"
+                                                                               HorizontalAlignment="Center"
+                                                                               Grid.Row="1"
+                                                                               Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                                                               Margin="0,10"
+                                                                               Foreground="#FFFFFF" />
+                                                                    <Grid Height="70"
+                                                                          Grid.Row="2">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="auto" />
+                                                                            <ColumnDefinition Width="*" />
+                                                                        </Grid.ColumnDefinitions>
                                                                         <Border Width="50"
                                                                                 Height="50"
                                                                                 CornerRadius="25"
                                                                                 Grid.Row="0"
+                                                                                Margin="10"
+                                                                                HorizontalAlignment="Left"
+                                                                                BorderThickness="2"
+                                                                                BorderBrush="#FFC5C5C5">
+                                                                            <Border.Background>
+                                                                                <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                                            </Border.Background>
+                                                                        </Border>
+                                                                        <StackPanel Grid.Column="1"
+                                                                                    VerticalAlignment="Center"
+                                                                                    Margin="14,0">
+                                                                            <TextBlock Text="Jasper Friend"
+                                                                                       Foreground="#DDFFFFFF" />
+                                                                            <TextBlock Text="IT Dude"
+                                                                                       Foreground="#DDFFFFFF" />
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </materialDesign:ColorZone>
+                                                        </materialDesign:TransitionerSlide>
+                                                        <materialDesign:TransitionerSlide>
+                                                            <materialDesign:ColorZone Background="White"
+                                                                                      Height="180">
+                                                                <Grid>
+                                                                    <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                            HorizontalContentAlignment="Right"
+                                                                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                                            VerticalAlignment="Top"
+                                                                            HorizontalAlignment="Right"
+                                                                            Margin="0,10,10,0"
+                                                                            Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
+                                                                        <materialDesign:PackIcon Kind="Check"
+                                                                                                 Height="24"
+                                                                                                 Width="24" />
+                                                                    </Button>
+                                                                    <StackPanel>
+                                                                        <Border Width="50"
+                                                                                Height="50"
+                                                                                CornerRadius="25"
                                                                                 VerticalAlignment="Center"
                                                                                 Margin="0,10,0,0"
                                                                                 BorderThickness="2"
@@ -699,100 +764,25 @@
                                                                                 <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
                                                                             </Border.Background>
                                                                         </Border>
-                                                                        <TextBlock Text="{Binding selectedQuote.accountName}"
-                                                                                   HorizontalAlignment="Center"
-                                                                                   Grid.Row="1"
-                                                                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                                                   Margin="0,10"
-                                                                                   Foreground="#FFFFFF" />
-                                                                        <Grid Height="70"
-                                                                              Grid.Row="2">
-                                                                            <Grid.ColumnDefinitions>
-                                                                                <ColumnDefinition Width="auto" />
-                                                                                <ColumnDefinition Width="*" />
-                                                                            </Grid.ColumnDefinitions>
-                                                                            <Border Width="50"
-                                                                                    Height="50"
-                                                                                    CornerRadius="25"
-                                                                                    Grid.Row="0"
-                                                                                    Margin="10"
-                                                                                    HorizontalAlignment="Left"
-                                                                                    BorderThickness="2"
-                                                                                    BorderBrush="#FFC5C5C5">
-                                                                                <Border.Background>
-                                                                                    <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
-                                                                                </Border.Background>
-                                                                            </Border>
-                                                                            <StackPanel Grid.Column="1"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Margin="14,0">
-                                                                                <TextBlock Text="Jasper Friend"
-                                                                                           Foreground="#DDFFFFFF" />
-                                                                                <TextBlock Text="IT Dude"
-                                                                                           Foreground="#DDFFFFFF" />
-                                                                            </StackPanel>
-                                                                        </Grid>
-                                                                    </Grid>
-                                                                </materialDesign:ColorZone>
-                                                            </materialDesign:TransitionerSlide>
-                                                            <materialDesign:TransitionerSlide>
-                                                                <materialDesign:ColorZone Background="White"
-                                                                                          Height="180">
-                                                                    <Grid>
-                                                                        <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
-                                                                                HorizontalContentAlignment="Right"
-                                                                                Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                                                VerticalAlignment="Top"
-                                                                                HorizontalAlignment="Right"
-                                                                                Margin="0,10,10,0"
-                                                                                Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
-                                                                            <materialDesign:PackIcon Kind="Check"
-                                                                                                     Height="24"
-                                                                                                     Width="24" />
-                                                                        </Button>
-                                                                        <StackPanel>
-                                                                            <Border Width="50"
-                                                                                    Height="50"
-                                                                                    CornerRadius="25"
-                                                                                    VerticalAlignment="Center"
-                                                                                    Margin="0,10,0,0"
-                                                                                    BorderThickness="2"
-                                                                                    BorderBrush="#FFC5C5C5">
-                                                                                <Border.Background>
-                                                                                    <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
-                                                                                </Border.Background>
-                                                                            </Border>
-                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                      materialDesign:HintAssist.Hint="Company *"
-                                                                                      ItemsSource="{Binding accountList}"
-                                                                                      Grid.Row="1"
-                                                                                      Width="256"
-                                                                                      DisplayMemberPath="accountName"
-                                                                                      SelectedItem="{Binding selectedAccount}"
-                                                                                      IsEditable="True" />
-                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                      materialDesign:HintAssist.Hint="Contact"
-                                                                                      ItemsSource="{Binding contactList}"
-                                                                                      DisplayMemberPath="fullName"
-                                                                                      SelectedItem="{Binding selectedContact}"
-                                                                                      IsEditable="True" />
-                                                                        </StackPanel>
-                                                                    </Grid>
-                                                                </materialDesign:ColorZone>
-                                                            </materialDesign:TransitionerSlide>
-                                                        </materialDesign:Transitioner>
-                                                        <!--<materialDesign:Flipper x:Name="flipper"
-                                                                                Foreground="Black"
-                                                                                Height="180"
-                                                                                Width="256"
-                                                                                SnapsToDevicePixels="True">
-                                                            <materialDesign:Flipper.FrontContent>
-                                                                
-                                                            </materialDesign:Flipper.FrontContent>
-                                                            <materialDesign:Flipper.BackContent>
-                                                                
-                                                            </materialDesign:Flipper.BackContent>
-                                                        </materialDesign:Flipper>-->
+                                                                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                  materialDesign:HintAssist.Hint="Company *"
+                                                                                  ItemsSource="{Binding accountList}"
+                                                                                  Grid.Row="1"
+                                                                                  Width="256"
+                                                                                  DisplayMemberPath="accountName"
+                                                                                  SelectedItem="{Binding selectedAccount}"
+                                                                                  IsEditable="True" />
+                                                                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                                  materialDesign:HintAssist.Hint="Contact"
+                                                                                  ItemsSource="{Binding contactList}"
+                                                                                  DisplayMemberPath="fullName"
+                                                                                  SelectedItem="{Binding selectedContact}"
+                                                                                  IsEditable="True" />
+                                                                    </StackPanel>
+                                                                </Grid>
+                                                            </materialDesign:ColorZone>
+                                                        </materialDesign:TransitionerSlide>
+                                                    </materialDesign:Transitioner>
                                                     <materialDesign:ColorZone Background="White"
                                                                               SnapsToDevicePixels="True"
                                                                               VerticalAlignment="Stretch">
@@ -822,19 +812,6 @@
                                                                                      IsEnabled="False"
                                                                                      HorizontalAlignment="Right" />
                                                                         </Grid>
-                                                                        <!--<ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                      materialDesign:HintAssist.Hint="Company *"
-                                                                                      ItemsSource="{Binding accountList}"
-                                                                                      DisplayMemberPath="accountName"
-                                                                                      SelectedItem="{Binding selectedAccount}"
-                                                                                      IsEditable="True"
-                                                                                      Margin="0,6,0,4" />
-                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                                                      materialDesign:HintAssist.Hint="Contact"
-                                                                                      ItemsSource="{Binding contactList}"
-                                                                                      DisplayMemberPath="fullName"
-                                                                                      SelectedItem="{Binding selectedContact}"
-                                                                                      IsEditable="True" />-->
                                                                         <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                                                  materialDesign:HintAssist.Hint="PO no."
                                                                                  Text="{Binding selectedQuote.purchaseOrder}" />
@@ -1274,7 +1251,8 @@
                                                                     </ListView.Template>
                                                                     <ListView.ItemTemplate>
                                                                         <DataTemplate>
-                                                                            <Grid Margin="0">
+                                                                            <Grid Margin="0"
+                                                                                  VerticalAlignment="Center">
                                                                                 <Grid.ColumnDefinitions>
                                                                                     <ColumnDefinition Width="50" />
                                                                                     <ColumnDefinition Width="*" />
