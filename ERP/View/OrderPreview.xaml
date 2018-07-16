@@ -10,6 +10,7 @@
       xmlns:UserControl="clr-namespace:ERP.Control"
       x:Class="ERP.View.OrderPreview"
       mc:Ignorable="d"
+      Background="{DynamicResource MaterialDesignBackground}"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
       TextElement.FontSize="13"

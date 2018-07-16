@@ -609,14 +609,14 @@
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                            Margin="48,0,0,0"
                                                            FontFamily="Roboto" />
-                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                                         Grid.Column="2"
                                                         Click="Button_Click">
                                                     <materialDesign:PackIcon Kind="Download"
                                                                              Height="24"
                                                                              Width="24" />
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                                         Grid.Column="3"
                                                         ToolTip="Stage forward"
                                                         Click="Button_Click_1">
@@ -624,14 +624,14 @@
                                                                              Height="24"
                                                                              Width="24" />
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                                         Grid.Column="4"
                                                         Click="Button_Click_2">
                                                     <materialDesign:PackIcon Kind="Delete"
                                                                              Height="24"
                                                                              Width="24" />
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                                         Grid.Column="5"
                                                         Click="Button_Click_3">
                                                     <materialDesign:PackIcon Kind="ContentSave"
@@ -679,7 +679,7 @@
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
                                                                     <Button x:Name="EditFlipper"
-                                                                            Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             HorizontalContentAlignment="Right"
                                                                             VerticalAlignment="Top"
                                                                             HorizontalAlignment="Right"
@@ -741,7 +741,7 @@
                                                             <materialDesign:ColorZone Background="White"
                                                                                       Height="180">
                                                                 <Grid>
-                                                                    <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             HorizontalContentAlignment="Right"
                                                                             Foreground="{DynamicResource PrimaryHueMidBrush}"
                                                                             VerticalAlignment="Top"
@@ -787,10 +787,10 @@
                                                                               SnapsToDevicePixels="True"
                                                                               VerticalAlignment="Stretch">
                                                         <StackPanel>
-                                                            <TabControl Style="{DynamicResource TabControlStyle1}"
+                                                            <TabControl Style="{DynamicResource MaterialDesignTabControl}"
                                                                         VerticalContentAlignment="Stretch"
                                                                         SnapsToDevicePixels="True">
-                                                                <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                                          Width="112"
                                                                          VerticalContentAlignment="Stretch">
                                                                     <TabItem.Header>
@@ -857,7 +857,7 @@
                                                                                  materialDesign:HintAssist.Hint="Owner" />
                                                                     </StackPanel>
                                                                 </TabItem>
-                                                                <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                                          Width="112"
                                                                          Background="White"
                                                                          BorderBrush="White">
@@ -887,7 +887,7 @@
                                                                                  Text="{Binding selectedQuote.billingCountry}" />
                                                                     </StackPanel>
                                                                 </TabItem>
-                                                                <TabItem Style="{DynamicResource TabItemStyle1}"
+                                                                <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                                          Width="112"
                                                                          Background="White"
                                                                          BorderBrush="White">
@@ -979,17 +979,16 @@
                                                             <Button x:Name="NewItem"
                                                                     Click="EditItem_Click"
                                                                     Grid.Column="1"
-                                                                    Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                     Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
-                                                                    ToolTip="New item"
-                                                                    Margin="12,0">
+                                                                    ToolTip="New item">
                                                                 <materialDesign:PackIcon Kind="Plus"
                                                                                          Height="24"
                                                                                          Width="24" />
                                                             </Button>
                                                             <Button x:Name="FilterItem"
                                                                     Grid.Column="2"
-                                                                    Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                     Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Expander}}}"
                                                                     ToolTip="New item">
                                                                 <materialDesign:PackIcon Kind="FilterVariant"
@@ -1138,7 +1137,7 @@
                                                                     <TextBlock Text="Tasks"
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             ToolTip="New item"
                                                                             Panel.ZIndex="1"
                                                                             VerticalAlignment="Top">
@@ -1190,7 +1189,7 @@
                                                                                 </StackPanel>
                                                                                 <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
-                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                                         ToolTip="New item"
                                                                                         Margin="0,0,8,0"
                                                                                         VerticalAlignment="Center">
@@ -1226,7 +1225,7 @@
                                                                     <TextBlock Text="Orders"
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             ToolTip="New item"
                                                                             Panel.ZIndex="1"
                                                                             VerticalAlignment="Top">
@@ -1281,7 +1280,7 @@
                                                                                 </StackPanel>
                                                                                 <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
-                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                                         ToolTip="New item"
                                                                                         Margin="0,0,8,0"
                                                                                         VerticalAlignment="Center">
@@ -1317,7 +1316,7 @@
                                                                     <TextBlock Text="Deliveries"
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             ToolTip="New item"
                                                                             Panel.ZIndex="1"
                                                                             VerticalAlignment="Top">
@@ -1371,7 +1370,7 @@
                                                                                 </StackPanel>
                                                                                 <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
-                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                                         ToolTip="New item"
                                                                                         Margin="0,0,8,0"
                                                                                         VerticalAlignment="Center">
@@ -1407,7 +1406,7 @@
                                                                     <TextBlock Text="Invoices"
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             ToolTip="New item"
                                                                             Panel.ZIndex="1"
                                                                             VerticalAlignment="Top">
@@ -1461,7 +1460,7 @@
                                                                                 </StackPanel>
                                                                                 <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
-                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                                         ToolTip="New item"
                                                                                         Margin="0,0,8,0"
                                                                                         VerticalAlignment="Center">
@@ -1497,7 +1496,7 @@
                                                                     <TextBlock Text="Credits"
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             ToolTip="New item"
                                                                             Panel.ZIndex="1"
                                                                             VerticalAlignment="Top">
@@ -1551,7 +1550,7 @@
                                                                                 </StackPanel>
                                                                                 <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
-                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                                         ToolTip="New item"
                                                                                         Margin="0,0,8,0"
                                                                                         VerticalAlignment="Center">
@@ -1587,7 +1586,7 @@
                                                                     <TextBlock Text="Purchases"
                                                                                VerticalAlignment="Center"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                                    <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                    <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                             ToolTip="New item"
                                                                             Panel.ZIndex="1"
                                                                             VerticalAlignment="Top">
@@ -1641,7 +1640,7 @@
                                                                                 </StackPanel>
                                                                                 <Button Grid.Column="2"
                                                                                         x:Name="NewTas2k"
-                                                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                                         ToolTip="New item"
                                                                                         Margin="0,0,8,0"
                                                                                         VerticalAlignment="Center">

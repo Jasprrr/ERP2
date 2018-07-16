@@ -1,0 +1,38 @@
+﻿<!--<TreeView MinWidth="220">
+                    <TreeViewItem Header="Home" />
+                    <TreeViewItem Header="Tasks" />
+                    <TreeViewItem Header="Customers" />
+                    <TreeViewItem Header="Suppliers" />
+                    <TreeViewItem Header="Standard items" />
+                    <TreeViewItem Header="Quotes">
+                        <TreeViewItem Header="In progress" />
+                        <TreeViewItem Header="Closed won" />
+                        <TreeViewItem Header="Closed lost" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Orders">
+                        <TreeViewItem Header="Contract review" />
+                        <TreeViewItem Header="In progress" />
+                        <TreeViewItem Header="Awaiting despatch" />
+                        <TreeViewItem Header="Awaiting invoice" />
+                        <TreeViewItem Header="Complete" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Deliveries" />
+                    <TreeViewItem Header="Invoices" />
+                    <TreeViewItem Header="Credits" />
+                    <TreeViewItem Header="Purchase orders">
+                        <TreeViewItem Header="In progress" />
+                        <TreeViewItem Header="Complete" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Stock" />
+                    <TreeViewItem Header="NCRs">
+                        <TreeViewItem Header="Internal" />
+                        <TreeViewItem Header="External" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Employees">
+                        <TreeViewItem Header="Holiday" />
+                        <TreeViewItem Header="Sickness" />
+                        <TreeViewItem Header="Lateness" />
+                        <TreeViewItem Header="Training" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Reports" />
+                </TreeView>-->

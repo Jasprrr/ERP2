@@ -133,6 +133,9 @@
     <Compile Include="View\AccountsView.xaml.cs">
       <DependentUpon>AccountsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CallView.xaml.cs">
+      <DependentUpon>CallView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ContactPreview.xaml.cs">
       <DependentUpon>ContactPreview.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CallView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -275,6 +282,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\mb-bg-fb-01.png" />
+    <Resource Include="Resource\mb-bg-fb-02.png" />
+    <Resource Include="Resource\mb-bg-fb-03.png" />
+    <Resource Include="Resource\mb-bg-fb-04.png" />
+    <Resource Include="Resource\mb-bg-fb-05.png" />
+    <Resource Include="Resource\mb-bg-fb-06.png" />
+    <Resource Include="Resource\mb-bg-fb-07.png" />
+    <Resource Include="Resource\mb-bg-fb-08.png" />
+    <Resource Include="Resource\mb-bg-fb-09.png" />
+    <Resource Include="Resource\mb-bg-fb-10.png" />
+    <Resource Include="Resource\mb-bg-fb-11.png" />
+    <Resource Include="Resource\mb-bg-fb-12.png" />
+    <Resource Include="Resource\mb-bg-fb-13.png" />
+    <Resource Include="Resource\mb-bg-fb-14.png" />
+    <Resource Include="Resource\mb-bg-fb-15.png" />
+    <Resource Include="Resource\mb-bg-fb-16.png" />
+    <Resource Include="Resource\mb-bg-fb-17.png" />
+    <Resource Include="Resource\mb-bg-fb-18.png" />
+    <Resource Include="Resource\mb-bg-fb-19.png" />
+    <Resource Include="Resource\mb-bg-fb-20.png" />
+    <Resource Include="Resource\mb-bg-fb-21.png" />
+    <Resource Include="Resource\mb-bg-fb-22.png" />
+    <Resource Include="Resource\mb-bg-fb-23.png" />
+    <Resource Include="Resource\mb-bg-fb-24.png" />
+    <Resource Include="Resource\mb-bg-fb-25.png" />
+    <Resource Include="Resource\mb-bg-fb-26.png" />
+    <Resource Include="Resource\mb-bg-fb-27.png" />
+    <Resource Include="Resource\mb-bg-fb-28.png" />
+    <Resource Include="Resource\mb-bg-fb-29.png" />
+    <Resource Include="Resource\mb-bg-fb-30.png" />
+    <Resource Include="Resource\MenuTree.txt" />
     <Resource Include="Resource\grey_silhouette.png" />
     <Resource Include="Resource\TextFile1.txt" />
     <Resource Include="icon.ico" />

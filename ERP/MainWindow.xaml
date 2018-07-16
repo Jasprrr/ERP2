@@ -10,10 +10,10 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
-        Height="500"
-        Width="800"
+        MinWidth="1056"
+        MinHeight="768"
         Title="Wyatt"
-        TextElement.Foreground="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
@@ -21,160 +21,160 @@
         Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                      Mode="Standard"
-                                      Grid.Row="1"
-                                      Grid.Column="0"
-                                      VerticalAlignment="Stretch"
-                                      Background="{StaticResource MaterialDesignBackground}">
-                <ListView ItemsSource="{Binding navMenu}"
-                          SelectedIndex="0"
-                          SelectedItem="{Binding selectedItem}"
-                          Margin="6,6,6,0"
-                          Background="{DynamicResource MaterialDesignBackground}"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          SelectionChanged="ListView_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="{Binding NavIcon}"
-                                                         VerticalAlignment="Center"
-                                                         Width="20"
-                                                         Height="20" />
-                                <Label Content="{Binding NavTitle}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <!--<TreeView MinWidth="220">
-                    <TreeViewItem Header="Home" />
-                    <TreeViewItem Header="Tasks" />
-                    <TreeViewItem Header="Customers" />
-                    <TreeViewItem Header="Suppliers" />
-                    <TreeViewItem Header="Standard items" />
-                    <TreeViewItem Header="Quotes">
-                        <TreeViewItem Header="In progress" />
-                        <TreeViewItem Header="Closed won" />
-                        <TreeViewItem Header="Closed lost" />
-                    </TreeViewItem>
-                    <TreeViewItem Header="Orders">
-                        <TreeViewItem Header="Contract review" />
-                        <TreeViewItem Header="In progress" />
-                        <TreeViewItem Header="Awaiting despatch" />
-                        <TreeViewItem Header="Awaiting invoice" />
-                        <TreeViewItem Header="Complete" />
-                    </TreeViewItem>
-                    <TreeViewItem Header="Deliveries" />
-                    <TreeViewItem Header="Invoices" />
-                    <TreeViewItem Header="Credits" />
-                    <TreeViewItem Header="Purchase orders">
-                        <TreeViewItem Header="In progress" />
-                        <TreeViewItem Header="Complete" />
-                    </TreeViewItem>
-                    <TreeViewItem Header="Stock" />
-                    <TreeViewItem Header="NCRs">
-                        <TreeViewItem Header="Internal" />
-                        <TreeViewItem Header="External" />
-                    </TreeViewItem>
-                    <TreeViewItem Header="Employees">
-                        <TreeViewItem Header="Holiday" />
-                        <TreeViewItem Header="Sickness" />
-                        <TreeViewItem Header="Lateness" />
-                        <TreeViewItem Header="Training" />
-                    </TreeViewItem>
-                    <TreeViewItem Header="Reports" />
-                </TreeView>-->
-            </materialDesign:ColorZone>
-            <materialDesign:ColorZone Grid.Column="0"
-                                      Padding="16"
-                                      materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                      Mode="PrimaryMid"
-                                      Grid.ColumnSpan="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:Badged Badge=""
-                                           Grid.Column="3">
-                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                Padding="4"
-                                Grid.Column="3">
-                            <materialDesign:PackIcon Kind="Bell"
+        <materialDesign:DrawerHost x:Name="Drawer">
+            <materialDesign:DrawerHost.RightDrawerContent>
+                <StackPanel Margin="16">
+                    <TextBlock Margin="4"
+                               HorizontalAlignment="Center">THE RIGHT STUFF</TextBlock>
+                    <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                            CommandParameter="{x:Static Dock.Right}"
+                            Margin="4"
+                            HorizontalAlignment="Center"
+                            Style="{DynamicResource MaterialDesignFlatButton}">
+                        CLOSE THIS
+                    </Button>
+                    <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                            Margin="4"
+                            HorizontalAlignment="Center"
+                            Style="{DynamicResource MaterialDesignFlatButton}">
+                        CLOSE ALL
+                    </Button>
+                </StackPanel>
+            </materialDesign:DrawerHost.RightDrawerContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}"
+                                          Grid.Row="0"
+                                          Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                   Margin="48,0,0,0" />
+                        <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                Grid.Column="2">
+                            <materialDesign:PackIcon Kind="Download"
                                                      Height="24"
                                                      Width="24" />
                         </Button>
-                    </materialDesign:Badged>
-                    <materialDesign:PopupBox Grid.Column="4"
-                                             PlacementMode="BottomAndAlignRightEdges"
-                                             StaysOpen="False">
-                        <StackPanel>
-                            <Button Content="Hello World" />
-                            <Button Content="Nice Popup" />
-                            <Button Content="Can't Touch This"
-                                    IsEnabled="False" />
-                            <Separator />
-                            <Button Content="Goodbye" />
-                        </StackPanel>
-                    </materialDesign:PopupBox>
-                    <TextBlock Grid.Column="1"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="22"
-                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
-                               Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                Grid.Column="3"
+                                ToolTip="Stage forward">
+                            <materialDesign:PackIcon Kind="Forward"
+                                                     Height="24"
+                                                     Width="24" />
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                Grid.Column="4">
+                            <materialDesign:PackIcon Kind="Delete"
+                                                     Height="24"
+                                                     Width="24" />
+                        </Button>
+                        <Button x:Name="Save"
+                                Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                Grid.Column="5">
+                            <materialDesign:PackIcon Kind="ContentSave"
+                                                     Height="24"
+                                                     Width="24" />
+                        </Button>
+                        <materialDesign:PopupBox Grid.Column="6"
+                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                 StaysOpen="True"
+                                                 Margin="10,0"
+                                                 Foreground="White">
+                            <StackPanel>
+                                <Button Content="Convert quote" />
+                                <Separator />
+                                <Button Content="Delete quote" />
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                    </Grid>
+                </materialDesign:ColorZone>
+                <ProgressBar x:Name="progressBar"
+                             Grid.Row="1"
+                             IsIndeterminate="True"
+                             Visibility="Collapsed" />
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                              Mode="Standard"
+                                              VerticalAlignment="Stretch"
+                                              Width="200"
+                                              Background="{StaticResource MaterialDesignBackground}">
+                        <ListView ItemsSource="{Binding navMenu}"
+                                  SelectedIndex="0"
+                                  SelectedItem="{Binding selectedItem}"
+                                  Background="{DynamicResource MaterialDesignBackground}"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  SelectionChanged="ListView_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="{Binding NavIcon}"
+                                                                 VerticalAlignment="Center"
+                                                                 Margin="12,4"
+                                                                 Width="20"
+                                                                 Height="20" />
+                                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                   Text="{Binding NavTitle}"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </materialDesign:ColorZone>
+                    <Frame x:Name="MainFrame"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Source="{Binding mainFrame}"
+                           HorizontalContentAlignment="Stretch"
+                           VerticalContentAlignment="Stretch"
+                           NavigationUIVisibility="Hidden" />
                 </Grid>
-            </materialDesign:ColorZone>
-
-            <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
-                                     Content="{materialDesign:PackIcon Kind=Pencil}"
-                                     PlacementMode="TopAndAlignRightEdges"
-                                     StaysOpen="False"
-                                     Grid.Row="1"
-                                     Grid.Column="1"
-                                     VerticalAlignment="Bottom"
-                                     HorizontalAlignment="Right"
-                                     Margin="16"
-                                     Panel.ZIndex="1"
-                                     PopupMode="MouseOver"
-                                     Width="56"
-                                     Height="56">
-                <StackPanel>
-                    <Button ToolTip="Log"
-                            Click="Button_Click">
-                        <materialDesign:PackIcon Kind="Message" />
-                    </Button>
-                    <Button ToolTip="Appointment">
-                        <materialDesign:PackIcon Kind="MapMarker" />
-                    </Button>
-                    <Button ToolTip="Order">
-                        <materialDesign:PackIcon Kind="Send" />
-                    </Button>
-                </StackPanel>
-            </materialDesign:PopupBox>
-
-            <Frame x:Name="MainFrame"
-                   Grid.Row="1"
-                   Grid.Column="1"
-                   Source="{Binding mainFrame}"
-                   HorizontalContentAlignment="Stretch"
-                   VerticalContentAlignment="Stretch"
-                   Padding="6"
-                   Margin="24"
-                   NavigationUIVisibility="Hidden" />
-        </Grid>
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+                                         Content="{materialDesign:PackIcon Kind=Pencil}"
+                                         PlacementMode="TopAndAlignRightEdges"
+                                         StaysOpen="False"
+                                         Grid.Row="2"
+                                         VerticalAlignment="Bottom"
+                                         HorizontalAlignment="Right"
+                                         Margin="16"
+                                         Panel.ZIndex="1"
+                                         PopupMode="MouseOver"
+                                         Width="56"
+                                         Height="56">
+                    <StackPanel>
+                        <Button ToolTip="Log"
+                                Click="Button_Click">
+                            <materialDesign:PackIcon Kind="Message" />
+                        </Button>
+                        <Button ToolTip="Appointment">
+                            <materialDesign:PackIcon Kind="MapMarker" />
+                        </Button>
+                        <Button ToolTip="Order">
+                            <materialDesign:PackIcon Kind="Send" />
+                        </Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </Grid>
+        </materialDesign:DrawerHost>
     </Grid>
 </Window>

@@ -13,10 +13,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Pink.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
@@ -63,7 +63,7 @@
                 <Setter Property="MaxWidth"
                         Value="256" />
             </Style>
-            <!--#endregion TextBoxes-->
+            <!--#endregion TextBlocks-->
 
             <Style x:Key="MaterialDesignCustomFloatingHintTextBoxFull"
                    TargetType="TextBox"
@@ -74,6 +74,8 @@
                         Value="256" />
                 <Setter Property="Margin"
                         Value="0,8,0,4" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
             </Style>
             <Style x:Key="MaterialDesignCustomFloatingHintTextBoxHalf"
                    TargetType="TextBox"
@@ -84,6 +86,8 @@
                         Value="92" />
                 <Setter Property="Margin"
                         Value="0,8,0,4" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
             </Style>
 
             <!--Comboboxes-->
@@ -146,7 +150,7 @@
             </Style>
 
             <!--Buttons-->
-            <Style x:Key="MaterialDesignCustomerHeaderButton"
+            <Style x:Key="MaterialDesignForegroundBaseButton"
                    TargetType="Button"
                    BasedOn="{StaticResource MaterialDesignRaisedButton}">
                 <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
@@ -165,6 +169,37 @@
                         Value="True" />
                 <Setter Property="materialDesign:RippleAssist.Feedback"
                         Value="{StaticResource MaterialDesignFlatButtonRipple}" />
+            </Style>
+            <Style x:Key="MaterialDesignMidForegroundButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
+            </Style>
+            <Style x:Key="MaterialDesignLightForegroundButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource PrimaryHueLightForegroundBrush}" />
+            </Style>
+            <Style x:Key="MaterialDesignDarkForegroundButton"
+                   TargetType="Button"
+                   BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+            </Style>
+            
+            <Style x:Key="MaterialDesignFlatIconButton"
+                   BasedOn="{StaticResource MaterialDesignFlatButton}"
+                   TargetType="Button">
+                <Setter Property="HorizontalAlignment"
+                        Value="Right" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Width"
+                        Value="34" />
+                <Setter Property="Height"
+                        Value="32" />
             </Style>
 
             <!--DataGrid-->
@@ -321,7 +356,7 @@
                 <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
                         Value="Depth1" />
                 <Setter Property="Background"
-                        Value="White" />
+                        Value="{DynamicResource MaterialDesignBackground}" />
             </Style>
             <Style x:Key="MaterialDesignGrid"
                    TargetType="{x:Type DataGrid}"
@@ -329,7 +364,7 @@
                 <Setter Property="CanUserSortColumns"
                         Value="True" />
                 <Setter Property="Background"
-                        Value="White" />
+                        Value="{StaticResource MaterialDesignBackground}" />
                 <Setter Property="AutoGenerateColumns"
                         Value="False" />
                 <Setter Property="RowHeight"
@@ -339,7 +374,7 @@
                 <Setter Property="materialDesign:DataGridAssist.ColumnHeaderPadding"
                         Value="8" />
                 <Setter Property="Margin"
-                        Value="0,0,0,48" />
+                        Value="0,0,0,22" />
                 <Setter Property="CanUserAddRows"
                         Value="True" />
                 <Setter Property="ScrollViewer.CanContentScroll"
@@ -521,19 +556,6 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-
-            <Style x:Key="MaterialDesignCustomNewButton"
-                   BasedOn="{StaticResource MaterialDesignFlatButton}"
-                   TargetType="Button">
-                <Setter Property="HorizontalAlignment"
-                        Value="Right" />
-                <Setter Property="Padding"
-                        Value="0" />
-                <Setter Property="Width"
-                        Value="32" />
-                <Setter Property="Height"
-                        Value="32" />
-            </Style>
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
                     <Setter.Value>
@@ -562,65 +584,7 @@
             </Style>
 
             <!-- Tab Control-->
-            <Style x:Key="TabItemStyle1"
-                   TargetType="{x:Type TabItem}">
-                <Setter Property="FocusVisualStyle"
-                        Value="{StaticResource FocusVisual}" />
-                <Setter Property="Margin"
-                        Value="0" />
-                <Setter Property="Padding"
-                        Value="16,12,16,12" />
-                <Setter Property="HorizontalContentAlignment"
-                        Value="Center" />
-                <Setter Property="VerticalContentAlignment"
-                        Value="Center" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TabItem}">
-                            <Grid x:Name="templateRoot"
-                                  SnapsToDevicePixels="true">
-                                <Border x:Name="mainBorder"
-                                        Background="{DynamicResource PrimaryHueLightBrush}">
-                                    <Border x:Name="innerBorder"
-                                            BorderBrush="{DynamicResource SecondaryAccentBrush}"
-                                            BorderThickness="0,0,0,2"
-                                            Background="{DynamicResource PrimaryHueLightBrush}"
-                                            Margin="0"
-                                            Opacity="0" />
-                                </Border>
-                                <ContentPresenter x:Name="contentPresenter"
-                                                  ContentSource="Header"
-                                                  Focusable="False"
-                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                  Margin="{TemplateBinding Padding}"
-                                                  RecognizesAccessKey="True"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
-                                                   Value="false" />
-                                    </MultiDataTrigger.Conditions>
-                                </MultiDataTrigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
-                                                   Value="true" />
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Panel.ZIndex"
-                                            Value="1" />
-                                    <Setter Property="Opacity"
-                                            TargetName="innerBorder"
-                                            Value="1" />
-                                </MultiDataTrigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="TabControlStyle1"
+            <Style x:Key="MaterialDesignTabControl"
                    TargetType="{x:Type TabControl}">
                 <Setter Property="Margin"
                         Value="0" />
@@ -761,6 +725,64 @@
                                             TargetName="templateRoot"
                                             Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                                 </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="MaterialDesignTabItem"
+                   TargetType="{x:Type TabItem}">
+                <Setter Property="FocusVisualStyle"
+                        Value="{StaticResource FocusVisual}" />
+                <Setter Property="Margin"
+                        Value="0" />
+                <Setter Property="Padding"
+                        Value="16,12,16,12" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot"
+                                  SnapsToDevicePixels="true">
+                                <Border x:Name="mainBorder"
+                                        Background="{DynamicResource PrimaryHueLightBrush}">
+                                    <Border x:Name="innerBorder"
+                                            BorderBrush="{DynamicResource SecondaryAccentBrush}"
+                                            BorderThickness="0,0,0,2"
+                                            Background="{DynamicResource PrimaryHueLightBrush}"
+                                            Margin="0"
+                                            Opacity="0" />
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter"
+                                                  ContentSource="Header"
+                                                  Focusable="False"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="true" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Panel.ZIndex"
+                                            Value="1" />
+                                    <Setter Property="Opacity"
+                                            TargetName="innerBorder"
+                                            Value="1" />
+                                </MultiDataTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>

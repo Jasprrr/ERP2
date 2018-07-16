@@ -87,22 +87,13 @@ namespace ERP.View
             get { return accountList.Count(); }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var button = sender as Button;
-            string theValue = button.Tag.ToString();
-            Debug.Print(theValue);
-            var newWindow = new AccountView();
-            newWindow.Show();
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Debug.Print(selectedItem.accountName.ToString());
-            Dispatcher.BeginInvoke(new Action(() => {
+            if(selectedItem != null)
+            {
                 var editwindow = new AccountView();
                 editwindow.Show();
-            }));
+            }
         }
     }
 }

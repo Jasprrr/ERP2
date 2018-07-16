@@ -10,12 +10,11 @@
         xmlns:UserControl="clr-namespace:ERP.Control"
         x:Class="ERP.View.AccountView"
         mc:Ignorable="d"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBodyLight}"
         TextElement.FontFamily="Roboto"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
         Width="1280"
         Height="900"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
@@ -29,50 +28,51 @@
     <Grid>
         <materialDesign:DialogHost x:Name="PreviewDialog">
             <materialDesign:DialogHost.DialogContent>
-                <StackPanel>
-                    <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
-                                       VerticalAlignment="Center"
-                                       FontSize="22"
-                                       Text="New Task"
-                                       Margin="24,0,0,0"
-                                       Style="{StaticResource MaterialDesignDisplay2TextBlock}"
-                                       FontFamily="Roboto" />
-                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
-                                    Grid.Column="1"
-                                    Click="Button_Click_1"
-                                    FontFamily="Roboto">
-                                <materialDesign:PackIcon Kind="Pencil"
-                                                         Height="24"
-                                                         Width="24"
-                                                         Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" />
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
-                                    Grid.Column="2"
-                                    Click="Button_Click_1">
-                                <materialDesign:PackIcon Kind="Close"
-                                                         Height="24"
-                                                         Width="24"
-                                                         Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" />
-                            </Button>
-                        </Grid>
-                    </materialDesign:ColorZone>
-                    <StackPanel Margin="0,0,0,20">
+                <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}">
+                    <StackPanel>
+                        <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           FontSize="22"
+                                           Text="New Task"
+                                           Margin="24,0,0,0"
+                                           Style="{StaticResource MaterialDesignDisplay2TextBlock}"
+                                           FontFamily="Roboto" />
+                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                        Grid.Column="1"
+                                        Click="Button_Click_1"
+                                        FontFamily="Roboto">
+                                    <materialDesign:PackIcon Kind="Pencil"
+                                                             Height="24"
+                                                             Width="24"
+                                                             Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" />
+                                </Button>
+                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                        Grid.Column="2"
+                                        Click="Button_Click_1">
+                                    <materialDesign:PackIcon Kind="Close"
+                                                             Height="24"
+                                                             Width="24"
+                                                             Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" />
+                                </Button>
+                            </Grid>
+                        </materialDesign:ColorZone>
                         <Frame Source="/ERP;component/View/QuotePreview.xaml"
                                x:Name="PreviewFrame"
                                FontFamily="Roboto"
-                               NavigationUIVisibility="Hidden" />
+                               NavigationUIVisibility="Hidden"
+                               Padding="0,0,0,20" />
                     </StackPanel>
-                </StackPanel>
+                </materialDesign:ColorZone>
             </materialDesign:DialogHost.DialogContent>
             <materialDesign:DialogHost.Content>
-                <Grid Background="{DynamicResource MaterialDesignPaper}">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -97,27 +97,27 @@
                                        Text="Account"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}"
                                        Margin="48,0,0,0" />
-                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                            <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="2">
                                 <materialDesign:PackIcon Kind="Download"
                                                          Height="24"
                                                          Width="24" />
                             </Button>
-                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                            <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="3"
                                     ToolTip="Stage forward">
                                 <materialDesign:PackIcon Kind="Forward"
                                                          Height="24"
                                                          Width="24" />
                             </Button>
-                            <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                            <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="4">
                                 <materialDesign:PackIcon Kind="Delete"
                                                          Height="24"
                                                          Width="24" />
                             </Button>
                             <Button x:Name="Save"
-                                    Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                    Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="5"
                                     Click="Save_Click">
                                 <materialDesign:PackIcon Kind="ContentSave"
@@ -149,10 +149,9 @@
                                               MinWidth="336" />
                             <ColumnDefinition Width="336" />
                         </Grid.ColumnDefinitions>
-                        <materialDesign:ColorZone BorderThickness="0,0,1,0"
-                                                  BorderBrush="#1e000000"
+                        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                                   VerticalAlignment="Stretch"
-                                                  Background="White">
+                                                  Background="{StaticResource MaterialDesignBackground}">
                             <StackPanel Width="336">
                                 <materialDesign:Transitioner SelectedIndex="0">
                                     <materialDesign:TransitionerSlide>
@@ -165,7 +164,7 @@
                                                     <RowDefinition Height="auto" />
                                                 </Grid.RowDefinitions>
                                                 <Button x:Name="EditFlipper"
-                                                        Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                        Style="{StaticResource MaterialDesignMidForegroundButton}"
                                                         HorizontalContentAlignment="Right"
                                                         VerticalAlignment="Top"
                                                         HorizontalAlignment="Right"
@@ -197,10 +196,10 @@
                                         </materialDesign:ColorZone>
                                     </materialDesign:TransitionerSlide>
                                     <materialDesign:TransitionerSlide>
-                                        <materialDesign:ColorZone Background="White"
+                                        <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}"
                                                                   Height="120">
                                             <Grid>
-                                                <Button Style="{StaticResource MaterialDesignCustomerHeaderButton}"
+                                                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                                         HorizontalContentAlignment="Right"
                                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
                                                         VerticalAlignment="Top"
@@ -236,19 +235,19 @@
                                         </materialDesign:ColorZone>
                                     </materialDesign:TransitionerSlide>
                                 </materialDesign:Transitioner>
-                                <materialDesign:ColorZone Background="White"
+                                <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}"
                                                           SnapsToDevicePixels="True"
                                                           VerticalAlignment="Stretch">
                                     <StackPanel>
-                                        <TabControl Style="{DynamicResource TabControlStyle1}"
+                                        <TabControl Style="{DynamicResource MaterialDesignTabControl}"
                                                     VerticalContentAlignment="Stretch"
                                                     SnapsToDevicePixels="True">
-                                            <TabItem Style="{DynamicResource TabItemStyle1}"
+                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                      Width="84"
                                                      VerticalContentAlignment="Stretch">
                                                 <TabItem.Header>
                                                     <TextBlock Text="Details"
-                                                               Style="{Binding MaterialDesignBody1TextBlock}"
+                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                Foreground="{StaticResource PrimaryHueLightForegroundBrush}" />
                                                 </TabItem.Header>
                                                 <StackPanel Width="256"
@@ -270,7 +269,7 @@
                                                     <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                 HorizontalAlignment="Left"
                                                                 materialDesign:HintAssist.Hint="Trading since" />
-                                                    <Separator Style="{Binding MaterialDesignCustomSeperatorExtended}"
+                                                    <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
                                                                Text="Account on hold"
@@ -312,13 +311,13 @@
                                                     </ComboBox>
                                                 </StackPanel>
                                             </TabItem>
-                                            <TabItem Style="{DynamicResource TabItemStyle1}"
+                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                      Width="84"
                                                      Background="White"
                                                      BorderBrush="White">
                                                 <TabItem.Header>
                                                     <TextBlock Text="Billing"
-                                                               Style="{Binding MaterialDesignBody1TextBlock}"
+                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                Foreground="{StaticResource PrimaryHueLightForegroundBrush}" />
                                                 </TabItem.Header>
                                                 <StackPanel Margin="0,12,0,0">
@@ -340,7 +339,7 @@
                                                         <ComboBoxItem Content="T5" />
                                                         <ComboBoxItem Content="T6" />
                                                     </ComboBox>
-                                                    <Separator Style="{Binding MaterialDesignCustomSeperatorExtended}"
+                                                    <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
                                                                Text="Billing address"
@@ -370,13 +369,13 @@
                                                              Text="{Binding selectAccount.billingCountry}" />
                                                 </StackPanel>
                                             </TabItem>
-                                            <TabItem Style="{DynamicResource TabItemStyle1}"
+                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                      Width="84"
                                                      Background="White"
                                                      BorderBrush="White">
                                                 <TabItem.Header>
                                                     <TextBlock Text="Shipping"
-                                                               Style="{Binding MaterialDesignBody1TextBlock}"
+                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                Foreground="{StaticResource PrimaryHueLightForegroundBrush}" />
                                                 </TabItem.Header>
                                                 <StackPanel Margin="0,12,0,0">
@@ -387,7 +386,7 @@
                                                         <ComboBoxItem Content="Collection" />
                                                         <ComboBoxItem Content="Courier" />
                                                     </ComboBox>
-                                                    <Separator Style="{Binding MaterialDesignCustomSeperatorExtended}"
+                                                    <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
                                                                Text="Shipping address"
@@ -414,13 +413,13 @@
                                                              Text="{Binding selectAccount.shippingCountry}" />
                                                 </StackPanel>
                                             </TabItem>
-                                            <TabItem Style="{DynamicResource TabItemStyle1}"
+                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
                                                      Width="84"
                                                      Background="White"
                                                      BorderBrush="White">
                                                 <TabItem.Header>
                                                     <TextBlock Text="Other"
-                                                               Style="{Binding MaterialDesignBody1TextBlock}"
+                                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                Foreground="{StaticResource PrimaryHueLightForegroundBrush}" />
                                                 </TabItem.Header>
                                                 <StackPanel Margin="0,12,0,0">
@@ -433,7 +432,7 @@
                                                         <ComboBoxItem Content="4030" />
                                                         <ComboBoxItem Content="4040" />
                                                     </ComboBox>
-                                                    <Separator Style="{Binding MaterialDesignCustomSeperatorExtended}"
+                                                    <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
                                                                Text="Credit review"
@@ -447,7 +446,7 @@
                                                                     HorizontalAlignment="Right"
                                                                     materialDesign:HintAssist.Hint="Next Review" />
                                                     </Grid>
-                                                    <Separator Style="{Binding MaterialDesignCustomSeperatorExtended}"
+                                                    <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
                                                                Text="Registered address"
@@ -472,7 +471,7 @@
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Country"
                                                              Text="{Binding selectAccount.shippingCountry}" />
-                                                    <Separator Style="{Binding MaterialDesignCustomSeperatorExtended}"
+                                                    <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                 </StackPanel>
                                             </TabItem>
@@ -482,19 +481,17 @@
                             </StackPanel>
                         </materialDesign:ColorZone>
                         <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
                             <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                                 BorderThickness="1"
                                                  SnapsToDevicePixels="True"
                                                  VerticalAlignment="Stretch"
                                                  VerticalContentAlignment="Stretch"
-                                                 Grid.Row="1"
                                                  Margin="8">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="*" />
+                                        <RowDefinition Height="32" />
                                     </Grid.RowDefinitions>
                                     <Grid Height="32"
                                           Margin="24,20"
@@ -502,13 +499,26 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Activity"
                                                    VerticalAlignment="Center"
                                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                        <materialDesign:PopupBox Grid.Column="1"
+                                        <Button x:Name="NewCall"
+                                                Style="{StaticResource MaterialDesignFlatIconButton}"
+                                                ToolTip="New item"
+                                                Grid.Column="1"
+                                                Panel.ZIndex="1"
+                                                VerticalAlignment="Top"
+                                                Click="NewCall_Click">
+                                            <materialDesign:PackIcon Kind="Plus"
+                                                                     Height="24"
+                                                                     Width="24" />
+                                        </Button>
+                                        <materialDesign:PopupBox Grid.Column="2"
                                                                  StaysOpen="True"
-                                                                 PlacementMode="BottomAndAlignCentres">
+                                                                 PlacementMode="BottomAndAlignCentres"
+                                                                 Width="32">
                                             <materialDesign:PopupBox.ToggleContent>
                                                 <materialDesign:PackIcon Kind="FilterVariant"
                                                                          Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -572,7 +582,7 @@
                                                             <ColumnDefinition Width="auto" />
                                                         </Grid.ColumnDefinitions>
                                                         <Border Grid.Column="0"
-                                                                VerticalAlignment="Top"
+                                                                VerticalAlignment="Center"
                                                                 Margin="12,0,12,0"
                                                                 Width="32"
                                                                 Height="32"
@@ -588,9 +598,13 @@
                                                                     VerticalAlignment="Center"
                                                                     Margin="8,0,0,0">
                                                             <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                                       Text="{Binding user}"
+                                                                       TextTrimming="WordEllipsis" />
+                                                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                        Text="{Binding activityDescription}"
                                                                        TextTrimming="WordEllipsis" />
                                                             <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                       Foreground="{StaticResource MaterialDesignColumnHeader}"
                                                                        Text="{Binding user}" />
                                                         </StackPanel>
 
@@ -620,24 +634,23 @@
                         </Grid>
                         <materialDesign:ColorZone Grid.Column="2"
                                                   Width="336"
-                                                  BorderThickness="1,0,0,0"
-                                                  BorderBrush="#1e000000"
-                                                  Background="White"
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                  BorderBrush="{StaticResource MaterialDesignDivider}"
+                                                  Background="{StaticResource MaterialDesignBackground}"
                                                   VerticalAlignment="Stretch">
                             <ScrollViewer Grid.Row="2"
                                           HorizontalContentAlignment="Center"
                                           VerticalScrollBarVisibility="Auto">
                                 <StackPanel>
-                                    <Expander Margin="0"
-                                              Background="White"
-                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                    <Expander ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                              Background="{StaticResource MaterialDesignBackground}"
                                               IsExpanded="True">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Contacts"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -670,7 +683,7 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Button Grid.Column="0"
                                                                 x:Name="NewTas2k"
-                                                                Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                 ToolTip="New item"
                                                                 Margin="0,0,0,0"
                                                                 VerticalAlignment="Center"
@@ -722,8 +735,7 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White"
+                                    <Expander Background="{StaticResource MaterialDesignBackground}"
                                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <Expander.Header>
                                             <Grid>
@@ -731,7 +743,7 @@
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
                                                 <Button x:Name="NewTask"
-                                                        Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New task"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top"
@@ -781,6 +793,7 @@
                                                                        TextTrimming="CharacterEllipsis" />
                                                             <TextBlock x:Name="taskDetail"
                                                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                       Foreground="{StaticResource MaterialDesignColumnHeader}"
                                                                        Visibility="{Binding dueDate, Converter={StaticResource NullableToVisibilityConverter}}"
                                                                        Text="{Binding dueDate, StringFormat=\{0:D\}}" />
                                                         </StackPanel>
@@ -804,14 +817,13 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Quotes"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -844,7 +856,7 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Button Grid.Column="0"
                                                                 x:Name="NewTas2k"
-                                                                Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                 ToolTip="New item"
                                                                 Margin="0,0,0,0"
                                                                 VerticalAlignment="Center"
@@ -865,6 +877,7 @@
                                                                        TextTrimming="CharacterEllipsis" />
                                                             <TextBlock x:Name="taskDetail"
                                                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                       Foreground="{StaticResource MaterialDesignColumnHeader}"
                                                                        Visibility="{Binding dueDate, Converter={StaticResource NullableToVisibilityConverter}}"
                                                                        Text="{Binding dueDate, StringFormat=\{0:D\}}" />
                                                         </StackPanel>
@@ -888,14 +901,13 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Orders"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -928,7 +940,7 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Button Grid.Column="0"
                                                                 x:Name="NewTas2k"
-                                                                Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                                Style="{StaticResource MaterialDesignFlatIconButton}"
                                                                 ToolTip="New item"
                                                                 Margin="0,0,0,0"
                                                                 VerticalAlignment="Center"
@@ -949,6 +961,7 @@
                                                                        TextTrimming="CharacterEllipsis" />
                                                             <TextBlock x:Name="taskDetail"
                                                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                       Foreground="{StaticResource MaterialDesignColumnHeader}"
                                                                        Visibility="{Binding dueDate, Converter={StaticResource NullableToVisibilityConverter}}"
                                                                        Text="{Binding dueDate, StringFormat=\{0:D\}}" />
                                                         </StackPanel>
@@ -972,14 +985,13 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Deliveries"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -991,14 +1003,13 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Invoices"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -1010,14 +1021,13 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Credits"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -1029,14 +1039,13 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Purchases"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
@@ -1048,14 +1057,13 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Margin="0"
-                                              Background="White">
+                                    <Expander Background="{StaticResource MaterialDesignBackground}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="NCRs"
                                                            VerticalAlignment="Center"
                                                            Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                                                <Button Style="{StaticResource MaterialDesignCustomNewButton}"
+                                                <Button Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">

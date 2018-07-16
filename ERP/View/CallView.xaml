@@ -8,10 +8,9 @@
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
         xmlns:UserControl="clr-namespace:ERP.Control"
-        x:Class="ERP.View.TaskView"
+        x:Class="ERP.View.CallView"
         mc:Ignorable="d"
         Width="672"
-        Height="380"
         Background="{DynamicResource MaterialDesignBackground}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -21,7 +20,8 @@
         TextOptions.TextRenderingMode="Auto"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Language="en-GB"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize"
+        Height="478">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -29,9 +29,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}"
-                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                  Grid.Row="0"
-                                  Grid.ColumnSpan="2">
+                                  Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
@@ -44,7 +42,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="1"
                            VerticalAlignment="Center"
-                           Text="Call"
+                           Text="Task"
                            Style="{StaticResource MaterialDesignTitleTextBlock}"
                            Margin="48,0,0,0" />
                 <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
@@ -85,14 +83,8 @@
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Due date" />
                     <materialDesign:TimePicker Style="{StaticResource MaterialDesignCustomFloatingTimePickerHalf}"
-                                               HorizontalAlignment="Right" 
-                                               materialDesign:HintAssist.Hint="Due time"/>
-                    <!--<CheckBox VerticalContentAlignment="Bottom"
-                              Margin="0,3,0,0"
-                              Content="Complete"
-                              Height="30"
-                              HorizontalAlignment="Right"
-                              Width="92" />-->
+                                               HorizontalAlignment="Right"
+                                               materialDesign:HintAssist.Hint="Due time" />
                 </Grid>
                 <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                           materialDesign:HintAssist.Hint="Customer"
@@ -105,11 +97,28 @@
                     <ComboBoxItem Content="Jasper Friend" />
                 </ComboBox>
                 <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                          materialDesign:HintAssist.Hint="Type"
+                          IsTextSearchEnabled="True">
+                    <ComboBoxItem Content="Outbound"
+                                  IsSelected="True" />
+                    <ComboBoxItem Content="Inbound" />
+                    <ComboBoxItem Content="Internal" />
+                </ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                          materialDesign:HintAssist.Hint="Purpose"
+                          IsTextSearchEnabled="True">
+                    <ComboBoxItem Content="Quote" />
+                    <ComboBoxItem Content="Order" />
+                    <ComboBoxItem Content="Information sent" />
+                    <ComboBoxItem Content="Service" />
+                </ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                           materialDesign:HintAssist.Hint="Type">
                     <ComboBoxItem Content="Jasper Friend" />
                 </ComboBox>
                 <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Assigned to">
+                          materialDesign:HintAssist.Hint="Assigned to"
+                          IsEnabled="False">
                     <ComboBoxItem Content="Jasper Friend"
                                   IsSelected="True" />
                     <ComboBoxItem Content="Jasper Friend" />
@@ -122,7 +131,7 @@
                          materialDesign:HintAssist.Hint="Description"
                          AcceptsReturn="True"
                          Grid.Column="1"
-                         Height="234"
+                         Height="324"
                          Margin="0,12,0,4"
                          TextWrapping="WrapWithOverflow" />
             </StackPanel>
