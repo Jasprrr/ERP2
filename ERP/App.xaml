@@ -13,10 +13,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
@@ -63,6 +63,14 @@
                 <Setter Property="MaxWidth"
                         Value="256" />
             </Style>
+            <Style x:Key="MaterialDesignHeaderTextBlock"
+                   TargetType="TextBlock"
+                   BasedOn="{StaticResource MaterialDesignTitleTextBlock}">
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
+            </Style>
             <!--#endregion TextBlocks-->
 
             <Style x:Key="MaterialDesignCustomFloatingHintTextBoxFull"
@@ -102,6 +110,8 @@
                         Value="Bottom" />
                 <Setter Property="Width"
                         Value="256" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
             </Style>
             <Style x:Key="MaterialDesignFloatingHintComboBoxHalf"
                    TargetType="ComboBox"
@@ -114,6 +124,8 @@
                         Value="Bottom" />
                 <Setter Property="Width"
                         Value="92" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
             </Style>
 
             <!--Seperator-->
@@ -135,6 +147,8 @@
                         Value="0,20,0,4" />
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
             </Style>
 
             <!--TimePicker-->
@@ -147,6 +161,8 @@
                         Value="0,20,0,4" />
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
             </Style>
 
             <!--Buttons-->
@@ -200,6 +216,8 @@
                         Value="34" />
                 <Setter Property="Height"
                         Value="32" />
+                <Setter Property="Margin"
+                        Value="10,0" />
             </Style>
 
             <!--DataGrid-->
@@ -242,112 +260,6 @@
                         Value="Top" />
                 <Setter Property="IsTabStop"
                         Value="False" />
-            </Style>
-            <Style x:Key="MaterialDesignCustomButton"
-                   TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle">
-                    <Setter.Value>
-                        <Style>
-                            <Setter Property="Control.Template">
-                                <Setter.Value>
-                                    <ControlTemplate>
-                                        <Rectangle Margin="2"
-                                                   SnapsToDevicePixels="True"
-                                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                                                   StrokeThickness="1"
-                                                   StrokeDashArray="1 2" />
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Foreground"
-                        Value="#747474" />
-                <Setter Property="Cursor"
-                        Value="Hand" />
-                <Setter Property="FontWeight"
-                        Value="Medium" />
-                <Setter Property="FontSize"
-                        Value="14" />
-                <Setter Property="HorizontalContentAlignment"
-                        Value="Center" />
-                <Setter Property="VerticalContentAlignment"
-                        Value="Center" />
-                <Setter Property="Padding"
-                        Value="16,4" />
-                <Setter Property="Height"
-                        Value="32" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <AdornerDecorator CacheMode="{Binding (materialDesign:ShadowAssist.CacheMode), RelativeSource={RelativeSource Self}}">
-                                    <Grid>
-                                        <Border x:Name="border"
-                                                CornerRadius="2">
-                                            <Border.Effect>
-                                                <Binding Path="(materialDesign:ShadowAssist.ShadowDepth)"
-                                                         RelativeSource="{RelativeSource TemplatedParent}">
-                                                    <Binding.Converter>
-                                                        <Converters:ShadowConverter />
-                                                    </Binding.Converter>
-                                                </Binding>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Background="{DynamicResource MaterialDesignBackground}"
-                                                HorizontalAlignment="Left"
-                                                Opacity="0.4">
-                                            <Border.Width>
-                                                <MultiBinding UpdateSourceTrigger="Default">
-                                                    <MultiBinding.Converter>
-                                                        <Converters:RangeLengthConverter />
-                                                    </MultiBinding.Converter>
-                                                    <Binding Path="(materialDesign:ButtonProgressAssist.Minimum)"
-                                                             RelativeSource="{RelativeSource TemplatedParent}" />
-                                                    <Binding Path="(materialDesign:ButtonProgressAssist.Maximum)"
-                                                             RelativeSource="{RelativeSource TemplatedParent}" />
-                                                    <Binding Path="(materialDesign:ButtonProgressAssist.Value)"
-                                                             RelativeSource="{RelativeSource TemplatedParent}" />
-                                                    <Binding Path="ActualWidth"
-                                                             RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ButtonBase}}" />
-                                                </MultiBinding>
-                                            </Border.Width>
-                                        </Border>
-                                    </Grid>
-                                </AdornerDecorator>
-                                <materialDesign:Ripple ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                       Content="{TemplateBinding Content}"
-                                                       Focusable="False"
-                                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                       Padding="{TemplateBinding Padding}"
-                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Setter Property="materialDesign:ShadowAssist.Darken"
-                                            TargetName="border"
-                                            Value="True" />
-                                    <Setter Property="Foreground"
-                                            Value="{StaticResource PrimaryHueMidBrush}" />
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused"
-                                         Value="True">
-                                    <Setter Property="materialDesign:ShadowAssist.Darken"
-                                            TargetName="border"
-                                            Value="True" />
-                                </Trigger>
-                                <Trigger Property="IsEnabled"
-                                         Value="False">
-                                    <Setter Property="Opacity"
-                                            Value="0.23" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
             </Style>
             <Style x:Key="MaterialDesignCard"
                    TargetType="materialDesign:Card">
@@ -460,6 +372,8 @@
                    TargetType="{x:Type CustomControls:Stepper}">
                 <Setter Property="materialDesign:RippleAssist.Feedback"
                         Value="{DynamicResource MaterialDesignFlatButtonRipple}" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource MaterialDesignBody}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CustomControls:Stepper}">

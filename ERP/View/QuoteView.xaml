@@ -467,8 +467,7 @@
                                                         Height="22"
                                                         Width="22"
                                                         Padding="0"
-                                                        Click="userButton_Click"
-                                                        Style="{DynamicResource MaterialDesignCustomButton}">
+                                                        Click="userButton_Click">
                                                     <materialDesign:PackIcon Kind="AccountPlus"
                                                                              Width="18"
                                                                              Height="18" />
@@ -679,7 +678,7 @@
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
                                                                     <Button x:Name="EditFlipper"
-                                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
+                                                                            Style="{StaticResource MaterialDesignMidForegroundButton}"
                                                                             HorizontalContentAlignment="Right"
                                                                             VerticalAlignment="Top"
                                                                             HorizontalAlignment="Right"
@@ -702,11 +701,11 @@
                                                                         </Border.Background>
                                                                     </Border>
                                                                     <TextBlock Text="{Binding selectedQuote.accountName}"
+                                                                               Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
                                                                                HorizontalAlignment="Center"
                                                                                Grid.Row="1"
                                                                                Style="{StaticResource MaterialDesignTitleTextBlock}"
-                                                                               Margin="0,10"
-                                                                               Foreground="#FFFFFF" />
+                                                                               Margin="0,10"/>
                                                                     <Grid Height="70"
                                                                           Grid.Row="2">
                                                                         <Grid.ColumnDefinitions>
@@ -729,9 +728,9 @@
                                                                                     VerticalAlignment="Center"
                                                                                     Margin="14,0">
                                                                             <TextBlock Text="Jasper Friend"
-                                                                                       Foreground="#DDFFFFFF" />
+                                                                                       Foreground="{StaticResource PrimaryHueMidForegroundBrush}" />
                                                                             <TextBlock Text="IT Dude"
-                                                                                       Foreground="#DDFFFFFF" />
+                                                                                       Foreground="{StaticResource PrimaryHueMidForegroundBrush}" />
                                                                         </StackPanel>
                                                                     </Grid>
                                                                 </Grid>
@@ -791,11 +790,9 @@
                                                                         VerticalContentAlignment="Stretch"
                                                                         SnapsToDevicePixels="True">
                                                                 <TabItem Style="{DynamicResource MaterialDesignTabItem}"
-                                                                         Width="112"
-                                                                         VerticalContentAlignment="Stretch">
+                                                                         Width="112">
                                                                     <TabItem.Header>
-                                                                        <TextBlock Text="Details"
-                                                                                   Foreground="#DDFFFFFF" />
+                                                                        <TextBlock Text="Details" />
                                                                     </TabItem.Header>
                                                                     <StackPanel Width="256"
                                                                                 Margin="0,12,0,0">
@@ -858,12 +855,9 @@
                                                                     </StackPanel>
                                                                 </TabItem>
                                                                 <TabItem Style="{DynamicResource MaterialDesignTabItem}"
-                                                                         Width="112"
-                                                                         Background="White"
-                                                                         BorderBrush="White">
+                                                                         Width="112">
                                                                     <TabItem.Header>
-                                                                        <TextBlock Text="Billing"
-                                                                                   Foreground="#DDFFFFFF" />
+                                                                        <TextBlock Text="Billing"/>
                                                                     </TabItem.Header>
                                                                     <StackPanel Margin="0,12,0,0">
                                                                         <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
@@ -888,12 +882,9 @@
                                                                     </StackPanel>
                                                                 </TabItem>
                                                                 <TabItem Style="{DynamicResource MaterialDesignTabItem}"
-                                                                         Width="112"
-                                                                         Background="White"
-                                                                         BorderBrush="White">
+                                                                         Width="112">
                                                                     <TabItem.Header>
-                                                                        <TextBlock Text="Shipping"
-                                                                                   Foreground="#DDFFFFFF" />
+                                                                        <TextBlock Text="Shipping" />
                                                                     </TabItem.Header>
                                                                     <StackPanel Margin="0,12,0,0">
                                                                         <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
@@ -929,7 +920,8 @@
                                                 </Grid.RowDefinitions>
                                                 <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
                                                                      SnapsToDevicePixels="True"
-                                                                     Grid.Row="0">
+                                                                     Grid.Row="0"
+                                                                     Margin="8">
                                                     <ScrollViewer VerticalScrollBarVisibility="Disabled"
                                                                   HorizontalScrollBarVisibility="Auto"
                                                                   Padding="12">
@@ -959,6 +951,7 @@
                                                                      SnapsToDevicePixels="True"
                                                                      VerticalAlignment="Stretch"
                                                                      VerticalContentAlignment="Stretch"
+                                                                     Margin="8"
                                                                      Grid.Row="1">
                                                     <Grid>
                                                         <Grid.RowDefinitions>
