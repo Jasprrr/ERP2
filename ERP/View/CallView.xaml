@@ -42,7 +42,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="1"
                            VerticalAlignment="Center"
-                           Text="Task"
+                           Text="Call"
                            Style="{StaticResource MaterialDesignTitleTextBlock}"
                            Margin="48,0,0,0" />
                 <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
@@ -55,9 +55,7 @@
                 <materialDesign:PopupBox Grid.Column="6"
                                          PlacementMode="BottomAndAlignRightEdges"
                                          StaysOpen="True"
-                                         Margin="10,0"
-                                         Width="32"
-                                         Height="32">
+                                         Style="{StaticResource MaterialDesignMidHuePopupBox}">
                     <StackPanel>
                         <Button Content="Convert quote" />
                         <Separator />

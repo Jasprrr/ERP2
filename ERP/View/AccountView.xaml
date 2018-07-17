@@ -26,7 +26,8 @@
         <Converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Window.Resources>
     <Grid>
-        <materialDesign:DialogHost x:Name="PreviewDialog">
+        <materialDesign:DialogHost x:Name="PreviewDialog"
+                                   CloseOnClickAway="True">
             <materialDesign:DialogHost.DialogContent>
                 <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}">
                     <StackPanel>
@@ -39,27 +40,21 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                            VerticalAlignment="Center"
-                                           FontSize="22"
-                                           Text="New Task"
-                                           Margin="24,0,0,0"
-                                           Style="{StaticResource MaterialDesignDisplay2TextBlock}"
-                                           FontFamily="Roboto" />
+                                           Text="Account"
+                                           Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                           Margin="48,0,0,0" />
                                 <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                         Grid.Column="1"
                                         Click="Button_Click_1"
                                         FontFamily="Roboto">
-                                    <materialDesign:PackIcon Kind="Pencil"
-                                                             Height="24"
-                                                             Width="24"
-                                                             Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" />
+                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                             Kind="Pencil" />
                                 </Button>
                                 <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                         Grid.Column="2"
                                         Click="Button_Click_1">
-                                    <materialDesign:PackIcon Kind="Close"
-                                                             Height="24"
-                                                             Width="24"
-                                                             Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" />
+                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                             Kind="Close" />
                                 </Button>
                             </Grid>
                         </materialDesign:ColorZone>
@@ -99,40 +94,34 @@
                                        Margin="48,0,0,0" />
                             <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="2">
-                                <materialDesign:PackIcon Kind="Download"
-                                                         Height="24"
-                                                         Width="24" />
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="Download" />
                             </Button>
                             <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="3"
                                     ToolTip="Stage forward">
-                                <materialDesign:PackIcon Kind="Forward"
-                                                         Height="24"
-                                                         Width="24" />
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="Forward" />
                             </Button>
                             <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="4">
-                                <materialDesign:PackIcon Kind="Delete"
-                                                         Height="24"
-                                                         Width="24" />
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="Delete" />
                             </Button>
                             <Button x:Name="Save"
                                     Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                     Grid.Column="5"
                                     Click="Save_Click">
-                                <materialDesign:PackIcon Kind="ContentSave"
-                                                         Height="24"
-                                                         Width="24" />
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="ContentSave" />
                             </Button>
-                            <materialDesign:PopupBox Grid.Column="6"
+                            <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
+                                                     Grid.Column="6"
                                                      PlacementMode="BottomAndAlignRightEdges"
-                                                     StaysOpen="True"
-                                                     Margin="10,0"
-                                                     Width="32"
-                                                     Height="32">
+                                                     StaysOpen="True">
                                 <StackPanel>
                                     <Button Content="Convert quote" />
-                                    <Separator />
+                                    <Button Content="Delete quote" />
                                     <Button Content="Delete quote" />
                                 </StackPanel>
                             </materialDesign:PopupBox>
@@ -168,11 +157,10 @@
                                                         HorizontalContentAlignment="Right"
                                                         VerticalAlignment="Top"
                                                         HorizontalAlignment="Right"
-                                                        Margin="0,10,10,0"
+                                                        Margin="10"
                                                         Command="{x:Static materialDesign:Transitioner.MoveNextCommand}">
-                                                    <materialDesign:PackIcon Kind="Pencil"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Pencil" />
                                                 </Button>
                                                 <Border Width="50"
                                                         Height="50"
@@ -206,9 +194,8 @@
                                                         HorizontalAlignment="Right"
                                                         Margin="0,10,10,0"
                                                         Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
-                                                    <materialDesign:PackIcon Kind="Check"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Check" />
                                                 </Button>
                                                 <StackPanel>
                                                     <Border Width="50"
@@ -493,8 +480,7 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="32" />
                                     </Grid.RowDefinitions>
-                                    <Grid Height="32"
-                                          Margin="24,20"
+                                    <Grid Margin="24,20"
                                           ScrollViewer.VerticalScrollBarVisibility="Auto">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -505,65 +491,39 @@
                                                    Style="{StaticResource MaterialDesignHeaderTextBlock}" />
                                         <Button x:Name="NewCall"
                                                 Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                ToolTip="New item"
+                                                ToolTip="New call"
                                                 Grid.Column="1"
-                                                Panel.ZIndex="1"
-                                                VerticalAlignment="Top"
                                                 Click="NewCall_Click">
-                                            <materialDesign:PackIcon Kind="Plus"
-                                                                     Height="24"
-                                                                     Width="24" />
+                                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                     Kind="Plus" />
                                         </Button>
-                                        <materialDesign:PopupBox Grid.Column="2"
+                                        <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
+                                                                 Grid.Column="2"
                                                                  StaysOpen="True"
                                                                  PlacementMode="BottomAndAlignCentres"
-                                                                 Width="32">
+                                                                 FontSize="15">
                                             <materialDesign:PopupBox.ToggleContent>
-                                                <materialDesign:PackIcon Kind="FilterVariant"
-                                                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                                         Width="24"
-                                                                         Height="24" />
+                                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                         Kind="FilterVariant"
+                                                                         Foreground="{DynamicResource PrimaryHueMidBrush}" />
                                             </materialDesign:PopupBox.ToggleContent>
-                                            <StackPanel Margin="8,8,8,8">
-                                                <StackPanel.Resources>
-                                                    <Style TargetType="CheckBox"
-                                                           BasedOn="{StaticResource MaterialDesignCheckBox}">
-                                                        <Setter Property="Margin"
-                                                                Value="8,8,10,8" />
-                                                    </Style>
-                                                    <Style TargetType="TextBlock"
-                                                           BasedOn="{StaticResource MaterialDesignSubheadingTextBlock}">
-                                                        <Setter Property="Foreground"
-                                                                Value="#DD000000" />
-                                                        <Setter Property="FontFamily"
-                                                                Value="Segoe UI" />
-                                                        <Setter Property="FontSize"
-                                                                Value="15" />
-                                                        <Setter Property="Margin"
-                                                                Value="8,-3,8,0" />
-                                                    </Style>
-                                                </StackPanel.Resources>
-                                                <CheckBox IsChecked="True">
-                                                    <CheckBox.Content>
-                                                        <TextBlock>
-                                                            Calls
-                                                        </TextBlock>
-                                                    </CheckBox.Content>
-                                                </CheckBox>
-                                                <CheckBox IsChecked="True">
-                                                    <CheckBox.Content>
-                                                        <TextBlock>
-                                                            Quotes
-                                                        </TextBlock>
-                                                    </CheckBox.Content>
-                                                </CheckBox>
-                                                <CheckBox IsChecked="True">
-                                                    <CheckBox.Content>
-                                                        <TextBlock>
-                                                            Orders
-                                                        </TextBlock>
-                                                    </CheckBox.Content>
-                                                </CheckBox>
+                                            <StackPanel Margin="8,0">
+                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                          Padding="8,8,16,8"
+                                                          IsChecked="True"
+                                                          Content="Calls" />
+                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                          Padding="8,8,16,8"
+                                                          IsChecked="True"
+                                                          Content="Tasks" />
+                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                          Padding="8,8,16,8"
+                                                          IsChecked="True"
+                                                          Content="Quotes" />
+                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                          Padding="8,8,16,8"
+                                                          IsChecked="True"
+                                                          Content="Orders" />
                                             </StackPanel>
                                         </materialDesign:PopupBox>
                                     </Grid>
@@ -652,17 +612,15 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
                                         <ListView x:Name="ContactList"
+                                                  Style="{StaticResource MaterialDesignPreviewListView}"
                                                   ItemsSource="{Binding contactList}"
-                                                  Grid.IsSharedSizeScope="True"
-                                                  MouseLeftButtonUp="ContactList_MouseLeftButtonUp"
-                                                  HorizontalContentAlignment="Stretch">
+                                                  MouseLeftButtonUp="ContactList_MouseLeftButtonUp">
                                             <ListView.Template>
                                                 <ControlTemplate>
                                                     <ItemsPresenter />
@@ -708,22 +666,20 @@
                                                                     VerticalAlignment="Center"
                                                                     HorizontalAlignment="Center"
                                                                     Orientation="Horizontal">
-                                                            <materialDesign:PackIcon Kind="Star"
+                                                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                                     Kind="Star"
                                                                                      HorizontalAlignment="Center"
                                                                                      VerticalAlignment="Center"
                                                                                      Visibility="{Binding favourite, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                                                     Foreground="#fdd835"
-                                                                                     Margin="12,4,12,0"
-                                                                                     Width="24"
-                                                                                     Height="24" />
-                                                            <materialDesign:PackIcon Kind="Cash"
+                                                                                     Foreground="{StaticResource MaterialDesignBodyLight}"
+                                                                                     Margin="12,4,12,0" />
+                                                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                                     Kind="Cash"
                                                                                      HorizontalAlignment="Stretch"
                                                                                      VerticalAlignment="Stretch"
                                                                                      Visibility="{Binding accounts, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                                                     Foreground="#4caf50"
-                                                                                     Margin="12,4,12,0"
-                                                                                     Width="24"
-                                                                                     Height="24" />
+                                                                                     Foreground="{StaticResource MaterialDesignBodyLight}"
+                                                                                     Margin="12,4,12,0" />
                                                         </StackPanel>
                                                     </Grid>
                                                 </DataTemplate>
@@ -743,17 +699,15 @@
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top"
                                                         Click="NewTask_Click">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
                                         <ListView x:Name="TaskList"
+                                                  Style="{StaticResource MaterialDesignPreviewListView}"
                                                   ItemsSource="{Binding todoList}"
-                                                  Grid.IsSharedSizeScope="True"
-                                                  MouseLeftButtonUp="TaskList_MouseLeftButtonUp"
-                                                  HorizontalContentAlignment="Stretch">
+                                                  MouseLeftButtonUp="TaskList_MouseLeftButtonUp">
                                             <ListView.Template>
                                                 <ControlTemplate>
                                                     <ItemsPresenter />
@@ -818,17 +772,15 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
                                         <ListView x:Name="QuoteList"
+                                                  Style="{StaticResource MaterialDesignPreviewListView}"
                                                   ItemsSource="{Binding todoList}"
-                                                  Grid.IsSharedSizeScope="True"
-                                                  MouseLeftButtonUp="QuoteList_MouseLeftButtonUp"
-                                                  HorizontalContentAlignment="Stretch">
+                                                  MouseLeftButtonUp="QuoteList_MouseLeftButtonUp">
                                             <ListView.Template>
                                                 <ControlTemplate>
                                                     <ItemsPresenter />
@@ -898,16 +850,14 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
                                         <ListView x:Name="OrderList"
+                                                  Style="{StaticResource MaterialDesignPreviewListView}"
                                                   ItemsSource="{Binding todoList}"
-                                                  Grid.IsSharedSizeScope="True"
-                                                  HorizontalContentAlignment="Stretch"
                                                   MouseLeftButtonUp="OrderList_MouseLeftButtonUp">
                                             <ListView.Template>
                                                 <ControlTemplate>
@@ -978,9 +928,8 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
@@ -995,9 +944,8 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
@@ -1012,9 +960,8 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
@@ -1029,9 +976,8 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>
@@ -1046,9 +992,8 @@
                                                         ToolTip="New item"
                                                         Panel.ZIndex="1"
                                                         VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="Plus"
-                                                                             Height="24"
-                                                                             Width="24" />
+                                                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             Kind="Plus" />
                                                 </Button>
                                             </Grid>
                                         </Expander.Header>

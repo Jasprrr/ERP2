@@ -3,6 +3,7 @@ using ERP.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -22,10 +23,17 @@ namespace ERP.View
     /// <summary>
     /// Interaction logic for AccountsView.xaml
     /// </summary>
-    public partial class AccountsView : Page
+    public partial class AccountsView : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public AccountsView()
         {
+            selectedAccount = new Account();
             InitializeComponent();
             _accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", telephone = "0800 000 001" });
             _accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", telephone = "0800 000 002" });
@@ -69,11 +77,11 @@ namespace ERP.View
             _accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", telephone = "0800 000 005" });
         }
 
-        private Account _selectedItem;
-        public Account selectedItem
+        private Account _selectedAccount;
+        public Account selectedAccount
         {
-            get { return _selectedItem; }
-            set { if (value != null) { _selectedItem = value; } }
+            get { return _selectedAccount; }
+            set { if (value != null) { _selectedAccount = value; OnPropertyChanged("selectedAccount"); } }
         }
 
         private ObservableCollection<Account> _accountList;
@@ -89,11 +97,16 @@ namespace ERP.View
 
         private void DataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if(selectedItem != null)
+            if(selectedAccount != null)
             {
-                var editwindow = new AccountView();
-                editwindow.Show();
+                PreviewDrawer.IsRightDrawerOpen = true;
             }
+        }
+
+        private void EditAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var editwindow = new AccountView();
+            editwindow.Show();
         }
     }
 }
