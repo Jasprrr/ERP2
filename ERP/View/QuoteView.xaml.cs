@@ -80,26 +80,26 @@ namespace ERP.View
             _supplierList.Add(new Supplier() { ID = 5, name = "Supplier 5" });
 
             _quoteItemList = new ObservableCollection<QuoteItem>();
-            _quoteItemList.Add(new QuoteItem() { ID = 1, itemCode = "123-ABC", cost = 250, quantity = 4, line = 1, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 2, itemCode = "123-ABC", cost = 250, quantity = 4, line = 2, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 3, itemCode = "123-ABC", cost = 250, quantity = 4, line = 3, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 4, itemCode = "123-ABC", cost = 250, quantity = 4, line = 4, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 5, itemCode = "123-ABC", cost = 250, quantity = 4, line = 5, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 6, itemCode = "123-ABC", cost = 250, quantity = 4, line = 6, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 7, itemCode = "123-ABC", cost = 250, quantity = 4, line = 7, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 8, itemCode = "123-ABC", cost = 250, quantity = 4, line = 8, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 9, itemCode = "123-ABC", cost = 250, quantity = 4, line = 9, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 10, itemCode = "123-ABC", cost = 250, quantity = 4, line = 10, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 11, itemCode = "123-ABC", cost = 250, quantity = 4, line = 11, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 12, itemCode = "123-ABC", cost = 250, quantity = 4, line = 12, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 13, itemCode = "123-ABC", cost = 250, quantity = 4, line = 13, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 14, itemCode = "123-ABC", cost = 250, quantity = 4, line = 14, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 15, itemCode = "123-ABC", cost = 250, quantity = 4, line = 15, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 16, itemCode = "123-ABC", cost = 250, quantity = 4, line = 16, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 17, itemCode = "123-ABC", cost = 250, quantity = 4, line = 17, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 18, itemCode = "123-ABC", cost = 250, quantity = 4, line = 18, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 19, itemCode = "123-ABC", cost = 250, quantity = 4, line = 19, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 20, itemCode = "123-ABC", cost = 250, quantity = 4, line = 20, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 1, itemCode = "0A001-1585", cost = 50, quantity = 1, line = 1, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 2, itemCode = "0A020-0229", cost = 150, quantity = 2, line = 2, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 3, itemCode = "0A058-0437", cost = 250, quantity = 3, line = 3, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 4, itemCode = "0A058-0451", cost = 350, quantity = 4, line = 4, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 5, itemCode = "0A061-0205", cost = 450, quantity = 5, line = 5, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 6, itemCode = "0A061-0209", cost = 20, quantity = 6, line = 6, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 7, itemCode = "0A063-0369", cost = 30, quantity = 7, line = 7, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 8, itemCode = "0A063-0561", cost = 250, quantity = 8, line = 8, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 9, itemCode = "0A066-0515", cost = 250, quantity = 9, line = 9, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 10, itemCode = "0A069-0167", cost = 250, quantity = 10, line = 10, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 11, itemCode = "0A071-0399", cost = 250, quantity = 11, line = 11, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 12, itemCode = "0A071-0401", cost = 250, quantity = 12, line = 12, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 13, itemCode = "0A090-0453", cost = 250, quantity = 13, line = 13, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 14, itemCode = "0A099-0455", cost = 250, quantity = 14, line = 14, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 15, itemCode = "0A134-0541", cost = 250, quantity = 15, line = 15, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 16, itemCode = "0A134-0543", cost = 250, quantity = 16, line = 16, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 17, itemCode = "0A188-0361", cost = 250, quantity = 17, line = 17, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 18, itemCode = "0A188-0363", cost = 250, quantity = 18, line = 18, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 19, itemCode = "0A201-0663", cost = 250, quantity = 19, line = 19, internalDescription = "789-XYZ" });
+            _quoteItemList.Add(new QuoteItem() { ID = 20, itemCode = "0A201-0665", cost = 250, quantity = 20, line = 20, internalDescription = "789-XYZ" });
 
             _standardItems = new ObservableCollection<QuoteItem>();
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 1, internalDescription = "Test internal description", externalDescription = "Test external description" });
@@ -428,43 +428,6 @@ namespace ERP.View
 
         #region Events
         //Item
-        private void EditItem_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            if (button.Tag != null)
-            {
-                selectedItem = quoteItemList.SingleOrDefault(x => x.ID == (int)button.Tag);
-            }
-            else
-            {
-                selectedItem = new QuoteItem();
-            }
-            ItemDialog.IsOpen = true;
-        }
-
-        private void CloseItem_Click(object sender, RoutedEventArgs e)
-        {
-            ItemDialog.IsOpen = false;
-        }
-
-        private void ItemInternalDescription_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ItemInternalDescription.Text != "" &&
-                ItemExternalDescription.Text == "")
-            {
-                ItemExternalDescription.Text = ItemInternalDescription.Text;
-            }
-        }
-
-        private void ItemExternalDescription_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ItemExternalDescription.Text != "" &&
-                ItemInternalDescription.Text == "")
-            {
-                ItemInternalDescription.Text = ItemExternalDescription.Text;
-            }
-        }
 
         private void SaveItem_Click(object sender, RoutedEventArgs e)
         {
@@ -478,8 +441,6 @@ namespace ERP.View
 
             quoteItemList.Add(selectedItem);
             quoteItemList.OrderBy(x => x.line);
-
-            ItemDialog.IsOpen = false;
         }
 
         private void UploadItem_Click(object sender, RoutedEventArgs e)
@@ -489,198 +450,9 @@ namespace ERP.View
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
-            deleteObject = new Delete();
-            var button = sender as Button;
-
-            deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
-            deleteObject.type = "Item";
-            deleteObject.dialogOpen = ItemDialog.IsOpen;
-
-            ItemDialog.IsOpen = false;
-
             DeleteDialog.IsOpen = true;
         }
-
-        //Time
-        private void EditTime_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            if (button.Tag != null)
-            {
-                selectedTime = quoteTimeList.Single(x => x.ID == (int)button.Tag);
-            }
-            else
-            {
-                selectedTime = new QuoteTime();
-            }
-
-            TimeDialog.IsOpen = true;
-        }
-
-        private void CloseTime_Click(object sender, RoutedEventArgs e)
-        {
-            TimeDialog.IsOpen = false;
-        }
-
-        private void TimeDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void SaveTime_Click(object sender, RoutedEventArgs e)
-        {
-            quoteTimeList.Remove(quoteTimeList.SingleOrDefault(x => x.ID == selectedTime.ID));
-
-            if (selectedTime.ID == 0)
-            {
-                selectedTime.quoteID = selectedQuote.quoteID;
-                if (quoteTimeList.Count > 1)
-                {
-                    selectedTime.line = 1 + quoteTimeList.Max(x => x.line);
-                }
-                else
-                {
-                    selectedTime.line = 1;
-                }
-            }
-
-            quoteTimeList.Add(selectedTime);
-            quoteTimeList.OrderBy(x => x.line);
-
-            TimeDialog.IsOpen = false;
-        }
-
-        private void DeleteTime_Click(object sender, RoutedEventArgs e)
-        {
-            deleteObject = new Delete();
-            var button = sender as Button;
-
-            if (TimeDialog.IsOpen == true)
-            {
-                TimeDialog.IsOpen = false;
-            }
-            deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
-            deleteObject.type = "Time";
-            DeleteDialog.IsOpen = true;
-        }
-
-        //Material
-        private void EditMaterial_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            if (button.Tag != null)
-            {
-                selectedMaterial = quoteMaterialList.Single(x => x.ID == (int)button.Tag);
-            }
-            else
-            {
-                selectedMaterial = new QuoteMaterial();
-            }
-            MaterialDialog.IsOpen = true;
-        }
-
-        private void CloseMaterial_Click(object sender, RoutedEventArgs e)
-        {
-            MaterialDialog.IsOpen = false;
-        }
-
-        private void SaveMaterial_Click(object sender, RoutedEventArgs e)
-        {
-            quoteMaterialList.Remove(quoteMaterialList.SingleOrDefault(x => x.ID == selectedMaterial.ID));
-
-            if (selectedMaterial.ID == 0)
-            {
-                selectedMaterial.quoteID = selectedQuote.quoteID;
-            }
-
-            quoteMaterialList.Add(selectedMaterial);
-            quoteMaterialList.OrderBy(x => x.supplier);
-
-            MaterialDialog.IsOpen = false;
-        }
-
-        private void DeleteMaterial_Click(object sender, RoutedEventArgs e)
-        {
-            deleteObject = new Delete();
-            var button = sender as Button;
-
-            if (MaterialDialog.IsOpen == true)
-            {
-                MaterialDialog.IsOpen = false;
-            }
-            deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
-            deleteObject.type = "Material";
-            DeleteDialog.IsOpen = true;
-        }
-
-        //Subcontractor
-        private void EditSubcontractor_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            if (button.Tag != null)
-            {
-                selectedSubcontractor = quoteSubcontractorList.Single(x => x.ID == (int)button.Tag);
-            }
-            else
-            {
-                selectedSubcontractor = new QuoteSubcontractor();
-            }
-            SubcontractorDialog.IsOpen = true;
-        }
-
-        private void CloseSubcontractor_Click(object sender, RoutedEventArgs e)
-        {
-            SubcontractorDialog.IsOpen = false;
-        }
-
-        private void SaveSubcontractor_Click(object sender, RoutedEventArgs e)
-        {
-            quoteSubcontractorList.Remove(quoteSubcontractorList.SingleOrDefault(x => x.ID == selectedSubcontractor.ID));
-
-            if (selectedSubcontractor.ID == 0)
-            {
-                selectedSubcontractor.quoteID = selectedQuote.quoteID;
-            }
-
-            quoteSubcontractorList.Add(selectedSubcontractor);
-            quoteSubcontractorList.OrderBy(x => x.supplier);
-
-            SubcontractorDialog.IsOpen = false;
-        }
-
-        private void DeleteSubcontractor_Click(object sender, RoutedEventArgs e)
-        {
-            deleteObject = new Delete();
-            var button = sender as Button;
-
-            if (SubcontractorDialog.IsOpen == true)
-            {
-                SubcontractorDialog.IsOpen = false;
-            }
-            deleteObject.id = button.Tag != null ? (int)button.Tag : 0;
-            deleteObject.type = "Subcontractor";
-        }
-
-        //Task
-        private void EditTaskItem_Click(object sender, RoutedEventArgs e)
-        {
-            int value;
-            var button = sender as Button;
-
-            if (button.Tag != null)
-            {
-                value = (int)button.Tag;
-            }
-            else
-            {
-                value = 0;
-            }
-            TaskDialog.IsOpen = true;
-        }
-
+        
         private void SaveTask_Click(object sender, RoutedEventArgs e)
         {
             //todoList.Remove(quoteSubcontractorList.SingleOrDefault(x => x.ID == selectedSubcontractor.ID));
@@ -697,39 +469,10 @@ namespace ERP.View
 
         private void userButton_Click(object sender, RoutedEventArgs e)
         {
-            UserDialog.IsOpen = true;
         }
 
         private void DeleteDialog_DialogClosing(object sender, MaterialDesignThemes.Wpf.DialogClosingEventArgs eventArgs)
         {
-            if (eventArgs.Parameter.ToString() == "true")
-            {
-
-            }
-            else
-            {
-                switch (deleteObject.type)
-                {
-                    case "Quote":
-                        break;
-                    case "Item":
-                        quoteItemList.Remove(quoteItemList.SingleOrDefault(x => x.ID == selectedItem.ID));
-                        ItemDialog.IsOpen = true;
-                        break;
-                    case "Time":
-                        TimeDialog.IsOpen = true;
-                        break;
-                    case "Material":
-                        MaterialDialog.IsOpen = true;
-                        break;
-                    case "Subcontractor":
-                        SubcontractorDialog.IsOpen = true;
-                        break;
-                    case "Task":
-                        TaskDialog.IsOpen = true;
-                        break;
-                }
-            }
         }
 
         private DispatcherTimer loginTimer = new DispatcherTimer();
@@ -810,9 +553,15 @@ namespace ERP.View
             progressBar.Visibility = Visibility.Visible;
         }
 
-        private void FlipFlipper_Click(object sender, RoutedEventArgs e)
+        void ShowHideDetails(object sender, RoutedEventArgs e)
         {
-            //flipper.IsFlipped = !flipper.IsFlipped;
+            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+                if (vis is DataGridRow)
+                {
+                    var row = (DataGridRow)vis;
+                    row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                    break;
+                }
         }
     }
 }

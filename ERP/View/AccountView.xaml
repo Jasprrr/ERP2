@@ -14,7 +14,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBodyLight}"
         TextElement.FontFamily="Roboto"
         TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
+        TextElement.FontSize="12"
         Width="1280"
         Height="900"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
