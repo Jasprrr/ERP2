@@ -1,5 +1,5 @@
-﻿using ERP.Model;
-using ERP.View;
+﻿using ERP.Models;
+using ERP.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,20 +34,20 @@ namespace ERP
             //SetUpDb();
             //_navMenu = new ObservableCollection<NavigationItem>();
             InitializeComponent();
-            _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "View/AccountsView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Domain", NavPage = "View/AccountsView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "View/ScheduleView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Orders", NavIcon = "Send", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Deliveries", NavIcon = "Truck", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Invoices", NavIcon = "BookVariant", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Credits", NavIcon = "CreditCard", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Purchases", NavIcon = "Basket", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Stock", NavIcon = "Widgets", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "NCRs", NavIcon = "Alert", NavPage = "View/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Reports", NavIcon = "Finance", NavPage = "View/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "Views/AccountsView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Domain", NavPage = "Views/AccountsView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "Views/ScheduleView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Orders", NavIcon = "Send", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Deliveries", NavIcon = "Truck", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Invoices", NavIcon = "BookVariant", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Credits", NavIcon = "CreditCard", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Purchases", NavIcon = "Basket", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Stock", NavIcon = "Widgets", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "NCRs", NavIcon = "Alert", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Reports", NavIcon = "Finance", NavPage = "Views/TasksView.xaml" });
         }
 
         private ObservableCollection<NavigationItem> _navMenu;

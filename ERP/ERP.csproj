@@ -111,72 +111,72 @@
     <Compile Include="Control\Stepper.cs" />
     <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
-    <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Activity.cs" />
-    <Compile Include="Model\Contact.cs" />
-    <Compile Include="Model\Delete.cs" />
-    <Compile Include="Model\Department.cs" />
-    <Compile Include="Model\Quote.cs" />
-    <Compile Include="Model\QuoteItem.cs" />
-    <Compile Include="Model\QuoteMaterial.cs" />
-    <Compile Include="Model\QuoteSubcontractor.cs" />
-    <Compile Include="Model\QuoteTime.cs" />
-    <Compile Include="Model\SchedulerDay.cs" />
-    <Compile Include="Model\StepperData.cs" />
-    <Compile Include="Model\Supplier.cs" />
-    <Compile Include="Model\ToDo.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Resource\ColourGenerator.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Delete.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Quote.cs" />
+    <Compile Include="Models\QuoteItem.cs" />
+    <Compile Include="Models\QuoteMaterial.cs" />
+    <Compile Include="Models\QuoteSubcontractor.cs" />
+    <Compile Include="Models\QuoteTime.cs" />
+    <Compile Include="Models\SchedulerDay.cs" />
+    <Compile Include="Models\StepperData.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\ToDo.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Resources\ColourGenerator.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\AccountView.xaml.cs">
+    <Compile Include="Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AccountsView.xaml.cs">
+    <Compile Include="Views\AccountsView.xaml.cs">
       <DependentUpon>AccountsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CallView.xaml.cs">
+    <Compile Include="Views\CallView.xaml.cs">
       <DependentUpon>CallView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ContactPreview.xaml.cs">
+    <Compile Include="Views\ContactPreview.xaml.cs">
       <DependentUpon>ContactPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginView.xaml.cs">
+    <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Deprecated\QuoteItemView.xaml.cs">
+    <Compile Include="Views\Deprecated\QuoteItemView.xaml.cs">
       <DependentUpon>QuoteItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Deprecated\QuoteMaterialView.xaml.cs">
+    <Compile Include="Views\Deprecated\QuoteMaterialView.xaml.cs">
       <DependentUpon>QuoteMaterialView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Deprecated\QuoteSubcontractorView.xaml.cs">
+    <Compile Include="Views\Deprecated\QuoteSubcontractorView.xaml.cs">
       <DependentUpon>QuoteSubcontractorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OrderPreview.xaml.cs">
+    <Compile Include="Views\OrderPreview.xaml.cs">
       <DependentUpon>OrderPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuotePreview.xaml.cs">
+    <Compile Include="Views\QuotePreview.xaml.cs">
       <DependentUpon>QuotePreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuotesView.xaml.cs">
+    <Compile Include="Views\QuotesView.xaml.cs">
       <DependentUpon>QuotesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Deprecated\QuoteTimeView.xaml.cs">
+    <Compile Include="Views\Deprecated\QuoteTimeView.xaml.cs">
       <DependentUpon>QuoteTimeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuoteView.xaml.cs">
+    <Compile Include="Views\QuoteView.xaml.cs">
       <DependentUpon>QuoteView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ScheduleView.xaml.cs">
+    <Compile Include="Views\ScheduleView.xaml.cs">
       <DependentUpon>ScheduleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TaskPreview.xaml.cs">
+    <Compile Include="Views\TaskPreview.xaml.cs">
       <DependentUpon>TaskPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TaskView.xaml.cs">
+    <Compile Include="Views\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TasksView.xaml.cs">
+    <Compile Include="Views\TasksView.xaml.cs">
       <DependentUpon>TasksView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -191,77 +191,77 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AccountView.xaml">
+    <Page Include="Views\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AccountsView.xaml">
+    <Page Include="Views\AccountsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CallView.xaml">
+    <Page Include="Views\CallView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ContactPreview.xaml">
+    <Page Include="Views\ContactPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LoginView.xaml">
+    <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Deprecated\QuoteItemView.xaml">
+    <Page Include="Views\Deprecated\QuoteItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Deprecated\QuoteMaterialView.xaml">
+    <Page Include="Views\Deprecated\QuoteMaterialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Deprecated\QuoteSubcontractorView.xaml">
+    <Page Include="Views\Deprecated\QuoteSubcontractorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\OrderPreview.xaml">
+    <Page Include="Views\OrderPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuotePreview.xaml">
+    <Page Include="Views\QuotePreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuotesView.xaml">
+    <Page Include="Views\QuotesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Deprecated\QuoteTimeView.xaml">
+    <Page Include="Views\Deprecated\QuoteTimeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuoteView.xaml">
+    <Page Include="Views\QuoteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ScheduleView.xaml">
+    <Page Include="Views\ScheduleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TaskPreview.xaml">
+    <Page Include="Views\TaskPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TaskView.xaml">
+    <Page Include="Views\TaskView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TasksView.xaml">
+    <Page Include="Views\TasksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\NavigationItem.cs" />
+    <Compile Include="Models\NavigationItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -290,47 +290,47 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\mb-bg-fb-01.png" />
-    <Resource Include="Resource\mb-bg-fb-02.png" />
-    <Resource Include="Resource\mb-bg-fb-03.png" />
-    <Resource Include="Resource\mb-bg-fb-04.png" />
-    <Resource Include="Resource\mb-bg-fb-05.png" />
-    <Resource Include="Resource\mb-bg-fb-06.png" />
-    <Resource Include="Resource\mb-bg-fb-07.png" />
-    <Resource Include="Resource\mb-bg-fb-08.png" />
-    <Resource Include="Resource\mb-bg-fb-09.png" />
-    <Resource Include="Resource\mb-bg-fb-10.png" />
-    <Resource Include="Resource\mb-bg-fb-11.png" />
-    <Resource Include="Resource\mb-bg-fb-12.png" />
-    <Resource Include="Resource\mb-bg-fb-13.png" />
-    <Resource Include="Resource\mb-bg-fb-14.png" />
-    <Resource Include="Resource\mb-bg-fb-15.png" />
-    <Resource Include="Resource\mb-bg-fb-16.png" />
-    <Resource Include="Resource\mb-bg-fb-17.png" />
-    <Resource Include="Resource\mb-bg-fb-18.png" />
-    <Resource Include="Resource\mb-bg-fb-19.png" />
-    <Resource Include="Resource\mb-bg-fb-20.png" />
-    <Resource Include="Resource\mb-bg-fb-21.png" />
-    <Resource Include="Resource\mb-bg-fb-22.png" />
-    <Resource Include="Resource\mb-bg-fb-23.png" />
-    <Resource Include="Resource\mb-bg-fb-24.png" />
-    <Resource Include="Resource\mb-bg-fb-25.png" />
-    <Resource Include="Resource\mb-bg-fb-26.png" />
-    <Resource Include="Resource\mb-bg-fb-27.png" />
-    <Resource Include="Resource\mb-bg-fb-28.png" />
-    <Resource Include="Resource\mb-bg-fb-29.png" />
-    <Resource Include="Resource\mb-bg-fb-30.png" />
-    <Resource Include="Resource\MenuTree.txt" />
-    <Resource Include="Resource\grey_silhouette.png" />
-    <Resource Include="Resource\TextFile1.txt" />
+    <Resource Include="Resources\mb-bg-fb-01.png" />
+    <Resource Include="Resources\mb-bg-fb-02.png" />
+    <Resource Include="Resources\mb-bg-fb-03.png" />
+    <Resource Include="Resources\mb-bg-fb-04.png" />
+    <Resource Include="Resources\mb-bg-fb-05.png" />
+    <Resource Include="Resources\mb-bg-fb-06.png" />
+    <Resource Include="Resources\mb-bg-fb-07.png" />
+    <Resource Include="Resources\mb-bg-fb-08.png" />
+    <Resource Include="Resources\mb-bg-fb-09.png" />
+    <Resource Include="Resources\mb-bg-fb-10.png" />
+    <Resource Include="Resources\mb-bg-fb-11.png" />
+    <Resource Include="Resources\mb-bg-fb-12.png" />
+    <Resource Include="Resources\mb-bg-fb-13.png" />
+    <Resource Include="Resources\mb-bg-fb-14.png" />
+    <Resource Include="Resources\mb-bg-fb-15.png" />
+    <Resource Include="Resources\mb-bg-fb-16.png" />
+    <Resource Include="Resources\mb-bg-fb-17.png" />
+    <Resource Include="Resources\mb-bg-fb-18.png" />
+    <Resource Include="Resources\mb-bg-fb-19.png" />
+    <Resource Include="Resources\mb-bg-fb-20.png" />
+    <Resource Include="Resources\mb-bg-fb-21.png" />
+    <Resource Include="Resources\mb-bg-fb-22.png" />
+    <Resource Include="Resources\mb-bg-fb-23.png" />
+    <Resource Include="Resources\mb-bg-fb-24.png" />
+    <Resource Include="Resources\mb-bg-fb-25.png" />
+    <Resource Include="Resources\mb-bg-fb-26.png" />
+    <Resource Include="Resources\mb-bg-fb-27.png" />
+    <Resource Include="Resources\mb-bg-fb-28.png" />
+    <Resource Include="Resources\mb-bg-fb-29.png" />
+    <Resource Include="Resources\mb-bg-fb-30.png" />
+    <Resource Include="Resources\MenuTree.txt" />
+    <Resource Include="Resources\grey_silhouette.png" />
+    <Resource Include="Resources\TextFile1.txt" />
     <Resource Include="icon.ico" />
-    <Content Include="Resource\bie-logo.svg" />
-    <Resource Include="Resource\layout-desktop-whiteframe copy2.png" />
-    <Resource Include="Resource\logo.png" />
-    <Resource Include="Resource\icon.ico" />
+    <Content Include="Resources\bie-logo.svg" />
+    <Resource Include="Resources\layout-desktop-whiteframe copy2.png" />
+    <Resource Include="Resources\logo.png" />
+    <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\test.png" />
+    <Resource Include="Resources\test.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

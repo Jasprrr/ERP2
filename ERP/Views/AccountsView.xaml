@@ -1,0 +1,274 @@
+﻿<Page x:Class="ERP.Views.AccountsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ERP.Views"
+      mc:Ignorable="d"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextElement.FontFamily="Roboto"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <materialDesign:DrawerHost x:Name="PreviewDrawer">
+            <materialDesign:DrawerHost.RightDrawerContent>
+                <Grid Width="336">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0"
+                          Background="{StaticResource PrimaryHueMidBrush}"
+                          MinHeight="160">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="Back"
+                                    Style="{StaticResource MaterialDesignMidForegroundButton}"
+                                    ToolTip="Close"
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Right}">
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="ArrowRight"/>
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignMidForegroundButton}"
+                                    Grid.Column="2"
+                                    ToolTip="Edit">
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="Pencil" />
+                            </Button>
+                            <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidForegroundPopupBox}"
+                                                     Grid.Column="3"
+                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                     StaysOpen="True">
+                                <StackPanel>
+                                    <Button Content="Convert quote" />
+                                    <Button Content="Delete quote" />
+                                    <Button Content="Delete quote" />
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+                        </Grid>
+                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                   Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
+                                   Text="{Binding selectedAccount.accountName}"
+                                   Grid.Row="1"
+                                   Margin="24,0,20,16"
+                                   Width="292"
+                                   VerticalAlignment="Bottom"
+                                   MinHeight="40"
+                                   TextWrapping="Wrap"
+                                   MaxHeight="82" />
+                    </Grid>
+                    <StackPanel Grid.Row="2"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,0">
+                        <Grid Visibility="{Binding selectedAccount.telephone, Converter={StaticResource NullableToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                                     Kind="Phone" />
+                            <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                                       Grid.Column="1"
+                                       Text="{Binding selectedAccount.telephone}" />
+                        </Grid>
+                        <Grid Visibility="{Binding selectedAccount.telephone, Converter={StaticResource NullableToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                                     Kind="Phone" />
+                            <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                                       Grid.Column="1"
+                                       Text="{Binding selectedAccount.telephone}" />
+                        </Grid>
+                        <Grid Visibility="{Binding selectedAccount.telephone, Converter={StaticResource NullableToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                                     Kind="Cellphone" />
+                            <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                                       Grid.Column="1"
+                                       Text="{Binding selectedAccount.telephone}" />
+                        </Grid>
+                        <Grid Visibility="{Binding selectedAccount.email, Converter={StaticResource NullableToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                                     Kind="Email" />
+                            <TextBlock Style="{StaticResource MaterialDesignCustomHyperLinkFull}"
+                                       Grid.Column="1"
+                                       Cursor="Hand"
+                                       Text="{Binding selectedAccount.email}" />
+                        </Grid>
+                        <Grid Visibility="{Binding selectedAccount.email, Converter={StaticResource NullableToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                                     Kind="Email" />
+                            <TextBlock Style="{StaticResource MaterialDesignCustomHyperLinkFull}"
+                                       Grid.Column="1"
+                                       Text="{Binding selectedAccount.email}" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
+                                                     Kind="FileDocumentBox" />
+
+                            <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
+                                       Grid.Column="1"
+                                       Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat."
+                                       TextWrapping="Wrap"
+                                       MaxHeight="210"
+                                       TextTrimming="CharacterEllipsis" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DrawerHost.RightDrawerContent>
+            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
+                                 BorderThickness="1"
+                                 SnapsToDevicePixels="True"
+                                 VerticalAlignment="Stretch"
+                                 VerticalContentAlignment="Stretch"
+                                 Margin="8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Height="32"
+                          Margin="24,20"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Accounts"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                        <Button x:Name="NewCall"
+                                Style="{StaticResource MaterialDesignFlatIconButton}"
+                                ToolTip="New item"
+                                Grid.Column="1"
+                                Panel.ZIndex="1"
+                                VerticalAlignment="Top"
+                                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                CommandParameter="{x:Static Dock.Right}">
+                            <materialDesign:PackIcon Kind="Plus"
+                                                     Height="24"
+                                                     Width="24" />
+                        </Button>
+                        <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
+                                                 Grid.Column="2"
+                                                 StaysOpen="True"
+                                                 PlacementMode="BottomAndAlignCentres"
+                                                 FontSize="15">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="FilterVariant"
+                                                         Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <StackPanel Margin="8,0">
+                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                          Padding="8,8,16,8"
+                                          IsChecked="True"
+                                          Content="Calls" />
+                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                          Padding="8,8,16,8"
+                                          IsChecked="True"
+                                          Content="Tasks" />
+                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                          Padding="8,8,16,8"
+                                          IsChecked="True"
+                                          Content="Quotes" />
+                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                          Padding="8,8,16,8"
+                                          IsChecked="True"
+                                          Content="Orders" />
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid ItemsSource="{Binding accountList}"
+                                  SelectedItem="{Binding selectedAccount}"
+                                  Style="{StaticResource MaterialDesignGrid}"
+                                  CellStyle="{StaticResource MaterialDesignCell}"
+                                  RowStyle="{StaticResource MaterialDesignRow}"
+                                  MouseLeftButtonUp="DataGrid_MouseLeftButtonUp"
+                                  CanUserAddRows="False"
+                                  ScrollViewer.CanContentScroll="True"
+                                  VerticalContentAlignment="Stretch"
+                                  VerticalScrollBarVisibility="Visible">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn x:Name="itemButton"
+                                                        materialDesign:DataGridAssist.CellPadding="0"
+                                                        IsReadOnly="True"
+                                                        CanUserResize="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="EditAccount"
+                                                    Style="{StaticResource MaterialDesignGridButton}"
+                                                    Click="EditAccount_Click"
+                                                    Margin="0,-7">
+                                                <materialDesign:PackIcon Kind="Pencil"
+                                                                         Width="16"
+                                                                         Height="16"
+                                                                         VerticalContentAlignment="Center"
+                                                                         HorizontalContentAlignment="Center" />
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountCode"
+                                                                           Binding="{Binding accountCode}"
+                                                                           Header="A/C"
+                                                                           SortDirection="Ascending"
+                                                                           Width="auto" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountName"
+                                                                           Binding="{Binding accountName}"
+                                                                           Header="Name"
+                                                                           Width="2*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Email"
+                                                                           Binding="{Binding email}"
+                                                                           Header="Email"
+                                                                           Width="1*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Telephone"
+                                                                           Binding="{Binding telephone}"
+                                                                           Header="Telephone"
+                                                                           Width="1*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Page>
