@@ -8,18 +8,11 @@
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
         xmlns:UserControl="clr-namespace:ERP.Control"
-        x:Class="ERP.Views.QuoteView"
         mc:Ignorable="d"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextElement.FontFamily="Roboto"
-        Width="1280"
-        Height="900"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        MinWidth="1056"
-        MinHeight="768"
-        Language="en-GB">
+        x:Class="ERP.Views.QuoteView"
+        Icon="/ERP;component/icon.ico"
+        Style="{StaticResource MaterialDesignWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
         <Converters:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
         <Converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -95,12 +88,9 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <materialDesign:ColorZone Grid.Row="0"
-                                          Padding="16"
-                                          Mode="PrimaryDark"
-                                          materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                          Grid.ColumnSpan="2"
-                                          Panel.ZIndex="1">
+                <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}"
+                                          Grid.Row="0"
+                                          Grid.ColumnSpan="2">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
@@ -199,7 +189,7 @@
                                                     BorderThickness="2"
                                                     BorderBrush="#FFC5C5C5">
                                                 <Border.Background>
-                                                    <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                    <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
                                                 </Border.Background>
                                             </Border>
                                             <TextBlock Text="{Binding selectedQuote.accountName}"
@@ -223,7 +213,7 @@
                                                         BorderThickness="2"
                                                         BorderBrush="#FFC5C5C5">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                        <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
                                                     </Border.Background>
                                                 </Border>
                                                 <StackPanel Grid.Column="1"
@@ -260,7 +250,7 @@
                                                         BorderThickness="2"
                                                         BorderBrush="#FFC5C5C5">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                        <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
                                                     </Border.Background>
                                                 </Border>
                                                 <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
@@ -421,7 +411,7 @@
                         <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
                                              SnapsToDevicePixels="True"
                                              Grid.Row="0"
-                                             Margin="8">
+                                             Margin="16">
                             <ScrollViewer VerticalScrollBarVisibility="Disabled"
                                           HorizontalScrollBarVisibility="Auto"
                                           Padding="12">
@@ -448,7 +438,7 @@
                                              SnapsToDevicePixels="True"
                                              VerticalAlignment="Stretch"
                                              VerticalContentAlignment="Stretch"
-                                             Margin="8,0,8,8"
+                                             Margin="16,0,16,16"
                                              Grid.Row="1">
                             <Grid>
                                 <Grid.RowDefinitions>

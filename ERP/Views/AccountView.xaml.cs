@@ -129,25 +129,25 @@ namespace ERP.Views
 
         private void ContactList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            PreviewFrame.Navigate(new Uri("View/ContactPreview.xaml", UriKind.Relative));
+            PreviewFrame.Navigate(new Uri("Views/ContactPreview.xaml", UriKind.Relative));
             PreviewDialog.IsOpen = !PreviewDialog.IsOpen;
         }
 
         private void TaskList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            PreviewFrame.Navigate(new Uri("View/TaskPreview.xaml", UriKind.Relative));
+            PreviewFrame.Navigate(new Uri("Views/TaskPreview.xaml", UriKind.Relative));
             PreviewDialog.IsOpen = !PreviewDialog.IsOpen;
         }
 
         private void QuoteList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            PreviewFrame.Navigate(new Uri("View/QuotePreview.xaml", UriKind.Relative));
+            PreviewFrame.Navigate(new Uri("Views/QuotePreview.xaml", UriKind.Relative));
             PreviewDialog.IsOpen = !PreviewDialog.IsOpen;
         }
 
         private void OrderList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            PreviewFrame.Navigate(new Uri("View/OrderPreview.xaml", UriKind.Relative));
+            PreviewFrame.Navigate(new Uri("Views/OrderPreview.xaml", UriKind.Relative));
             PreviewDialog.IsOpen = !PreviewDialog.IsOpen;
         }
 

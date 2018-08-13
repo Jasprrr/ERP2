@@ -1,0 +1,44 @@
+﻿<Page x:Class="ERP.Views.TestView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ERP.Views"
+      mc:Ignorable="d"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+      xmlns:ctrl="clr-namespace:ERP.Control"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextElement.FontFamily="Roboto"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <TreeView MinWidth="220">
+            <TreeViewItem Header="Fruit">
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Apple</TextBlock>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Header="Banana" />
+                <TreeViewItem Header="Grape">
+                    <TextBlock><Run Text="Grapes for us" /></TextBlock>
+                </TreeViewItem>
+                <TreeViewItem Header="Peach" />
+                <TreeViewItem Header="Pear" />
+                <TreeViewItem Header="Strawberry" />
+            </TreeViewItem>
+            <TreeViewItem Header="Something" />
+            <TreeViewItem Header="Other" />
+            <TreeViewItem Header="Whatelse" />
+            <TreeViewItem Header="Thing" />
+        </TreeView>
+    </Grid>
+</Page>

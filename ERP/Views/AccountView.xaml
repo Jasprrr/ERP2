@@ -10,17 +10,8 @@
         xmlns:UserControl="clr-namespace:ERP.Control"
         x:Class="ERP.Views.AccountView"
         mc:Ignorable="d"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBodyLight}"
-        TextElement.FontFamily="Roboto"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="12"
-        Width="1280"
-        Height="900"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        MinWidth="1056"
-        MinHeight="768"
-        Language="en-GB">
+        Style="{StaticResource MaterialDesignWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
         <Converters:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
         <Converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -58,7 +49,7 @@
                                 </Button>
                             </Grid>
                         </materialDesign:ColorZone>
-                        <Frame Source="/ERP;component/View/QuotePreview.xaml"
+                        <Frame Source="/ERP;component/Views/QuotePreview.xaml"
                                x:Name="PreviewFrame"
                                FontFamily="Roboto"
                                NavigationUIVisibility="Hidden"
@@ -206,7 +197,7 @@
                                                             BorderThickness="2"
                                                             BorderBrush="#FFC5C5C5">
                                                         <Border.Background>
-                                                            <ImageBrush ImageSource="/ERP;component/Resource/grey_silhouette.png" />
+                                                            <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
                                                         </Border.Background>
                                                     </Border>
                                                     <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
@@ -222,7 +213,7 @@
                                         </materialDesign:ColorZone>
                                     </materialDesign:TransitionerSlide>
                                 </materialDesign:Transitioner>
-                                <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}"
+                                <materialDesign:ColorZone Background="{StaticResource MaterialDesignPaper}"
                                                           SnapsToDevicePixels="True"
                                                           VerticalAlignment="Stretch">
                                     <StackPanel>
@@ -473,12 +464,12 @@
                                                  SnapsToDevicePixels="True"
                                                  VerticalAlignment="Stretch"
                                                  VerticalContentAlignment="Stretch"
-                                                 Margin="8">
+                                                 Margin="16">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="*" />
-                                        <RowDefinition Height="32" />
+                                        <RowDefinition Height="5" />
                                     </Grid.RowDefinitions>
                                     <Grid Margin="24,20"
                                           ScrollViewer.VerticalScrollBarVisibility="Auto">

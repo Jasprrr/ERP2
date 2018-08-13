@@ -34,12 +34,12 @@ namespace ERP
             //SetUpDb();
             //_navMenu = new ObservableCollection<NavigationItem>();
             InitializeComponent();
-            _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "Views/AccountsView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "Views/HomeView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "Views/TasksView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Domain", NavPage = "Views/AccountsView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "Views/ScheduleView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "Views/TasksView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "Views/CalendarView.xaml" });
+            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "Views/TestView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Orders", NavIcon = "Send", NavPage = "Views/TasksView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Deliveries", NavIcon = "Truck", NavPage = "Views/TasksView.xaml" });
             _navMenu.Add(new NavigationItem { NavTitle = "Invoices", NavIcon = "BookVariant", NavPage = "Views/TasksView.xaml" });

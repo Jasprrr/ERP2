@@ -11,18 +11,20 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace ERP.Views
 {
     /// <summary>
     /// Interaction logic for ScheduleView.xaml
     /// </summary>
-    public partial class ScheduleView : Page, INotifyPropertyChanged
+    public partial class CalendarView : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
@@ -30,10 +32,10 @@ namespace ERP.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public ScheduleView()
+        public CalendarView()
         {
             InitializeComponent();
-            InitializeCalendar();
+            SetUpCalendar();
         }
 
         private int _gridOffset;
@@ -70,6 +72,13 @@ namespace ERP.Views
             get { return _schedulerList; }
             set { if (value != null) { _schedulerList = value; OnPropertyChanged("schedulerList"); } }
         }
+        
+        private SchedulerDay _selectedTodo;
+        public SchedulerDay selectedTodo
+        {
+            get { return _selectedTodo; }
+            set { if (selectedTodo != value) { _selectedTodo = value; OnPropertyChanged("selectedTodo"); } }
+        }
 
         private void InitializeCalendar(DateTime? date = null)
         {
@@ -90,6 +99,7 @@ namespace ERP.Views
                     isToday = _isToday == DateTime.Today ? true : false
                 });
             };
+            
         }
 
         private List<ToDo> todoListGenerator
@@ -115,18 +125,28 @@ namespace ERP.Views
         {
             InitializeCalendar();
         }
-
-        private SchedulerDay _selectedTodo;
-        public SchedulerDay selectedTodo
-        {
-            get { return _selectedTodo; }
-            set { if (selectedTodo != value) { _selectedTodo = value; OnPropertyChanged("selectedTodo"); } }
-        }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
+            var button = (System.Windows.Controls.Button)sender;
             Debug.WriteLine(button.Tag);
+        }
+
+        private void PopupBox_Closed(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Menu closed");
+        }
+
+        private void NewCall_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void SetUpCalendar()
+        {
+            await Task.Run(() => {
+                InitializeCalendar();
+            });
         }
     }
 }

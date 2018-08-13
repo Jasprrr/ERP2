@@ -157,7 +157,7 @@
                                  SnapsToDevicePixels="True"
                                  VerticalAlignment="Stretch"
                                  VerticalContentAlignment="Stretch"
-                                 Margin="8">
+                                 Margin="16">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
