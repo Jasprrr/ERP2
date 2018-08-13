@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ERP.Control.RevenueGraph"
+﻿<UserControl x:Class="ERP.Control.OrderStatusGraph"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,11 +6,13 @@
              xmlns:local="clr-namespace:ERP.Control"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance local:OrderStatusGraph}">
     <Grid>
-
         <materialDesign:Card Margin="4"
-                             Padding="16"
+                             Padding="8,16"
                              Height="270"
                              Width="270">
             <Grid>
@@ -19,19 +21,21 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
-                           Text="Revenue"
+                           Text="Order Status"
                            HorizontalAlignment="Center" />
-                <lvc:CartesianChart Series="{Binding SeriesCollection}"
-                                    Grid.Row="1">
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Labels="{Binding Labels}"
-                                  FontFamily="Roboto"
-                                  Margin="-8,0" />
-                    </lvc:CartesianChart.AxisX>
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis />
-                    </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>
+                <lvc:PieChart Name="Chart"
+                              Grid.Row="1"
+                              Series="{Binding SeriesCollection}"
+                              LegendLocation="Bottom"
+                              InnerRadius="50"
+                              HoverPushOut="3">
+                    <lvc:PieChart.ChartLegend>
+                        <lvc:DefaultLegend />
+                    </lvc:PieChart.ChartLegend>
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip />
+                    </lvc:PieChart.DataTooltip>
+                </lvc:PieChart>
             </Grid>
         </materialDesign:Card>
     </Grid>

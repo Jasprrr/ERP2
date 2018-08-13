@@ -6,6 +6,8 @@
       xmlns:local="clr-namespace:ERP.Views"
       mc:Ignorable="d"
       xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:materialDesignColors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
+      xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
       xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
@@ -18,27 +20,6 @@
       TextOptions.TextRenderingMode="Auto"
       DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <TreeView MinWidth="220">
-            <TreeViewItem Header="Fruit">
-                <TreeViewItem>
-                    <TreeViewItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock>Apple</TextBlock>
-                        </StackPanel>
-                    </TreeViewItem.Header>
-                </TreeViewItem>
-                <TreeViewItem Header="Banana" />
-                <TreeViewItem Header="Grape">
-                    <TextBlock><Run Text="Grapes for us" /></TextBlock>
-                </TreeViewItem>
-                <TreeViewItem Header="Peach" />
-                <TreeViewItem Header="Pear" />
-                <TreeViewItem Header="Strawberry" />
-            </TreeViewItem>
-            <TreeViewItem Header="Something" />
-            <TreeViewItem Header="Other" />
-            <TreeViewItem Header="Whatelse" />
-            <TreeViewItem Header="Thing" />
-        </TreeView>
+        <ctrl:PaletteSelector />
     </Grid>
 </Page>

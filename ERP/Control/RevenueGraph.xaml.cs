@@ -31,12 +31,11 @@ namespace ERP.Control
                 new ColumnSeries
                 {
                     Title = "Revenue",
-                    Values = new ChartValues<double> { 10, 50, 39, 50, 67, 99, 80, 12, 3, 29, 0, 17 }
+                    Values = new ChartValues<int> { 10, 50, 39, 50, 67, 99, 80, 12, 3, 29, 100, 17 }
                 }
             };
 
             Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            Formatter = value => value.ToString("N");
 
             DataContext = this;
         }

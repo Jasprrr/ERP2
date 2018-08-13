@@ -19,38 +19,12 @@
       DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>
-        <ScrollViewer Padding="8">
-            <WrapPanel HorizontalAlignment="Center">
-                <materialDesign:Card Margin="8,8,0,0"
-                                     Padding="16">
-                    <ctrl:RevenueGraph Height="270"
-                                       Width="290" />
-                </materialDesign:Card>
-                <materialDesign:Card Margin="8,8,0,0"
-                                     Padding="16">
-                    <ctrl:RevenueGraph Height="270"
-                                       Width="290" />
-                </materialDesign:Card>
-                <materialDesign:Card Margin="8,8,0,0"
-                                     Padding="16">
-                    <ctrl:RevenueGraph Height="270"
-                                       Width="290" />
-                </materialDesign:Card>
-                <materialDesign:Card Margin="8,8,0,0"
-                                     Padding="16">
-                    <ctrl:RevenueGraph Height="270"
-                                       Width="290" />
-                </materialDesign:Card>
-                <materialDesign:Card Margin="8,8,0,0"
-                                     Padding="16">
-                    <ctrl:RevenueGraph Height="270"
-                                       Width="290" />
-                </materialDesign:Card>
-                <materialDesign:Card Margin="8,8,0,0"
-                                     Padding="16">
-                    <ctrl:RevenueGraph Height="270"
-                                       Width="290" />
-                </materialDesign:Card>
+        <ScrollViewer>
+            <WrapPanel HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="4">
+                <ctrl:RevenueGraph />
+                <ctrl:OrderStatusGraph />
             </WrapPanel>
         </ScrollViewer>
     </Grid>

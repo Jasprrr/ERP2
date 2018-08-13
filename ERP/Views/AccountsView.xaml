@@ -51,7 +51,7 @@
                                     Grid.Column="2"
                                     ToolTip="Edit">
                                 <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                         Kind="Pencil" />
+                                                         Kind="Launch" />
                             </Button>
                             <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidForegroundPopupBox}"
                                                      Grid.Column="3"

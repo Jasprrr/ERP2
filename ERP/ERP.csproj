@@ -118,12 +118,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\OrderStatusGraph.xaml.cs">
+      <DependentUpon>OrderStatusGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Palette.xaml.cs">
+      <DependentUpon>Palette.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PaletteSelector.xaml.cs">
+      <DependentUpon>PaletteSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PaletteSelectorViewModel.cs" />
     <Compile Include="Control\RevenueGraph.xaml.cs">
       <DependentUpon>RevenueGraph.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\Stepper.cs" />
     <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
+    <Compile Include="Domain\CommandImplentation.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -198,6 +209,18 @@
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\OrderStatusGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Palette.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\PaletteSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\RevenueGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
