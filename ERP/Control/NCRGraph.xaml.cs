@@ -31,11 +31,13 @@ namespace ERP.Control
                 new ColumnSeries
                 {
                     Title = "Internal",
+                    Fill = internalColor,
                     Values = new ChartValues<int> { 10, 50, 39, 50, 67, 99, 80, 12, 3, 29, 100, 17 }
                 },
                 new ColumnSeries
                 {
                     Title = "Extenal",
+                    Fill= externalColor,
                     Values = new ChartValues<int> { 17, 100, 29,3,12,80,99,67,50,39,50,10 }
                 }
             };
@@ -47,5 +49,8 @@ namespace ERP.Control
 
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
+
+        private SolidColorBrush internalColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#fec007"));
+        private SolidColorBrush externalColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f34336"));
     }
 }

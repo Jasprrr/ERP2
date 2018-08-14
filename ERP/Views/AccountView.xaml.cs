@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Net.Mail;
 using System.Net;
+using System.Windows.Forms;
 
 namespace ERP.Views
 {
@@ -27,19 +28,20 @@ namespace ERP.Views
     /// </summary>
     public partial class AccountView : Window
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public AccountView()
         {
             //Debug.Print(accountID.ToString());
             _todoList = new ObservableCollection<ToDo>();
             _contactList = new ObservableCollection<Contact>();
             _activityList = new ObservableCollection<Activity>();
+            selectedAccount = new Account();
             InitializeComponent();
-
-            _accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001" });
-            _accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002" });
-            _accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003" });
-            _accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004" });
-            _accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005" });
 
             _contactList.Add(new Contact() { forename = "Jasper", surname = "Friend", primaryEmail = "jasper@schoolsmailing.co.uk", telephone = "0117 9584 972", favourite = true });
             _contactList.Add(new Contact() { forename = "Josh", surname = "Kaner", primaryEmail = "josh@schoolsmailing.co.uk", telephone = "0117 9584 972", accounts = true });
@@ -89,6 +91,13 @@ namespace ERP.Views
             get { return _contactList ?? (_contactList = new ObservableCollection<Contact>()); }
         }
 
+        private Account _selectedAccount;
+        public Account selectedAccount
+        {
+            get { return _selectedAccount; }
+            set { _selectedAccount = value; OnPropertyChanged("selectedAccount"); Debug.WriteLine("Account changed"); }
+        }
+
         private Account _selectedItem;
         public Account selectedItem
         {
@@ -109,7 +118,7 @@ namespace ERP.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
+            var button = sender as System.Windows.Controls.Button;
             string theValue = button.Tag.ToString();
             Debug.Print(theValue);
             var newWindow = new AccountView();
@@ -161,6 +170,18 @@ namespace ERP.Views
         {
             var callWindow = new CallView();
             callWindow.Show();
+        }
+
+        private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Images|*.png;*.jpg;*.gif;*.bmp";
+            dialog.Title = "Select image";
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+            }
         }
     }
 }

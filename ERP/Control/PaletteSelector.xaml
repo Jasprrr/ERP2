@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300"
-             d:DataContext="{d:DesignInstance local:PaletteSelectorViewModel}">
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <UserControl.Resources>
         <Style TargetType="Button"
                BasedOn="{StaticResource MaterialDesignFlatButton}">

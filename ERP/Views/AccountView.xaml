@@ -8,6 +8,7 @@
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
         xmlns:UserControl="clr-namespace:ERP.Control"
+        xmlns:Domain="clr-namespace:ERP.Domain"
         x:Class="ERP.Views.AccountView"
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
@@ -195,19 +196,25 @@
                                                             VerticalAlignment="Center"
                                                             Margin="0,10,0,0"
                                                             BorderThickness="2"
-                                                            BorderBrush="#FFC5C5C5">
+                                                            BorderBrush="#FFC5C5C5"
+                                                            Cursor="Hand"
+                                                            MouseLeftButtonUp="Border_MouseLeftButtonUp">
                                                         <Border.Background>
                                                             <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
                                                         </Border.Background>
                                                     </Border>
-                                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                              materialDesign:HintAssist.Hint="Company *"
-                                                              ItemsSource="{Binding accountList}"
-                                                              Grid.Row="1"
-                                                              Width="256"
-                                                              DisplayMemberPath="accountName"
-                                                              SelectedItem="{Binding selectedAccount}"
-                                                              IsEditable="True" />
+                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                             materialDesign:HintAssist.Hint="Company *"
+                                                             Grid.Row="1">
+                                                        <TextBox.Text>
+                                                            <Binding Path="selectedAccount.accountName"
+                                                                     UpdateSourceTrigger="PropertyChanged">
+                                                                <Binding.ValidationRules>
+                                                                    <Domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                                </Binding.ValidationRules>
+                                                            </Binding>
+                                                        </TextBox.Text>
+                                                    </TextBox>
                                                 </StackPanel>
                                             </Grid>
                                         </materialDesign:ColorZone>
@@ -231,22 +238,36 @@
                                                 <StackPanel Width="256"
                                                             Margin="0,12,0,0">
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                             materialDesign:HintAssist.Hint="Phone 1" />
+                                                             materialDesign:HintAssist.Hint="Phone 1">
+                                                        <TextBox.Text>
+                                                            <Binding Path="selectedAccount.phone1"
+                                                                     UpdateSourceTrigger="PropertyChanged">
+                                                                <Binding.ValidationRules>
+                                                                    <Domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                                </Binding.ValidationRules>
+                                                            </Binding>
+                                                        </TextBox.Text>
+                                                    </TextBox>
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                             materialDesign:HintAssist.Hint="Phone 2" />
+                                                             materialDesign:HintAssist.Hint="Phone 2"
+                                                             Text="{Binding selectedAccount.phone2}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                             materialDesign:HintAssist.Hint="Email" />
+                                                             materialDesign:HintAssist.Hint="Email"
+                                                             Text="{Binding selectedAccount.email}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                             materialDesign:HintAssist.Hint="Lead source" />
+                                                             materialDesign:HintAssist.Hint="Lead source"
+                                                             Text="{Binding selectedAccount.leadSource}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:TextFieldAssist.HasTextAreaBox="True"
                                                              materialDesign:HintAssist.Hint="Description"
+                                                             Text="{Binding selectedAccount.description}"
                                                              AcceptsReturn="True"
                                                              Height="220"
                                                              Margin="0,12,0,4" />
                                                     <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                 HorizontalAlignment="Left"
-                                                                materialDesign:HintAssist.Hint="Trading since" />
+                                                                materialDesign:HintAssist.Hint="Trading since"
+                                                                Text="{Binding selectedAccount.tradingSince}" />
                                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
@@ -258,7 +279,8 @@
                                                             <ToggleButton HorizontalAlignment="Left"
                                                                           Height="26"
                                                                           Margin="0,20,0,4"
-                                                                          VerticalAlignment="Bottom" />
+                                                                          VerticalAlignment="Bottom"
+                                                                          IsChecked="{Binding selectedAccount.onHold}" />
                                                             <TextBlock VerticalAlignment="Bottom"
                                                                        Margin="8,0,0,9"
                                                                        Foreground="{StaticResource MaterialDesignBody}">
@@ -276,10 +298,12 @@
                                                         </CheckBox>-->
                                                         <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                     HorizontalAlignment="Right"
-                                                                    materialDesign:HintAssist.Hint="Date" />
+                                                                    materialDesign:HintAssist.Hint="Date"
+                                                                    Text="{Binding selectedAccount.onHoldDate}" />
                                                     </Grid>
                                                     <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                              materialDesign:HintAssist.Hint="Reason">
+                                                              materialDesign:HintAssist.Hint="Reason"
+                                                              SelectedValue="{Binding selectedAccount.onHoldReason}">
                                                         <ComboBoxItem Content="T0" />
                                                         <ComboBoxItem Content="T1" />
                                                         <ComboBoxItem Content="T2" />
@@ -302,16 +326,16 @@
                                                 <StackPanel Margin="0,12,0,0">
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Account number"
-                                                             Text="{Binding selectAccount.accountNumber}" />
+                                                             Text="{Binding selectedAccount.accountCode}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="VAT number"
-                                                             Text="{Binding selectAccount.accountNumber}" />
+                                                             Text="{Binding selectedAccount.VATNumber}" />
                                                     <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxHalf}"
                                                               materialDesign:HintAssist.Hint="Tax code"
-                                                              HorizontalAlignment="Left">
+                                                              HorizontalAlignment="Left"
+                                                              SelectedValue="{Binding selectedAccount.taxCode}">
                                                         <ComboBoxItem Content="T0" />
-                                                        <ComboBoxItem Content="T1"
-                                                                      IsSelected="True" />
+                                                        <ComboBoxItem Content="T1" />
                                                         <ComboBoxItem Content="T2" />
                                                         <ComboBoxItem Content="T3" />
                                                         <ComboBoxItem Content="T4" />
@@ -326,26 +350,26 @@
                                                                Foreground="{StaticResource PrimaryHueMidBrush}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 1"
-                                                             Text="{Binding selectAccount.billingAddress1}" />
+                                                             Text="{Binding selectedAccount.billingAddress1}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 1"
-                                                             Text="{Binding selectAccount.billingAddress1}" />
+                                                             Text="{Binding selectedAccount.billingAddress1}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 2"
-                                                             Text="{Binding selectAccount.billingAddress2}" />
+                                                             Text="{Binding selectedAccount.billingAddress2}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="City"
-                                                             Text="{Binding selectAccount.billingCity}" />
+                                                             Text="{Binding selectedAccount.billingCity}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="County"
-                                                             Text="{Binding selectAccount.billingCounty}" />
+                                                             Text="{Binding selectedAccount.billingCounty}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                              materialDesign:HintAssist.Hint="Postcode"
-                                                             Text="{Binding selectAccount.billingPostcode}"
+                                                             Text="{Binding selectedAccount.billingPostcode}"
                                                              HorizontalAlignment="Left" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Country"
-                                                             Text="{Binding selectAccount.billingCountry}" />
+                                                             Text="{Binding selectedAccount.billingCountry}" />
                                                 </StackPanel>
                                             </TabItem>
                                             <TabItem Style="{DynamicResource MaterialDesignTabItem}"
@@ -360,7 +384,8 @@
                                                 <StackPanel Margin="0,12,0,0">
                                                     <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                                               materialDesign:HintAssist.Hint="Default delivery"
-                                                              IsTextSearchEnabled="False">
+                                                              IsTextSearchEnabled="False"
+                                                              SelectedValue="{Binding selectedAccount.defaultCarriage}">
                                                         <ComboBoxItem Content="BIE Magnum Delivery" />
                                                         <ComboBoxItem Content="Collection" />
                                                         <ComboBoxItem Content="Courier" />
@@ -373,23 +398,23 @@
                                                                Foreground="{StaticResource PrimaryHueMidBrush}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 1"
-                                                             Text="{Binding selectAccount.shippingAddress1}" />
+                                                             Text="{Binding selectedAccount.shippingAddress1}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 2"
-                                                             Text="{Binding selectAccount.shippingAddress2}" />
+                                                             Text="{Binding selectedAccount.shippingAddress2}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="City"
-                                                             Text="{Binding selectAccount.shippingCity}" />
+                                                             Text="{Binding selectedAccount.shippingCity}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="County"
-                                                             Text="{Binding selectAccount.shippingCounty}" />
+                                                             Text="{Binding selectedAccount.shippingCounty}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                              materialDesign:HintAssist.Hint="Postcode"
-                                                             Text="{Binding selectAccount.shippingPostcode}"
+                                                             Text="{Binding selectedAccount.shippingPostcode}"
                                                              HorizontalAlignment="Left" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Country"
-                                                             Text="{Binding selectAccount.shippingCountry}" />
+                                                             Text="{Binding selectedAccount.shippingCountry}" />
                                                 </StackPanel>
                                             </TabItem>
                                             <TabItem Style="{DynamicResource MaterialDesignTabItem}"
@@ -404,7 +429,8 @@
                                                 <StackPanel Margin="0,12,0,0">
                                                     <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                                               materialDesign:HintAssist.Hint="Default nominal code"
-                                                              IsTextSearchEnabled="False">
+                                                              IsTextSearchEnabled="False"
+                                                              SelectedValue="{Binding selectedAccount.defaultNominalCode}">
                                                         <ComboBoxItem Content="4000" />
                                                         <ComboBoxItem Content="4010" />
                                                         <ComboBoxItem Content="4020" />
@@ -420,10 +446,12 @@
                                                     <Grid>
                                                         <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                     HorizontalAlignment="Left"
-                                                                    materialDesign:HintAssist.Hint="Last Review" />
+                                                                    materialDesign:HintAssist.Hint="Last Review"
+                                                                    Text="{Binding selectedAccount.lastCreditCheck}" />
                                                         <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                     HorizontalAlignment="Right"
-                                                                    materialDesign:HintAssist.Hint="Next Review" />
+                                                                    materialDesign:HintAssist.Hint="Next Review"
+                                                                    Text="{Binding selectedAccount.nextCreditCheck}" />
                                                     </Grid>
                                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
@@ -433,23 +461,23 @@
                                                                Foreground="{StaticResource PrimaryHueMidBrush}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 1"
-                                                             Text="{Binding selectAccount.shippingAddress1}" />
+                                                             Text="{Binding selectedAccount.registeredAddress1}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Address 2"
-                                                             Text="{Binding selectAccount.shippingAddress2}" />
+                                                             Text="{Binding selectedAccount.registeredAddress2}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="City"
-                                                             Text="{Binding selectAccount.shippingCity}" />
+                                                             Text="{Binding selectedAccount.registeredCity}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="County"
-                                                             Text="{Binding selectAccount.shippingCounty}" />
+                                                             Text="{Binding selectedAccount.registeredCounty}" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                              materialDesign:HintAssist.Hint="Postcode"
-                                                             Text="{Binding selectAccount.shippingPostcode}"
+                                                             Text="{Binding selectedAccount.registeredPostcode}"
                                                              HorizontalAlignment="Left" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
                                                              materialDesign:HintAssist.Hint="Country"
-                                                             Text="{Binding selectAccount.shippingCountry}" />
+                                                             Text="{Binding selectedAccount.registeredCountry}" />
                                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                 </StackPanel>
