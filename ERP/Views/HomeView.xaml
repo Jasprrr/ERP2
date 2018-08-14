@@ -25,6 +25,11 @@
                        Margin="4">
                 <ctrl:RevenueGraph />
                 <ctrl:OrderStatusGraph />
+                <ctrl:AccountsOnHold />
+                <ctrl:EmployeeHolidaySickness />
+                <ctrl:OrdersDue />
+                <ctrl:PurchaseOrdersDue />
+                <ctrl:NCRGraph />
             </WrapPanel>
         </ScrollViewer>
     </Grid>

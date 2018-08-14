@@ -118,6 +118,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\AccountsOnHold.xaml.cs">
+      <DependentUpon>AccountsOnHold.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\EmployeeHolidaySickness.xaml.cs">
+      <DependentUpon>EmployeeHolidaySickness.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\NCRGraph.xaml.cs">
+      <DependentUpon>NCRGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\OrdersDue.xaml.cs">
+      <DependentUpon>OrdersDue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\OrderStatusGraph.xaml.cs">
       <DependentUpon>OrderStatusGraph.xaml</DependentUpon>
     </Compile>
@@ -128,6 +140,9 @@
       <DependentUpon>PaletteSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\PaletteSelectorViewModel.cs" />
+    <Compile Include="Control\PurchaseOrdersDue.xaml.cs">
+      <DependentUpon>PurchaseOrdersDue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\RevenueGraph.xaml.cs">
       <DependentUpon>RevenueGraph.xaml</DependentUpon>
     </Compile>
@@ -140,6 +155,8 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Delete.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\QuoteItem.cs" />
     <Compile Include="Models\QuoteMaterial.cs" />
@@ -209,6 +226,22 @@
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\AccountsOnHold.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\EmployeeHolidaySickness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\NCRGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\OrdersDue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\OrderStatusGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\PaletteSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\PurchaseOrdersDue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

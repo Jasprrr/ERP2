@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ERP.Control.PurchaseOrdersDue"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ERP.Control"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <materialDesign:Card Margin="4"
+                             Padding="0,16,0,8"
+                             Height="270"
+                             Width="270">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
+                           Text="Purchase orders due"
+                           HorizontalAlignment="Center" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              Grid.Row="1"
+                              Margin="0,16,0,0">
+                    <ListView Style="{StaticResource MaterialDesignPreviewListView}"
+                              ItemsSource="{Binding purchaseOrders}"
+                              Margin="0">
+                        <ListView.Template>
+                            <ControlTemplate>
+                                <ItemsPresenter />
+                            </ControlTemplate>
+                        </ListView.Template>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="8,0,0,0">
+                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                               Text="{Binding purchaseOrderID}" />
+                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                               Foreground="{StaticResource MaterialDesignColumnHeader}"
+                                               Text="{Binding supplierName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

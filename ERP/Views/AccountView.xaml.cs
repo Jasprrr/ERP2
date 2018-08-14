@@ -35,11 +35,11 @@ namespace ERP.Views
             _activityList = new ObservableCollection<Activity>();
             InitializeComponent();
 
-            _accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", telephone = "0800 000 001" });
-            _accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", telephone = "0800 000 002" });
-            _accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", telephone = "0800 000 003" });
-            _accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", telephone = "0800 000 004" });
-            _accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", telephone = "0800 000 005" });
+            _accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001" });
+            _accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002" });
+            _accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003" });
+            _accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004" });
+            _accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005" });
 
             _contactList.Add(new Contact() { forename = "Jasper", surname = "Friend", primaryEmail = "jasper@schoolsmailing.co.uk", telephone = "0117 9584 972", favourite = true });
             _contactList.Add(new Contact() { forename = "Josh", surname = "Kaner", primaryEmail = "josh@schoolsmailing.co.uk", telephone = "0117 9584 972", accounts = true });
