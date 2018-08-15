@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Models
 {
-    public class SchedulerDay : INotifyPropertyChanged
+    public class CalendarDay : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
                 
@@ -18,7 +18,13 @@ namespace ERP.Models
         }
 
         public DateTime date { get; set; }
-        public bool isToday { get; set; }
+        public bool isToday
+        {
+            get
+            {
+                return date == DateTime.Today ? true : false;
+            }
+        }
         public List<ToDo> todo { get; set; }
     }
 }

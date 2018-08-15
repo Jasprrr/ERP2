@@ -14,7 +14,6 @@
         Style="{StaticResource MaterialDesignWindow}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
-
         <Style TargetType="TabItem">
             <Setter Property="LayoutTransform">
                 <Setter.Value>
@@ -322,15 +321,8 @@
                                                                     Text="{Binding selectedAccount.onHoldDate}" />
                                                     </Grid>
                                                     <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                                              materialDesign:HintAssist.Hint="Reason">
-                                                        <ComboBox.SelectedValue>
-                                                            <Binding Path="selectedAccount.onHoldReason"
-                                                                     UpdateSourceTrigger="PropertyChanged">
-                                                                <Binding.ValidationRules>
-                                                                    <Domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                                                </Binding.ValidationRules>
-                                                            </Binding>
-                                                        </ComboBox.SelectedValue>
+                                                              materialDesign:HintAssist.Hint="Reason"
+                                                              MaxDropDownHeight="100">
                                                         <ComboBoxItem Content="T0" />
                                                         <ComboBoxItem Content="T1" />
                                                         <ComboBoxItem Content="T2" />

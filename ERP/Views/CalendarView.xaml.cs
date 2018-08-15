@@ -42,18 +42,11 @@ namespace ERP.Views
         public int gridOffset
         {
             get { return _gridOffset; }
-            set
-            {
-                if (_gridOffset != value)
-                {
-                    _gridOffset = value;
-                    OnPropertyChanged("gridOffset");
-                }
-            }
+            set { _gridOffset = value; OnPropertyChanged("gridOffset"); }
         }
 
-        private ObservableCollection<SchedulerDay> _todoList;
-        public ObservableCollection<SchedulerDay> todoList
+        private ObservableCollection<CalendarDay> _todoList;
+        public ObservableCollection<CalendarDay> todoList
         {
             get { return _todoList; }
             set
@@ -66,15 +59,15 @@ namespace ERP.Views
             }
         }
 
-        private ObservableCollection<SchedulerDay> _schedulerList;
-        public ObservableCollection<SchedulerDay> schedulerList
+        private ObservableCollection<CalendarDay> _schedulerList;
+        public ObservableCollection<CalendarDay> schedulerList
         {
             get { return _schedulerList; }
             set { if (value != null) { _schedulerList = value; OnPropertyChanged("schedulerList"); } }
         }
-        
-        private SchedulerDay _selectedTodo;
-        public SchedulerDay selectedTodo
+
+        private CalendarDay _selectedTodo;
+        public CalendarDay selectedTodo
         {
             get { return _selectedTodo; }
             set { if (selectedTodo != value) { _selectedTodo = value; OnPropertyChanged("selectedTodo"); } }
@@ -84,22 +77,21 @@ namespace ERP.Views
         {
             DateTime firstOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
 
-            todoList = new ObservableCollection<SchedulerDay>();
-            
+            todoList = new ObservableCollection<CalendarDay>();
+
             gridOffset = (int)firstOfMonth.DayOfWeek;
-            
+
             for (int i = 0; i < DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month); i++)
             {
                 DateTime _isToday = new DateTime(DateTime.Today.Year, DateTime.Today.Month, i + 1);
 
-                todoList.Add(new SchedulerDay()
+                todoList.Add(new CalendarDay()
                 {
                     date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, i + 1),
-                    todo = todoListGenerator,
-                    isToday = _isToday == DateTime.Today ? true : false
+                    todo = todoListGenerator
                 });
             };
-            
+
         }
 
         private List<ToDo> todoListGenerator
@@ -125,7 +117,7 @@ namespace ERP.Views
         {
             InitializeCalendar();
         }
-        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = (System.Windows.Controls.Button)sender;
@@ -144,7 +136,8 @@ namespace ERP.Views
 
         private async void SetUpCalendar()
         {
-            await Task.Run(() => {
+            await Task.Run(() =>
+            {
                 InitializeCalendar();
             });
         }

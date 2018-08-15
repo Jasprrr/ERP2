@@ -171,7 +171,7 @@
     <Compile Include="Models\QuoteMaterial.cs" />
     <Compile Include="Models\QuoteSubcontractor.cs" />
     <Compile Include="Models\QuoteTime.cs" />
-    <Compile Include="Models\SchedulerDay.cs" />
+    <Compile Include="Models\CalendarDay.cs" />
     <Compile Include="Models\Sickness.cs" />
     <Compile Include="Models\StandardItem.cs" />
     <Compile Include="Models\StepperData.cs" />

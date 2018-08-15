@@ -81,7 +81,7 @@
                     </Grid>
                 </StackPanel>
             </materialDesign:DialogHost.DialogContent>
-            <Grid Background="{DynamicResource MaterialDesignPaper}">
+            <Grid Background="{DynamicResource MaterialDesignBackground}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />

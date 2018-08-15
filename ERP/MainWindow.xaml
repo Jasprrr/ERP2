@@ -54,6 +54,13 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                      Grid.Column="0"
+                                      DockPanel.Dock="Top"
+                                      HorizontalAlignment="Right"
+                                      IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"
+                                      Width="32"
+                                      Height="32" />
                         <TextBlock Grid.Column="1"
                                    VerticalAlignment="Center"
                                    Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
@@ -108,30 +115,49 @@
                     <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                               Mode="Standard"
                                               VerticalAlignment="Stretch"
-                                              Width="200"
+                                              Width="60"
                                               Background="{StaticResource MaterialDesignBackground}">
-                        <ListView ItemsSource="{Binding navMenu}"
-                                  SelectedIndex="0"
-                                  Margin="0,8"
-                                  SelectedItem="{Binding selectedItem}"
-                                  Background="{DynamicResource MaterialDesignBackground}"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  SelectionChanged="ListView_SelectionChanged">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="{Binding NavIcon}"
-                                                                 VerticalAlignment="Center"
-                                                                 Margin="12,4"
-                                                                 Width="20"
-                                                                 Height="20" />
-                                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                   Text="{Binding NavTitle}"
-                                                   VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <ListView ItemsSource="{Binding navMenu}"
+                                      SelectedIndex="0"
+                                      Margin="0,8"
+                                      SelectedItem="{Binding selectedItem}"
+                                      Background="{DynamicResource MaterialDesignBackground}"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      SelectionChanged="ListView_SelectionChanged">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="{Binding NavIcon}"
+                                                                     VerticalAlignment="Center"
+                                                                     Margin="12,4"
+                                                                     Width="20"
+                                                                     Height="20" />
+                                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                       Text="{Binding NavTitle}"
+                                                       VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListViewItem Grid.Row="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Settings"
+                                                             VerticalAlignment="Center"
+                                                             Margin="12,4"
+                                                             Width="20"
+                                                             Height="20" />
+                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                               Text="Settings"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListViewItem>
+                        </Grid>
+                        
                     </materialDesign:ColorZone>
                     <Frame x:Name="MainFrame"
                            Grid.Row="1"
