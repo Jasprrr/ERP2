@@ -14,6 +14,7 @@ namespace ERP.Models
         public int orderID { get; set; }
         public int quoteID { get; set; }
         public int userID { get; set; }
+        public string user { get; set; }
         public bool selected { get; set; }
         public decimal estimatedTime { get; set; }
         public decimal actualTime { get; set; }

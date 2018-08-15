@@ -52,7 +52,7 @@ namespace ERP.Models
         public string shippingPostcode { get; set; }
 
         public int userID { get; set; }
-        public string userName { get; set; }
+        public string user { get; set; }
         public DateTime? dateCreated { get; set; }
         public DateTime? dateModified { get; set; }
         public bool selected { get; set; }

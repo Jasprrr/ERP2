@@ -13,6 +13,7 @@ namespace ERP.Models
 
         public int accountID { get; set; }
         public int userID { get; set; }
+        public string user { get; set; }
         public string accountName { get; set; }
         public string email { get; set; }
         public string accountCode { get; set; }
@@ -31,7 +32,7 @@ namespace ERP.Models
         public string onHoldReason { get; set; }
         public DateTime? onHoldDate { get; set; }
         public DateTime? lastCreditCheck { get; set; }
-        public DateTime? nextcreditCheck { get; set; }
+        public DateTime? nextCreditCheck { get; set; }
         public string leadSource { get; set; }
         public bool prepayment { get; set; }
         public bool delete { get; set; }

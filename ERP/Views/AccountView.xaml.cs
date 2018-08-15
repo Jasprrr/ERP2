@@ -43,8 +43,8 @@ namespace ERP.Views
             selectedAccount = new Account();
             InitializeComponent();
 
-            _contactList.Add(new Contact() { forename = "Jasper", surname = "Friend", primaryEmail = "jasper@schoolsmailing.co.uk", telephone = "0117 9584 972", favourite = true });
-            _contactList.Add(new Contact() { forename = "Josh", surname = "Kaner", primaryEmail = "josh@schoolsmailing.co.uk", telephone = "0117 9584 972", accounts = true });
+            _contactList.Add(new Contact() { forename = "Jasper", surname = "Friend", primaryEmail = "jasper@schoolsmailing.co.uk", phone1 = "0117 9584 972", favourite = true });
+            _contactList.Add(new Contact() { forename = "Josh", surname = "Kaner", primaryEmail = "josh@schoolsmailing.co.uk", phone1 = "0117 9584 972", accounts = true });
             _contactList.Add(new Contact() { forename = "Sarah", surname = "Rodgerson" });
             _contactList.Add(new Contact() { forename = "Luke", surname = "Harvey", primaryEmail = "luke@schoolsmailing.co.uk" });
 
@@ -63,14 +63,8 @@ namespace ERP.Views
             _activityList.Add(new Activity() { activityDate = new DateTime(2008, 4, 4, 14, 30, 0), activityID = 4, user = "Jasper Friend", contact = "Jasper Friend", colour = "#2196f3", activity = "quote", icon = "FormatQuoteClose", description = "lorem ipsum dolor sit amet, consectetur adipiscing elit." });
             _activityList.Add(new Activity() { activityDate = new DateTime(2008, 5, 5, 15, 30, 0), activityID = 1, user = "Jasper Friend", contact = "Jasper Friend", colour = "#ff9800", activity = "Task", icon = "CalendarCheck", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien." });
 
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 2), account = "Acc 02", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien.", complete = false, taskType = "Task", user = "Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 3), account = "Acc 03", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien.", complete = false, taskType = "Task", user = "Rob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 3), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Jim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 5, 5), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Sam" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 6, 6), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Tim" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 7, 7), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Bob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 8, 8), account = "Acc 08", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Rob" });
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 4, 9), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task", user = "Jim" });
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 2), account = "Acc 02", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien.", complete = false, taskType = "Task"});
+            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 3), account = "Acc 03", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien.", complete = false, taskType = "Task" });
         }
 
         private ObservableCollection<Activity> _activityList;

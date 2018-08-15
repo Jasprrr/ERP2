@@ -121,7 +121,7 @@
                 <Setter Property="Width"
                         Value="256" />
                 <Setter Property="Margin"
-                        Value="0,8,0,4" />
+                        Value="0,8,0,10" />
                 <Setter Property="Foreground"
                         Value="{StaticResource MaterialDesignBody}" />
             </Style>
@@ -133,7 +133,7 @@
                 <Setter Property="Width"
                         Value="92" />
                 <Setter Property="Margin"
-                        Value="0,8,0,4" />
+                        Value="0,8,0,10" />
                 <Setter Property="Foreground"
                         Value="{StaticResource MaterialDesignBody}" />
             </Style>
@@ -163,7 +163,7 @@
                    TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <Setter Property="Margin"
-                        Value="0,6,0,4" />
+                        Value="0,6,0,10" />
                 <Setter Property="HorizontalAlignment"
                         Value="Stretch" />
                 <Setter Property="VerticalAlignment"
@@ -177,7 +177,7 @@
                    TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <Setter Property="Margin"
-                        Value="0,6,0,4" />
+                        Value="0,6,0,10" />
                 <Setter Property="HorizontalAlignment"
                         Value="Stretch" />
                 <Setter Property="VerticalAlignment"
@@ -203,8 +203,10 @@
                    BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
                 <Setter Property="Width"
                         Value="92" />
+                <!--<Setter Property="Height"
+                        Value="38" />-->
                 <Setter Property="Margin"
-                        Value="0,20,0,4" />
+                        Value="0,20,0,10" />
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
                 <Setter Property="Foreground"
@@ -218,7 +220,7 @@
                 <Setter Property="Width"
                         Value="92" />
                 <Setter Property="Margin"
-                        Value="0,20,0,4" />
+                        Value="0,20,0,10" />
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
                 <Setter Property="Foreground"

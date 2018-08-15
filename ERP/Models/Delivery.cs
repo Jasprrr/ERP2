@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace ERP.Models
 {
-    public class Supplier : INotifyPropertyChanged
+    class Delivery : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public int ID { get; set; }
-        public string name { get; set; }
     }
 }

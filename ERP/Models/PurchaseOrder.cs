@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ERP.Models
 {
-    public class PurchaseOrder
+    public class PurchaseOrder : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public int purchaseOrderID { get; set; }
         public string purchaseCode { get; set; }
         public int orderID { get; set; }
         public int userID { get; set; }
+        public string user { get; set; }
         public decimal carriageCost { get; set; }
         public decimal grandTotal { get; set; }
         public decimal subtotal { get; set; }
