@@ -1,0 +1,104 @@
+﻿<Page x:Class="ERP.Views.SettingsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ERP.Views"
+      mc:Ignorable="d"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+      xmlns:Converter="clr-namespace:ERP.Converters"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextElement.FontFamily="Roboto"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Page.Resources>
+        <Converter:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
+        <Converter:HexToBrushConverter x:Key="HexToBrushConverter" />
+    </Page.Resources>
+    <Grid>
+        <materialDesign:DrawerHost x:Name="PreviewDrawer">
+            <materialDesign:DrawerHost.RightDrawerContent>
+                <StackPanel />
+            </materialDesign:DrawerHost.RightDrawerContent>
+            <materialDesign:Card BorderThickness="1"
+                                 SnapsToDevicePixels="True"
+                                 VerticalAlignment="Stretch"
+                                 VerticalContentAlignment="Stretch"
+                                 Margin="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Height="32"
+                          Margin="24,20"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <TextBlock Text="Settings"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Margin="0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="336" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="336" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="256">
+                            <ComboBox x:Name="PrimaryColour"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                      ItemsSource="{Binding swatches}"
+                                      materialDesign:HintAssist.Hint="Primary colour"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Left"
+                                      SelectedValue="{Binding primaryColour}"
+                                      SelectionChanged="PrimaryColour_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="4,0">
+                                            <Border Height="16"
+                                                    Width="16"
+                                                    CornerRadius="8"
+                                                    Background="{Binding ExemplarHue.Color, Converter={StaticResource HexToBrushConverter}}" />
+                                            <TextBlock Text="{Binding Name}"
+                                                       Margin="12,0,0,0" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox x:Name="AccentColour"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                      ItemsSource="{Binding swatches}"
+                                      materialDesign:HintAssist.Hint="Accent colour"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Left"
+                                      SelectedValue="{Binding accentColour}"
+                                      SelectionChanged="AccentColour_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Visibility="{Binding AccentExemplarHue, Converter={StaticResource NullableToVisibilityConverter}}">
+                                            <Border Height="16"
+                                                    Width="16"
+                                                    CornerRadius="8"
+                                                    Background="{Binding AccentExemplarHue.Color, Converter={StaticResource HexToBrushConverter}}" />
+                                            <TextBlock Text="{Binding Name}"
+                                                       Margin="12,0,0,0" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Page>

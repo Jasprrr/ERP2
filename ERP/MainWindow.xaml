@@ -8,12 +8,16 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+        xmlns:Converter="clr-namespace:ERP.Converters"
         xmlns:UserControl="clr-namespace:ERP.Control"
         mc:Ignorable="d"
         x:Class="ERP.MainWindow"
         Icon="/ERP;component/icon.ico"
         Style="{StaticResource MaterialDesignWindow}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <Converter:NullableToVisibilityConverter x:Key="NavigationMenuConverter" />
+    </Window.Resources>
     <Grid>
         <materialDesign:DrawerHost x:Name="Drawer">
             <materialDesign:DrawerHost.RightDrawerContent>
@@ -54,13 +58,14 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
-                                      Grid.Column="0"
-                                      DockPanel.Dock="Top"
-                                      HorizontalAlignment="Right"
-                                      IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"
+                        <ToggleButton x:Name="HamburgerButton"
+                                      Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                      IsChecked="{Binding menuExpanded}"
+                                      Padding="4"
                                       Width="32"
-                                      Height="32" />
+                                      Height="32"
+                                      Cursor="Hand"
+                                      Click="HamburgerButton_Click" />
                         <TextBlock Grid.Column="1"
                                    VerticalAlignment="Center"
                                    Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
@@ -69,21 +74,18 @@
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="2">
                             <materialDesign:PackIcon Kind="Download"
-                                                     Height="24"
-                                                     Width="24" />
+                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="3"
                                 ToolTip="Stage forward">
                             <materialDesign:PackIcon Kind="Forward"
-                                                     Height="24"
-                                                     Width="24" />
+                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="4">
                             <materialDesign:PackIcon Kind="Delete"
-                                                     Height="24"
-                                                     Width="24" />
+                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <Button x:Name="Save"
                                 Style="{StaticResource MaterialDesignDarkForegroundButton}"
@@ -92,13 +94,18 @@
                                                      Height="24"
                                                      Width="24" />
                         </Button>
-                        <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}" Grid.Column="6"
+                        <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
+                                                 Grid.Column="6"
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="True">
                             <StackPanel>
-                                <Button Content="Convert quote" />
+                                <Button x:Name="Settings"
+                                        Content="Settings" 
+                                        Click="Settings_Click"/>
                                 <Separator />
-                                <Button Content="Delete quote" />
+                                <Button x:Name="Exit"
+                                        Content="Exit"
+                                        Click="Exit_Click" />
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </Grid>
@@ -114,50 +121,33 @@
                     </Grid.ColumnDefinitions>
                     <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                               Mode="Standard"
+                                              x:Name="NavigationMenu"
+                                              Width="64"
                                               VerticalAlignment="Stretch"
-                                              Width="60"
-                                              Background="{StaticResource MaterialDesignBackground}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <ListView ItemsSource="{Binding navMenu}"
-                                      SelectedIndex="0"
-                                      Margin="0,8"
-                                      SelectedItem="{Binding selectedItem}"
-                                      Background="{DynamicResource MaterialDesignBackground}"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                      SelectionChanged="ListView_SelectionChanged">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
+                                              Background="{StaticResource MaterialDesignPaper}">
+                        <ListView ItemsSource="{Binding navMenu}"
+                                  SelectedIndex="0"
+                                  Margin="0,2"
+                                  SelectedItem="{Binding selectedItem}"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  SelectionChanged="ListView_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border ToolTip="{Binding title}">
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="{Binding NavIcon}"
-                                                                     VerticalAlignment="Center"
-                                                                     Margin="12,4"
-                                                                     Width="20"
-                                                                     Height="20" />
+                                            <materialDesign:PackIcon Kind="{Binding icon}"
+                                                                     Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                     ToolTip="{Binding title}"
+                                                                     Margin="12,1" />
                                             <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                       Text="{Binding NavTitle}"
-                                                       VerticalAlignment="Center" />
+                                                       Text="{Binding title}"
+                                                       VerticalAlignment="Center"
+                                                       Margin="4,0,0,0" />
                                         </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                            <ListViewItem Grid.Row="1">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Settings"
-                                                             VerticalAlignment="Center"
-                                                             Margin="12,4"
-                                                             Width="20"
-                                                             Height="20" />
-                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                               Text="Settings"
-                                               VerticalAlignment="Center" />
-                                </StackPanel>
-                            </ListViewItem>
-                        </Grid>
-                        
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </materialDesign:ColorZone>
                     <Frame x:Name="MainFrame"
                            Grid.Row="1"

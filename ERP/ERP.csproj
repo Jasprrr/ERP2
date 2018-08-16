@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="Control\Stepper.cs" />
     <Compile Include="Converters\ExpanderConverter.cs" />
+    <Compile Include="Converters\HexToBrushConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
     <Compile Include="Domain\CommandImplentation.cs" />
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
@@ -225,6 +226,9 @@
     </Compile>
     <Compile Include="Views\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TaskPreview.xaml.cs">
       <DependentUpon>TaskPreview.xaml</DependentUpon>
@@ -343,6 +347,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CalendarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

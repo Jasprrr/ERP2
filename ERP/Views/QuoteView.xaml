@@ -81,7 +81,7 @@
                     </Grid>
                 </StackPanel>
             </materialDesign:DialogHost.DialogContent>
-            <Grid Background="{DynamicResource MaterialDesignBackground}">
+            <Grid Background="{DynamicResource MaterialDesignPaper}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -158,7 +158,7 @@
                     </Grid.ColumnDefinitions>
                     <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                               VerticalAlignment="Stretch"
-                                              Background="{StaticResource MaterialDesignBackground}">
+                                              Background="{StaticResource MaterialDesignPaper}">
                         <StackPanel Width="336">
                             <materialDesign:Transitioner SelectedIndex="0">
                                 <materialDesign:TransitionerSlide>
@@ -229,7 +229,7 @@
                                     </materialDesign:ColorZone>
                                 </materialDesign:TransitionerSlide>
                                 <materialDesign:TransitionerSlide>
-                                    <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}"
+                                    <materialDesign:ColorZone Background="{StaticResource MaterialDesignPaper}"
                                                               Height="180">
                                         <Grid>
                                             <Button Style="{StaticResource MaterialDesignMidHueButton}"
@@ -272,7 +272,7 @@
                                     </materialDesign:ColorZone>
                                 </materialDesign:TransitionerSlide>
                             </materialDesign:Transitioner>
-                            <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}"
+                            <materialDesign:ColorZone Background="{StaticResource MaterialDesignPaper}"
                                                       SnapsToDevicePixels="True"
                                                       VerticalAlignment="Stretch">
                                 <StackPanel>
@@ -648,13 +648,13 @@
                     <materialDesign:ColorZone Grid.Column="2"
                                               Width="336"
                                               materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                              Background="{StaticResource MaterialDesignBackground}"
+                                              Background="{StaticResource MaterialDesignPaper}"
                                               VerticalAlignment="Stretch">
                         <ScrollViewer Grid.Row="2"
                                       HorizontalContentAlignment="Center"
                                       VerticalScrollBarVisibility="Auto">
                             <StackPanel>
-                                <Expander Background="{StaticResource MaterialDesignBackground}"
+                                <Expander Background="{StaticResource MaterialDesignPaper}"
                                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                           IsExpanded="True">
                                     <Expander.Header>
@@ -735,7 +735,7 @@
                                     </ListView>
                                 </Expander>
                                 <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                <Expander Background="{StaticResource MaterialDesignBackground}">
+                                <Expander Background="{StaticResource MaterialDesignPaper}">
                                     <Expander.Header>
                                         <Grid>
                                             <TextBlock Text="Tasks"
@@ -807,7 +807,7 @@
                                     </ListView>
                                 </Expander>
                                 <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                <Expander Background="{StaticResource MaterialDesignBackground}">
+                                <Expander Background="{StaticResource MaterialDesignPaper}">
                                     <Expander.Header>
                                         <Grid>
                                             <TextBlock Text="Orders"

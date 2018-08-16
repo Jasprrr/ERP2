@@ -152,8 +152,7 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:DrawerHost.RightDrawerContent>
-            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
-                                 BorderThickness="1"
+            <materialDesign:Card BorderThickness="1"
                                  SnapsToDevicePixels="True"
                                  VerticalAlignment="Stretch"
                                  VerticalContentAlignment="Stretch"

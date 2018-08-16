@@ -14,33 +14,6 @@
         Style="{StaticResource MaterialDesignWindow}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
-        <Style TargetType="TabItem">
-            <Setter Property="LayoutTransform">
-                <Setter.Value>
-                    <ScaleTransform x:Name="scaleTransform" />
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
-                                             To="2"
-                                             Duration="0:0:0.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
-                                             To="1"
-                                             Duration="0:0:0.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
         <Converters:NullableToVisibilityConverter x:Key="NullableToVisibilityConverter" />
         <Converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Window.Resources>
@@ -48,7 +21,7 @@
         <materialDesign:DialogHost x:Name="PreviewDialog"
                                    CloseOnClickAway="True">
             <materialDesign:DialogHost.DialogContent>
-                <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}">
+                <materialDesign:ColorZone Background="{StaticResource MaterialDesignPaper}">
                     <StackPanel>
                         <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}">
                             <Grid>
@@ -159,7 +132,7 @@
                         </Grid.ColumnDefinitions>
                         <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                                   VerticalAlignment="Stretch"
-                                                  Background="{StaticResource MaterialDesignBackground}">
+                                                  Background="{StaticResource MaterialDesignPaper}">
                             <StackPanel Width="336">
                                 <materialDesign:Transitioner SelectedIndex="0">
                                     <materialDesign:TransitionerSlide>
@@ -203,7 +176,7 @@
                                         </materialDesign:ColorZone>
                                     </materialDesign:TransitionerSlide>
                                     <materialDesign:TransitionerSlide>
-                                        <materialDesign:ColorZone Background="{StaticResource MaterialDesignBackground}"
+                                        <materialDesign:ColorZone Background="{StaticResource MaterialDesignPaper}"
                                                                   Height="130">
                                             <Grid>
                                                 <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
@@ -633,14 +606,14 @@
                                                   Width="336"
                                                   materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                                   BorderBrush="{StaticResource MaterialDesignDivider}"
-                                                  Background="{StaticResource MaterialDesignBackground}"
+                                                  Background="{StaticResource MaterialDesignPaper}"
                                                   VerticalAlignment="Stretch">
                             <ScrollViewer Grid.Row="2"
                                           HorizontalContentAlignment="Center"
                                           VerticalScrollBarVisibility="Auto">
                                 <StackPanel>
                                     <Expander ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                              Background="{StaticResource MaterialDesignBackground}"
+                                              Background="{StaticResource MaterialDesignPaper}"
                                               IsExpanded="True">
                                         <Expander.Header>
                                             <Grid>
@@ -725,7 +698,7 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}"
+                                    <Expander Background="{StaticResource MaterialDesignPaper}"
                                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <Expander.Header>
                                             <Grid>
@@ -801,7 +774,7 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Quotes"
@@ -879,7 +852,7 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Orders"
@@ -957,7 +930,7 @@
                                         </ListView>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Deliveries"
@@ -973,7 +946,7 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Invoices"
@@ -989,7 +962,7 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Credits"
@@ -1005,7 +978,7 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="Purchases"
@@ -1021,7 +994,7 @@
                                         </Expander.Header>
                                     </Expander>
                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}" />
-                                    <Expander Background="{StaticResource MaterialDesignBackground}">
+                                    <Expander Background="{StaticResource MaterialDesignPaper}">
                                         <Expander.Header>
                                             <Grid>
                                                 <TextBlock Text="NCRs"

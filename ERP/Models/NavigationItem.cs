@@ -11,9 +11,10 @@ namespace ERP.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string NavTitle { get; set; }
-        public string NavIcon { get; set; }
-        public string NavPage { get; set; }
+        public string title { get; set; }
+        public string icon { get; set; }
+        public string page { get; set; }
+        public string toolTip { get; set; }
 
         protected void OnPropertyChanged(string name)
         {

@@ -53,8 +53,6 @@
                         Value="4" />
                 <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
                         Value="Depth1" />
-                <Setter Property="Background"
-                        Value="{DynamicResource MaterialDesignBackground}" />
             </Style>
             <!--#endregion Cards-->
             
@@ -316,7 +314,7 @@
                 <Setter Property="HorizontalAlignment"
                         Value="Right" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource PrimaryHueMidBrush}" />
+                        Value="{DynamicResource PrimaryHueMidBrush}" />
                 <Setter Property="Padding"
                         Value="0" />
                 <Setter Property="Width"
@@ -384,8 +382,6 @@
                    BasedOn="{StaticResource MaterialDesignDataGrid}">
                 <Setter Property="CanUserSortColumns"
                         Value="True" />
-                <Setter Property="Background"
-                        Value="{StaticResource MaterialDesignBackground}" />
                 <Setter Property="AutoGenerateColumns"
                         Value="False" />
                 <Setter Property="RowHeight"
@@ -400,6 +396,8 @@
                         Value="True" />
                 <Setter Property="ScrollViewer.CanContentScroll"
                         Value="False" />
+                <Setter Property="Background"
+                        Value="Transparent" />
             </Style>
             <Style x:Key="MaterialDesignCustomGridComboBox"
                    TargetType="ComboBox"

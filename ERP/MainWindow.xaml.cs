@@ -26,28 +26,36 @@ namespace ERP
     /// </summary>
     public partial class MainWindow : Window
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public MainWindow()
         {
-            Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
+            menuExpanded = new bool();
+            //Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
             //SQLiteConnection.CreateFile("ERPData.sqlite");
             //SQLiteConnection.CreateFile(@"C:\users\Jasper\Desktop\test.sqlite");
             //SetUpDb();
             //_navMenu = new ObservableCollection<NavigationItem>();
             InitializeComponent();
-            _navMenu.Add(new NavigationItem { NavTitle = "Home", NavIcon = "Home", NavPage = "Views/HomeView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Tasks", NavIcon = "CalendarCheck", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Customers", NavIcon = "Domain", NavPage = "Views/AccountsView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Suppliers", NavIcon = "Palette", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Standard Items", NavIcon = "Wrench", NavPage = "Views/CalendarView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Quotes", NavIcon = "FormatQuoteClose", NavPage = "Views/TestView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Orders", NavIcon = "Send", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Deliveries", NavIcon = "Truck", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Invoices", NavIcon = "BookVariant", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Credits", NavIcon = "CreditCard", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Purchases", NavIcon = "Basket", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Stock", NavIcon = "Widgets", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "NCRs", NavIcon = "Alert", NavPage = "Views/TasksView.xaml" });
-            _navMenu.Add(new NavigationItem { NavTitle = "Reports", NavIcon = "Finance", NavPage = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Home", icon = "Home", page = "Views/HomeView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Calendar", icon = "Calendar", page = "Views/CalendarView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Tasks", icon = "Flag", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Customers", icon = "Domain", page = "Views/AccountsView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench", page = "Views/CalendarView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose", page = "Views/TestView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Orders", icon = "Send", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Deliveries", icon = "Truck", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Invoices", icon = "BookVariant", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Credits", icon = "CreditCard", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Purchases", icon = "Basket", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Stock", icon = "Widgets", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "NCRs", icon = "Alert", page = "Views/TasksView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Reports", icon = "Finance", page = "Views/TasksView.xaml" });
         }
 
         private ObservableCollection<NavigationItem> _navMenu;
@@ -55,7 +63,7 @@ namespace ERP
         {
             get { return _navMenu ?? (_navMenu = new ObservableCollection<NavigationItem>()); }
         }
-        
+
         private NavigationItem _selectedItem;
         public NavigationItem selectedItem
         {
@@ -65,13 +73,35 @@ namespace ERP
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainFrame.Navigate(new Uri(selectedItem.NavPage.ToString(), UriKind.Relative));
+            MainFrame.Navigate(new Uri(selectedItem.page.ToString(), UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var QuoteWindow = new QuoteView();
             QuoteWindow.Show();
+        }
+
+        private bool _menuExpanded;
+        public bool menuExpanded
+        {
+            get { return _menuExpanded; }
+            set { _menuExpanded = value; OnPropertyChanged("menuExpanded"); }
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationMenu.Width = menuExpanded == true ? 200 : 64;
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("Views/SettingsView.xaml", UriKind.Relative));
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
