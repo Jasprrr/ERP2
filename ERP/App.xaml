@@ -8,7 +8,7 @@
              xmlns:properties="clr-namespace:ERP.Properties"
              xmlns:CustomControls="clr-namespace:ERP.Control"
              x:Class="ERP.App"
-             StartupUri="MainWindow.xaml"
+             StartupUri="Views/LoginView.xaml"
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
@@ -24,7 +24,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <properties:Settings x:Key="Username" />
+            <properties:Settings x:Key="username" />
+            <properties:Settings x:Key="primaryColour" />
+            <properties:Settings x:Key="accentColour" />
+            <properties:Settings x:Key="darkTheme" />
 
             <Style x:Key="MaterialDesignWindow"
                    TargetType="Window">
@@ -39,7 +42,7 @@
                 <Setter Property="TextElement.FontSize"
                         Value="12" />
                 <Setter Property="TextElement.Foreground"
-                        Value="{DynamicResource MaterialDesignBodyLight}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
                 <Setter Property="WindowState"
                         Value="Maximized" />
                 <Setter Property="Language"
@@ -121,7 +124,7 @@
                 <Setter Property="Margin"
                         Value="0,8,0,10" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource MaterialDesignBody}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
             </Style>
             <Style x:Key="MaterialDesignCustomFloatingHintTextBoxHalf"
                    TargetType="TextBox"
@@ -133,7 +136,7 @@
                 <Setter Property="Margin"
                         Value="0,8,0,10" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource MaterialDesignBody}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
             </Style>
 
             <!--Checkbox-->
@@ -169,7 +172,7 @@
                 <Setter Property="Width"
                         Value="256" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource MaterialDesignBody}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
             </Style>
             <Style x:Key="MaterialDesignFloatingHintComboBoxHalf"
                    TargetType="ComboBox"
@@ -183,7 +186,7 @@
                 <Setter Property="Width"
                         Value="92" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource MaterialDesignBody}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
             </Style>
 
             <!--Separator-->
@@ -208,7 +211,7 @@
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource MaterialDesignBody}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
             </Style>
 
             <!--TimePicker-->
@@ -222,7 +225,7 @@
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource MaterialDesignBody}" />
+                        Value="{DynamicResource MaterialDesignBody}" />
             </Style>
 
             <!--Popupbox-->

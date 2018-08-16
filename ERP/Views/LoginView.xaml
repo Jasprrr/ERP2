@@ -20,7 +20,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         ResizeMode="NoResize"
-        Icon="/ERP;component/Resources/icon.ico">
+        Icon="/ERP;component/Resources/icon.ico"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>

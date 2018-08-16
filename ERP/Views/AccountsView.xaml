@@ -172,7 +172,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Accounts"
                                    VerticalAlignment="Center"
-                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                   Foreground="{DynamicResource MaterialDesignBody}"/>
                         <Button x:Name="NewCall"
                                 Style="{StaticResource MaterialDesignFlatIconButton}"
                                 ToolTip="New item"

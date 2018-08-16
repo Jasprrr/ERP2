@@ -58,6 +58,8 @@ namespace ERP.Views
             if(primaryColour != null)
             {
                 new PaletteHelper().ReplacePrimaryColor(primaryColour);
+                Properties.Settings.Default["primaryColour"] = primaryColour.Name;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -65,6 +67,8 @@ namespace ERP.Views
         {
 
             new PaletteHelper().ReplaceAccentColor(accentColour);
+            Properties.Settings.Default["accentColour"] = accentColour.Name;
+            Properties.Settings.Default.Save();
         }
     }
 }

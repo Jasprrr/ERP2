@@ -51,6 +51,12 @@
                             <ColumnDefinition Width="336" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Width="256">
+                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="First name" />
+                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Last name" />
+                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                     materialDesign:HintAssist.Hint="Email" />
                             <ComboBox x:Name="PrimaryColour"
                                       Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
                                       ItemsSource="{Binding swatches}"
@@ -95,6 +101,32 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="8"
+                                        HorizontalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center"
+                                           Foreground="{DynamicResource MaterialDesignBody}">Light</TextBlock>
+                                <ToggleButton Margin="8 0 16 0"
+                                              Command="{Binding ToggleBaseCommand}"
+                                              CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" />
+                                <TextBlock VerticalAlignment="Center"
+                                           Foreground="{DynamicResource MaterialDesignBody}">Dark</TextBlock>
+                            </StackPanel>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <ToggleButton HorizontalAlignment="Left"
+                                                  Height="26"
+                                                  Margin="0,20,0,16"
+                                                  VerticalAlignment="Bottom"
+                                                  IsChecked="{Binding selectedAccount.onHold}" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Margin="8,4,0,0"
+                                               Text="Dark theme"
+                                               Foreground="{StaticResource MaterialDesignBody}">
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
                         </StackPanel>
                     </Grid>
                 </Grid>

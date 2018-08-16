@@ -71,10 +71,13 @@
                                    Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                    Margin="48,0,0,0" />
-                        <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                            <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="2">
-                            <materialDesign:PackIcon Kind="Download"
-                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
+                            <materialDesign:Badged Grid.Column="2"
+                                                   Badge="102">
+                                <materialDesign:PackIcon Kind="Bell"
+                                                         Style="{StaticResource MaterialDesignButtonIcon}" />
+                            </materialDesign:Badged>
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="3"
@@ -124,7 +127,7 @@
                                               x:Name="NavigationMenu"
                                               Width="64"
                                               VerticalAlignment="Stretch"
-                                              Background="{StaticResource MaterialDesignPaper}">
+                                              Background="{DynamicResource MaterialDesignPaper}">
                         <ListView ItemsSource="{Binding navMenu}"
                                   SelectedIndex="0"
                                   Margin="0,2"
@@ -141,6 +144,7 @@
                                                                      Margin="12,1" />
                                             <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                        Text="{Binding title}"
+                                                       Foreground="{DynamicResource MaterialDesignBody}"
                                                        VerticalAlignment="Center"
                                                        Margin="4,0,0,0" />
                                         </StackPanel>

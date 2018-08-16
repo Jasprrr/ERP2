@@ -1,5 +1,7 @@
 ﻿using ERP.Models;
 using ERP.Views;
+using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -40,11 +42,23 @@ namespace ERP
             //SQLiteConnection.CreateFile(@"C:\users\Jasper\Desktop\test.sqlite");
             //SetUpDb();
             //_navMenu = new ObservableCollection<NavigationItem>();
+
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.primaryColour))
+            {
+                new PaletteHelper().ReplacePrimaryColor(Properties.Settings.Default.primaryColour);
+                
+            }
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.accentColour))
+            {
+                new PaletteHelper().ReplaceAccentColor(Properties.Settings.Default.accentColour);
+            }
+
             InitializeComponent();
             navMenu.Add(new NavigationItem { title = "Home", icon = "Home", page = "Views/HomeView.xaml" });
             navMenu.Add(new NavigationItem { title = "Calendar", icon = "Calendar", page = "Views/CalendarView.xaml" });
             navMenu.Add(new NavigationItem { title = "Tasks", icon = "Flag", page = "Views/TasksView.xaml" });
             navMenu.Add(new NavigationItem { title = "Customers", icon = "Domain", page = "Views/AccountsView.xaml" });
+            navMenu.Add(new NavigationItem { title = "Contacts", icon = "AccountMultiple", page = "Views/AccountsView.xaml" });
             navMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette", page = "Views/TasksView.xaml" });
             navMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench", page = "Views/CalendarView.xaml" });
             navMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose", page = "Views/TestView.xaml" });

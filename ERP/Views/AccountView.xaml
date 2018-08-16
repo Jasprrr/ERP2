@@ -270,8 +270,8 @@
                                                         <StackPanel Orientation="Horizontal">
                                                             <ToggleButton HorizontalAlignment="Left"
                                                                           Height="26"
-                                                                          Margin="0,20,0,16"
-                                                                          VerticalAlignment="Bottom"
+                                                                          VerticalAlignment="Center"
+                                                                          Margin="8,4,0,0"
                                                                           IsChecked="{Binding selectedAccount.onHold}" />
                                                             <TextBlock VerticalAlignment="Bottom"
                                                                        Margin="8,0,0,17"

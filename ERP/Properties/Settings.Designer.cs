@@ -26,12 +26,48 @@ namespace ERP.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Jasp")]
-        public string Username {
+        public string username {
             get {
-                return ((string)(this["Username"]));
+                return ((string)(this["username"]));
             }
             set {
-                this["Username"] = value;
+                this["username"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string primaryColour {
+            get {
+                return ((string)(this["primaryColour"]));
+            }
+            set {
+                this["primaryColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string accentColour {
+            get {
+                return ((string)(this["accentColour"]));
+            }
+            set {
+                this["accentColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool darkTheme {
+            get {
+                return ((bool)(this["darkTheme"]));
+            }
+            set {
+                this["darkTheme"] = value;
             }
         }
     }
