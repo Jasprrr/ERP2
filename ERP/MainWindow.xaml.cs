@@ -26,9 +26,10 @@ namespace ERP
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -36,12 +37,13 @@ namespace ERP
 
         public MainWindow()
         {
-            menuExpanded = new bool();
+            InitializeComponent();
+
             //Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
             //SQLiteConnection.CreateFile("ERPData.sqlite");
             //SQLiteConnection.CreateFile(@"C:\users\Jasper\Desktop\test.sqlite");
             //SetUpDb();
-            //_navMenu = new ObservableCollection<NavigationItem>();
+            //_navigationMenu = new ObservableCollection<NavigationItem>();
 
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.primaryColour))
             {
@@ -52,48 +54,39 @@ namespace ERP
             {
                 new PaletteHelper().ReplaceAccentColor(Properties.Settings.Default.accentColour);
             }
+            
+            new PaletteHelper().SetLightDark(Properties.Settings.Default.darkTheme);
 
-            InitializeComponent();
-            navMenu.Add(new NavigationItem { title = "Home", icon = "Home", page = "Views/HomeView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Calendar", icon = "Calendar", page = "Views/CalendarView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Tasks", icon = "Flag", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Customers", icon = "Domain", page = "Views/AccountsView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Contacts", icon = "AccountMultiple", page = "Views/AccountsView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench", page = "Views/CalendarView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose", page = "Views/TestView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Orders", icon = "Send", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Deliveries", icon = "Truck", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Invoices", icon = "BookVariant", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Credits", icon = "CreditCard", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Purchases", icon = "Basket", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Stock", icon = "Widgets", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "NCRs", icon = "Alert", page = "Views/TasksView.xaml" });
-            navMenu.Add(new NavigationItem { title = "Reports", icon = "Finance", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Home", icon = "Home", page = "Views/HomeView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Calendar", icon = "Calendar", page = "Views/CalendarView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Tasks", icon = "Flag", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Customers", icon = "Domain", page = "Views/AccountsView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Contacts", icon = "AccountMultiple", page = "Views/AccountsView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench", page = "Views/CalendarView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose", page = "Views/TestView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Orders", icon = "Send", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Deliveries", icon = "Truck", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Invoices", icon = "BookVariant", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Credits", icon = "CreditCard", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Purchases", icon = "Basket", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Stock", icon = "Widgets", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "NCRs", icon = "Alert", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Reports", icon = "Finance", page = "Views/TasksView.xaml" });
         }
 
-        private ObservableCollection<NavigationItem> _navMenu;
-        public ObservableCollection<NavigationItem> navMenu
+        #region Variables
+        private ObservableCollection<NavigationItem> _navigationMenu;
+        public ObservableCollection<NavigationItem> navigationMenu
         {
-            get { return _navMenu ?? (_navMenu = new ObservableCollection<NavigationItem>()); }
+            get { return _navigationMenu ?? (_navigationMenu = new ObservableCollection<NavigationItem>()); }
         }
 
-        private NavigationItem _selectedItem;
-        public NavigationItem selectedItem
+        private NavigationItem _selectedNavigationItem;
+        public NavigationItem selectedNavigationItem
         {
-            get { return _selectedItem; }
-            set { if (_selectedItem != value) { _selectedItem = value; } }
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MainFrame.Navigate(new Uri(selectedItem.page.ToString(), UriKind.Relative));
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var QuoteWindow = new QuoteView();
-            QuoteWindow.Show();
+            get { return _selectedNavigationItem; }
+            set { if (_selectedNavigationItem != value) { _selectedNavigationItem = value; OnPropertyChanged("selectedNavigationItem"); Debug.WriteLine("Reached"); } }
         }
 
         private bool _menuExpanded;
@@ -102,10 +95,17 @@ namespace ERP
             get { return _menuExpanded; }
             set { _menuExpanded = value; OnPropertyChanged("menuExpanded"); }
         }
+        #endregion
 
+        #region Events
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationMenu.Width = menuExpanded == true ? 200 : 64;
+        }
+
+        private void NavigationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri(selectedNavigationItem.page.ToString(), UriKind.Relative));
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -113,9 +113,35 @@ namespace ERP
             MainFrame.Navigate(new Uri("Views/SettingsView.xaml", UriKind.Relative));
         }
 
+        private void NewTask_Click(object sender, RoutedEventArgs e)
+        {
+            var QuoteWindow = new QuoteView();
+            QuoteWindow.Show();
+        }
+
+        private void NewQuote_Click(object sender, RoutedEventArgs e)
+        {
+            var QuoteWindow = new QuoteView();
+            QuoteWindow.Show();
+        }
+
+        private void NewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            var QuoteWindow = new QuoteView();
+            QuoteWindow.Show();
+        }
+
+        private void NewCall_Click(object sender, RoutedEventArgs e)
+        {
+            var QuoteWindow = new QuoteView();
+            QuoteWindow.Show();
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+        #endregion
+
     }
 }

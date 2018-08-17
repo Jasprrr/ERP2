@@ -562,7 +562,7 @@
                                                             <materialDesign:PackIcon HorizontalAlignment="Center"
                                                                                      VerticalAlignment="Center"
                                                                                      Kind="{Binding icon}"
-                                                                                     Foreground="{StaticResource SecondaryAccentForegroundBrush}" />
+                                                                                     Foreground="{DynamicResource SecondaryAccentForegroundBrush}" />
                                                         </Border>
                                                         <StackPanel Grid.Column="1"
                                                                     VerticalAlignment="Center"
@@ -665,8 +665,8 @@
                                                                        Text="{Binding fullName}" />
                                                             <TextBlock x:Name="taskSubheader"
                                                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                       Visibility="{Binding telephone, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                       Text="{Binding telephone}"
+                                                                       Visibility="{Binding phone1, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                                       Text="{Binding phone1}"
                                                                        TextTrimming="CharacterEllipsis" />
                                                             <TextBlock x:Name="taskDetail"
                                                                        Style="{StaticResource MaterialDesignBody1TextBlock}"

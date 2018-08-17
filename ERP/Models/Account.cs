@@ -15,13 +15,14 @@ namespace ERP.Models
         public int userID { get; set; }
         public string user { get; set; }
         public string accountName { get; set; }
-        public string email { get; set; }
         public string accountCode { get; set; }
         public DateTime dateCreated { get; set; }
         public DateTime dateModified { get; set; }
         public string description { get; set; }
         public string phone1 { get; set; }
         public string phone2 { get; set; }
+        public string email { get; set; }
+        public string status { get; set; }
         public string defaultCarriage { get; set; }
         public int defaultNominalCode { get; set; }
         public string registrationNumber { get; set; }

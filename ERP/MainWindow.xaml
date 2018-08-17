@@ -46,8 +46,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}"
-                                          Grid.Row="0">
+                <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
@@ -68,11 +67,16 @@
                                       Click="HamburgerButton_Click" />
                         <TextBlock Grid.Column="1"
                                    VerticalAlignment="Center"
-                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username}"
+                                   Text="{Binding selectedNavigationItem.title}"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                    Margin="48,0,0,0" />
-                            <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="2">
+                        <TextBox Grid.Column="2"
+                                 materialDesign:HintAssist.IsFloating="False"
+                                 materialDesign:HintAssist.Hint="Search"
+                                 Width="200"
+                                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                        <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                Grid.Column="3">
                             <materialDesign:Badged Grid.Column="2"
                                                    Badge="102">
                                 <materialDesign:PackIcon Kind="Bell"
@@ -80,22 +84,15 @@
                             </materialDesign:Badged>
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="3"
+                                Grid.Column="4"
                                 ToolTip="Stage forward">
                             <materialDesign:PackIcon Kind="Forward"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="4">
+                                Grid.Column="5">
                             <materialDesign:PackIcon Kind="Delete"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
-                        </Button>
-                        <Button x:Name="Save"
-                                Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="5">
-                            <materialDesign:PackIcon Kind="ContentSave"
-                                                     Height="24"
-                                                     Width="24" />
                         </Button>
                         <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
                                                  Grid.Column="6"
@@ -103,8 +100,8 @@
                                                  StaysOpen="True">
                             <StackPanel>
                                 <Button x:Name="Settings"
-                                        Content="Settings" 
-                                        Click="Settings_Click"/>
+                                        Content="Settings"
+                                        Click="Settings_Click" />
                                 <Separator />
                                 <Button x:Name="Exit"
                                         Content="Exit"
@@ -122,18 +119,18 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                              Mode="Standard"
-                                              x:Name="NavigationMenu"
+                    <materialDesign:ColorZone x:Name="NavigationMenu"
+                                              materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                               Width="64"
-                                              VerticalAlignment="Stretch"
-                                              Background="{DynamicResource MaterialDesignPaper}">
-                        <ListView ItemsSource="{Binding navMenu}"
+                                              Background="{DynamicResource MaterialDesignPaper}"
+                                              VerticalAlignment="Stretch">
+                        <ListView x:Name="NavigationList"
+                                  ItemsSource="{Binding navigationMenu}"
                                   SelectedIndex="0"
                                   Margin="0,2"
-                                  SelectedItem="{Binding selectedItem}"
+                                  SelectedItem="{Binding selectedNavigationItem}"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  SelectionChanged="ListView_SelectionChanged">
+                                  SelectionChanged="NavigationList_SelectionChanged">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border ToolTip="{Binding title}">
@@ -141,7 +138,8 @@
                                             <materialDesign:PackIcon Kind="{Binding icon}"
                                                                      Style="{StaticResource MaterialDesignButtonIcon}"
                                                                      ToolTip="{Binding title}"
-                                                                     Margin="12,1" />
+                                                                     Margin="10,1"
+                                                                     HorizontalAlignment="Center" />
                                             <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                        Text="{Binding title}"
                                                        Foreground="{DynamicResource MaterialDesignBody}"
@@ -174,14 +172,24 @@
                                          Width="56"
                                          Height="56">
                     <StackPanel>
-                        <Button ToolTip="Log"
-                                Click="Button_Click">
-                            <materialDesign:PackIcon Kind="Message" />
+                        <Button x:Name="NewCall"
+                                ToolTip="Call"
+                                Click="NewCall_Click">
+                            <materialDesign:PackIcon Kind="Phone" />
                         </Button>
-                        <Button ToolTip="Appointment">
-                            <materialDesign:PackIcon Kind="MapMarker" />
+                        <Button x:Name="NewTask"
+                                ToolTip="Task"
+                                Click="NewTask_Click">
+                            <materialDesign:PackIcon Kind="Flag" />
                         </Button>
-                        <Button ToolTip="Order">
+                        <Button x:Name="NewQuote"
+                                ToolTip="Quote"
+                                Click="NewQuote_Click">
+                            <materialDesign:PackIcon Kind="FormatQuoteClose" />
+                        </Button>
+                        <Button x:Name="NewOrder"
+                                ToolTip="Order"
+                                Click="NewOrder_Click">
                             <materialDesign:PackIcon Kind="Send" />
                         </Button>
                     </StackPanel>

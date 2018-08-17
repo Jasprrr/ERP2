@@ -1,4 +1,5 @@
-﻿using MaterialDesignColors;
+﻿using ERP.Models;
+using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,15 @@ namespace ERP.Views
 
         public SettingsView()
         {
+            currentUser = new User()
+            {
+                firstName = "Jasper",
+                lastName = "Friend",
+                email = "jasper@schoolsmailing.co.uk",
+                primaryColour = "deeppurple",
+                accentColour = "amber",
+                darkTheme = true
+            };
             swatches = new SwatchesProvider().Swatches;
             InitializeComponent();
             //Swatch asd = new Swatch();
@@ -39,13 +49,20 @@ namespace ERP.Views
 
         public IEnumerable<Swatch> swatches { get; }
 
+        private User _currentUser;
+        public User currentUser
+        {
+            get { return _currentUser; }
+            set { _currentUser = value; OnPropertyChanged("currentUser"); }
+        }
+
         private Swatch _primaryColour;
         public Swatch primaryColour
         {
             get { return _primaryColour; }
             set { _primaryColour = value; OnPropertyChanged("primaryColour"); }
         }
-        
+
         private Swatch _accentColour;
         public Swatch accentColour
         {
@@ -53,21 +70,34 @@ namespace ERP.Views
             set { _accentColour = value; OnPropertyChanged("accentColour"); }
         }
 
+        private bool _darkTheme;
+        public bool darkTheme
+        {
+            get { return _darkTheme; }
+            set { _darkTheme = value; OnPropertyChanged("darkTheme"); }
+        }
+
         private void PrimaryColour_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(primaryColour != null)
-            {
-                new PaletteHelper().ReplacePrimaryColor(primaryColour);
-                Properties.Settings.Default["primaryColour"] = primaryColour.Name;
-                Properties.Settings.Default.Save();
-            }
+            new PaletteHelper().ReplacePrimaryColor(currentUser.primaryColour);
+            Properties.Settings.Default["primaryColour"] = currentUser.primaryColour;
+            Properties.Settings.Default.Save();
         }
 
         private void AccentColour_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!string.IsNullOrEmpty(currentUser.accentColour))
+            {
+                new PaletteHelper().ReplaceAccentColor(currentUser.accentColour);
+                Properties.Settings.Default["accentColour"] = currentUser.accentColour;
+                Properties.Settings.Default.Save();
+            }
+        }
 
-            new PaletteHelper().ReplaceAccentColor(accentColour);
-            Properties.Settings.Default["accentColour"] = accentColour.Name;
+        private void DarkTheme_Click(object sender, RoutedEventArgs e)
+        {
+            new PaletteHelper().SetLightDark(darkTheme);
+            Properties.Settings.Default["darkTheme"] = darkTheme;
             Properties.Settings.Default.Save();
         }
     }

@@ -43,92 +43,82 @@
                                    VerticalAlignment="Center"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}" />
                     </Grid>
-                    <Grid Grid.Row="1"
-                          Margin="0,12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="336" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="336" />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Width="256">
-                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                     materialDesign:HintAssist.Hint="First name" />
-                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                     materialDesign:HintAssist.Hint="Last name" />
-                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                     materialDesign:HintAssist.Hint="Email" />
-                            <ComboBox x:Name="PrimaryColour"
-                                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                      ItemsSource="{Binding swatches}"
-                                      materialDesign:HintAssist.Hint="Primary colour"
-                                      VerticalAlignment="Top"
-                                      HorizontalAlignment="Left"
-                                      SelectedValue="{Binding primaryColour}"
-                                      SelectionChanged="PrimaryColour_SelectionChanged">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal"
-                                                    Margin="4,0">
-                                            <Border Height="16"
-                                                    Width="16"
-                                                    CornerRadius="8"
-                                                    Background="{Binding ExemplarHue.Color, Converter={StaticResource HexToBrushConverter}}" />
-                                            <TextBlock Text="{Binding Name}"
-                                                       Margin="12,0,0,0" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <ComboBox x:Name="AccentColour"
-                                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                                      ItemsSource="{Binding swatches}"
-                                      materialDesign:HintAssist.Hint="Accent colour"
-                                      VerticalAlignment="Top"
-                                      HorizontalAlignment="Left"
-                                      SelectedValue="{Binding accentColour}"
-                                      SelectionChanged="AccentColour_SelectionChanged">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal"
-                                                    Visibility="{Binding AccentExemplarHue, Converter={StaticResource NullableToVisibilityConverter}}">
-                                            <Border Height="16"
-                                                    Width="16"
-                                                    CornerRadius="8"
-                                                    Background="{Binding AccentExemplarHue.Color, Converter={StaticResource HexToBrushConverter}}" />
-                                            <TextBlock Text="{Binding Name}"
-                                                       Margin="12,0,0,0" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  Grid.Row="1">
+                        <Grid Grid.Row="1"
+                              Margin="0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="336" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="336" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Width="256">
+                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="First name" 
+                                         Text="{Binding currentUser.firstName}"/>
+                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="Last name" 
+                                         Text="{Binding currentUser.lastName}"/>
+                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                         materialDesign:HintAssist.Hint="Email" 
+                                         Text="{Binding currentUser.email}"/>
+                                <ComboBox x:Name="PrimaryColour"
+                                          Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                          ItemsSource="{Binding swatches}"
+                                          materialDesign:HintAssist.Hint="Primary colour"
+                                          SelectedValue="{Binding currentUser.primaryColour}"
+                                          SelectionChanged="PrimaryColour_SelectionChanged"
+                                          SelectedValuePath="Name">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Margin="4,0">
+                                                <Border Height="16"
+                                                        Width="16"
+                                                        CornerRadius="8"
+                                                        Background="{Binding ExemplarHue.Color, Converter={StaticResource HexToBrushConverter}}" />
+                                                <TextBlock Text="{Binding Name}"
+                                                           Margin="12,0,0,0" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <ComboBox x:Name="AccentColour"
+                                          Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                          ItemsSource="{Binding swatches}"
+                                          materialDesign:HintAssist.Hint="Accent colour"
+                                          SelectedValue="{Binding currentUser.accentColour}"
+                                          SelectionChanged="AccentColour_SelectionChanged"
+                                          SelectedValuePath="Name">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Visibility="{Binding AccentExemplarHue, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                        Margin="4,0">
+                                                <Border Height="16"
+                                                        Width="16"
+                                                        CornerRadius="8"
+                                                        Background="{Binding AccentExemplarHue.Color, Converter={StaticResource HexToBrushConverter}}"/>
+                                                <TextBlock Text="{Binding Name}"
+                                                           Margin="12,0,0,0" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
-                            <StackPanel Orientation="Horizontal"
-                                        Margin="8"
-                                        HorizontalAlignment="Center">
-                                <TextBlock VerticalAlignment="Center"
-                                           Foreground="{DynamicResource MaterialDesignBody}">Light</TextBlock>
-                                <ToggleButton Margin="8 0 16 0"
-                                              Command="{Binding ToggleBaseCommand}"
-                                              CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" />
-                                <TextBlock VerticalAlignment="Center"
-                                           Foreground="{DynamicResource MaterialDesignBody}">Dark</TextBlock>
-                            </StackPanel>
-                            <Grid>
                                 <StackPanel Orientation="Horizontal">
-                                    <ToggleButton HorizontalAlignment="Left"
-                                                  Height="26"
-                                                  Margin="0,20,0,16"
-                                                  VerticalAlignment="Bottom"
-                                                  IsChecked="{Binding selectedAccount.onHold}" />
                                     <TextBlock VerticalAlignment="Center"
-                                               Margin="8,4,0,0"
-                                               Text="Dark theme"
-                                               Foreground="{StaticResource MaterialDesignBody}">
-                                    </TextBlock>
+                                               Foreground="{DynamicResource MaterialDesignBody}">Light</TextBlock>
+                                    <ToggleButton x:Name="DarkTheme"
+                                                  Margin="16,20,8,16"
+                                                  IsChecked="{Binding darkTheme}"
+                                                  Click="DarkTheme_Click" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Foreground="{DynamicResource MaterialDesignBody}">Dark</TextBlock>
                                 </StackPanel>
-                            </Grid>
-                        </StackPanel>
-                    </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
                 </Grid>
             </materialDesign:Card>
         </materialDesign:DrawerHost>

@@ -12,27 +12,32 @@ namespace ERP.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public int userID { get; set; }
         public string login { get; set; }
         public SecureString password { get; set; }
-        public string forename { get; set; }
-        public string surname { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
         public string email { get; set; }
         public string colour { get; set; }
         public string homePage { get; set; }
+        public string primaryColour { get; set; }
+        public string accentColour { get; set; }
+        public bool darkTheme { get; set; }
+        public bool adminUser { get; set; }
+
         public string fullName
         {
-            get { return forename + " " + surname; }
+            get { return firstName + " " + lastName; }
         }
 
         public string initials
         {
-            get { return forename.Substring(0, 1) + surname.Substring(0, 1); }
+            get { return firstName.Substring(0, 1) + lastName.Substring(0, 1); }
         }
 
-        public bool selected { get; set; }
+        public DateTime? lastLogin { get; set; }
         public DateTime? dateCreated { get; set; }
         public DateTime? dateModified { get; set; }
-        public DateTime? lastLogin { get; set; }
 
         protected void OnPropertyChanged(string name)
         {

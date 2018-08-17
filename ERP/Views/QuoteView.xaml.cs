@@ -65,12 +65,12 @@ namespace ERP.Views
             _departments.Add(new Department() { departmentID = 11, department = "Printing", nominalCode = 4099, rateCost = (decimal)11.00, initalCost = 0 });
 
             _userList = new ObservableCollection<User>();
-            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
-            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
-            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
-            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
-            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
-            _userList.Add(new User() { forename = "Jasper", surname = "Friend" });
+            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
+            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
+            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
+            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
+            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
+            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
 
             _supplierList = new ObservableCollection<Supplier>();
             _supplierList.Add(new Supplier() { ID = 1, name = "Supplier 1" });

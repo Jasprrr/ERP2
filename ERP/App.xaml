@@ -8,7 +8,7 @@
              xmlns:properties="clr-namespace:ERP.Properties"
              xmlns:CustomControls="clr-namespace:ERP.Control"
              x:Class="ERP.App"
-             StartupUri="Views/LoginView.xaml"
+             StartupUri="MainWindow.xaml"
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
