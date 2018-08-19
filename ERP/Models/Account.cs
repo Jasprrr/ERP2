@@ -36,7 +36,6 @@ namespace ERP.Models
         public DateTime? nextCreditCheck { get; set; }
         public string leadSource { get; set; }
         public bool prepayment { get; set; }
-        public bool delete { get; set; }
 
         public string billingAddress1 { get; set; }
         public string billingAddress2 { get; set; }

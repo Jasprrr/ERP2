@@ -38,7 +38,6 @@ namespace ERP
         public MainWindow()
         {
             InitializeComponent();
-
             //Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
             //SQLiteConnection.CreateFile("ERPData.sqlite");
             //SQLiteConnection.CreateFile(@"C:\users\Jasper\Desktop\test.sqlite");
@@ -48,13 +47,13 @@ namespace ERP
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.primaryColour))
             {
                 new PaletteHelper().ReplacePrimaryColor(Properties.Settings.Default.primaryColour);
-                
+
             }
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.accentColour))
             {
                 new PaletteHelper().ReplaceAccentColor(Properties.Settings.Default.accentColour);
             }
-            
+
             new PaletteHelper().SetLightDark(Properties.Settings.Default.darkTheme);
 
             navigationMenu.Add(new NavigationItem { title = "Home", icon = "Home", page = "Views/HomeView.xaml" });
@@ -76,6 +75,9 @@ namespace ERP
         }
 
         #region Variables
+
+        public NavigationService mainFrameNS;
+
         private ObservableCollection<NavigationItem> _navigationMenu;
         public ObservableCollection<NavigationItem> navigationMenu
         {
@@ -95,6 +97,13 @@ namespace ERP
             get { return _menuExpanded; }
             set { _menuExpanded = value; OnPropertyChanged("menuExpanded"); }
         }
+
+        private string _search;
+        public string search
+        {
+            get { return _search; }
+            set { _search = value; OnPropertyChanged("search"); }
+        }
         #endregion
 
         #region Events
@@ -105,18 +114,18 @@ namespace ERP
 
         private void NavigationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainFrame.Navigate(new Uri(selectedNavigationItem.page.ToString(), UriKind.Relative));
+            Navigate();
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Uri("Views/SettingsView.xaml", UriKind.Relative));
+            MainFrame.NavigationService.Navigate(new Uri("Views/SettingsView.xaml", UriKind.Relative));
+
         }
 
         private void NewTask_Click(object sender, RoutedEventArgs e)
         {
-            var QuoteWindow = new QuoteView();
-            QuoteWindow.Show();
+            Navigate();
         }
 
         private void NewQuote_Click(object sender, RoutedEventArgs e)
@@ -143,5 +152,52 @@ namespace ERP
         }
         #endregion
 
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Navigate()
+        {
+            switch (selectedNavigationItem.title)
+            {
+                case "Home":
+
+                    break;
+                case "Calendar":
+                    break;
+                case "Tasks":
+                    break;
+                case "Customers":
+                    MainFrame.Navigate(new AccountsView(search));
+                    break;
+                case "Contacts":
+                    break;
+                case "Suppliers":
+                    break;
+                case "Standard":
+                    break;
+                case "Quotes":
+                    break;
+                case "Orders":
+                    break;
+                case "Deliveries":
+                    break;
+                case "Invoices":
+                    break;
+                case "Credits":
+                    break;
+                case "Purchases":
+                    break;
+                case "Stock":
+                    break;
+                case "NCRs":
+                    break;
+                case "Reports":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

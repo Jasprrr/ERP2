@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ERP.Models
 {
@@ -15,6 +16,7 @@ namespace ERP.Models
         public string icon { get; set; }
         public string page { get; set; }
         public string toolTip { get; set; }
+        public Page page1 { get; set; }
 
         protected void OnPropertyChanged(string name)
         {

@@ -70,5 +70,14 @@ namespace ERP.Properties {
                 this["darkTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\users\\Jasper\\Desktop\\test.sqlite")]
+        public string dataPath {
+            get {
+                return ((string)(this["dataPath"]));
+            }
+        }
     }
 }

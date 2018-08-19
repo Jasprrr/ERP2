@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security;
+using System.Data.SQLite;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +13,7 @@ namespace ERP.Models
     public class User : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
+        
         public int userID { get; set; }
         public string login { get; set; }
         public SecureString password { get; set; }

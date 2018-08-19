@@ -28,7 +28,8 @@
                             CommandParameter="{x:Static Dock.Right}"
                             Margin="4"
                             HorizontalAlignment="Center"
-                            Style="{DynamicResource MaterialDesignFlatButton}">
+                            Style="{DynamicResource MaterialDesignFlatButton}"
+                            Loaded="Button_Loaded">
                         CLOSE THIS
                     </Button>
                     <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
@@ -74,7 +75,10 @@
                                  materialDesign:HintAssist.IsFloating="False"
                                  materialDesign:HintAssist.Hint="Search"
                                  Width="200"
-                                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                                 Text="{Binding search}"
+                                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
+                            
+                        </TextBox>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="3">
                             <materialDesign:Badged Grid.Column="2"
@@ -154,7 +158,6 @@
                     <Frame x:Name="MainFrame"
                            Grid.Row="1"
                            Grid.Column="1"
-                           Source="{Binding mainFrame}"
                            HorizontalContentAlignment="Stretch"
                            VerticalContentAlignment="Stretch"
                            NavigationUIVisibility="Hidden" />
