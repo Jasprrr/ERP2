@@ -396,6 +396,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\test.sqlite" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
