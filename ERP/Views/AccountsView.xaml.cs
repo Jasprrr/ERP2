@@ -107,8 +107,8 @@ namespace ERP.Views
 
         private void EditAccount_Click(object sender, RoutedEventArgs e)
         {
-            var editwindow = new AccountView();
-            editwindow.Show();
+            var editAccount = new AccountView(selectedAccount.accountID);
+            editAccount.Show();
         }
     }
 }

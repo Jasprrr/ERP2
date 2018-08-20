@@ -20,13 +20,14 @@ using System.Windows.Threading;
 using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
+using ERP.Controllers;
 
 namespace ERP.Views
 {
     /// <summary>
     /// Interaction logic for Account.xaml
     /// </summary>
-    public partial class AccountView : Window
+    public partial class AccountView : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
@@ -34,7 +35,7 @@ namespace ERP.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public AccountView()
+        public AccountView(int accountID = 0)
         {
             //Debug.Print(accountID.ToString());
             _todoList = new ObservableCollection<ToDo>();
@@ -42,6 +43,8 @@ namespace ERP.Views
             _activityList = new ObservableCollection<Activity>();
             selectedAccount = new Account();
             InitializeComponent();
+
+            selectedAccount = AccountsController.GetAccount(accountID);
 
             _contactList.Add(new Contact() { forename = "Jasper", surname = "Friend", primaryEmail = "jasper@schoolsmailing.co.uk", phone1 = "0117 9584 972", favourite = true });
             _contactList.Add(new Contact() { forename = "Josh", surname = "Kaner", primaryEmail = "josh@schoolsmailing.co.uk", phone1 = "0117 9584 972", accounts = true });
@@ -89,7 +92,7 @@ namespace ERP.Views
         public Account selectedAccount
         {
             get { return _selectedAccount; }
-            set { _selectedAccount = value; OnPropertyChanged("selectedAccount"); Debug.WriteLine("Account changed"); }
+            set { _selectedAccount = value; OnPropertyChanged("selectedAccount"); }
         }
 
         private Account _selectedItem;

@@ -220,8 +220,7 @@
                                   MouseLeftButtonUp="DataGrid_MouseLeftButtonUp"
                                   CanUserAddRows="False"
                                   ScrollViewer.CanContentScroll="True"
-                                  VerticalContentAlignment="Stretch"
-                                  VerticalScrollBarVisibility="Visible">
+                                  VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn x:Name="itemButton"
                                                         materialDesign:DataGridAssist.CellPadding="0"
