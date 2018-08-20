@@ -3,6 +3,7 @@
              xmlns:local="clr-namespace:ERP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+             xmlns:CustomConverters="clr-namespace:ERP.Converters"
              xmlns:ControlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:properties="clr-namespace:ERP.Properties"
@@ -48,7 +49,7 @@
                 <Setter Property="Language"
                         Value="en-GB" />
             </Style>
-            
+
             <!--#region Cards-->
             <Style x:Key="MaterialDesignCard"
                    TargetType="materialDesign:Card">
@@ -58,7 +59,7 @@
                         Value="Depth1" />
             </Style>
             <!--#endregion Cards-->
-            
+
             <!--#region Icons-->
             <Style x:Key="MaterialDesignButtonIcon"
                    TargetType="materialDesign:PackIcon">
@@ -67,6 +68,7 @@
                 <Setter Property="Width"
                         Value="24" />
             </Style>
+
             <Style x:Key="MaterialDesignTextBlockIcon"
                    TargetType="materialDesign:PackIcon">
                 <Setter Property="Height"
@@ -91,6 +93,7 @@
                 <Setter Property="HorizontalAlignment"
                         Value="Left" />
             </Style>
+
             <Style x:Key="MaterialDesignCustomHyperLinkFull"
                    TargetType="TextBlock"
                    BasedOn="{StaticResource MaterialDesignCustomTextBlockFull}">
@@ -103,6 +106,7 @@
                 <Setter Property="MaxWidth"
                         Value="256" />
             </Style>
+
             <Style x:Key="MaterialDesignHeaderTextBlock"
                    TargetType="TextBlock"
                    BasedOn="{StaticResource MaterialDesignTitleTextBlock}">
@@ -126,6 +130,7 @@
                 <Setter Property="Foreground"
                         Value="{DynamicResource MaterialDesignBody}" />
             </Style>
+
             <Style x:Key="MaterialDesignCustomFloatingHintTextBoxHalf"
                    TargetType="TextBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -139,6 +144,216 @@
                         Value="{DynamicResource MaterialDesignBody}" />
             </Style>
 
+            <Style x:Key="MaterialDesignCustomTextBoxArea"
+                   TargetType="{x:Type TextBox}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                <Setter Property="BorderThickness"
+                        Value="0 0 0 1" />
+                <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin"
+                        Value="0 0 0 0" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="CaretBrush"
+                        Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                <Setter Property="KeyboardNavigation.TabNavigation"
+                        Value="None" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="FocusVisualStyle"
+                        Value="{x:Null}" />
+                <Setter Property="AllowDrop"
+                        Value="true" />
+                <Setter Property="ScrollViewer.PanningMode"
+                        Value="VerticalFirst" />
+                <Setter Property="Stylus.IsFlicksEnabled"
+                        Value="False" />
+                <Setter Property="Validation.ErrorTemplate"
+                        Value="{StaticResource MaterialDesignValidationErrorTemplate}" />
+                <Setter Property="materialDesign:TextFieldAssist.IncludeSpellingSuggestions"
+                        Value="{Binding RelativeSource={RelativeSource Self}, Path=(SpellCheck.IsEnabled)}" />
+                <!-- cludge the default context menu -->
+                <Setter Property="ContextMenu">
+                    <Setter.Value>
+                        <ContextMenu>
+                            <MenuItem Command="Cut">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="ContentCut" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Command="Copy">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="ContentCopy" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Command="Paste">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="ContentPaste" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="textFieldBoxBorder"
+                                    SnapsToDevicePixels="True"
+                                    Background="#19FFFFFF"
+                                    CornerRadius="4"
+                                    BorderThickness="1"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Padding="6 5 6 4"
+                                    Margin="-1">
+                                <Grid>
+                                    <Border x:Name="border"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="0"
+                                            Background="{TemplateBinding Background}"
+                                            SnapsToDevicePixels="True"
+                                            Padding="0 2 0 2">
+                                        <Grid x:Name="textFieldGrid"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              MinWidth="1">
+                                            <ScrollViewer x:Name="PART_ContentHost"
+                                                          Focusable="false"
+                                                          HorizontalScrollBarVisibility="Hidden"
+                                                          VerticalScrollBarVisibility="Hidden"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                                            <materialDesign:SmartHint x:Name="Hint"
+                                                                      Visibility="{TemplateBinding Text, Converter={StaticResource TextFieldHintVisibilityConverter}}"
+                                                                      Hint="{Binding Path=(materialDesign:HintAssist.Hint), RelativeSource={RelativeSource TemplatedParent}}"
+                                                                      FontSize="{TemplateBinding FontSize}"
+                                                                      Padding="{TemplateBinding Padding}"
+                                                                      HintOpacity="{Binding Path=(materialDesign:HintAssist.HintOpacity), RelativeSource={RelativeSource TemplatedParent}}"
+                                                                      UseFloating="{Binding Path=(materialDesign:HintAssist.IsFloating), RelativeSource={RelativeSource TemplatedParent}}"
+                                                                      FloatingScale="{Binding Path=(materialDesign:HintAssist.FloatingScale), RelativeSource={RelativeSource TemplatedParent}}"
+                                                                      FloatingOffset="{Binding Path=(materialDesign:HintAssist.FloatingOffset), RelativeSource={RelativeSource TemplatedParent}}" />
+                                        </Grid>
+                                    </Border>
+                                    <Line x:Name="DashedLine"
+                                          VerticalAlignment="Bottom"
+                                          Visibility="Hidden"
+                                          StrokeThickness="1.25"
+                                          StrokeDashArray="1,2.5"
+                                          StrokeDashCap="Round"
+                                          X1="0"
+                                          X2="{Binding ActualWidth, ElementName=border}"
+                                          Y1="0"
+                                          Y2="0"
+                                          Stroke="{TemplateBinding BorderBrush}"
+                                          Opacity="0.56" />
+                                    <materialDesign:Underline x:Name="Underline"
+                                                              Visibility="{Binding Path=(materialDesign:TextFieldAssist.DecorationVisibility), RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsKeyboardFocused"
+                                         Value="True">
+                                    <Setter TargetName="Hint"
+                                        Property="HintOpacity"
+                                        Value="0" />
+                                </Trigger>
+                                <Trigger Property="materialDesign:HintAssist.IsFloating"
+                                         Value="True">
+                                    <Setter TargetName="border"
+                                            Property="Margin"
+                                            Value="0 12 0 0" />
+                                </Trigger>
+                                <Trigger Property="materialDesign:TextFieldAssist.HasTextAreaBox"
+                                         Value="True">
+                                    <Setter TargetName="border"
+                                            Property="BorderThickness"
+                                            Value="0" />
+                                    <Setter TargetName="Underline"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                    <Setter TargetName="Hint"
+                                            Property="Margin"
+                                            Value="0,0,0,0" />
+                                    <Setter TargetName="PART_ContentHost"
+                                            Property="Margin"
+                                            Value="0,0,0,0" />
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled"
+                                                   Value="false" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="Background"
+                                            Value="{DynamicResource MaterialDesignTextFieldBoxDisabledBackground}" />
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="BorderBrush"
+                                            Value="{DynamicResource MaterialDesignTextAreaInactiveBorder}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver"
+                                                   Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="Margin"
+                                            Value="-2" />
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="BorderThickness"
+                                            Value="2" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsKeyboardFocused"
+                                                   Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="Margin"
+                                            Value="-2" />
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="BorderThickness"
+                                            Value="2" />
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="BorderBrush"
+                                            Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="Validation.HasError"
+                                                   Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="Margin"
+                                            Value="-2" />
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="BorderThickness"
+                                            Value="2" />
+                                    <Setter TargetName="textFieldBoxBorder"
+                                            Property="BorderBrush"
+                                            Value="{DynamicResource ValidationErrorBrush}" />
+                                </MultiTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsInactiveSelectionHighlightEnabled"
+                                       Value="true" />
+                            <Condition Property="IsSelectionActive"
+                                       Value="false" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="SelectionBrush"
+                                Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}" />
+                    </MultiTrigger>
+                </Style.Triggers>
+            </Style>
+
             <!--Checkbox-->
             <Style x:Key="MaterialDesignPopupCheckBox"
                    TargetType="CheckBox"
@@ -146,7 +361,7 @@
                 <Setter Property="Margin"
                         Value="8,6,10,8" />
             </Style>
-            
+
             <!--Listviews-->
             <Style x:Key="MaterialDesignPreviewListView"
                    TargetType="ListView"
@@ -158,7 +373,7 @@
                 <Setter Property="Grid.IsSharedSizeScope"
                         Value="True" />
             </Style>
-            
+
             <!--Comboboxes-->
             <Style x:Key="MaterialDesignFloatingHintComboBoxFull"
                    TargetType="ComboBox"
@@ -174,6 +389,7 @@
                 <Setter Property="Foreground"
                         Value="{DynamicResource MaterialDesignBody}" />
             </Style>
+
             <Style x:Key="MaterialDesignFloatingHintComboBoxHalf"
                    TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
@@ -239,19 +455,20 @@
                 <Setter Property="Margin"
                         Value="10,0" />
             </Style>
+
             <Style x:Key="MaterialDesignMidForegroundPopupBox"
                    TargetType="materialDesign:PopupBox"
                    BasedOn="{StaticResource MaterialDesignBasePopupBox}">
                 <Setter Property="Foreground"
                         Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
             </Style>
+
             <Style x:Key="MaterialDesignDarkForegroundPopupBox"
                    TargetType="materialDesign:PopupBox"
                    BasedOn="{StaticResource MaterialDesignBasePopupBox}">
                 <Setter Property="Foreground"
                         Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
             </Style>
-
 
             <Style x:Key="MaterialDesignMidHuePopupBox"
                    TargetType="materialDesign:PopupBox"
@@ -285,32 +502,35 @@
                 <Setter Property="materialDesign:RippleAssist.Feedback"
                         Value="{StaticResource MaterialDesignFlatButtonRipple}" />
             </Style>
+
             <Style x:Key="MaterialDesignMidForegroundButton"
                    TargetType="Button"
                    BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
                 <Setter Property="Foreground"
                         Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
             </Style>
+
             <Style x:Key="MaterialDesignLightForegroundButton"
                    TargetType="Button"
                    BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
                 <Setter Property="Foreground"
                         Value="{DynamicResource PrimaryHueLightForegroundBrush}" />
             </Style>
+
             <Style x:Key="MaterialDesignDarkForegroundButton"
                    TargetType="Button"
                    BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
                 <Setter Property="Foreground"
                         Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
             </Style>
-            
+
             <Style x:Key="MaterialDesignMidHueButton"
                    TargetType="Button"
                    BasedOn="{StaticResource MaterialDesignForegroundBaseButton}">
                 <Setter Property="Foreground"
                         Value="{DynamicResource PrimaryHueMidBrush}" />
             </Style>
-            
+
             <Style x:Key="MaterialDesignFlatIconButton"
                    BasedOn="{StaticResource MaterialDesignToolButton}"
                    TargetType="Button">
@@ -350,6 +570,7 @@
                 <Setter Property="VerticalAlignment"
                         Value="Bottom" />
             </Style>
+
             <Style x:Key="MaterialDesignTextBoxIconWrapper"
                    TargetType="{x:Type ContentControl}">
                 <Setter Property="Height"
@@ -365,6 +586,7 @@
                 <Setter Property="IsTabStop"
                         Value="False" />
             </Style>
+
             <Style x:Key="MaterialDesignTextBoxIconWrapperTop"
                    TargetType="{x:Type ContentControl}">
                 <Setter Property="Height"
@@ -380,6 +602,7 @@
                 <Setter Property="IsTabStop"
                         Value="False" />
             </Style>
+
             <Style x:Key="MaterialDesignGrid"
                    TargetType="{x:Type DataGrid}"
                    BasedOn="{StaticResource MaterialDesignDataGrid}">
@@ -402,6 +625,7 @@
                 <Setter Property="Background"
                         Value="Transparent" />
             </Style>
+
             <Style x:Key="MaterialDesignCustomGridComboBox"
                    TargetType="ComboBox"
                    BasedOn="{StaticResource MaterialDesignComboBox}">
@@ -418,6 +642,7 @@
                 <Setter Property="Padding"
                         Value="0,7,0,8" />
             </Style>
+
             <Style x:Key="MaterialDesignGridButton"
                    BasedOn="{StaticResource MaterialDesignFlatButton}"
                    TargetType="Button">
@@ -434,6 +659,7 @@
                 <Setter Property="HorizontalAlignment"
                         Value="Center" />
             </Style>
+
             <Style x:Key="MaterialDesignCell"
                    TargetType="{x:Type DataGridCell}"
                    BasedOn="{StaticResource MaterialDesignDataGridCell}">
@@ -455,6 +681,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+
             <Style x:Key="MaterialDesignRow"
                    TargetType="{x:Type DataGridRow}"
                    BasedOn="{StaticResource MaterialDesignDataGridRow}">

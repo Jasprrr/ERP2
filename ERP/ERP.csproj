@@ -117,6 +117,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\StartupController.cs" />
     <Compile Include="Control\AccountsOnHold.xaml.cs">
       <DependentUpon>AccountsOnHold.xaml</DependentUpon>
     </Compile>
@@ -150,6 +151,7 @@
     <Compile Include="Converters\HexToBrushConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Converters\TextFieldHintVisibilityConverter.cs" />
     <Compile Include="Domain\CommandImplentation.cs" />
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
     <Compile Include="Models\Accident.cs" />

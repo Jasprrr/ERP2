@@ -16,8 +16,19 @@
         Style="{StaticResource MaterialDesignWindow}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
+        <Storyboard x:Key="ScaleSearchStoryboard">
+            <DoubleAnimation Duration="0:0:0.5"
+                             From="0"
+                             To="200"
+                             Storyboard.TargetName="Search"
+                             Storyboard.TargetProperty="Width" />
+        </Storyboard>
         <Converter:NullableToVisibilityConverter x:Key="NavigationMenuConverter" />
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.SearchBoxFocus}"
+                        Executed="SearchBoxFocusExecuted" />
+    </Window.CommandBindings>
     <Grid>
         <materialDesign:DrawerHost x:Name="Drawer">
             <materialDesign:DrawerHost.RightDrawerContent>
@@ -28,8 +39,7 @@
                             CommandParameter="{x:Static Dock.Right}"
                             Margin="4"
                             HorizontalAlignment="Center"
-                            Style="{DynamicResource MaterialDesignFlatButton}"
-                            Loaded="Button_Loaded">
+                            Style="{DynamicResource MaterialDesignFlatButton}">
                         CLOSE THIS
                     </Button>
                     <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
@@ -57,6 +67,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
                         <ToggleButton x:Name="HamburgerButton"
                                       Style="{StaticResource MaterialDesignHamburgerToggleButton}"
@@ -72,40 +83,46 @@
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                    Margin="48,0,0,0" />
                         <TextBox Grid.Column="2"
-                                 materialDesign:HintAssist.IsFloating="False"
+                                 x:Name="SearchBox"
                                  materialDesign:HintAssist.Hint="Search"
                                  Width="200"
-                                 Text="{Binding search}"
-                                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
-                            
-                        </TextBox>
+                                 Text="{Binding searchTerm}"
+                                 Style="{StaticResource MaterialDesignCustomTextBoxArea}"
+                                 VerticalAlignment="Center"
+                                 Height="30" />
+                        <Button x:Name="Search"
+                                Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                                Grid.Column="3"
+                                Click="Search_Click">
+                            <materialDesign:PackIcon Kind="Magnify"
+                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
+                        </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="3">
-                            <materialDesign:Badged Grid.Column="2"
+                                Grid.Column="4">
+                            <materialDesign:Badged Grid.Column="3"
                                                    Badge="102">
                                 <materialDesign:PackIcon Kind="Bell"
                                                          Style="{StaticResource MaterialDesignButtonIcon}" />
                             </materialDesign:Badged>
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="4"
+                                Grid.Column="5"
                                 ToolTip="Stage forward">
                             <materialDesign:PackIcon Kind="Forward"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="5">
+                                Grid.Column="6">
                             <materialDesign:PackIcon Kind="Delete"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
-                                                 Grid.Column="6"
+                                                 Grid.Column="7"
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="True">
                             <StackPanel>
                                 <Button x:Name="Settings"
-                                        Content="Settings"
-                                        Click="Settings_Click" />
+                                        Content="Settings"/>
                                 <Separator />
                                 <Button x:Name="Exit"
                                         Content="Exit"
@@ -126,7 +143,7 @@
                     <materialDesign:ColorZone x:Name="NavigationMenu"
                                               materialDesign:ShadowAssist.ShadowDepth="Depth1"
                                               Width="64"
-                                              Background="{DynamicResource MaterialDesignPaper}"
+                                              Background="{DynamicResource MaterialDesignCardBackground}"
                                               VerticalAlignment="Stretch">
                         <ListView x:Name="NavigationList"
                                   ItemsSource="{Binding navigationMenu}"

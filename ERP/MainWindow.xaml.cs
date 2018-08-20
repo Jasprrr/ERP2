@@ -35,6 +35,9 @@ namespace ERP
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        public static RoutedCommand SearchBoxFocus = new RoutedCommand();
+        private void SearchBoxFocusExecuted(object sender, ExecutedRoutedEventArgs e) { SearchBox.Focus(); }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,6 +46,8 @@ namespace ERP
             //SQLiteConnection.CreateFile(@"C:\users\Jasper\Desktop\test.sqlite");
             //SetUpDb();
             //_navigationMenu = new ObservableCollection<NavigationItem>();
+
+            SearchBoxFocus.InputGestures.Add(new KeyGesture(Key.F, ModifierKeys.Control));
 
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.primaryColour))
             {
@@ -56,28 +61,26 @@ namespace ERP
 
             new PaletteHelper().SetLightDark(Properties.Settings.Default.darkTheme);
 
-            navigationMenu.Add(new NavigationItem { title = "Home", icon = "Home", page = "Views/HomeView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Calendar", icon = "Calendar", page = "Views/CalendarView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Tasks", icon = "Flag", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Customers", icon = "Domain", page = "Views/AccountsView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Contacts", icon = "AccountMultiple", page = "Views/AccountsView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench", page = "Views/CalendarView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose", page = "Views/TestView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Orders", icon = "Send", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Deliveries", icon = "Truck", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Invoices", icon = "BookVariant", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Credits", icon = "CreditCard", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Purchases", icon = "Basket", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Stock", icon = "Widgets", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "NCRs", icon = "Alert", page = "Views/TasksView.xaml" });
-            navigationMenu.Add(new NavigationItem { title = "Reports", icon = "Finance", page = "Views/TasksView.xaml" });
+            navigationMenu.Add(new NavigationItem { title = "Home", icon = "Home" });
+            navigationMenu.Add(new NavigationItem { title = "Calendar", icon = "Calendar" });
+            navigationMenu.Add(new NavigationItem { title = "Tasks", icon = "Flag" });
+            navigationMenu.Add(new NavigationItem { title = "Customers", icon = "Domain" });
+            navigationMenu.Add(new NavigationItem { title = "Contacts", icon = "AccountMultiple" });
+            navigationMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette" });
+            navigationMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench" });
+            navigationMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose" });
+            navigationMenu.Add(new NavigationItem { title = "Orders", icon = "Send" });
+            navigationMenu.Add(new NavigationItem { title = "Deliveries", icon = "Truck" });
+            navigationMenu.Add(new NavigationItem { title = "Invoices", icon = "BookVariant" });
+            navigationMenu.Add(new NavigationItem { title = "Credits", icon = "CreditCard" });
+            navigationMenu.Add(new NavigationItem { title = "Purchases", icon = "Basket" });
+            navigationMenu.Add(new NavigationItem { title = "Stock", icon = "Widgets" });
+            navigationMenu.Add(new NavigationItem { title = "NCRs", icon = "Alert" });
+            navigationMenu.Add(new NavigationItem { title = "Reports", icon = "Finance" });
+            navigationMenu.Add(new NavigationItem { title = "Settings", icon = "Settings" });
         }
 
         #region Variables
-
-        public NavigationService mainFrameNS;
-
         private ObservableCollection<NavigationItem> _navigationMenu;
         public ObservableCollection<NavigationItem> navigationMenu
         {
@@ -98,11 +101,11 @@ namespace ERP
             set { _menuExpanded = value; OnPropertyChanged("menuExpanded"); }
         }
 
-        private string _search;
-        public string search
+        private string _searchTerm;
+        public string searchTerm
         {
-            get { return _search; }
-            set { _search = value; OnPropertyChanged("search"); }
+            get { return _searchTerm; }
+            set { _searchTerm = value; OnPropertyChanged("searchTerm"); }
         }
         #endregion
 
@@ -114,18 +117,12 @@ namespace ERP
 
         private void NavigationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Navigate();
-        }
-
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.NavigationService.Navigate(new Uri("Views/SettingsView.xaml", UriKind.Relative));
-
+            Navigate(selectedNavigationItem.title);
         }
 
         private void NewTask_Click(object sender, RoutedEventArgs e)
         {
-            Navigate();
+
         }
 
         private void NewQuote_Click(object sender, RoutedEventArgs e)
@@ -151,27 +148,25 @@ namespace ERP
             Application.Current.Shutdown();
         }
         #endregion
-
-        private void Button_Loaded(object sender, RoutedEventArgs e)
+        
+        private void Navigate(string page, string searchFor = null)
         {
-            
-        }
-
-        private void Navigate()
-        {
-            switch (selectedNavigationItem.title)
+            switch (page)
             {
                 case "Home":
-
+                    MainFrame.Navigate(new HomeView());
                     break;
                 case "Calendar":
+                    MainFrame.Navigate(new CalendarView());
                     break;
                 case "Tasks":
+                    MainFrame.Navigate(new TasksView());
                     break;
                 case "Customers":
-                    MainFrame.Navigate(new AccountsView(search));
+                    MainFrame.Navigate(new AccountsView(searchFor));
                     break;
                 case "Contacts":
+                    MainFrame.Navigate(new TestView());
                     break;
                 case "Suppliers":
                     break;
@@ -195,9 +190,18 @@ namespace ERP
                     break;
                 case "Reports":
                     break;
+                case "Settings":
+                    MainFrame.Navigate(new SettingsView());
+                    break;
                 default:
                     break;
             }
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            Navigate(selectedNavigationItem.title, searchTerm);
+        }
+
     }
 }
