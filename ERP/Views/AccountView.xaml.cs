@@ -46,10 +46,10 @@ namespace ERP.Views
 
             selectedAccount = AccountsController.GetAccount(accountID);
 
-            _contactList.Add(new Contact() { forename = "Jasper", surname = "Friend", primaryEmail = "jasper@schoolsmailing.co.uk", phone1 = "0117 9584 972", favourite = true });
-            _contactList.Add(new Contact() { forename = "Josh", surname = "Kaner", primaryEmail = "josh@schoolsmailing.co.uk", phone1 = "0117 9584 972", accounts = true });
-            _contactList.Add(new Contact() { forename = "Sarah", surname = "Rodgerson" });
-            _contactList.Add(new Contact() { forename = "Luke", surname = "Harvey", primaryEmail = "luke@schoolsmailing.co.uk" });
+            _contactList.Add(new Contact() { firstName = "Jasper", lastName = "Friend", email1 = "jasper@schoolsmailing.co.uk", phone1 = "0117 9584 972", favourite = true });
+            _contactList.Add(new Contact() { firstName = "Josh", lastName = "Kaner", email1 = "josh@schoolsmailing.co.uk", phone1 = "0117 9584 972", accounts = true });
+            _contactList.Add(new Contact() { firstName = "Sarah", lastName = "Rodgerson" });
+            _contactList.Add(new Contact() { firstName = "Luke", lastName = "Harvey", email1 = "luke@schoolsmailing.co.uk" });
 
             _activityList.Add(new Activity() { activityDate = new DateTime(2018, 2, 2, 9, 30, 0), activityID = 1, user = "Jasper Friend", contact = "Jasper Friend", colour = "#f44336", activity = "call", icon = "Phone", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat. " });
             _activityList.Add(new Activity() { activityDate = new DateTime(2058, 2, 2, 10, 30, 0), activityID = 1, user = "Jasper Friend", contact = "Jasper Friend", colour = "#ff9800", activity = "Task", icon = "CalendarCheck", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat. " });
@@ -92,7 +92,7 @@ namespace ERP.Views
         public Account selectedAccount
         {
             get { return _selectedAccount; }
-            set { _selectedAccount = value; OnPropertyChanged("selectedAccount"); }
+            set { _selectedAccount = value; OnPropertyChanged("selectedAccount"); Debug.WriteLine("Account changed"); }
         }
 
         private Account _selectedItem;
@@ -124,8 +124,9 @@ namespace ERP.Views
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            var messageQueue = SnackBar2.MessageQueue;
-            Task.Factory.StartNew(() => messageQueue.Enqueue("Saved"));
+            AccountsController.UpsertAccount(selectedAccount);
+            //var messageQueue = SnackBar2.MessageQueue;
+            //Task.Factory.StartNew(() => messageQueue.Enqueue("Saved"));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

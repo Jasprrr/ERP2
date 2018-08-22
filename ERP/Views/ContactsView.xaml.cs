@@ -2,6 +2,7 @@
 using ERP.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERP.Control
+namespace ERP.Views
 {
     /// <summary>
-    /// Interaction logic for AccountsOnHold.xaml
+    /// Interaction logic for ContactsView.xaml
     /// </summary>
-    public partial class AccountsOnHold : UserControl, INotifyPropertyChanged
+    public partial class ContactsView : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
@@ -29,17 +30,32 @@ namespace ERP.Control
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public AccountsOnHold()
+        public ContactsView()
         {
             InitializeComponent();
-            accountsOnHold = AccountsController.GetAccountsOnHold();
+            contactList = ContactsController.GetContacts();
         }
 
-        private List<Account> _accountsOnHold;
-        public List<Account> accountsOnHold
+        private ObservableCollection<Contact> _contactList;
+        public ObservableCollection<Contact> contactList
         {
-            get { return _accountsOnHold; }
-            set { _accountsOnHold = value; OnPropertyChanged("accountsOnHold"); }
+            get { return _contactList; }
+            set { _contactList = value; OnPropertyChanged("contactList"); }
+        }
+
+        private void NewContact_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditContact_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

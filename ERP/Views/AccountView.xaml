@@ -258,8 +258,8 @@
                                                              Margin="0,12,0,4" />
                                                     <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                 HorizontalAlignment="Left"
-                                                                materialDesign:HintAssist.Hint="Trading since"
-                                                                Text="{Binding selectedAccount.tradingSince}" />
+                                                                SelectedDate="{Binding selectedAccount.tradingSince}"
+                                                                materialDesign:HintAssist.Hint="Trading since" />
                                                     <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
                                                                Margin="-20,6,-20,4" />
                                                     <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"

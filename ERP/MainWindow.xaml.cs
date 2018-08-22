@@ -166,7 +166,7 @@ namespace ERP
                     MainFrame.Navigate(new AccountsView(searchFor));
                     break;
                 case "Contacts":
-                    MainFrame.Navigate(new TestView());
+                    MainFrame.Navigate(new ContactsView());
                     break;
                 case "Suppliers":
                     break;

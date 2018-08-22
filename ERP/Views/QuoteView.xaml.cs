@@ -48,8 +48,8 @@ namespace ERP.Views
             _accountList.Add(new Account() { accountID = 1, accountName = "Sam Co." });
 
             _contactList = new ObservableCollection<Contact>();
-            _contactList.Add(new Contact() { contactID = 1, accountID = 1, forename = "Jasper", surname = "Friend" });
-            _contactList.Add(new Contact() { contactID = 1, accountID = 1, forename = "Repsaj", surname = "Dneirf" });
+            _contactList.Add(new Contact() { contactID = 1, accountID = 1, firstName = "Jasper", lastName = "Friend" });
+            _contactList.Add(new Contact() { contactID = 1, accountID = 1, firstName = "Repsaj", lastName = "Dneirf" });
 
             _departments = new ObservableCollection<Department>();
             _departments.Add(new Department() { departmentID = 1, department = "Masking", nominalCode = 4000, rateCost = (decimal)1.00, initalCost = 0 });

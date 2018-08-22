@@ -57,6 +57,40 @@ namespace ERP.Controllers
             return q;
         }
 
+        public static List<Account> GetAccountsOnHold()
+        {
+            List<Account> q = new List<Account>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connString))
+            {
+                conn.Open();
+
+                SQLiteCommand command;
+
+                command = new SQLiteCommand("SELECT * FROM Accounts WHERE On_Hold = True", conn);
+
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    q.Add(new Account()
+                    {
+                        accountID = int.Parse(reader["Account_ID"].ToString()),
+                        accountName = reader["Account_Name"].ToString(),
+                        accountCode = reader["Account_Code"].ToString(),
+                        description = reader["Description"].ToString(),
+                        phone1 = reader["Phone_1"].ToString(),
+                        phone2 = reader["Phone_2"].ToString(),
+                        email = reader["Email"].ToString(),
+                        status = reader["Status"].ToString()
+                    });
+                }
+
+                conn.Close();
+            }
+            return q;
+        }
+
         public static Account GetAccount(int accountID)
         {
             Account q = new Account();
@@ -74,8 +108,11 @@ namespace ERP.Controllers
 
                 while (reader.Read())
                 {
+                    Debug.WriteLine(reader["Trading_Since"].ToString());
+
                     q = new Account()
                     {
+                        accountID = int.Parse(reader["Account_ID"].ToString()),
                         accountName = reader["Account_Name"].ToString(),
                         user = reader["User_Name"].ToString(),
                         accountCode = reader["Account_Code"].ToString(),
@@ -91,12 +128,12 @@ namespace ERP.Controllers
                         registrationNumber = reader["Registration_Number"].ToString(),
                         taxCode = reader["Tax_Code"].ToString(),
                         VATNumber = reader["VAT_Number"].ToString(),
-                        tradingSince = string.IsNullOrEmpty(reader["Trading_Since"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["Trading_Since"].ToString()),
+                        tradingSince = string.IsNullOrWhiteSpace(reader["Trading_Since"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["Trading_Since"].ToString()),
                         onHold = bool.Parse(reader["On_Hold"].ToString()),
                         onHoldReason = reader["On_Hold_Reason"].ToString(),
-                        onHoldDate = string.IsNullOrEmpty(reader["On_Hold_Date"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["On_Hold_Date"].ToString()),
-                        lastCreditCheck = string.IsNullOrEmpty(reader["Last_Credit_Check"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["Last_Credit_Check"].ToString()),
-                        nextCreditCheck = string.IsNullOrEmpty(reader["Next_Credit_Check"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["Next_Credit_Check"].ToString()),
+                        onHoldDate = string.IsNullOrWhiteSpace(reader["On_Hold_Date"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["On_Hold_Date"].ToString()),
+                        lastCreditCheck = string.IsNullOrWhiteSpace(reader["Last_Credit_Check"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["Last_Credit_Check"].ToString()),
+                        nextCreditCheck = string.IsNullOrWhiteSpace(reader["Next_Credit_Check"].ToString()) ? (DateTime?)null : DateTime.Parse(reader["Next_Credit_Check"].ToString()),
                         leadSource = reader["Lead_Source"].ToString(),
                         prepayment = bool.Parse(reader["Prepayment"].ToString()),
                         billingAddress1 = reader["Billing_Address_1"].ToString(),
@@ -134,51 +171,49 @@ namespace ERP.Controllers
                 if (account.accountID == 0)
                 {
                     command = new SQLiteCommand("INSERT INTO Accounts " +
-                                                "(Date_Modified, Description, Phone1, Phone2, Email, Status, Default_Carriage, Default_Nominal_Code, Registration_Number, Tax_Code, VAT_Number, Trading_Since, On_Hold, On_Hold_Reason, On_Hold_Date, Last_Credit_Check, Next_Credit_Check, Lead_Source, Prepayment, Billing_Address_1, Billing_Address_2, Billing_City, Billing_County, Billing_Country, Billing_Postcode, Shipping_Address_1, Shipping_Address_2, Shipping_City, Shipping_County, Shipping_Country, Shipping_Postcode, Registered_Address_1, Registered_Address_2, Registered_City, Registered_County, Registered_CountryRegistered_Postcode) " +
-                                                "VALUES (@dateModified, @description, @phone1, @phone2, @email, @status, @defaultCarriage, @defaultNominalCode, @registrationNumber, @taxCode, @VATNumber, @tradingSince, @onHold, @onHoldReason, @onHoldDate, @lastCreditCheck, @nextCreditCheck, @leadSource, @prepayment, @billingAddress1, @billingAddress1, @billingCity, @billingCounty, @billingCountry, @billingPostcode, @shippingAddress1, @shippingAddress2, @shippingCity, @shippingCounty, @shippingCountry, @shippingPostcode, @registeredAddress1, @registeredAddress2, @registeredCity, @registeredCounty, @registeredCountry, @registeredPostcode)", conn);
+                                                "(Date_Modified, Description, Phone_1, Phone_2, Email, Status, Default_Carriage, Default_Nominal_Code, Registration_Number, Tax_Code, VAT_Number, Trading_Since, On_Hold, On_Hold_Reason, On_Hold_Date, Last_Credit_Check, Next_Credit_Check, Lead_Source, Prepayment, Billing_Address_1, Billing_Address_2, Billing_City, Billing_County, Billing_Country, Billing_Postcode, Shipping_Address_1, Shipping_Address_2, Shipping_City, Shipping_County, Shipping_Country, Shipping_Postcode, Registered_Address_1, Registered_Address_2, Registered_City, Registered_County, Registered_Postcode) " +
+                                                "VALUES (@dateModified, @description, @phone1, @phone2, @email, @status, @defaultCarriage, @defaultNominalCode, @registrationNumber, @taxCode, @VATNumber, @tradingSince, @onHold, @onHoldReason, @onHoldDate, @lastCreditCheck, @nextCreditCheck, @leadSource, @prepayment, @billingAddress1, @billingAddress1, @billingCity, @billingCounty, @billingCountry, @billingPostcode, @shippingAddress1, @shippingAddress2, @shippingCity, @shippingCounty, @shippingCountry, @shippingPostcode, @registeredAddress1, @registeredAddress2, @registeredCity, @registeredCounty, @registeredPostcode)", conn);
                 }
                 else
                 {
                     command = new SQLiteCommand("UPDATE Accounts " +
-                                                "SET Account_ID=@accountID " +
-                                                    "Date_Modified=@dateModified" +
-                                                    "Description=@description" +
-                                                    "Phone1=@phone1" +
-                                                    "Phone2=@phone2" +
-                                                    "Email=@email" +
-                                                    "Status=@status" +
-                                                    "Default_Carriage=@defaultCarriage" +
-                                                    "Default_Nominal_Code=@defaultNominalCode" +
-                                                    "Registration_Number=@registrationNumber" +
-                                                    "Tax_Code=@taxCode" +
-                                                    "VAT_Number=@VATNumber" +
-                                                    "Trading_Since=@tradingSince" +
-                                                    "On_Hold=@onHold" +
-                                                    "On_Hold_Reason=@onHoldReason" +
-                                                    "On_Hold_Date=@onHoldDate" +
-                                                    "Last_Credit_Check=@lastCreditCheck" +
-                                                    "Next_Credit_Check=@nextCreditCheck" +
-                                                    "Lead_Source=@leadSource" +
-                                                    "Prepayment=@prepayment" +
-                                                    "Billing_Address_1=@billingAddress1" +
-                                                    "Billing_Address_2=@billingAddress1" +
-                                                    "Billing_City=@billingCity" +
-                                                    "Billing_County=@billingCounty" +
-                                                    "Billing_Country=@billingCountry" +
-                                                    "Billing_Postcode=@billingPostcode" +
-                                                    "Shipping_Address_1=@shippingAddress1" +
-                                                    "Shipping_Address_2=@shippingAddress2" +
-                                                    "Shipping_City=@shippingCity" +
-                                                    "Shipping_County=@shippingCounty" +
-                                                    "Shipping_Country=@shippingCountry" +
-                                                    "Shipping_Postcode=@shippingPostcode" +
-                                                    "Registered_Address_1=@registeredAddress1" +
-                                                    "Registered_Address_2=@registeredAddress2" +
-                                                    "Registered_City=@registeredCity" +
-                                                    "Registered_County=@registeredCounty" +
-                                                    "Registered_Country=@registeredCountry" +
-                                                    "Registered_Postcode=@registeredPostcode" +
-                                                "WHERE Account_ID Like @accountID", conn);
+                                                "SET Date_Modified=@dateModified, " +
+                                                    "Description=@description, " +
+                                                    "Phone_1=@phone1, " +
+                                                    "Phone_2=@phone2, " +
+                                                    "Email=@email, " +
+                                                    "Status=@status, " +
+                                                    "Default_Carriage=@defaultCarriage, " +
+                                                    "Default_Nominal_Code=@defaultNominalCode, " +
+                                                    "Registration_Number=@registrationNumber, " +
+                                                    "Tax_Code=@taxCode, " +
+                                                    "VAT_Number=@VATNumber, " +
+                                                    "Trading_Since=@tradingSince, " +
+                                                    "On_Hold=@onHold, " +
+                                                    "On_Hold_Reason=@onHoldReason, " +
+                                                    "On_Hold_Date=@onHoldDate, " +
+                                                    "Last_Credit_Check=@lastCreditCheck, " +
+                                                    "Next_Credit_Check=@nextCreditCheck, " +
+                                                    "Lead_Source=@leadSource, " +
+                                                    "Prepayment=@prepayment, " +
+                                                    "Billing_Address_1=@billingAddress1, " +
+                                                    "Billing_Address_2=@billingAddress1, " +
+                                                    "Billing_City=@billingCity, " +
+                                                    "Billing_County=@billingCounty, " +
+                                                    "Billing_Country=@billingCountry, " +
+                                                    "Billing_Postcode=@billingPostcode, " +
+                                                    "Shipping_Address_1=@shippingAddress1, " +
+                                                    "Shipping_Address_2=@shippingAddress2, " +
+                                                    "Shipping_City=@shippingCity, " +
+                                                    "Shipping_County=@shippingCounty, " +
+                                                    "Shipping_Country=@shippingCountry, " +
+                                                    "Shipping_Postcode=@shippingPostcode, " +
+                                                    "Registered_Address_1=@registeredAddress1, " +
+                                                    "Registered_Address_2=@registeredAddress2, " +
+                                                    "Registered_City=@registeredCity, " +
+                                                    "Registered_County=@registeredCounty " +
+                                                "WHERE Account_ID = @accountID", conn);
+                    command.Parameters.AddWithValue("@accountID", account.accountID);
                 }
 
                 command.Parameters.AddWithValue("@dateModified", DateTime.Now);
@@ -192,12 +227,12 @@ namespace ERP.Controllers
                 command.Parameters.AddWithValue("@registrationNumber", account.registrationNumber);
                 command.Parameters.AddWithValue("@taxCode", account.taxCode);
                 command.Parameters.AddWithValue("@VATNumber", account.VATNumber);
-                command.Parameters.AddWithValue("@tradingSince", account.tradingSince);
+                command.Parameters.AddWithValue("@tradingSince", string.IsNullOrWhiteSpace(account.tradingSince.ToString()) ? null : account.tradingSince);
                 command.Parameters.AddWithValue("@onHold", account.onHold);
                 command.Parameters.AddWithValue("@onHoldReason", account.onHoldReason);
-                command.Parameters.AddWithValue("@onHoldDate", account.onHoldDate);
-                command.Parameters.AddWithValue("@lastCreditCheck", account.lastCreditCheck);
-                command.Parameters.AddWithValue("@nextCreditCheck", account.nextCreditCheck);
+                command.Parameters.AddWithValue("@onHoldDate", string.IsNullOrWhiteSpace(account.onHoldDate.ToString()) ? null : account.onHoldDate);
+                command.Parameters.AddWithValue("@lastCreditCheck", string.IsNullOrWhiteSpace(account.lastCreditCheck.ToString()) ? null : account.lastCreditCheck);
+                command.Parameters.AddWithValue("@nextCreditCheck", string.IsNullOrWhiteSpace(account.nextCreditCheck.ToString()) ? null : account.nextCreditCheck);
                 command.Parameters.AddWithValue("@leadSource", account.leadSource);
                 command.Parameters.AddWithValue("@prepayment", account.prepayment);
                 command.Parameters.AddWithValue("@billingAddress1", account.billingAddress1);

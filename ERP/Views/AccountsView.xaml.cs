@@ -110,5 +110,11 @@ namespace ERP.Views
             var editAccount = new AccountView(selectedAccount.accountID);
             editAccount.Show();
         }
+
+        private void NewAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var newAccount = new AccountView();
+            newAccount.Show();
+        }
     }
 }

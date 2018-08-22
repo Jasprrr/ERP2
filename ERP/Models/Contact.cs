@@ -11,16 +11,22 @@ namespace ERP.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public int contactID { get; set; }
         public int accountID { get; set; }
+        public string accountName { get; set; }
         public string title { get; set; }
-        public string forename { get; set; }
-        public string surname { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
         public string phone1 { get; set; }
         public string phone2 { get; set; }
         public string mobile { get; set; }
-        public string primaryEmail { get; set; }
-        public string secondaryEmail { get; set; }
+        public string email1 { get; set; }
+        public string email2 { get; set; }
         public string description { get; set; }
         public bool favourite { get; set; }
         public bool accounts { get; set; }
@@ -29,7 +35,7 @@ namespace ERP.Models
 
         public string fullName
         {
-            get { return forename + " " + surname; }
+            get { return firstName + " " + lastName; }
         }
     }
 }

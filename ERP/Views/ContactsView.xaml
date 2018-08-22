@@ -1,4 +1,4 @@
-﻿<Page x:Class="ERP.Views.AccountsView"
+﻿<Page x:Class="ERP.Views.ContactsView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -20,7 +20,7 @@
         <materialDesign:DrawerHost x:Name="PreviewDrawer">
             <materialDesign:DrawerHost.RightDrawerContent>
                 <Grid Width="336">
-                    <Grid.RowDefinitions>
+                    <!--<Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
@@ -149,7 +149,7 @@
                                        MaxHeight="210"
                                        TextTrimming="CharacterEllipsis" />
                         </Grid>
-                    </StackPanel>
+                    </StackPanel>-->
                 </Grid>
             </materialDesign:DrawerHost.RightDrawerContent>
             <materialDesign:Card BorderThickness="1"
@@ -170,15 +170,15 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Accounts"
+                        <TextBlock Text="Contacts"
                                    VerticalAlignment="Center"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                    Foreground="{DynamicResource MaterialDesignBody}" />
-                        <Button x:Name="NewAccount"
+                        <Button x:Name="NewContact"
                                 Style="{StaticResource MaterialDesignFlatIconButton}"
-                                ToolTip="New account"
+                                ToolTip="New contact"
                                 Grid.Column="1"
-                                Click="NewAccount_Click">
+                                Click="NewContact_Click">
                             <materialDesign:PackIcon Kind="Plus"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
@@ -213,8 +213,8 @@
                         </materialDesign:PopupBox>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <DataGrid ItemsSource="{Binding accountList}"
-                                  SelectedItem="{Binding selectedAccount}"
+                        <DataGrid ItemsSource="{Binding contactList}"
+                                  SelectedItem="{Binding selectContact}"
                                   Style="{StaticResource MaterialDesignGrid}"
                                   CellStyle="{StaticResource MaterialDesignCell}"
                                   RowStyle="{StaticResource MaterialDesignRow}"
@@ -229,9 +229,9 @@
                                                         CanUserResize="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="EditAccount"
+                                            <Button x:Name="EditContact"
                                                     Style="{StaticResource MaterialDesignGridButton}"
-                                                    Click="EditAccount_Click"
+                                                    Click="EditContact_Click"
                                                     Margin="0,-7">
                                                 <materialDesign:PackIcon Kind="Pencil"
                                                                          Width="16"
@@ -242,28 +242,23 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountCode"
-                                                                           Binding="{Binding accountCode}"
+                                <materialDesign:MaterialDataGridTextColumn x:Name="ContactName"
+                                                                           Binding="{Binding fullName}"
                                                                            Header="A/C"
                                                                            SortDirection="Ascending"
                                                                            Width="auto" />
-                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountName"
-                                                                           Binding="{Binding accountName}"
-                                                                           Header="Name"
-                                                                           Width="2*" />
-                                <materialDesign:MaterialDataGridTextColumn x:Name="Telephone"
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Phone1"
                                                                            Binding="{Binding phone1}"
+                                                                           Header="Phone"
+                                                                           Width="2*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Mobile"
+                                                                           Binding="{Binding mobile}"
                                                                            Header="Telephone"
                                                                            Width="1*" />
                                 <materialDesign:MaterialDataGridTextColumn x:Name="Email"
-                                                                           Binding="{Binding email}"
+                                                                           Binding="{Binding email1}"
                                                                            Header="Email"
                                                                            Width="1*" />
-                                <materialDesign:MaterialDataGridTextColumn x:Name="Status"
-                                                                           Binding="{Binding status}"
-                                                                           Header="Status"
-                                                                           MinWidth="100"
-                                                                           Width="150" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
