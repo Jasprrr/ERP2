@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <materialDesign:Card Margin="4"
+        <materialDesign:Card Margin="8"
                              Padding="0,16,0,8"
                              Height="270"
                              Width="270">

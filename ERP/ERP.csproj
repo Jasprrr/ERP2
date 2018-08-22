@@ -412,6 +412,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\HTMLPage1.html" />
     <Resource Include="Resources\mb-bg-fb-01.png" />
     <Resource Include="Resources\mb-bg-fb-02.png" />
     <Resource Include="Resources\mb-bg-fb-03.png" />

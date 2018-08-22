@@ -23,8 +23,9 @@ namespace ERP.Controllers
 
                 SQLiteCommand command;
 
-                command = new SQLiteCommand("SELECT Account_ID, First_Name, Last_Name, Phone_1, Phone_2, Mobile" +
-                                            "FROM Contacts ", conn);
+                command = new SQLiteCommand("SELECT Account_ID, First_Name, Last_Name, Phone_1, Phone_2, Mobile " +
+                                            "FROM Contacts " +
+                                            "ORDER BY First_Name ASC", conn);
 
                 //"INNER JOIN Accounts ON Contacts.Account_ID = Accounts.Account_ID" + ", Accounts.Account_Name ""
 
@@ -43,6 +44,7 @@ namespace ERP.Controllers
                         phone2 = reader["Phone_2"].ToString(),
                         mobile = reader["Mobile"].ToString()
                     });
+                    q.OrderBy(Contact => Contact.firstName);
                 }
 
                 conn.Close();

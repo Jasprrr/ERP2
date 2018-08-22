@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{?$subject_line?}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <!--[if mso]>
+        <style>
+            *, td, a, span, li {font-family: Arial, sans-serif !important;}
+        </style>
+    <![endif]-->
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet" type="text/css"><!--<![endif]-->
+    <style type="text/css">
+        /* CLIENT-SPECIFIC STYLES */
+        #outlook a {
+            padding: 0;
+        }
+        /* Force Outlook to provide a "view in browser" message */
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+            /* Force Hotmail to display emails at full width */
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+                line-height: 100%;
+            }
+        /* Force Hotmail to display normal line spacing */
+        body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        /* Prevent WebKit and Windows mobile changing default text sizes */
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        /* Remove spacing between tables in Outlook 2007 and up */
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        /* Allow smoother rendering of resized image in Internet Explorer */
+
+        /* RESET STYLES */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+        }
+
+        /* iOS BLUE LINKS */
+        .appleBody a {
+            color: #68440a;
+            text-decoration: none;
+        }
+
+        .appleFooter a {
+            color: #dddddd;
+            text-decoration: none;
+        }
+
+        /* MOBILE STYLES */
+        @media screen and (min-width: 601px) {
+            .container {
+                width: 600px !important;
+            }
+        }
+
+        @media screen and (max-width: 601px) {
+
+            /* ALLOWS FOR FLUID TABLES */
+            table[class="wrapper"] {
+                width: 100% !important;
+            }
+
+            /* ADJUSTS LAYOUT OF LOGO IMAGE */
+            td[class="logo"] {
+                text-align: left;
+                padding: 20px 0 20px 0 !important;
+            }
+
+                td[class="logo"] img {
+                    margin: 0 auto !important;
+                }
+
+            /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+            td[class="mobile-hide"] {
+                display: none;
+            }
+
+            img[class="mobile-hide"] {
+                display: none !important;
+            }
+
+            img[class="img-max"] {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            /* FULL-WIDTH TABLES */
+            table[class="responsive-table"] {
+                width: 100% !important;
+            }
+
+            div[class="responsive-div"] {
+                width: 100% !important;
+            }
+
+            /* UTILITY CLASSES FOR ADJUSTING PADDING ON MOBILE */
+            td[class="padding"] {
+                padding: 10px 5% 15px 5% !important;
+            }
+
+            td[class="col"] {
+                padding: 10px 5% 15px 5% !important;
+                display: block !important;
+            }
+
+            td[class="padding-copy"] {
+                padding: 10px 5% 10px 5% !important;
+                text-align: left;
+            }
+
+            td[class="padding-copy-top"] {
+                padding: 30px 5% 10px 5% !important;
+                text-align: left;
+            }
+
+            td[class="padding-copy-bottom"] {
+                padding: 10px 5% 30px 5% !important;
+                text-align: left;
+            }
+
+            td[class="padding-copy-bottom-center"] {
+                padding: 10px 5% 30px 5% !important;
+                text-align: center;
+            }
+
+            td[class="padding-copy-center"] {
+                padding: 10px 5% 10px 5% !important;
+                text-align: center;
+            }
+
+            td[class="padding-meta"] {
+                padding: 30px 5% 0px 5% !important;
+                text-align: center;
+            }
+
+            td[class="no-pad"] {
+                padding: 0 0 20px 0 !important;
+            }
+
+            td[class="no-padding"] {
+                padding: 0 !important;
+            }
+
+            td[class="section-padding"] {
+                padding: 0px 10px 0px 10px !important;
+            }
+
+            td[class="section-padding-bottom-image"] {
+                padding: 50px 15px 0 15px !important;
+            }
+
+            /* ADJUST BUTTONS ON MOBILE */
+            td[class="mobile-wrapper"] {
+                padding: 10px 5% 15px 5% !important;
+            }
+
+            table[class="mobile-button-container"] {
+                margin: 0 auto;
+                width: 100% !important;
+            }
+
+            a[class="mobile-button"] {
+                width: 80% !important;
+                padding: 15px !important;
+                border: 0 !important;
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;">
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed;">
+        <tr>
+            <td bgcolor="#0066cc" style="border-bottom:1px solid #cccccc;">
+                <div align="center" style="padding: 0px 10px 0px 10px;">
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                    <![endif]-->
+                    <table class="container" width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px;">
+                        <tr>
+                            <td style="padding: 20px 0px 30px 0px;" class="logo">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: top; font-size: 0;">
+                                            <!--[if (gte mso 9)|(IE)]>
+                                            <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+                                                <tr>
+                                                    <td width="300">
+                                            <![endif]-->
+                                            <div style="width: 300px; display: inline-block; vertical-align: top;" class="responsive-div">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td align="center">
+                                                            <a href="http://www.schoolsmailing.co.uk/" target="_blank">
+                                                                <img src="https://data.schoolsmailing.co.uk/img/sm-logo-white.png" width="291" height="60" border="0" alt="Schools Mailing" style="display: block; padding: 0; color: #002060; text-decoration: none; font-family: Roboto, sans-serif; font-size: 16px; width: 291px; height:60px; margin:0 auto;">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!--[if (gte mso 9)|(IE)]>
+                                            </td><td width="300">
+                                            <![endif]-->
+                                            <div style="width: 300px; display: inline-block; vertical-align: top;" class="responsive-div">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td align="center" class="padding-copy-center">
+                                                            <a href="https://www.besa.org.uk/" target="_blank">
+                                                                <img src="https://mailerdocs.s3.amazonaws.com/schoolsend/email_assets/6445/besa_logos_white_cmykw2.png" width="130" height="60" border="0" alt="British Educational Suppliers Association" style="display: block; padding: 0; color: #002060; text-decoration: none; font-family: Roboto, sans-serif; font-size: 16px; width: 130px; height: 60px; margin:0 auto;">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!--[if (gte mso 9)|(IE)]>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <![endif]-->
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                        </tr>
+                    </table>
+                    <![endif]-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#eeeef2" align="center" style="padding: 20px 15px 20px 15px;" class="no-padding">
+                <!--[if (gte mso 9)|(IE)]>
+                <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>
+                <![endif]-->
+                <table class="container" width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px;">
+                    <tr>
+                        <td bgcolor="#ffffff" style="border: 1px solid #cccccc;">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <!-- COPY -->
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="left" style="padding: 30px 30px 0; font-size: 50px; line-height: 55px; font-family: Roboto, sans-serif; color: #002060;font-weight:bold;" class="padding-copy-top">
+                                                    The Best Mailing Date of The Year….
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" style="padding: 20px 30px 0; font-size: 16px; line-height: 25px; font-family: Roboto, sans-serif; color: #002060;" class="padding-copy">
+                                                    That’s what some customers say about our Shared Mailing landing on 26th September.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" style="padding: 20px 30px 0; font-size: 16px; line-height: 25px; font-family: Roboto, sans-serif; color: #002060;" class="padding-copy">
+                                                    If you are yet to plan a leaflet drop to ALL UK Primary or Secondary schools during September, then this is the perfect opportunity.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" style="padding: 20px 30px 0; font-size: 16px; line-height: 25px; font-family: Roboto, sans-serif; color: #002060;" class="padding-copy">
+                                                    Schools have a month under their belt +<br />
+                                                    a clear understanding of what they need<br />
+                                                    = responsive to marketing.<br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" style="padding: 20px 30px 0; font-size: 16px; line-height: 25px; font-family: Roboto, sans-serif; color: #002060;" class="padding-copy">
+                                                    Whilst the pack is almost full, we have a limited number of slots remaining
+                                                    so do let me know if interested. Deadlines and costs below.
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" style="padding: 20px 30px 0; font-size: 16px; line-height: 25px; font-family: Roboto, sans-serif; color: #002060; " class="padding-copy">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="left" bgcolor="#0066cc" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #ffffff; font-weight: bold; border: 1px solid #cccccc;">Land date</td>
+                                                                <td align="left" bgcolor="#0066cc" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #ffffff; font-weight: bold; border: 1px solid #cccccc;">Shared pack</td>
+                                                                <td align="left" bgcolor="#0066cc" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #ffffff; font-weight: bold; border: 1px solid #cccccc;">Cost</td>
+                                                                <td align="left" bgcolor="#0066cc" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #ffffff; font-weight: bold; border: 1px solid #cccccc;">Artwork required by<br><em style="font-weight:normal;">If you supply</em></td>
+                                                                <td align="left" bgcolor="#0066cc" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #ffffff; font-weight: bold; border: 1px solid #cccccc;">Leaflets required by<br><em style="font-weight:normal;">If we are printing</em></td>
+                                                                <td align="left" bgcolor="#0066cc" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #ffffff; font-weight: bold; border: 1px solid #cccccc;">Print*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" rowspan="3" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;"><strong>26th Sept</strong></td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">24k UK Primary Schools</td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">&pound;1,795</td>
+                                                                <td align="left" rowspan="3" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">30th August</td>
+                                                                <td align="left" rowspan="3" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">10th September</td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">&pound;595</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">5.5k UK Secondary Schools</td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">&pound;495</td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">&pound;325</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">4.2k UK SEN Schools</td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">&pound;895</td>
+                                                                <td align="left" style="padding: 5px 12px 5px 6px; font-size: 15px; line-height: 20px; font-family: Calibri, Arial, sans-serif; color: #002060; border: 1px solid #cccccc;">&pound;275</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <!-- BULLETPROOF BUTTON -->
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                        <tr>
+                                                            <td align="center" style="padding: 20px 30px 0;" class="padding-copy-center">
+                                                                <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <a href="https://www.schoolsmailing.co.uk/data/" target="_blank" style="font-size: 16px; font-family: Lato, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: #ff7000; border-top: 15px solid #ff7000; border-bottom: 15px solid #ff7000; border-left: 25px solid #ff7000; border-right: 25px solid #ff7000; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block; font-weight:bold;" class="mobile-button">
+                                                                                Find out more
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" style="padding: 20px 30px 30px; font-size: 16px; line-height: 25px; font-family: Roboto, sans-serif; color: #002060; " class="padding-copy-bottom">
+                                                    We’d love to hear from you… <br>
+                                                    Email <a style="color:#0000ff;" href="mailto:team@schoolsmailing.co.uk">team@schoolsmailing.co.uk</a> or call 0117 958 4572.
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                    </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#0066cc" align="center" style="border-top:1px solid #cccccc;">
+                <!--[if (gte mso 9)|(IE)]>
+                    <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                    <![endif]-->
+                <table class="container" width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px;">
+                    <tr>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="center" valign="middle" style="padding: 30px 5px 30px; font-size: 12px; font-family: Roboto, sans-serif; color: #dddddd;" class="padding-copy-center">
+                                        <span class="appleFooter" style="color:#dddddd; text-decoration:none;">Unit 2, Aston Way, Middlewich, Cheshire, CW10 0HS</span><br><a target="_blank" href="{?$view_online?}" style="color: #dddddd;">View this email in your browser</a><br><br>
+                                        You are receiving this email because we think you may be interested in marketing to schools.<br>
+                                        We apologise if this is not the case and welcome you to <a target="_blank" href="{?$optout_link?}" class="original-only" style="color: #dddddd;">unsubscribe here</a>.
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                    </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

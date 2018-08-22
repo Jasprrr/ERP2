@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <Grid>
 
-        <materialDesign:Card Margin="4"
+        <materialDesign:Card Margin="8"
                              Padding="16"
                              Height="270"
                              Width="270">

@@ -221,7 +221,8 @@
                                   MouseLeftButtonUp="DataGrid_MouseLeftButtonUp"
                                   CanUserAddRows="False"
                                   ScrollViewer.CanContentScroll="True"
-                                  VerticalScrollBarVisibility="Auto">
+                                  VerticalScrollBarVisibility="Auto"
+                                  Margin="0,0,0,70">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn x:Name="itemButton"
                                                         materialDesign:DataGridAssist.CellPadding="0"
@@ -244,13 +245,17 @@
                                 </DataGridTemplateColumn>
                                 <materialDesign:MaterialDataGridTextColumn x:Name="ContactName"
                                                                            Binding="{Binding fullName}"
-                                                                           Header="A/C"
+                                                                           Header="Contact"
                                                                            SortDirection="Ascending"
-                                                                           Width="auto" />
+                                                                           Width="2*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountName"
+                                                                           Binding="{Binding accountName}"
+                                                                           Header="Account name"
+                                                                           Width="2*" />
                                 <materialDesign:MaterialDataGridTextColumn x:Name="Phone1"
                                                                            Binding="{Binding phone1}"
                                                                            Header="Phone"
-                                                                           Width="2*" />
+                                                                           Width="1*" />
                                 <materialDesign:MaterialDataGridTextColumn x:Name="Mobile"
                                                                            Binding="{Binding mobile}"
                                                                            Header="Telephone"
