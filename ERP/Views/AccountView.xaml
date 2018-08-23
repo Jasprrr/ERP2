@@ -255,7 +255,10 @@
                                                              Text="{Binding selectedAccount.description}"
                                                              AcceptsReturn="True"
                                                              Height="220"
-                                                             Margin="0,12,0,4" />
+                                                             Margin="0,12,0,4"
+                                                             TextWrapping="Wrap"
+                                                             TextOptions.TextFormattingMode="Display"
+                                                             TextOptions.TextHintingMode="Animated" />
                                                     <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                 HorizontalAlignment="Left"
                                                                 SelectedDate="{Binding selectedAccount.tradingSince}"

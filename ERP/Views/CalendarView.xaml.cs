@@ -73,13 +73,14 @@ namespace ERP.Views
             set { if (selectedTodo != value) { _selectedTodo = value; OnPropertyChanged("selectedTodo"); } }
         }
 
-        private void InitializeCalendar(DateTime? date = null)
+        private void InitializeCalendar(DateTime? selectedDate = null)
         {
+            //TODO: Add parameter handling
             DateTime firstOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
 
             todoList = new ObservableCollection<CalendarDay>();
 
-            gridOffset = (int)firstOfMonth.DayOfWeek;
+            gridOffset = (int)firstOfMonth.DayOfWeek - 1 < 0 ? 6 : (int)firstOfMonth.DayOfWeek - 1;
 
             for (int i = 0; i < DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month); i++)
             {
@@ -134,12 +135,9 @@ namespace ERP.Views
 
         }
 
-        private async void SetUpCalendar()
+        private void SetUpCalendar()
         {
-            await Task.Run(() =>
-            {
-                InitializeCalendar();
-            });
+            InitializeCalendar();
         }
     }
 }

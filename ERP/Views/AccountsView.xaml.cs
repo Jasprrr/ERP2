@@ -116,5 +116,10 @@ namespace ERP.Views
             var newAccount = new AccountView();
             newAccount.Show();
         }
+
+        private void RefreshAccounts_Click(object sender, RoutedEventArgs e)
+        {
+            accountList = AccountsController.GetAccounts();
+        }
     }
 }

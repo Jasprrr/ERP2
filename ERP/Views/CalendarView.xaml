@@ -232,13 +232,13 @@
                     </Grid>
                     <UniformGrid Grid.Row="1"
                                  Columns="7">
-                        <TextBlock Margin="8,4">Sunday</TextBlock>
                         <TextBlock Margin="8,4">Monday</TextBlock>
                         <TextBlock Margin="8,4">Tuesday</TextBlock>
                         <TextBlock Margin="8,4">Wednesday</TextBlock>
                         <TextBlock Margin="8,4">Thursday</TextBlock>
                         <TextBlock Margin="8,4">Friday</TextBlock>
                         <TextBlock Margin="8,4">Saturday</TextBlock>
+                        <TextBlock Margin="8,4">Sunday</TextBlock>
                     </UniformGrid>
                     <ItemsControl x:Name="Scheduler"
                                   Grid.Row="2"

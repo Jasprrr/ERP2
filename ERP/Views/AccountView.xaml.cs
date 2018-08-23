@@ -125,8 +125,8 @@ namespace ERP.Views
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             AccountsController.UpsertAccount(selectedAccount);
-            //var messageQueue = SnackBar2.MessageQueue;
-            //Task.Factory.StartNew(() => messageQueue.Enqueue("Saved"));
+            var messageQueue = SnackBar2.MessageQueue;
+            Task.Factory.StartNew(() => messageQueue.Enqueue("Saved"));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

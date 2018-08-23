@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Globalization;
 using System.Diagnostics;
+using System.Windows;
+using System.IO;
 
 namespace ERP.Controllers
 {
     internal static class AccountsController
     {
-        private static string connString = string.Format("Data Source={0}", @"C:\users\Jasper\Desktop\test.sqlite");
+        private static string connString = string.Format("Data Source={0}", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\test.sqlite"));
 
         public static ObservableCollection<Account> GetAccounts(string search = null)
         {
@@ -171,13 +173,15 @@ namespace ERP.Controllers
                 if (account.accountID == 0)
                 {
                     command = new SQLiteCommand("INSERT INTO Accounts " +
-                                                "(Date_Modified, Description, Phone_1, Phone_2, Email, Status, Default_Carriage, Default_Nominal_Code, Registration_Number, Tax_Code, VAT_Number, Trading_Since, On_Hold, On_Hold_Reason, On_Hold_Date, Last_Credit_Check, Next_Credit_Check, Lead_Source, Prepayment, Billing_Address_1, Billing_Address_2, Billing_City, Billing_County, Billing_Country, Billing_Postcode, Shipping_Address_1, Shipping_Address_2, Shipping_City, Shipping_County, Shipping_Country, Shipping_Postcode, Registered_Address_1, Registered_Address_2, Registered_City, Registered_County, Registered_Postcode) " +
-                                                "VALUES (@dateModified, @description, @phone1, @phone2, @email, @status, @defaultCarriage, @defaultNominalCode, @registrationNumber, @taxCode, @VATNumber, @tradingSince, @onHold, @onHoldReason, @onHoldDate, @lastCreditCheck, @nextCreditCheck, @leadSource, @prepayment, @billingAddress1, @billingAddress1, @billingCity, @billingCounty, @billingCountry, @billingPostcode, @shippingAddress1, @shippingAddress2, @shippingCity, @shippingCounty, @shippingCountry, @shippingPostcode, @registeredAddress1, @registeredAddress2, @registeredCity, @registeredCounty, @registeredPostcode)", conn);
+                                                "(Account_Name, Date_Modified, Description, Phone_1, Phone_2, Email, Status, Default_Carriage, Default_Nominal_Code, Registration_Number, Tax_Code, VAT_Number, Trading_Since, On_Hold, On_Hold_Reason, On_Hold_Date, Last_Credit_Check, Next_Credit_Check, Lead_Source, Prepayment, Billing_Address_1, Billing_Address_2, Billing_City, Billing_County, Billing_Country, Billing_Postcode, Shipping_Address_1, Shipping_Address_2, Shipping_City, Shipping_County, Shipping_Country, Shipping_Postcode, Registered_Address_1, Registered_Address_2, Registered_City, Registered_County, Registered_Postcode) " +
+                                                "VALUES (@accountName, @dateModified, @description, @phone1, @phone2, @email, @status, @defaultCarriage, @defaultNominalCode, @registrationNumber, @taxCode, @VATNumber, @tradingSince, @onHold, @onHoldReason, @onHoldDate, @lastCreditCheck, @nextCreditCheck, @leadSource, @prepayment, @billingAddress1, @billingAddress1, @billingCity, @billingCounty, @billingCountry, @billingPostcode, @shippingAddress1, @shippingAddress2, @shippingCity, @shippingCounty, @shippingCountry, @shippingPostcode, @registeredAddress1, @registeredAddress2, @registeredCity, @registeredCounty, @registeredPostcode)", conn);
                 }
                 else
                 {
                     command = new SQLiteCommand("UPDATE Accounts " +
-                                                "SET Date_Modified=@dateModified, " +
+                                                "SET Account_Name=@accountName, " +
+                                                    "Account_Code=@accountCode, " + 
+                                                    "Date_Modified=@dateModified, " +
                                                     "Description=@description, " +
                                                     "Phone_1=@phone1, " +
                                                     "Phone_2=@phone2, " +
@@ -216,6 +220,8 @@ namespace ERP.Controllers
                     command.Parameters.AddWithValue("@accountID", account.accountID);
                 }
 
+                command.Parameters.AddWithValue("@accountName", account.accountName);
+                command.Parameters.AddWithValue("@accountCode", account.accountCode);
                 command.Parameters.AddWithValue("@dateModified", DateTime.Now);
                 command.Parameters.AddWithValue("@description", account.description);
                 command.Parameters.AddWithValue("@phone1", account.phone1);
