@@ -25,7 +25,7 @@ namespace ERP.Models
 
         public string description { get; set; }
         public string purchaseOrder { get; set; }
-        public int? leadTime { get; set; }
+        public decimal? leadTime { get; set; }
         public DateTime? dueDate { get; set; }
         public double? successChance { get; set; }
 
@@ -53,8 +53,8 @@ namespace ERP.Models
 
         public int userID { get; set; }
         public string user { get; set; }
-        public DateTime? dateCreated { get; set; }
-        public DateTime? dateModified { get; set; }
+        public DateTime dateCreated { get; set; }
+        public DateTime dateModified { get; set; }
         public bool selected { get; set; }
 
         public bool locked { get; set; }

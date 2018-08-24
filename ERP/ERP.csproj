@@ -118,6 +118,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\StartupController.cs" />
     <Compile Include="Control\AccountsOnHold.xaml.cs">
       <DependentUpon>AccountsOnHold.xaml</DependentUpon>

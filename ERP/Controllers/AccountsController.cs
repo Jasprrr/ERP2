@@ -16,7 +16,9 @@ namespace ERP.Controllers
 {
     internal static class AccountsController
     {
-        private static string connString = string.Format("Data Source={0}", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\test.sqlite"));
+        //private static string connString = string.Format("Data Source={0}", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\test.sqlite"));
+
+        private static string connString = string.Format("Data Source={0}", @"C:\users\Jasper\Desktop\test.sqlite");
 
         public static ObservableCollection<Account> GetAccounts(string search = null)
         {
