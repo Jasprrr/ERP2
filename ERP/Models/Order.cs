@@ -21,10 +21,13 @@ namespace ERP.Models
         public decimal materialCost { get; set; }
         public decimal subcontractCost { get; set; }
         public decimal carriageCost { get; set; }
-        public decimal subtotal { get; set; }
+
+        public decimal cost { get; set; }
+        public decimal VAT { get; set; }
+        public decimal total { get; set; }
+
         public string customerReference { get; set; }
-        public int leadTime { get; set; }
-        public int leadType { get; set; }
+        public decimal? leadTime { get; set; }
         public string Status { get; set; }
         public string description { get; set; }
         public string carriageOption { get; set; }

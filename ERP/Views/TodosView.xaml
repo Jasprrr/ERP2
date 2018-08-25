@@ -1,4 +1,4 @@
-﻿<Page x:Class="ERP.Views.TasksView"
+﻿<Page x:Class="ERP.Views.TodosView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -218,7 +218,7 @@
                                   VerticalContentAlignment="Stretch"
                                   VerticalScrollBarVisibility="Visible">
                             <DataGrid.Columns>
-                                <DataGridCheckBoxColumn Binding="{Binding complete}"
+                                <DataGridCheckBoxColumn Binding="{Binding completed}"
                                                         ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
                                                         EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
                                                         CanUserResize="False"
@@ -233,8 +233,8 @@
                                         </Border>
                                     </DataGridCheckBoxColumn.Header>
                                 </DataGridCheckBoxColumn>
-                                <materialDesign:MaterialDataGridTextColumn x:Name="DueDate"
-                                                                           Binding="{Binding dueDate}"
+                                <materialDesign:MaterialDataGridTextColumn x:Name="todoDate"
+                                                                           Binding="{Binding todoDate}"
                                                                            Header="Due date"
                                                                            SortDirection="Ascending"
                                                                            Width="auto" />

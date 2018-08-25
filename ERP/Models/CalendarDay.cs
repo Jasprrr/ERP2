@@ -25,6 +25,6 @@ namespace ERP.Models
                 return date == DateTime.Today ? true : false;
             }
         }
-        public List<ToDo> todo { get; set; }
+        public List<Todo> todo { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace ERP.Views
         {
             stepperQuoteCreated = new StepperData() { stage = 1, label = "Quote Created" };
             stepperQuoteClosed = new StepperData() { stage = 1, label = "Quote Closed" };
-            selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35,  accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
+            selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
             selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
@@ -130,14 +130,14 @@ namespace ERP.Views
             _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 5, supplier = "Sam Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
             _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 6, supplier = "Jim Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
 
-            _todoList = new ObservableCollection<ToDo>();
-            _todoList.Add(new ToDo() { ID = 1, dueDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", complete = false, taskType = "Task" });
-            _todoList.Add(new ToDo() { ID = 2, dueDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", complete = false, taskType = "Task" });
-            _todoList.Add(new ToDo() { ID = 3, dueDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", complete = false, taskType = "Task" });
-            _todoList.Add(new ToDo() { ID = 4, dueDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", complete = false, taskType = "Task" });
-            _todoList.Add(new ToDo() { ID = 5, dueDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", complete = false, taskType = "Task" });
-            _todoList.Add(new ToDo() { ID = 6, dueDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", complete = false, taskType = "Task" });
-            _todoList.Add(new ToDo() { ID = 7, dueDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", complete = false, taskType = "Task" });
+            _todoList = new ObservableCollection<Todo>();
+            _todoList.Add(new Todo() { todoID = 1, todoDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 2, todoDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 3, todoDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 4, todoDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 5, todoDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 6, todoDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 7, todoDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", completed = false });
 
             InitializeComponent();
         }
@@ -224,14 +224,14 @@ namespace ERP.Views
             set { if (value != null) { _selectedContact = value; OnPropertyChanged("selectedContact"); } }
         }
 
-        private ObservableCollection<ToDo> _todoList;
-        public ObservableCollection<ToDo> todoList
+        private ObservableCollection<Todo> _todoList;
+        public ObservableCollection<Todo> todoList
         {
-            get { return _todoList ?? (_todoList = new ObservableCollection<ToDo>()); }
+            get { return _todoList ?? (_todoList = new ObservableCollection<Todo>()); }
         }
 
-        private ToDo _selectedToDo;
-        public ToDo selectedToDo
+        private Todo _selectedToDo;
+        public Todo selectedToDo
         {
             get { return _selectedToDo; }
             set { if (value != null) { _selectedToDo = value; } }
@@ -452,7 +452,7 @@ namespace ERP.Views
         {
             DeleteDialog.IsOpen = true;
         }
-        
+
         private void SaveTask_Click(object sender, RoutedEventArgs e)
         {
             //todoList.Remove(quoteSubcontractorList.SingleOrDefault(x => x.ID == selectedSubcontractor.ID));

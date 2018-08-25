@@ -118,7 +118,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\StartupController.cs" />
+    <Compile Include="Controllers\TodoController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Control\AccountsOnHold.xaml.cs">
       <DependentUpon>AccountsOnHold.xaml</DependentUpon>
     </Compile>
@@ -181,7 +184,7 @@
     <Compile Include="Models\StepperData.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierItem.cs" />
-    <Compile Include="Models\ToDo.cs" />
+    <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Resources\ColourGenerator.cs" />
     <Compile Include="Settings.cs" />
@@ -242,8 +245,8 @@
     <Compile Include="Views\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TasksView.xaml.cs">
-      <DependentUpon>TasksView.xaml</DependentUpon>
+    <Compile Include="Views\TodosView.xaml.cs">
+      <DependentUpon>TodosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
@@ -372,7 +375,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TasksView.xaml">
+    <Page Include="Views\TodosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -400,13 +403,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Resources\test.sqlite" />
+    <Resource Include="Resources\test.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

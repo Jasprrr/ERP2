@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Collections.ObjectModel;
-using System.Linq;
-using ERP.Models;
-using System.Text;
+﻿
 using System.Threading.Tasks;
 using System.Data;
 using System.Globalization;
@@ -16,7 +10,9 @@ namespace ERP.Controllers
 {
     internal static class AccountsController
     {
-        private static string connString = string.Format("Data Source={0}", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\test.sqlite"));
+        //private static string connString = string.Format("Data Source={0}", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\test.sqlite"));
+
+        private static string connString = string.Format("Data Source={0}", @"C:\users\Jasper\Desktop\test.sqlite");
 
         public static ObservableCollection<Account> GetAccounts(string search = null)
         {
@@ -180,7 +176,7 @@ namespace ERP.Controllers
                 {
                     command = new SQLiteCommand("UPDATE Accounts " +
                                                 "SET Account_Name=@accountName, " +
-                                                    "Account_Code=@accountCode, " + 
+                                                    "Account_Code=@accountCode, " +
                                                     "Date_Modified=@dateModified, " +
                                                     "Description=@description, " +
                                                     "Phone_1=@phone1, " +

@@ -16,7 +16,8 @@ namespace ERP.Models
         
         public int userID { get; set; }
         public string login { get; set; }
-        public SecureString password { get; set; }
+        public string salt { get; set; }
+        public string password { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }

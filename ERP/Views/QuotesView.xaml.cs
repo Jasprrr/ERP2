@@ -41,10 +41,10 @@ namespace ERP.Views
             _quoteItemList.Add(new QuoteItem() { itemCode = "123-ABC", cost = 250, quantity = 4, line = 11, batchNumber = "789-XYZ" });
         }
 
-        private ObservableCollection<ToDo> _todoList;
-        public ObservableCollection<ToDo> todoList
+        private ObservableCollection<Todo> _todoList;
+        public ObservableCollection<Todo> todoList
         {
-            get { return _todoList ?? (_todoList = new ObservableCollection<ToDo>()); }
+            get { return _todoList ?? (_todoList = new ObservableCollection<Todo>()); }
         }
 
         private Account _selectedItem;

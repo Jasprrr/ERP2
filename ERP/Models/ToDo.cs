@@ -8,19 +8,25 @@ using System.Threading.Tasks;
 
 namespace ERP.Models
 {
-    public class ToDo : INotifyPropertyChanged
+    public class Todo : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public int ID { get; set; }
-        public DateTime dueDate { get; set; }
+        public int todoID { get; set; }
+        public DateTime todoDate { get; set; }
         public int accountID { get; set; }
         public string account { get; set; }
-
+        public int supplierID { get; set; }
+        public string supplier { get; set; }
+        public int quoteID { get; set; }
+        public int orderID { get; set; }
+        public string subject { get; set; }
         public string description { get; set; }
-        public string taskType { get; set; }
-        public bool complete { get; set; }
-        public string userID { get; set; }
+        public bool completed { get; set; }
+        public DateTime dateCompleted { get; set; }
+        public DateTime dateModified { get; set; }
+        public DateTime dateCreated { get; set; }
+        public int userID { get; set; }
         public string user { get; set; }
 
         protected void OnPropertyChanged(string name)

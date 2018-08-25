@@ -40,6 +40,7 @@ namespace ERP
 
         public MainWindow()
         {
+            //Debug.WriteLine(AppDomain.CurrentDomain.BaseDirectory.ToString());
             InitializeComponent();
             //Debug.Print(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
             //SQLiteConnection.CreateFile("ERPData.sqlite");
@@ -160,7 +161,7 @@ namespace ERP
                     MainFrame.Navigate(new CalendarView());
                     break;
                 case "Tasks":
-                    MainFrame.Navigate(new TasksView());
+                    MainFrame.Navigate(new TodosView());
                     break;
                 case "Customers":
                     MainFrame.Navigate(new AccountsView(searchFor));

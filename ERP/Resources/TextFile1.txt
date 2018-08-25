@@ -83,7 +83,7 @@
                                                                                                TextTrimming="CharacterEllipsis" />
                                                                                     <TextBlock x:Name="taskDetail"
                                                                                                Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                                                                               Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                                               Text="{Binding todoDate, StringFormat=\{0:D\}}" />
                                                                                 </StackPanel>
                                                                                 -->
                                                     <!--<Button Grid.Column="2" 

@@ -53,7 +53,7 @@
                                                 <ColumnDefinition Width="50" />
                                                 <ColumnDefinition Width="206" />
                                             </Grid.ColumnDefinitions>
-                                            <CheckBox IsChecked="{Binding complete}"
+                                            <CheckBox IsChecked="{Binding completed}"
                                                       Grid.Column="0"
                                                       HorizontalAlignment="Center"
                                                       Cursor="Hand"
@@ -331,7 +331,7 @@
                                                 <Grid>
                                                     <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                 materialDesign:HintAssist.Hint="Due date"
-                                                                Text="{Binding selectedQuote.dueDate}"
+                                                                Text="{Binding selectedQuote.todoDate}"
                                                                 HorizontalAlignment="Left" />
                                                     <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                              materialDesign:HintAssist.Hint="Success chance"
@@ -712,8 +712,8 @@
                                                         <TextBlock x:Name="taskDetail"
                                                                    Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                    Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                   Visibility="{Binding dueDate, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                   Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                                   Text="{Binding todoDate, StringFormat=\{0:D\}}" />
                                                     </StackPanel>
                                                     <Border Grid.Column="2"
                                                             HorizontalAlignment="Center"
@@ -784,8 +784,8 @@
                                                         <TextBlock x:Name="taskDetail"
                                                                    Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                    Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                   Visibility="{Binding dueDate, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                   Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                                   Text="{Binding todoDate, StringFormat=\{0:D\}}" />
                                                     </StackPanel>
                                                     <Border Grid.Column="2"
                                                             VerticalAlignment="Center"
@@ -861,8 +861,8 @@
                                                         <TextBlock x:Name="taskDetail"
                                                                    Style="{StaticResource MaterialDesignBody1TextBlock}"
                                                                    Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                   Visibility="{Binding dueDate, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding dueDate, StringFormat=\{0:D\}}" />
+                                                                   Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                                   Text="{Binding todoDate, StringFormat=\{0:D\}}" />
                                                     </StackPanel>
                                                     <Border Grid.Column="2"
                                                             HorizontalAlignment="Center"

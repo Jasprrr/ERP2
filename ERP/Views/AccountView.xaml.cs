@@ -38,7 +38,7 @@ namespace ERP.Views
         public AccountView(int accountID = 0)
         {
             //Debug.Print(accountID.ToString());
-            _todoList = new ObservableCollection<ToDo>();
+            _todoList = new ObservableCollection<Todo>();
             _contactList = new ObservableCollection<Contact>();
             _activityList = new ObservableCollection<Activity>();
             selectedAccount = new Account();
@@ -65,9 +65,6 @@ namespace ERP.Views
             _activityList.Add(new Activity() { activityDate = new DateTime(2008, 3, 3, 13, 30, 0), activityID = 2, user = "Jasper Friend", contact = "Jasper Friend", colour = "#4caf50", activity = "order", icon = "Send", description = "Integer turpis velit, pharetra eget dictum at, aliquam quis felis. Morbi non metus nisl. Praesent tempor ante nec sem mollis, in volutpat mauris tincidunt. Vivamus rhoncus, metus a suscipit convallis, diam diam aliquam velit, at fermentum quam ex vitae ex. " });
             _activityList.Add(new Activity() { activityDate = new DateTime(2008, 4, 4, 14, 30, 0), activityID = 4, user = "Jasper Friend", contact = "Jasper Friend", colour = "#2196f3", activity = "quote", icon = "FormatQuoteClose", description = "lorem ipsum dolor sit amet, consectetur adipiscing elit." });
             _activityList.Add(new Activity() { activityDate = new DateTime(2008, 5, 5, 15, 30, 0), activityID = 1, user = "Jasper Friend", contact = "Jasper Friend", colour = "#ff9800", activity = "Task", icon = "CalendarCheck", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien." });
-
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 2, 2), account = "Acc 02", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien.", complete = false, taskType = "Task"});
-            _todoList.Add(new ToDo() { dueDate = new DateTime(2008, 3, 3), account = "Acc 03", description = "Fusce scelerisque dapibus ipsum, vitae auctor lectus sollicitudin at. In sed magna imperdiet, commodo magna id, aliquam sapien.", complete = false, taskType = "Task" });
         }
 
         private ObservableCollection<Activity> _activityList;
@@ -76,10 +73,10 @@ namespace ERP.Views
             get { return _activityList ?? (_activityList = new ObservableCollection<Activity>()); }
         }
 
-        private ObservableCollection<ToDo> _todoList;
-        public ObservableCollection<ToDo> todoList
+        private ObservableCollection<Todo> _todoList;
+        public ObservableCollection<Todo> todoList
         {
-            get { return _todoList ?? (_todoList = new ObservableCollection<ToDo>()); }
+            get { return _todoList ?? (_todoList = new ObservableCollection<Todo>()); }
         }
 
         private ObservableCollection<Contact> _contactList;
