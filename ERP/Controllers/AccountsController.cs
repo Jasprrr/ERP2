@@ -1,10 +1,14 @@
-﻿
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Data;
 using System.Globalization;
 using System.Diagnostics;
 using System.Windows;
 using System.IO;
+using System.Collections.ObjectModel;
+using ERP.Models;
+using System.Data.SQLite;
+using System.Collections.Generic;
+using System;
 
 namespace ERP.Controllers
 {
