@@ -170,6 +170,7 @@ namespace ERP
                     MainFrame.Navigate(new ContactsView());
                     break;
                 case "Suppliers":
+                    MainFrame.Navigate(new SuppliersView());
                     break;
                 case "Standard":
                     break;

@@ -1,4 +1,4 @@
-﻿<Page x:Class="ERP.Views.TodosView"
+﻿<Page x:Class="ERP.Views.SuppliersView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -45,13 +45,13 @@
                                     Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                                     CommandParameter="{x:Static Dock.Right}">
                                 <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                         Kind="ArrowLeft" />
+                                                         Kind="ArrowRight" />
                             </Button>
                             <Button Style="{StaticResource MaterialDesignMidForegroundButton}"
                                     Grid.Column="2"
                                     ToolTip="Edit">
                                 <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                         Kind="Pencil" />
+                                                         Kind="Launch" />
                             </Button>
                             <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidForegroundPopupBox}"
                                                      Grid.Column="3"
@@ -66,7 +66,7 @@
                         </Grid>
                         <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                                    Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
-                                   Text="A really long name"
+                                   Text="{Binding selectedAccount.accountName}"
                                    Grid.Row="1"
                                    Margin="24,0,20,16"
                                    Width="292"
@@ -78,7 +78,7 @@
                     <StackPanel Grid.Row="2"
                                 HorizontalAlignment="Center"
                                 Margin="0,10,0,0">
-                        <Grid>
+                        <Grid Visibility="{Binding selectedAccount.phone1, Converter={StaticResource NullableToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
                                 <ColumnDefinition Width="auto" />
@@ -87,9 +87,9 @@
                                                      Kind="Phone" />
                             <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
                                        Grid.Column="1"
-                                       Text="0117 954 9512" />
+                                       Text="{Binding selectedAccount.phone1}" />
                         </Grid>
-                        <Grid>
+                        <Grid Visibility="{Binding selectedAccount.phone1, Converter={StaticResource NullableToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
                                 <ColumnDefinition Width="auto" />
@@ -98,9 +98,9 @@
                                                      Kind="Phone" />
                             <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
                                        Grid.Column="1"
-                                       Text="0117 954 9512" />
+                                       Text="{Binding selectedAccount.phone1}" />
                         </Grid>
-                        <Grid>
+                        <Grid Visibility="{Binding selectedAccount.phone1, Converter={StaticResource NullableToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
                                 <ColumnDefinition Width="auto" />
@@ -109,9 +109,9 @@
                                                      Kind="Cellphone" />
                             <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
                                        Grid.Column="1"
-                                       Text="0745 6456 456" />
+                                       Text="{Binding selectedAccount.phone1}" />
                         </Grid>
-                        <Grid>
+                        <Grid Visibility="{Binding selectedAccount.email, Converter={StaticResource NullableToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
                                 <ColumnDefinition Width="auto" />
@@ -121,9 +121,9 @@
                             <TextBlock Style="{StaticResource MaterialDesignCustomHyperLinkFull}"
                                        Grid.Column="1"
                                        Cursor="Hand"
-                                       Text="jasper@schoolsmailing.co.uk" />
+                                       Text="{Binding selectedAccount.email}" />
                         </Grid>
-                        <Grid>
+                        <Grid Visibility="{Binding selectedAccount.email, Converter={StaticResource NullableToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
                                 <ColumnDefinition Width="auto" />
@@ -132,7 +132,7 @@
                                                      Kind="Email" />
                             <TextBlock Style="{StaticResource MaterialDesignCustomHyperLinkFull}"
                                        Grid.Column="1"
-                                       Text="jasper@schoolsmailing.co.uk" />
+                                       Text="{Binding selectedAccount.email}" />
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -152,8 +152,7 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:DrawerHost.RightDrawerContent>
-            <materialDesign:Card Style="{StaticResource MaterialDesignCard}"
-                                 BorderThickness="1"
+            <materialDesign:Card BorderThickness="1"
                                  SnapsToDevicePixels="True"
                                  VerticalAlignment="Stretch"
                                  VerticalContentAlignment="Stretch"
@@ -170,20 +169,19 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Tasks"
+                        <TextBlock Text="Accounts"
                                    VerticalAlignment="Center"
-                                   Style="{StaticResource MaterialDesignTitleTextBlock}" />
-                        <Button x:Name="NewTask"
+                                   Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                   Foreground="{DynamicResource MaterialDesignBody}" />
+                        <Button x:Name="NewAccount"
                                 Style="{StaticResource MaterialDesignFlatIconButton}"
-                                ToolTip="New task"
+                                ToolTip="New account"
                                 Grid.Column="1"
-                                Panel.ZIndex="1"
-                                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                CommandParameter="{x:Static Dock.Right}">
+                                Click="NewAccount_Click">
                             <materialDesign:PackIcon Kind="Plus"
-                                                     Height="24"
-                                                     Width="24" />
+                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
                                                  Grid.Column="2"
@@ -199,65 +197,94 @@
                                 <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
                                           Padding="8,8,16,8"
                                           IsChecked="True"
-                                          Content="Incomplete" />
+                                          Content="Calls" />
                                 <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
                                           Padding="8,8,16,8"
                                           IsChecked="True"
-                                          Content="Complete" />
+                                          Content="Tasks" />
+                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                          Padding="8,8,16,8"
+                                          IsChecked="True"
+                                          Content="Quotes" />
+                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                          Padding="8,8,16,8"
+                                          IsChecked="True"
+                                          Content="Orders" />
                             </StackPanel>
                         </materialDesign:PopupBox>
+                        <Button x:Name="RefreshAccounts"
+                                Style="{StaticResource MaterialDesignFlatIconButton}"
+                                ToolTip="New account"
+                                Grid.Column="3"
+                                Click="RefreshAccounts_Click">
+                            <materialDesign:PackIcon Kind="Refresh"
+                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
+                        </Button>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <DataGrid ItemsSource="{Binding todoList}"
-                                  SelectedItem="{Binding selectedItem}"
+                        <DataGrid ItemsSource="{Binding accountList}"
+                                  SelectedItem="{Binding selectedAccount}"
                                   Style="{StaticResource MaterialDesignGrid}"
                                   CellStyle="{StaticResource MaterialDesignCell}"
                                   RowStyle="{StaticResource MaterialDesignRow}"
+                                  MouseLeftButtonUp="DataGrid_MouseLeftButtonUp"
                                   CanUserAddRows="False"
                                   ScrollViewer.CanContentScroll="True"
-                                  VerticalContentAlignment="Stretch"
-                                  VerticalScrollBarVisibility="Visible">
+                                  VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
-                                <DataGridCheckBoxColumn Binding="{Binding completed}"
-                                                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-                                                        CanUserResize="False"
-                                                        CanUserSort="False">
-                                    <DataGridCheckBoxColumn.Header>
-                                        <!--padding to allow hit test to pass thru for sorting -->
-                                        <Border Background="Transparent"
-                                                HorizontalAlignment="Center">
-                                            <CheckBox HorizontalAlignment="Center"
-                                                      DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext}"
-                                                      Margin="4,-2" />
-                                        </Border>
-                                    </DataGridCheckBoxColumn.Header>
-                                </DataGridCheckBoxColumn>
-                                <materialDesign:MaterialDataGridTextColumn x:Name="todoDate"
-                                                                           Binding="{Binding todoDate}"
-                                                                           Header="Due date"
+                                <DataGridTemplateColumn x:Name="itemButton"
+                                                        materialDesign:DataGridAssist.CellPadding="0"
+                                                        IsReadOnly="True"
+                                                        CanUserResize="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="EditAccount"
+                                                    Style="{StaticResource MaterialDesignGridButton}"
+                                                    Click="EditAccount_Click"
+                                                    Margin="0,-7">
+                                                <materialDesign:PackIcon Kind="Pencil"
+                                                                         Width="16"
+                                                                         Height="16"
+                                                                         VerticalContentAlignment="Center"
+                                                                         HorizontalContentAlignment="Center" />
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountCode"
+                                                                           Binding="{Binding accountCode}"
+                                                                           Header="A/C"
                                                                            SortDirection="Ascending"
                                                                            Width="auto" />
-                                <materialDesign:MaterialDataGridTextColumn x:Name="Account"
-                                                                           Binding="{Binding account}"
-                                                                           Header="Account"
-                                                                           Width="*" />
-                                <materialDesign:MaterialDataGridTextColumn x:Name="Description"
-                                                                           Binding="{Binding description}"
-                                                                           Header="Description"
-                                                                           Width="3*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="AccountName"
+                                                                           Binding="{Binding accountName}"
+                                                                           Header="Name"
+                                                                           Width="2*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Telephone"
+                                                                           Binding="{Binding phone1}"
+                                                                           Header="Telephone"
+                                                                           Width="1*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Email"
+                                                                           Binding="{Binding email}"
+                                                                           Header="Email"
+                                                                           Width="1*" />
+                                <materialDesign:MaterialDataGridTextColumn x:Name="Status"
+                                                                           Binding="{Binding status}"
+                                                                           Header="Status"
+                                                                           MinWidth="100"
+                                                                           Width="150" />
                                 <DataGridTemplateColumn x:Name="userImage"
                                                         materialDesign:DataGridAssist.CellPadding="0"
                                                         IsReadOnly="True"
                                                         CanUserResize="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Border Width="26"
-                                                    Height="26"
-                                                    CornerRadius="13"
+                                            <Border Width="20"
+                                                    Height="20"
+                                                    CornerRadius="10"
                                                     VerticalAlignment="Center"
                                                     BorderBrush="#FFC5C5C5"
-                                                    Margin="0,-10">
+                                                    Margin="0,-5">
                                                 <Border.Background>
                                                     <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
                                                 </Border.Background>

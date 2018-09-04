@@ -243,6 +243,25 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="userImage"
+                                                        materialDesign:DataGridAssist.CellPadding="0"
+                                                        IsReadOnly="True"
+                                                        CanUserResize="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Width="26"
+                                                    Height="26"
+                                                    CornerRadius="13"
+                                                    VerticalAlignment="Center"
+                                                    BorderBrush="#FFC5C5C5"
+                                                    Margin="0,-10">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
+                                                </Border.Background>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <materialDesign:MaterialDataGridTextColumn x:Name="ContactName"
                                                                            Binding="{Binding fullName}"
                                                                            Header="Contact"

@@ -51,12 +51,12 @@ namespace ERP.Controllers
                         account = reader["Account_Name"].ToString(),
                         supplierID = int.Parse(reader["Supplier_ID"].ToString()),
                         supplier = reader["Supplier_Name"].ToString(),
-                        //subject = reader["Subject"].ToString(),
+                        subject = reader["Subject"].ToString(),
                         description = reader["Description"].ToString(),
                         completed = bool.Parse(reader["Completed"].ToString()),
                         dateCompleted = DateTime.Parse(reader["Date_Completed"].ToString()),
                         dateModified = DateTime.Parse(reader["Date_Modified"].ToString()),
-                        //dateCreated = DateTime.Parse(reader["Date_Created"].ToString()),
+                        dateCreated = DateTime.Parse(reader["Date_Created"].ToString()),
                         user = reader["User"].ToString(),
                         userID = int.Parse(reader["User_ID"].ToString())
                     });

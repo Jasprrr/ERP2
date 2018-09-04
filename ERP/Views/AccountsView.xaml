@@ -273,6 +273,25 @@
                                                                            Header="Status"
                                                                            MinWidth="100"
                                                                            Width="150" />
+                                <DataGridTemplateColumn x:Name="userImage"
+                                                        materialDesign:DataGridAssist.CellPadding="0"
+                                                        IsReadOnly="True"
+                                                        CanUserResize="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Width="20"
+                                                    Height="20"
+                                                    CornerRadius="10"
+                                                    VerticalAlignment="Center"
+                                                    BorderBrush="#FFC5C5C5"
+                                                    Margin="0,-5">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
+                                                </Border.Background>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
