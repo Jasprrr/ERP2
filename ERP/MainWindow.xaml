@@ -47,7 +47,7 @@
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <Button x:Name="Back"
-                                    Style="{StaticResource MaterialDesignMidForegroundButton}"
+                                    Style="{DynamicResource MaterialDesignMidForegroundButton}"
                                     ToolTip="Close"
                                     Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                                     CommandParameter="{x:Static Dock.Right}">
@@ -258,12 +258,21 @@
                                                          Style="{StaticResource MaterialDesignButtonIcon}" />
                             </materialDesign:Badged>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="5"
-                                ToolTip="Stage forward">
-                            <materialDesign:PackIcon Kind="Forward"
-                                                     Style="{StaticResource MaterialDesignButtonIcon}" />
-                        </Button>
+                        <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
+                                                 Grid.Column="5"
+                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                 StaysOpen="True">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                                         Style="{StaticResource MaterialDesignButtonIcon}" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <StackPanel>
+                                <Button Content="Settings" />
+                                <Separator />
+                                <Button Content="Exit"
+                                        Click="Exit_Click" />
+                            </StackPanel>
+                        </materialDesign:PopupBox>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                                 Grid.Column="6">
                             <materialDesign:PackIcon Kind="Delete"

@@ -31,12 +31,12 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid Margin="0,8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <Button x:Name="Back"
@@ -141,7 +141,6 @@
                             </Grid.ColumnDefinitions>
                             <materialDesign:PackIcon Style="{StaticResource MaterialDesignTextBlockIcon}"
                                                      Kind="FileDocumentBox" />
-
                             <TextBlock Style="{StaticResource MaterialDesignCustomTextBlockFull}"
                                        Grid.Column="1"
                                        Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non risus maximus, dictum neque vel, varius dolor. Pellentesque accumsan venenatis velit quis vulputate. Vestibulum ornare massa ac lacus lobortis, id mollis leo iaculis. Maecenas faucibus facilisis dolor, id aliquet lectus laoreet at. Praesent sit amet quam quis massa sollicitudin facilisis non sed neque. Donec tincidunt tellus at lobortis iaculis. Vestibulum iaculis nibh et dui tincidunt interdum. Vestibulum eget eros tortor. Proin eu lobortis nulla, vel consequat nisi. Morbi ante velit, posuere vel odio vitae, consequat lobortis odio. Sed euismod tempus volutpat. Suspendisse suscipit massa eu lorem pretium accumsan. Aliquam erat volutpat."
