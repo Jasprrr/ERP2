@@ -658,6 +658,10 @@
                         Value="Top" />
                 <Setter Property="HorizontalAlignment"
                         Value="Center" />
+                <Setter Property="materialDesign:RippleAssist.IsCentered"
+                        Value="True" />
+                <Setter Property="materialDesign:RippleAssist.ClipToBounds"
+                        Value="false" />
             </Style>
 
             <Style x:Key="MaterialDesignCell"
@@ -682,11 +686,11 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="MaterialDesignRow"
+            <!--<Style x:Key="MaterialDesignRow"
                    TargetType="{x:Type DataGridRow}"
                    BasedOn="{StaticResource MaterialDesignDataGridRow}">
                 <Style.Triggers>
-                    <!--<Trigger Property="IsSelected"
+                    --><!--<Trigger Property="IsSelected"
                              Value="true">
                         <Setter Property="Background"
                                 Value="Transparent" />
@@ -700,9 +704,9 @@
                                 Value="Transparent" />
                         <Setter Property="BorderBrush"
                                 Value="Transparent" />
-                    </Trigger>-->
+                    </Trigger>--><!--
                 </Style.Triggers>
-            </Style>
+            </Style>-->
 
             <!--Stepper-->
             <Style x:Name="StepperButton"
@@ -730,7 +734,7 @@
                                             <TextBlock x:Name="Label"
                                                        Padding="0,0,0,0"
                                                        Margin="4,0"
-                                                       Foreground="{StaticResource MaterialDesignBody}"
+                                                       Foreground="{DynamicResource MaterialDesignBody}"
                                                        Style="{DynamicResource MaterialDesignTitleTextBlock}"
                                                        Text="{TemplateBinding Label}"
                                                        FontSize="14" />
@@ -803,6 +807,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
                     <Setter.Value>
@@ -977,7 +982,193 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="MaterialDesignTabItem"
+
+            <!--<Style x:Key="MaterialDesignTopTabItem"
+                   TargetType="{x:Type TabItem}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource MaterialDesignBody}" />
+                <Setter Property="FocusVisualStyle"
+                        Value="{StaticResource FocusVisual}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot"
+                                  SnapsToDevicePixels="true">
+                                <Border x:Name="mainBorder"
+                                        Background="{DynamicResource PrimaryHueLightBrush}">
+                                    <Border x:Name="innerBorder"
+                                            BorderBrush="{DynamicResource PrimaryMidHueBrush}"
+                                            Background="{DynamicResource PrimaryHueLightBrush}"
+                                            BorderThickness="0,0,0,2"
+                                            Margin="0"
+                                            Opacity="0" />
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter"
+                                                  ContentSource="Header"
+                                                  Focusable="False"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="true" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Panel.ZIndex"
+                                            Value="1" />
+                                    <Setter Property="Opacity"
+                                            TargetName="innerBorder"
+                                            Value="1" />
+                                </MultiDataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>-->
+            
+            <Style x:Key="MaterialDesignBottomTabItem"
+                   TargetType="{x:Type TabItem}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource MaterialDesignBody}" />
+                <Setter Property="FocusVisualStyle"
+                        Value="{StaticResource FocusVisual}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot"
+                                  SnapsToDevicePixels="true">
+                                <Border x:Name="mainBorder"
+                                        Background="{DynamicResource PrimaryHueLightBrush}">
+                                    <Border x:Name="innerBorder"
+                                            BorderBrush="{DynamicResource PrimaryMidHueBrush}"
+                                            Background="{DynamicResource PrimaryHueLightBrush}"
+                                            BorderThickness="0,2,0,0"
+                                            Margin="0"
+                                            Opacity="0" />
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter"
+                                                  ContentSource="Header"
+                                                  Focusable="False"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="true" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Panel.ZIndex"
+                                            Value="1" />
+                                    <Setter Property="Opacity"
+                                            TargetName="innerBorder"
+                                            Value="1" />
+                                </MultiDataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style x:Key="MaterialDesignTopTabItem"
+                   TargetType="{x:Type TabItem}">
+                <Setter Property="FocusVisualStyle"
+                        Value="{StaticResource FocusVisual}" />
+                <Setter Property="Margin"
+                        Value="0" />
+                <Setter Property="Padding"
+                        Value="16,12,16,12" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot"
+                                  SnapsToDevicePixels="true"
+                                  Cursor="Hand">
+                                <Border x:Name="mainBorder"
+                                        Background="Transparent">
+                                    <Border x:Name="innerBorder"
+                                            Background="Transparent"
+                                            BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                            BorderThickness="0,0,0,2"
+                                            Margin="0"
+                                            Opacity="0" />
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter"
+                                                  ContentSource="Header"
+                                                  Focusable="False"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         SourceName="templateRoot"
+                                         Value="true">
+                                    <Setter Property="Background"
+                                            TargetName="mainBorder"
+                                            Value="{DynamicResource MaterialDesignFlatButtonClick}" />
+                                </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Foreground"
+                                            Value="{DynamicResource MaterialDesignBodyLight}" />
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="true" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Panel.ZIndex"
+                                            Value="1" />
+                                    <Setter Property="Opacity"
+                                            TargetName="innerBorder"
+                                            Value="1" />
+                                    <Setter Property="Foreground"
+                                            Value="{DynamicResource MaterialDesignBody}" />
+                                </MultiDataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style x:Key="MaterialDesignTabItemLight"
                    TargetType="{x:Type TabItem}">
                 <Setter Property="FocusVisualStyle"
                         Value="{StaticResource FocusVisual}" />

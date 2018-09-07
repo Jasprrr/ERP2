@@ -68,6 +68,8 @@ namespace ERP
             navigationMenu.Add(new NavigationItem { title = "Customers", icon = "Domain" });
             navigationMenu.Add(new NavigationItem { title = "Contacts", icon = "AccountMultiple" });
             navigationMenu.Add(new NavigationItem { title = "Suppliers", icon = "Palette" });
+            navigationMenu.Add(new NavigationItem { title = "Supplier contacts", icon = "AccountMultipleOutline" });
+            navigationMenu.Add(new NavigationItem { title = "Supplier items", icon = "Package" });
             navigationMenu.Add(new NavigationItem { title = "Standard items", icon = "Wrench" });
             navigationMenu.Add(new NavigationItem { title = "Quotes", icon = "FormatQuoteClose" });
             navigationMenu.Add(new NavigationItem { title = "Orders", icon = "Send" });
@@ -79,6 +81,15 @@ namespace ERP
             navigationMenu.Add(new NavigationItem { title = "NCRs", icon = "Alert" });
             navigationMenu.Add(new NavigationItem { title = "Reports", icon = "Finance" });
             navigationMenu.Add(new NavigationItem { title = "Settings", icon = "Settings" });
+
+            _todoList = new ObservableCollection<Todo>();
+            _todoList.Add(new Todo() { todoID = 1, todoDate = new DateTime(2008, 1, 1), account = "Acc 01", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 2, todoDate = new DateTime(2008, 2, 1), account = "Acc 02", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 3, todoDate = new DateTime(2008, 3, 1), account = "Acc 03", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 4, todoDate = new DateTime(2008, 4, 1), account = "Acc 04", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 5, todoDate = new DateTime(2008, 5, 1), account = "Acc 05", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 6, todoDate = new DateTime(2008, 6, 1), account = "Acc 06", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 7, todoDate = new DateTime(2008, 7, 1), account = "Acc 07", subject = "Lorem ipsum.", completed = false });
         }
 
         #region Variables
@@ -93,6 +104,13 @@ namespace ERP
         {
             get { return _selectedNavigationItem; }
             set { if (_selectedNavigationItem != value) { _selectedNavigationItem = value; OnPropertyChanged("selectedNavigationItem"); Debug.WriteLine("Reached"); } }
+        }
+
+        private ObservableCollection<Todo> _todoList;
+        public ObservableCollection<Todo> todoList
+        {
+            get { return _todoList; }
+            set { _todoList = value;  OnPropertyChanged("todoList"); }
         }
 
         private bool _menuExpanded;
@@ -128,8 +146,6 @@ namespace ERP
 
         private void NewQuote_Click(object sender, RoutedEventArgs e)
         {
-            var QuoteWindow = new QuoteView();
-            QuoteWindow.Show();
         }
 
         private void NewOrder_Click(object sender, RoutedEventArgs e)
@@ -172,7 +188,14 @@ namespace ERP
                 case "Suppliers":
                     MainFrame.Navigate(new SuppliersView());
                     break;
-                case "Standard":
+                case "Supplier contacts":
+                    MainFrame.Navigate(new SupplierContactsView());
+                    break;
+                case "Supplier items":
+                    MainFrame.Navigate(new SupplierItemsView());
+                    break;
+                case "Standard items":
+                    MainFrame.Navigate(new StandardItemsView());
                     break;
                 case "Quotes":
                     break;
@@ -205,5 +228,9 @@ namespace ERP
             Navigate(selectedNavigationItem.title, searchTerm);
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Drawer.IsRightDrawerOpen = !Drawer.IsRightDrawerOpen;
+        }
     }
 }

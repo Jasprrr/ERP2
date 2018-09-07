@@ -37,9 +37,9 @@ namespace ERP.Views
         {
             stepperQuoteCreated = new StepperData() { stage = 1, label = "Quote Created" };
             stepperQuoteClosed = new StepperData() { stage = 1, label = "Quote Closed" };
-            selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
+            selectedQuote = new Quote() { quoteID = 939, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
-            selectedQuote = new Quote() { quoteID = 1, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
+            selectedQuote = new Quote() { quoteID = 939, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
             _accountList = new ObservableCollection<Account>();
             _accountList.Add(new Account() { accountID = 1, accountName = "Bob Co." });

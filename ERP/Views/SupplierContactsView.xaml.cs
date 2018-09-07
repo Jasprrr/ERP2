@@ -16,26 +16,21 @@ using System.Windows.Shapes;
 namespace ERP.Views
 {
     /// <summary>
-    /// Interaction logic for SuppliersView.xaml
+    /// Interaction logic for SupplierContactsView.xaml
     /// </summary>
-    public partial class SuppliersView : Page
+    public partial class SupplierContactsView : Page
     {
-        public SuppliersView()
+        public SupplierContactsView()
         {
             InitializeComponent();
         }
 
-        private void NewSupplier_Click(object sender, RoutedEventArgs e)
+        private void NewSupplierContact_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void RefreshSuppliers_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EditSupplier_Click(object sender, RoutedEventArgs e)
+        private void EditSupplierContact_Click(object sender, RoutedEventArgs e)
         {
 
         }

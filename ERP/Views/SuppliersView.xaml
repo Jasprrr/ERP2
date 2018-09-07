@@ -171,15 +171,15 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Accounts"
+                        <TextBlock Text="Suppliers"
                                    VerticalAlignment="Center"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                    Foreground="{DynamicResource MaterialDesignBody}" />
-                        <Button x:Name="NewAccount"
+                        <Button x:Name="NewSupplier"
                                 Style="{StaticResource MaterialDesignFlatIconButton}"
-                                ToolTip="New account"
+                                ToolTip="New supplier"
                                 Grid.Column="1"
-                                Click="NewAccount_Click">
+                                Click="NewSupplier_Click">
                             <materialDesign:PackIcon Kind="Plus"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
@@ -216,7 +216,7 @@
                                 Style="{StaticResource MaterialDesignFlatIconButton}"
                                 ToolTip="New account"
                                 Grid.Column="3"
-                                Click="RefreshAccounts_Click">
+                                Click="RefreshSuppliers_Click">
                             <materialDesign:PackIcon Kind="Refresh"
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
@@ -226,7 +226,6 @@
                                   SelectedItem="{Binding selectedAccount}"
                                   Style="{StaticResource MaterialDesignGrid}"
                                   CellStyle="{StaticResource MaterialDesignCell}"
-                                  RowStyle="{StaticResource MaterialDesignRow}"
                                   MouseLeftButtonUp="DataGrid_MouseLeftButtonUp"
                                   CanUserAddRows="False"
                                   ScrollViewer.CanContentScroll="True"
@@ -238,9 +237,9 @@
                                                         CanUserResize="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="EditAccount"
+                                            <Button x:Name="EditSupplier"
                                                     Style="{StaticResource MaterialDesignGridButton}"
-                                                    Click="EditAccount_Click"
+                                                    Click="EditSupplier_Click"
                                                     Margin="0,-7">
                                                 <materialDesign:PackIcon Kind="Pencil"
                                                                          Width="16"

@@ -17,7 +17,7 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
         <Storyboard x:Key="ScaleSearchStoryboard">
-            <DoubleAnimation Duration="0:0:0.5"
+            <DoubleAnimation Duration="0:0:5"
                              From="0"
                              To="200"
                              Storyboard.TargetName="Search"
@@ -32,20 +32,172 @@
     <Grid>
         <materialDesign:DrawerHost x:Name="Drawer">
             <materialDesign:DrawerHost.RightDrawerContent>
-                <StackPanel Margin="16">
-                    <TextBlock Margin="4"
-                               HorizontalAlignment="Center">THE RIGHT STUFF</TextBlock>
+                <StackPanel Width="336">
+                    <Grid Grid.Row="0"
+                          Background="{DynamicResource PrimaryHueMidBrush}"
+                          MinHeight="160">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="Back"
+                                    Style="{StaticResource MaterialDesignMidForegroundButton}"
+                                    ToolTip="Close"
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Right}">
+                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                         Kind="ArrowRight" />
+                            </Button>
+                            <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidForegroundPopupBox}"
+                                                     Grid.Column="2"
+                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                     StaysOpen="True">
+                                <StackPanel>
+                                    <Button Content="Convert quote" />
+                                    <Button Content="Delete quote" />
+                                    <Button Content="Delete quote" />
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+                        </Grid>
+                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                   Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                   Text="Notifications"
+                                   Grid.Row="1"
+                                   Margin="24,0,20,16"
+                                   Width="292"
+                                   VerticalAlignment="Bottom"
+                                   MinHeight="40"
+                                   TextWrapping="Wrap"
+                                   MaxHeight="82" />
+                    </Grid>
+                    <TabControl Style="{StaticResource MaterialDesignTabControl}">
+                        <TabItem Style="{DynamicResource MaterialDesignTopTabItem}"
+                                 Height="48"
+                                 MinWidth="100">
+                            <TabItem.Header>
+                                <TextBlock Text="MESSAGES"
+                                           Style="{StaticResource MaterialDesignButtonTextBlock}" />
+                            </TabItem.Header>
+                            <ListView x:Name="MessageList"
+                                      Style="{StaticResource MaterialDesignPreviewListView}"
+                                      ItemsSource="{Binding todoList}">
+                                <ListView.Template>
+                                    <ControlTemplate>
+                                        <ItemsPresenter />
+                                    </ControlTemplate>
+                                </ListView.Template>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="50" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border Width="26"
+                                                    Height="26"
+                                                    CornerRadius="13"
+                                                    VerticalAlignment="Center"
+                                                    BorderBrush="#FFC5C5C5"
+                                                    Margin="0,-10">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="/ERP;component/Resources/grey_silhouette.png" />
+                                                </Border.Background>
+                                            </Border>
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="8,0,0,0">
+                                                <TextBlock x:Name="taskHeader"
+                                                           Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                           Text="{Binding subject}" />
+                                                <TextBlock x:Name="taskSubheader"
+                                                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                           Visibility="{Binding account, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                           Text="{Binding account}"
+                                                           TextTrimming="CharacterEllipsis" />
+                                                <TextBlock x:Name="taskDetail"
+                                                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                           Foreground="{StaticResource MaterialDesignColumnHeader}"
+                                                           Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                           Text="{Binding todoDate, StringFormat=\{0:D\}}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </TabItem>
+                        <TabItem Style="{DynamicResource MaterialDesignTopTabItem}"
+                                 Height="48"
+                                 MinWidth="100">
+                            <TabItem.Header>
+                                <TextBlock Text="TASKS"
+                                           Style="{StaticResource MaterialDesignButtonTextBlock}" />
+                            </TabItem.Header>
+                            <ListView x:Name="CallList"
+                                      Style="{StaticResource MaterialDesignPreviewListView}"
+                                      ItemsSource="{Binding todoList}">
+                                <ListView.Template>
+                                    <ControlTemplate>
+                                        <ItemsPresenter />
+                                    </ControlTemplate>
+                                </ListView.Template>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="50" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0"
+                                                      HorizontalAlignment="Center"
+                                                      Cursor="Hand"
+                                                      VerticalAlignment="Center"
+                                                      Tag="{Binding ID}"
+                                                      Panel.ZIndex="1" />
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="8,0,0,0">
+                                                <TextBlock x:Name="taskHeader"
+                                                           Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                           Text="{Binding subject}" />
+                                                <TextBlock x:Name="taskSubheader"
+                                                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                           Visibility="{Binding account, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                           Text="{Binding account}"
+                                                           TextTrimming="CharacterEllipsis" />
+                                                <TextBlock x:Name="taskDetail"
+                                                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                           Foreground="{StaticResource MaterialDesignColumnHeader}"
+                                                           Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
+                                                           Text="{Binding todoDate, StringFormat=\{0:D\}}" />
+                                            </StackPanel>
+                                            <Button Grid.Column="2"
+                                                    x:Name="NewTas2k"
+                                                    Style="{StaticResource MaterialDesignFlatIconButton}"
+                                                    ToolTip="New item"
+                                                    Margin="0,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                                <materialDesign:PackIcon Kind="Sleep"
+                                                                         Height="18"
+                                                                         Width="18" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </TabItem>
+                    </TabControl>
                     <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                            CommandParameter="{x:Static Dock.Right}"
                             Margin="4"
                             HorizontalAlignment="Center"
-                            Style="{DynamicResource MaterialDesignFlatButton}">
-                        CLOSE THIS
-                    </Button>
-                    <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            Style="{DynamicResource MaterialDesignFlatButton}">
+                            Style="{DynamicResource MaterialDesignFlatButton}"
+                            VerticalAlignment="Bottom">
                         CLOSE ALL
                     </Button>
                 </StackPanel>
@@ -98,7 +250,8 @@
                                                      Style="{StaticResource MaterialDesignButtonIcon}" />
                         </Button>
                         <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
-                                Grid.Column="4">
+                                Grid.Column="4"
+                                Click="Button_Click">
                             <materialDesign:Badged Grid.Column="3"
                                                    Badge="102">
                                 <materialDesign:PackIcon Kind="Bell"
@@ -122,7 +275,7 @@
                                                  StaysOpen="True">
                             <StackPanel>
                                 <Button x:Name="Settings"
-                                        Content="Settings"/>
+                                        Content="Settings" />
                                 <Separator />
                                 <Button x:Name="Exit"
                                         Content="Exit"

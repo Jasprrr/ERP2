@@ -226,7 +226,6 @@
                                   SelectedItem="{Binding selectedAccount}"
                                   Style="{StaticResource MaterialDesignGrid}"
                                   CellStyle="{StaticResource MaterialDesignCell}"
-                                  RowStyle="{StaticResource MaterialDesignRow}"
                                   MouseLeftButtonUp="DataGrid_MouseLeftButtonUp"
                                   CanUserAddRows="False"
                                   ScrollViewer.CanContentScroll="True"
