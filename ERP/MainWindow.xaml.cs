@@ -198,6 +198,7 @@ namespace ERP
                     MainFrame.Navigate(new StandardItemsView());
                     break;
                 case "Quotes":
+                    MainFrame.Navigate(new TestView());
                     break;
                 case "Orders":
                     break;

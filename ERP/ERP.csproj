@@ -153,9 +153,11 @@
     <Compile Include="Control\Stepper.cs" />
     <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Converters\HexToBrushConverter.cs" />
+    <Compile Include="Converters\NamedObjectToVisibilityConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Converters\TextFieldHintVisibilityConverter.cs" />
+    <Compile Include="Converters\UnnamedObjectToVisibilityConverter.cs" />
     <Compile Include="Domain\CommandImplentation.cs" />
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
     <Compile Include="Models\Accident.cs" />

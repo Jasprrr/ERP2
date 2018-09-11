@@ -686,28 +686,6 @@
                 </Style.Triggers>
             </Style>
 
-            <!--<Style x:Key="MaterialDesignRow"
-                   TargetType="{x:Type DataGridRow}"
-                   BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                <Style.Triggers>
-                    --><!--<Trigger Property="IsSelected"
-                             Value="true">
-                        <Setter Property="Background"
-                                Value="Transparent" />
-                        <Setter Property="BorderBrush"
-                                Value="Transparent" />
-                    </Trigger>-->
-
-                    <!--<Trigger Property="IsMouseOver"
-                             Value="true">
-                        <Setter Property="Background"
-                                Value="Transparent" />
-                        <Setter Property="BorderBrush"
-                                Value="Transparent" />
-                    </Trigger>--><!--
-                </Style.Triggers>
-            </Style>-->
-
             <!--Stepper-->
             <Style x:Name="StepperButton"
                    TargetType="{x:Type CustomControls:Stepper}">

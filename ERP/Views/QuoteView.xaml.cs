@@ -37,7 +37,6 @@ namespace ERP.Views
         {
             stepperQuoteCreated = new StepperData() { stage = 1, label = "Quote Created" };
             stepperQuoteClosed = new StepperData() { stage = 1, label = "Quote Closed" };
-            selectedQuote = new Quote() { quoteID = 939, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
             selectedQuote = new Quote() { quoteID = 939, dateCreated = DateTime.Now, cost = 35, accountName = "Jasper Co.", billingAddress1 = "123 Fake Street" };
 
@@ -64,20 +63,15 @@ namespace ERP.Views
             _departments.Add(new Department() { departmentID = 10, department = "Engraving", nominalCode = 4090, rateCost = (decimal)10.00, initalCost = 0 });
             _departments.Add(new Department() { departmentID = 11, department = "Printing", nominalCode = 4099, rateCost = (decimal)11.00, initalCost = 0 });
 
+            quoteTimeList = new ObservableCollection<QuoteTime>();
+            quoteTimeList.Add(new QuoteTime() { selected = true, timeID = 1, line = 1, department = "Masking", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)1.2, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4010 });
+            quoteTimeList.Add(new QuoteTime() { selected = false, timeID = 2, line = 2, department = "Alocrom", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)3.4, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4020 });
+            quoteTimeList.Add(new QuoteTime() { selected = true, timeID = 3, line = 3, department = "Iridite", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)5.6, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4030 });
+            quoteTimeList.Add(new QuoteTime() { selected = false, timeID = 4, line = 4, department = "Printing", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)7.8, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4040 });
+            quoteTimeList.Add(new QuoteTime() { selected = true, timeID = 5, line = 5, department = "Engraving", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)9.0, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4050 });
+
             _userList = new ObservableCollection<User>();
             _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
-            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
-            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
-            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
-            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
-            _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
-
-            _supplierList = new ObservableCollection<Supplier>();
-            _supplierList.Add(new Supplier() { ID = 1, name = "Supplier 1" });
-            _supplierList.Add(new Supplier() { ID = 2, name = "Supplier 2" });
-            _supplierList.Add(new Supplier() { ID = 3, name = "Supplier 3" });
-            _supplierList.Add(new Supplier() { ID = 4, name = "Supplier 4" });
-            _supplierList.Add(new Supplier() { ID = 5, name = "Supplier 5" });
 
             _quoteItemList = new ObservableCollection<QuoteItem>();
             _quoteItemList.Add(new QuoteItem() { ID = 1, itemCode = "0A001-1585", cost = 50, quantity = 1, line = 1, internalDescription = "789-XYZ" });
@@ -113,22 +107,6 @@ namespace ERP.Views
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 9, internalDescription = "Test internal description", externalDescription = "Test external description;" });
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 10, internalDescription = "Test internal description", externalDescription = "Test external description;" });
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 11, internalDescription = "Test internal description", externalDescription = "Test external description;" });
-
-            _quoteMaterialList = new ObservableCollection<QuoteMaterial>();
-            _quoteMaterialList.Add(new QuoteMaterial() { ID = 1, supplier = "Tim Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteMaterialList.Add(new QuoteMaterial() { ID = 2, supplier = "Bob Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteMaterialList.Add(new QuoteMaterial() { ID = 3, supplier = "Tom Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteMaterialList.Add(new QuoteMaterial() { ID = 4, supplier = "Rob Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteMaterialList.Add(new QuoteMaterial() { ID = 5, supplier = "Sam Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteMaterialList.Add(new QuoteMaterial() { ID = 6, supplier = "Jim Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-
-            _quoteSubcontractorList = new ObservableCollection<QuoteSubcontractor>();
-            _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 1, supplier = "Tim Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 2, supplier = "Bob Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 3, supplier = "Tom Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 4, supplier = "Rob Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 5, supplier = "Sam Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
-            _quoteSubcontractorList.Add(new QuoteSubcontractor() { ID = 6, supplier = "Jim Co.", cost = 100, rate = 35, notes = "Lorem ipsum." });
 
             _todoList = new ObservableCollection<Todo>();
             _todoList.Add(new Todo() { todoID = 1, todoDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", completed = false });
@@ -170,13 +148,6 @@ namespace ERP.Views
         {
             get { return _stepperQuoteClosed ?? (_stepperQuoteClosed = new StepperData()); }
             set { if (value != null) { _stepperQuoteClosed = value; OnPropertyChanged("stepperQuoteClosed"); } }
-        }
-
-        private Delete _deleteObject;
-        public Delete deleteObject
-        {
-            get { return _deleteObject ?? (_deleteObject = new Delete()); }
-            set { if (value != null) { _deleteObject = value; OnPropertyChanged("deleteObject"); } }
         }
 
         private ObservableCollection<Account> _accountList;
@@ -255,14 +226,22 @@ namespace ERP.Views
         private ObservableCollection<QuoteTime> _quoteTimeList;
         public ObservableCollection<QuoteTime> quoteTimeList
         {
-            get { return _quoteTimeList ?? (_quoteTimeList = new ObservableCollection<QuoteTime>()); }
+            get { return _quoteTimeList; }
+            set { if (value != null) { _quoteTimeList = value; OnPropertyChanged("quoteTimeList"); } }
         }
 
-        private QuoteTime _selectedTime;
-        public QuoteTime selectedTime
+        //private QuoteTime _selectedTime;
+        //public QuoteTime selectedTime
+        //{
+        //    get { return _selectedTime; }
+        //    set { if (value != null) { _selectedTime = value; OnPropertyChanged("selectedTime"); } }
+        //}
+
+        private int _selectedTime;
+        public int selectedTime
         {
             get { return _selectedTime; }
-            set { if (value != null) { _selectedTime = value; } }
+            set { _selectedTime = value; OnPropertyChanged("selectedTime"); }
         }
 
         //Standard Items
@@ -293,81 +272,6 @@ namespace ERP.Views
 
                         OnPropertyChanged("selectedItem");
                     }
-                }
-            }
-        }
-
-        //Materials
-        private ObservableCollection<QuoteMaterial> _quoteMaterialList;
-        public ObservableCollection<QuoteMaterial> quoteMaterialList
-        {
-            get { return _quoteMaterialList ?? (_quoteMaterialList = new ObservableCollection<QuoteMaterial>()); }
-        }
-
-        private QuoteMaterial _selectedMaterial;
-        public QuoteMaterial selectedMaterial
-        {
-            get { return _selectedMaterial; }
-            set { if (value != null) { _selectedMaterial = value; OnPropertyChanged("selectedMaterial"); } }
-        }
-
-        //Subcontractors
-        private ObservableCollection<QuoteSubcontractor> _quoteSubcontractorList;
-        public ObservableCollection<QuoteSubcontractor> quoteSubcontractorList
-        {
-            get { return _quoteSubcontractorList ?? (_quoteSubcontractorList = new ObservableCollection<QuoteSubcontractor>()); }
-        }
-
-        private QuoteSubcontractor _selectedSubcontractor;
-        public QuoteSubcontractor selectedSubcontractor
-        {
-            get { return _selectedSubcontractor; }
-            set { if (value != null) { _selectedSubcontractor = value; OnPropertyChanged("selectedSubcontractor"); } }
-        }
-
-        //Suppliers
-        private ObservableCollection<Supplier> _supplierList;
-        public ObservableCollection<Supplier> supplierList
-        {
-            get { return _supplierList ?? (_supplierList = new ObservableCollection<Supplier>()); }
-        }
-
-        private Supplier _selectedMaterialSupplier;
-        public Supplier selectedMaterialSupplier
-        {
-            get { return _selectedMaterialSupplier; }
-            set
-            {
-                if (value != null)
-                {
-                    _selectedMaterialSupplier = value;
-                    OnPropertyChanged("selectedMaterialSupplier");
-                }
-
-                if (selectedMaterial.supplier != _selectedMaterialSupplier.name)
-                {
-                    selectedMaterial.supplier = _selectedMaterialSupplier.name;
-                    selectedMaterial.supplierID = _selectedMaterialSupplier.ID;
-                }
-            }
-        }
-
-        private Supplier _selectedSubcontractorSupplier;
-        public Supplier selectedSubcontractorSupplier
-        {
-            get { return _selectedSubcontractorSupplier; }
-            set
-            {
-                if (value != null)
-                {
-                    _selectedSubcontractorSupplier = value;
-                    OnPropertyChanged("selectedSubcontractorSupplier");
-                }
-
-                if (selectedSubcontractor.supplier != _selectedSubcontractorSupplier.name)
-                {
-                    selectedSubcontractor.supplier = _selectedSubcontractorSupplier.name;
-                    selectedSubcontractor.supplierID = _selectedSubcontractorSupplier.ID;
                 }
             }
         }
@@ -413,15 +317,15 @@ namespace ERP.Views
                     OnPropertyChanged("selectedTimeDepartment");
                 }
 
-                if (selectedTime.nominalCode != _selectedTimeDepartment.nominalCode)
-                {
-                    selectedTime.nominalCode = _selectedTimeDepartment.nominalCode;
-                    selectedTime.department = _selectedTimeDepartment.department;
-                    selectedTime.cost = _selectedTimeDepartment.initalCost;
-                    selectedTime.rate = _selectedTimeDepartment.rateCost;
+                //if (selectedTime.nominalCode != _selectedTimeDepartment.nominalCode)
+                //{
+                //    selectedTime.nominalCode = _selectedTimeDepartment.nominalCode;
+                //    selectedTime.department = _selectedTimeDepartment.department;
+                //    selectedTime.cost = _selectedTimeDepartment.initalCost;
+                //    selectedTime.rate = _selectedTimeDepartment.rateCost;
 
-                    OnPropertyChanged("selectedTime");
-                }
+                //    OnPropertyChanged("selectedTime");
+                //}
             }
         }
         #endregion
@@ -521,6 +425,7 @@ namespace ERP.Views
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void Stepper_Click(object sender, RoutedEventArgs e)
@@ -553,15 +458,36 @@ namespace ERP.Views
             progressBar.Visibility = Visibility.Visible;
         }
 
-        void ShowHideDetails(object sender, RoutedEventArgs e)
+        private void ShowHideDetails(object sender, RoutedEventArgs e)
         {
-            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-                if (vis is DataGridRow)
-                {
-                    var row = (DataGridRow)vis;
-                    row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                    break;
-                }
+            DataGridRow row = TimeList.ItemContainerGenerator.ContainerFromIndex(selectedTime) as DataGridRow;
+            if (row.IsNewItem == true)
+            {
+                quoteTimeList.Add(new QuoteTime() { nominalCode = selectedAccount != null ? selectedAccount.defaultNominalCode : 4000 });
+            }
+            else
+            {
+                row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private void NewTime_Click(object sender, RoutedEventArgs e)
+        {
+            quoteTimeList.Add(new QuoteTime() { nominalCode = selectedAccount != null ? selectedAccount.defaultNominalCode : 4000 });
+        }
+
+        private void EditTime_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridRow row = TimeList.ItemContainerGenerator.ContainerFromIndex(selectedTime) as DataGridRow;
+            if (row != null)
+            {
+                row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private void DeleteTime_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteDialog.IsOpen = !DeleteDialog.IsOpen;
         }
     }
 }

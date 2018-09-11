@@ -23,49 +23,23 @@
         <!--<ctrl:PaletteSelector />-->
 
         <StackPanel Margin="10">
-
-            <Rectangle Name="MyRectangle"
-                       Width="100"
-                       Height="100"
-                       Fill="Blue">
-            </Rectangle>
-
-            <Button Name="BeginButton">Begin</Button>
-            <Button Name="PauseButton">Pause</Button>
-            <Button Name="ResumeButton">Resume</Button>
-            <Button Name="SkipToFillButton">Skip To Fill</Button>
-            <Button Name="StopButton">Stop</Button>
-
-            <StackPanel.Triggers>
-                <EventTrigger RoutedEvent="Button.Click"
-                              SourceName="BeginButton">
-                    <BeginStoryboard Name="MyBeginStoryboard">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="MyRectangle"
-                                             Storyboard.TargetProperty="(Rectangle.Opacity)"
-                                             From="1.0"
-                                             To="0.0"
-                                             Duration="0:0:5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.Click"
-                              SourceName="PauseButton">
-                    <PauseStoryboard BeginStoryboardName="MyBeginStoryboard" />
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.Click"
-                              SourceName="ResumeButton">
-                    <ResumeStoryboard BeginStoryboardName="MyBeginStoryboard" />
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.Click"
-                              SourceName="SkipToFillButton">
-                    <SkipStoryboardToFill BeginStoryboardName="MyBeginStoryboard" />
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.Click"
-                              SourceName="StopButton">
-                    <StopStoryboard BeginStoryboardName="MyBeginStoryboard" />
-                </EventTrigger>
-            </StackPanel.Triggers>
+            <ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}" />
+            <ToggleButton Style="{StaticResource MaterialDesignActionLightToggleButton}" />
+            <ToggleButton Style="{StaticResource MaterialDesignActionDarkToggleButton}" />
+            <ToggleButton Style="{StaticResource MaterialDesignActionAccentToggleButton}" />
+            <ToggleButton Style="{StaticResource MaterialDesignFlatToggleButton}"
+                          Content="123">
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                          Content="123" />
+            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                          Content="123" />
+            <ToggleButton Style="{StaticResource MaterialDesignSwitchLightToggleButton}"
+                          Content="123" />
+            <ToggleButton Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
+                          Content="123" />
+            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                          Content="123" />
         </StackPanel>
     </Grid>
 </Page>
