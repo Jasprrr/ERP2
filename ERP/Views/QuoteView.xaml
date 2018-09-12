@@ -314,7 +314,8 @@
                                     <UserControl:Stepper Grid.Column="2"
                                                          Label="{Binding stepperQuoteClosed.label}"
                                                          Stage="{Binding stepperQuoteClosed.stage}"
-                                                         Click="Stepper_Click" />
+                                                         Click="Stepper_Click">
+                                    </UserControl:Stepper>
                                 </Grid>
                             </ScrollViewer>
                         </materialDesign:Card>

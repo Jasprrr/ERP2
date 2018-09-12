@@ -171,8 +171,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Accounts"
-                                   VerticalAlignment="Center"
+                        <TextBlock VerticalAlignment="Center"
                                    Style="{StaticResource MaterialDesignTitleTextBlock}"
                                    Foreground="{DynamicResource MaterialDesignBody}" />
                         <Button x:Name="NewAccount"
