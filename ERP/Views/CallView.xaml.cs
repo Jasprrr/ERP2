@@ -7,8 +7,16 @@ namespace ERP.Views
     /// </summary>
     public partial class CallView : Window
     {
-        public CallView()
+        public CallView(long callID = 0, long accountID = 0)
         {
+            if (callID > 0)
+            {
+                //TODO: Get call
+            }
+            if (accountID > 0)
+            {
+                //TODO: Get account
+            }
             InitializeComponent();
         }
     }

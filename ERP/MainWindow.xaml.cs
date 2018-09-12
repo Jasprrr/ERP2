@@ -83,13 +83,13 @@ namespace ERP
             navigationMenu.Add(new NavigationItem { title = "Settings", icon = "Settings" });
 
             _todoList = new ObservableCollection<Todo>();
-            _todoList.Add(new Todo() { todoID = 1, todoDate = new DateTime(2008, 1, 1), account = "Acc 01", subject = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 2, todoDate = new DateTime(2008, 2, 1), account = "Acc 02", subject = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 3, todoDate = new DateTime(2008, 3, 1), account = "Acc 03", subject = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 4, todoDate = new DateTime(2008, 4, 1), account = "Acc 04", subject = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 5, todoDate = new DateTime(2008, 5, 1), account = "Acc 05", subject = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 6, todoDate = new DateTime(2008, 6, 1), account = "Acc 06", subject = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 7, todoDate = new DateTime(2008, 7, 1), account = "Acc 07", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 1, startDate = new DateTime(2008, 1, 1), account = "Acc 01", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 2, startDate = new DateTime(2008, 2, 1), account = "Acc 02", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 3, startDate = new DateTime(2008, 3, 1), account = "Acc 03", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 4, startDate = new DateTime(2008, 4, 1), account = "Acc 04", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 5, startDate = new DateTime(2008, 5, 1), account = "Acc 05", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 6, startDate = new DateTime(2008, 6, 1), account = "Acc 06", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 7, startDate = new DateTime(2008, 7, 1), account = "Acc 07", subject = "Lorem ipsum.", completed = false });
         }
 
         #region Variables

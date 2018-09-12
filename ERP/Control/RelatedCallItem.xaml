@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="ERP.Control.RelatedCallItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ERP.Control"
+             mc:Ignorable="d"
+             Height="auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0"
+                Style="{DynamicResource MaterialDesignFlatIconButton}"
+                ToolTip="Edit todo"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="Button_Click">
+            <materialDesign:PackIcon Kind="Pencil"
+                                     Height="18"
+                                     Width="18" />
+        </Button>
+        <StackPanel Grid.Column="1"
+                    Margin="8,0,0,0">
+            <TextBlock x:Name="Subject"
+                       Style="{StaticResource MaterialDesignBody2TextBlock}"
+                       Visibility="{Binding subject, Converter={StaticResource NullableToVisibilityConverter}}"
+                       Text="{Binding subject}"
+                       TextTrimming="CharacterEllipsis" />
+            <TextBlock x:Name="Contact"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       Visibility="{Binding contact, Converter={StaticResource NullableToVisibilityConverter}}"
+                       Text="{Binding contact}"
+                       TextTrimming="CharacterEllipsis" />
+            <TextBlock x:Name="Date"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       Foreground="{StaticResource MaterialDesignColumnHeader}"
+                       Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
+                       Text="{Binding todoDate, StringFormat=\{0:D\}}" />
+        </StackPanel>
+        <Border Grid.Column="2"
+                Style="{StaticResource MaterialDesignUserBorder}"
+                ToolTip="{Binding username}">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource SecondaryAccentForegroundBrush}" />
+        </Border>
+    </Grid>
+</UserControl>

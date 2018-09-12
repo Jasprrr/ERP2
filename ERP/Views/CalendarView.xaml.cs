@@ -107,7 +107,7 @@ namespace ERP.Views
 
                 for (int i = 0; i < rndInt; i++)
                 {
-                    _temp.Add(new Todo { description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam luctus magna, nec consequat mauris sodales at. Suspendisse efficitur pellentesque dui vitae volutpat. " });
+                    _temp.Add(new Todo { notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam luctus magna, nec consequat mauris sodales at. Suspendisse efficitur pellentesque dui vitae volutpat. " });
                 }
 
                 return _temp;

@@ -157,8 +157,8 @@ namespace ERP.Views
 
         private void NewTask_Click(object sender, RoutedEventArgs e)
         {
-            var taskWindow = new TaskView();
-            taskWindow.Show();
+            //var taskWindow = new TaskView();
+            //taskWindow.Show();
         }
 
         private void NewCall_Click(object sender, RoutedEventArgs e)

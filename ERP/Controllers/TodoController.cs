@@ -46,13 +46,13 @@ namespace ERP.Controllers
                     q.Add(new Todo()
                     {
                         todoID = int.Parse(reader["Todo_ID"].ToString()),
-                        todoDate = DateTime.Parse(reader["Todo_Date"].ToString()),
+                        startDate = DateTime.Parse(reader["Todo_Date"].ToString()),
                         accountID = int.Parse(reader["Account_ID"].ToString()),
                         account = reader["Account_Name"].ToString(),
                         supplierID = int.Parse(reader["Supplier_ID"].ToString()),
                         supplier = reader["Supplier_Name"].ToString(),
                         subject = reader["Subject"].ToString(),
-                        description = reader["Description"].ToString(),
+                        notes = reader["Description"].ToString(),
                         completed = bool.Parse(reader["Completed"].ToString()),
                         dateCompleted = DateTime.Parse(reader["Date_Completed"].ToString()),
                         dateModified = DateTime.Parse(reader["Date_Modified"].ToString()),

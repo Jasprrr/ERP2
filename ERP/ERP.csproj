@@ -147,12 +147,22 @@
     <Compile Include="Control\PurchaseOrdersDue.xaml.cs">
       <DependentUpon>PurchaseOrdersDue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\RelatedCallItem.xaml.cs">
+      <DependentUpon>RelatedCallItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\RelatedOrderItem.xaml.cs">
+      <DependentUpon>RelatedOrderItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\RelatedTodoItem.xaml.cs">
+      <DependentUpon>RelatedTodoItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\RevenueGraph.xaml.cs">
       <DependentUpon>RevenueGraph.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\Stepper.cs" />
     <Compile Include="Converters\ExpanderConverter.cs" />
     <Compile Include="Converters\HexToBrushConverter.cs" />
+    <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\NamedObjectToVisibilityConverter.cs" />
     <Compile Include="Converters\NullableToVisibilityConverter.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
@@ -256,14 +266,14 @@
     <Compile Include="Views\TaskPreview.xaml.cs">
       <DependentUpon>TaskPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TaskView.xaml.cs">
-      <DependentUpon>TaskView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\TodosView.xaml.cs">
       <DependentUpon>TodosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TodoView.xaml.cs">
+      <DependentUpon>TodoView.xaml</DependentUpon>
     </Compile>
     <Page Include="Control\AccountsOnHold.xaml">
       <SubType>Designer</SubType>
@@ -294,6 +304,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\PurchaseOrdersDue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\RelatedCallItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\RelatedOrderItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\RelatedTodoItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -401,15 +423,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TaskView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\TodosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TodoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

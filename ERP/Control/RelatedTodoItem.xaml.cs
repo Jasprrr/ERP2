@@ -1,8 +1,5 @@
-﻿using ERP.Models;
-using MaterialDesignThemes.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERP.Views
+namespace ERP.Control
 {
     /// <summary>
-    /// Interaction logic for Task.xaml
+    /// Interaction logic for RelatedTodoItem.xaml
     /// </summary>
-    public partial class TaskView : Window
+    public partial class RelatedTodoItem : UserControl
     {
-        public TaskView()
+        public RelatedTodoItem()
         {
             InitializeComponent();
+        }
+
+        public event RoutedEventHandler CompleteTodo;
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CompleteTodo?.Invoke(this, new RoutedEventArgs());
         }
     }
 }

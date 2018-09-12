@@ -49,6 +49,27 @@
                 <Setter Property="Language"
                         Value="en-GB" />
             </Style>
+            <Style x:Key="MaterialDesignBorderedWindow"
+                   TargetType="Window">
+                <Setter Property="ResizeMode"
+                        Value="CanMinimize" />
+                <Setter Property="Icon"
+                        Value="/ERP;component/icon.ico" />
+                <Setter Property="Background"
+                        Value="{DynamicResource MaterialDesignPaper}" />
+                <Setter Property="TextElement.FontFamily"
+                        Value="Roboto" />
+                <Setter Property="TextElement.FontWeight"
+                        Value="Regular" />
+                <Setter Property="TextElement.FontSize"
+                        Value="12" />
+                <Setter Property="TextElement.Foreground"
+                        Value="{DynamicResource MaterialDesignBody}" />
+                <Setter Property="Language"
+                        Value="en-GB" />
+                <Setter Property="SizeToContent"
+                        Value="WidthAndHeight" />
+            </Style>
 
             <!--#region Cards-->
             <Style x:Key="MaterialDesignCard"
@@ -1203,6 +1224,25 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+            
+            <!-- Border -->
+            <Style x:Key="MaterialDesignUserBorder"
+                   TargetType="Border">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="12,4,12,0" />
+                <Setter Property="Width"
+                        Value="24" />
+                <Setter Property="Height"
+                        Value="24" />
+                <Setter Property="Background"
+                        Value="{DynamicResource SecondaryAccentBrush}" />
+                <Setter Property="CornerRadius"
+                        Value="12" />
             </Style>
 
         </ResourceDictionary>

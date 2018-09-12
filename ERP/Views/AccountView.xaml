@@ -282,15 +282,6 @@
                                                                 On hold
                                                             </TextBlock>
                                                         </StackPanel>
-                                                        <!--<CheckBox Margin="0,8"
-                                                                  HorizontalAlignment="Left"
-                                                                  VerticalAlignment="Bottom">
-                                                            <CheckBox.Content>
-                                                                <TextBlock Margin="0,-1,0,0">
-                                                                On hold
-                                                                </TextBlock>
-                                                            </CheckBox.Content>
-                                                        </CheckBox>-->
                                                         <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                                     HorizontalAlignment="Right"
                                                                     materialDesign:HintAssist.Hint="Date"
@@ -309,8 +300,7 @@
                                                     </ComboBox>
                                                 </StackPanel>
                                             </TabItem>
-                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
-                                                     Width="84"
+                                            <TabItem Width="84"
                                                      Background="White"
                                                      BorderBrush="White">
                                                 <TabItem.Header>
@@ -367,8 +357,7 @@
                                                              Text="{Binding selectedAccount.billingCountry}" />
                                                 </StackPanel>
                                             </TabItem>
-                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
-                                                     Width="84"
+                                            <TabItem Width="84"
                                                      Background="White"
                                                      BorderBrush="White">
                                                 <TabItem.Header>
@@ -412,8 +401,7 @@
                                                              Text="{Binding selectedAccount.shippingCountry}" />
                                                 </StackPanel>
                                             </TabItem>
-                                            <TabItem Style="{DynamicResource MaterialDesignTabItem}"
-                                                     Width="84"
+                                            <TabItem Width="84"
                                                      Background="White"
                                                      BorderBrush="White">
                                                 <TabItem.Header>
@@ -489,119 +477,133 @@
                                                  VerticalContentAlignment="Stretch"
                                                  Margin="16">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="5" />
-                                    </Grid.RowDefinitions>
-                                    <Grid Margin="24,20"
-                                          ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="auto" />
-                                            <ColumnDefinition Width="auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Text="Activity"
-                                                   Style="{StaticResource MaterialDesignHeaderTextBlock}" />
-                                        <Button x:Name="NewCall"
-                                                Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                ToolTip="New call"
-                                                Grid.Column="1"
-                                                Click="NewCall_Click">
-                                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                                     Kind="PhonePlus" />
-                                        </Button>
-                                        <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
-                                                                 Grid.Column="2"
-                                                                 StaysOpen="True"
-                                                                 PlacementMode="BottomAndAlignCentres"
-                                                                 FontSize="15">
-                                            <materialDesign:PopupBox.ToggleContent>
-                                                <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                                         Kind="FilterVariant"
-                                                                         Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                                            </materialDesign:PopupBox.ToggleContent>
-                                            <StackPanel Margin="8,0">
-                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                          Padding="8,8,16,8"
-                                                          IsChecked="True"
-                                                          Content="Calls" />
-                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                          Padding="8,8,16,8"
-                                                          IsChecked="True"
-                                                          Content="Tasks" />
-                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                          Padding="8,8,16,8"
-                                                          IsChecked="True"
-                                                          Content="Quotes" />
-                                                <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                          Padding="8,8,16,8"
-                                                          IsChecked="True"
-                                                          Content="Orders" />
-                                            </StackPanel>
-                                        </materialDesign:PopupBox>
-                                    </Grid>
-                                    <Grid Grid.Row="1">
-                                        <ListView ItemsSource="{Binding activityList}"
-                                                  VerticalContentAlignment="Stretch"
-                                                  HorizontalContentAlignment="Stretch"
-                                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid VerticalAlignment="Center">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto" />
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="auto" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Border Grid.Column="0"
-                                                                VerticalAlignment="Center"
-                                                                Margin="12,0,12,0"
-                                                                Width="32"
-                                                                Height="32"
-                                                                Background="{Binding colour}"
-                                                                CornerRadius="32"
-                                                                HorizontalAlignment="Center">
-                                                            <materialDesign:PackIcon HorizontalAlignment="Center"
-                                                                                     VerticalAlignment="Center"
-                                                                                     Kind="{Binding icon}"
-                                                                                     Foreground="{DynamicResource SecondaryAccentForegroundBrush}" />
-                                                        </Border>
-                                                        <StackPanel Grid.Column="1"
-                                                                    VerticalAlignment="Center"
-                                                                    Margin="8,0,0,0">
-                                                            <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
-                                                                       Text="{Binding user}"
-                                                                       TextTrimming="WordEllipsis" />
-                                                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                       Text="{Binding activityDescription}"
-                                                                       TextTrimming="WordEllipsis" />
-                                                            <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                                                       Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                       Text="{Binding user}" />
+                                    <TabControl Style="{StaticResource MaterialDesignTabControl}">
+                                        <TabItem Style="{DynamicResource MaterialDesignTopTabItem}"
+                                                 Height="48"
+                                                 MinWidth="100">
+                                            <TabItem.Header>
+                                                <Grid ToolTip="History"
+                                                      Background="Transparent">
+                                                    <materialDesign:PackIcon Kind="History"
+                                                                             Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                             ToolTip="History" />
+                                                </Grid>
+                                            </TabItem.Header>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="5" />
+                                                </Grid.RowDefinitions>
+                                                <Grid Margin="24,20"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                      HorizontalAlignment="Right">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button x:Name="NewCall"
+                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
+                                                            ToolTip="New call"
+                                                            Grid.Column="0"
+                                                            Click="NewCall_Click">
+                                                        <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                                 Kind="PhonePlus" />
+                                                    </Button>
+                                                    <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
+                                                                             Grid.Column="1"
+                                                                             StaysOpen="True"
+                                                                             PlacementMode="BottomAndAlignCentres"
+                                                                             FontSize="15">
+                                                        <materialDesign:PopupBox.ToggleContent>
+                                                            <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                                     Kind="FilterVariant"
+                                                                                     Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                                                        </materialDesign:PopupBox.ToggleContent>
+                                                        <StackPanel Margin="8,0">
+                                                            <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                                      Padding="8,8,16,8"
+                                                                      IsChecked="True"
+                                                                      Content="Calls" />
+                                                            <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                                      Padding="8,8,16,8"
+                                                                      IsChecked="True"
+                                                                      Content="Tasks" />
+                                                            <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                                      Padding="8,8,16,8"
+                                                                      IsChecked="True"
+                                                                      Content="Quotes" />
+                                                            <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
+                                                                      Padding="8,8,16,8"
+                                                                      IsChecked="True"
+                                                                      Content="Orders" />
                                                         </StackPanel>
+                                                    </materialDesign:PopupBox>
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <ListView ItemsSource="{Binding activityList}"
+                                                              VerticalContentAlignment="Stretch"
+                                                              HorizontalContentAlignment="Stretch"
+                                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid VerticalAlignment="Center">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="auto" />
+                                                                        <ColumnDefinition Width="*" />
+                                                                        <ColumnDefinition Width="auto" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Border Grid.Column="0"
+                                                                            VerticalAlignment="Center"
+                                                                            Margin="12,0,12,0"
+                                                                            Width="32"
+                                                                            Height="32"
+                                                                            Background="{Binding colour}"
+                                                                            CornerRadius="32"
+                                                                            HorizontalAlignment="Center">
+                                                                        <materialDesign:PackIcon HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Kind="{Binding icon}"
+                                                                                                 Foreground="{DynamicResource SecondaryAccentForegroundBrush}" />
+                                                                    </Border>
+                                                                    <StackPanel Grid.Column="1"
+                                                                                VerticalAlignment="Center"
+                                                                                Margin="8,0,0,0">
+                                                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                                                   Text="{Binding user}"
+                                                                                   TextTrimming="WordEllipsis" />
+                                                                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                                                   Text="{Binding activityDescription}"
+                                                                                   TextTrimming="WordEllipsis" />
+                                                                        <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                   Foreground="{StaticResource MaterialDesignColumnHeader}"
+                                                                                   Text="{Binding user}" />
+                                                                    </StackPanel>
 
-                                                        <StackPanel Grid.Column="2"
-                                                                    VerticalAlignment="Center"
-                                                                    Margin="8,0,0,0">
-                                                            <TextBlock Grid.Column="2"
-                                                                       Margin="10,0"
-                                                                       Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                                                       Text="{Binding activityDate, StringFormat=dd MMM}"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Top"
-                                                                       FontSize="10" />
-                                                            <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                                                       Margin="10,0"
-                                                                       Text="{Binding activityDate, StringFormat=HH:mm}"
-                                                                       HorizontalAlignment="Center"
-                                                                       FontSize="10" />
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </Grid>
+                                                                    <StackPanel Grid.Column="2"
+                                                                                VerticalAlignment="Center"
+                                                                                Margin="8,0,0,0">
+                                                                        <TextBlock Grid.Column="2"
+                                                                                   Margin="10,0"
+                                                                                   Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                   Text="{Binding activityDate, StringFormat=dd MMM}"
+                                                                                   HorizontalAlignment="Center"
+                                                                                   VerticalAlignment="Top"
+                                                                                   FontSize="10" />
+                                                                        <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                                                                   Margin="10,0"
+                                                                                   Text="{Binding activityDate, StringFormat=HH:mm}"
+                                                                                   HorizontalAlignment="Center"
+                                                                                   FontSize="10" />
+                                                                    </StackPanel>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </Grid>
+                                            </Grid>
+                                        </TabItem>
+                                    </TabControl>
                                 </Grid>
                             </materialDesign:Card>
                         </Grid>

@@ -63,37 +63,27 @@ namespace ERP.Views
             _departments.Add(new Department() { departmentID = 10, department = "Engraving", nominalCode = 4090, rateCost = (decimal)10.00, initalCost = 0 });
             _departments.Add(new Department() { departmentID = 11, department = "Printing", nominalCode = 4099, rateCost = (decimal)11.00, initalCost = 0 });
 
-            quoteTimeList = new ObservableCollection<QuoteTime>();
-            quoteTimeList.Add(new QuoteTime() { selected = true, timeID = 1, line = 1, department = "Masking", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)1.2, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4010 });
-            quoteTimeList.Add(new QuoteTime() { selected = false, timeID = 2, line = 2, department = "Alocrom", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)3.4, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4020 });
-            quoteTimeList.Add(new QuoteTime() { selected = true, timeID = 3, line = 3, department = "Iridite", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)5.6, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4030 });
-            quoteTimeList.Add(new QuoteTime() { selected = false, timeID = 4, line = 4, department = "Printing", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)7.8, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4040 });
-            quoteTimeList.Add(new QuoteTime() { selected = true, timeID = 5, line = 5, department = "Engraving", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)9.0, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4050 });
+            timeList = new ObservableCollection<QuoteTime>();
+            timeList.Add(new QuoteTime() { selected = true, timeID = 1, line = 1, department = "Masking", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)1.2, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4010 });
+            timeList.Add(new QuoteTime() { selected = false, timeID = 2, line = 2, department = "Alocrom", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)3.4, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4020 });
+            timeList.Add(new QuoteTime() { selected = true, timeID = 3, line = 3, department = "Iridite", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)5.6, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4030 });
+            timeList.Add(new QuoteTime() { selected = false, timeID = 4, line = 4, department = "Printing", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)7.8, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4040 });
+            timeList.Add(new QuoteTime() { selected = true, timeID = 5, line = 5, department = "Engraving", rate = 60, cost = 60, total = 60, estimatedTime = (decimal)9.0, dateCreated = DateTime.Now, dateModified = DateTime.Now, nominalCode = 4050 });
 
             _userList = new ObservableCollection<User>();
             _userList.Add(new User() { firstName = "Jasper", lastName = "Friend" });
 
-            _quoteItemList = new ObservableCollection<QuoteItem>();
-            _quoteItemList.Add(new QuoteItem() { ID = 1, itemCode = "0A001-1585", cost = 50, quantity = 1, line = 1, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 2, itemCode = "0A020-0229", cost = 150, quantity = 2, line = 2, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 3, itemCode = "0A058-0437", cost = 250, quantity = 3, line = 3, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 4, itemCode = "0A058-0451", cost = 350, quantity = 4, line = 4, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 5, itemCode = "0A061-0205", cost = 450, quantity = 5, line = 5, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 6, itemCode = "0A061-0209", cost = 20, quantity = 6, line = 6, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 7, itemCode = "0A063-0369", cost = 30, quantity = 7, line = 7, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 8, itemCode = "0A063-0561", cost = 250, quantity = 8, line = 8, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 9, itemCode = "0A066-0515", cost = 250, quantity = 9, line = 9, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 10, itemCode = "0A069-0167", cost = 250, quantity = 10, line = 10, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 11, itemCode = "0A071-0399", cost = 250, quantity = 11, line = 11, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 12, itemCode = "0A071-0401", cost = 250, quantity = 12, line = 12, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 13, itemCode = "0A090-0453", cost = 250, quantity = 13, line = 13, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 14, itemCode = "0A099-0455", cost = 250, quantity = 14, line = 14, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 15, itemCode = "0A134-0541", cost = 250, quantity = 15, line = 15, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 16, itemCode = "0A134-0543", cost = 250, quantity = 16, line = 16, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 17, itemCode = "0A188-0361", cost = 250, quantity = 17, line = 17, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 18, itemCode = "0A188-0363", cost = 250, quantity = 18, line = 18, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 19, itemCode = "0A201-0663", cost = 250, quantity = 19, line = 19, internalDescription = "789-XYZ" });
-            _quoteItemList.Add(new QuoteItem() { ID = 20, itemCode = "0A201-0665", cost = 250, quantity = 20, line = 20, internalDescription = "789-XYZ" });
+            _itemList = new ObservableCollection<QuoteItem>();
+            _itemList.Add(new QuoteItem() { ID = 1, itemCode = "0A001-1585", cost = 50, quantity = 1, line = 1, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 2, itemCode = "0A020-0229", cost = 150, quantity = 2, line = 2, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 3, itemCode = "0A058-0437", cost = 250, quantity = 3, line = 3, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 4, itemCode = "0A058-0451", cost = 350, quantity = 4, line = 4, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 5, itemCode = "0A061-0205", cost = 450, quantity = 5, line = 5, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 6, itemCode = "0A061-0209", cost = 20, quantity = 6, line = 6, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 7, itemCode = "0A063-0369", cost = 30, quantity = 7, line = 7, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 8, itemCode = "0A063-0561", cost = 250, quantity = 8, line = 8, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 9, itemCode = "0A066-0515", cost = 250, quantity = 9, line = 9, internalDescription = "789-XYZ" });
+            _itemList.Add(new QuoteItem() { ID = 10, itemCode = "0A069-0167", cost = 250, quantity = 10, line = 10, internalDescription = "789-XYZ" });
 
             _standardItems = new ObservableCollection<QuoteItem>();
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 1, internalDescription = "Test internal description", externalDescription = "Test external description" });
@@ -106,16 +96,15 @@ namespace ERP.Views
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 8, internalDescription = "Test internal description", externalDescription = "Test external description;" });
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 9, internalDescription = "Test internal description", externalDescription = "Test external description;" });
             _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 10, internalDescription = "Test internal description", externalDescription = "Test external description;" });
-            _standardItems.Add(new QuoteItem() { itemCode = "321-XYZ", cost = 50, quantity = 4, line = 11, internalDescription = "Test internal description", externalDescription = "Test external description;" });
 
             _todoList = new ObservableCollection<Todo>();
-            _todoList.Add(new Todo() { todoID = 1, todoDate = new DateTime(2008, 1, 1), account = "Acc 01", description = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 2, todoDate = new DateTime(2008, 2, 1), account = "Acc 02", description = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 3, todoDate = new DateTime(2008, 3, 1), account = "Acc 03", description = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 4, todoDate = new DateTime(2008, 4, 1), account = "Acc 04", description = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 5, todoDate = new DateTime(2008, 5, 1), account = "Acc 05", description = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 6, todoDate = new DateTime(2008, 6, 1), account = "Acc 06", description = "Lorem ipsum.", completed = false });
-            _todoList.Add(new Todo() { todoID = 7, todoDate = new DateTime(2008, 7, 1), account = "Acc 07", description = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 1, startDate = new DateTime(2008, 1, 1), account = "Acc 01", subject = "Lorem ipsum.", completed = false, contact="Jasper Friend" });
+            _todoList.Add(new Todo() { todoID = 2, startDate = new DateTime(2008, 2, 1), account = "Acc 02", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 3, startDate = new DateTime(2008, 3, 1), account = "Acc 03", subject = "Lorem ipsum.", completed = false, contact="Jasper Friend" });
+            _todoList.Add(new Todo() { todoID = 4, startDate = new DateTime(2008, 4, 1), account = "Acc 04", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 5, startDate = new DateTime(2008, 5, 1), account = "Acc 05", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 6, startDate = new DateTime(2008, 6, 1), account = "Acc 06", subject = "Lorem ipsum.", completed = false });
+            _todoList.Add(new Todo() { todoID = 7, startDate = new DateTime(2008, 7, 1), account = "Acc 07", subject = "Lorem ipsum.", completed = false, contact = "Jasper Friend" });
 
             InitializeComponent();
         }
@@ -209,33 +198,26 @@ namespace ERP.Views
         }
 
         //Items
-        private ObservableCollection<QuoteItem> _quoteItemList;
-        public ObservableCollection<QuoteItem> quoteItemList
+        private ObservableCollection<QuoteItem> _itemList;
+        public ObservableCollection<QuoteItem> itemList
         {
-            get { return _quoteItemList ?? (_quoteItemList = new ObservableCollection<QuoteItem>()); }
+            get { return _itemList ?? (_itemList = new ObservableCollection<QuoteItem>()); }
         }
 
-        private QuoteItem _selectedItem;
-        public QuoteItem selectedItem
+        private int _selectedItem;
+        public int selectedItem
         {
             get { return _selectedItem; }
             set { if (value != null) { _selectedItem = value; OnPropertyChanged("selectedItem"); } }
         }
 
         //Times
-        private ObservableCollection<QuoteTime> _quoteTimeList;
-        public ObservableCollection<QuoteTime> quoteTimeList
+        private ObservableCollection<QuoteTime> _timeList;
+        public ObservableCollection<QuoteTime> timeList
         {
-            get { return _quoteTimeList; }
-            set { if (value != null) { _quoteTimeList = value; OnPropertyChanged("quoteTimeList"); } }
+            get { return _timeList; }
+            set { if (value != null) { _timeList = value; OnPropertyChanged("timeList"); } }
         }
-
-        //private QuoteTime _selectedTime;
-        //public QuoteTime selectedTime
-        //{
-        //    get { return _selectedTime; }
-        //    set { if (value != null) { _selectedTime = value; OnPropertyChanged("selectedTime"); } }
-        //}
 
         private int _selectedTime;
         public int selectedTime
@@ -261,17 +243,6 @@ namespace ERP.Views
                 {
                     _selectedStandardItem = value;
                     OnPropertyChanged("selectedStandardItem");
-
-                    if (selectedItem.itemCode != _selectedStandardItem.itemCode)
-                    {
-                        selectedItem.itemCode = _selectedStandardItem.itemCode;
-                        selectedItem.nominalCode = _selectedStandardItem.nominalCode;
-                        selectedItem.externalDescription = _selectedStandardItem.externalDescription;
-                        selectedItem.internalDescription = _selectedStandardItem.internalDescription;
-                        selectedItem.cost = _selectedStandardItem.cost;
-
-                        OnPropertyChanged("selectedItem");
-                    }
                 }
             }
         }
@@ -294,14 +265,6 @@ namespace ERP.Views
                     _selectedItemDepartment = value;
                     OnPropertyChanged("selectedItemDepartment");
                 }
-
-                if (selectedItem.nominalCode != _selectedItemDepartment.nominalCode)
-                {
-                    selectedItem.nominalCode = _selectedItemDepartment.nominalCode;
-                    selectedItem.department = _selectedItemDepartment.department;
-
-                    OnPropertyChanged("selectedItem");
-                }
             }
         }
 
@@ -316,106 +279,20 @@ namespace ERP.Views
                     _selectedTimeDepartment = value;
                     OnPropertyChanged("selectedTimeDepartment");
                 }
-
-                //if (selectedTime.nominalCode != _selectedTimeDepartment.nominalCode)
-                //{
-                //    selectedTime.nominalCode = _selectedTimeDepartment.nominalCode;
-                //    selectedTime.department = _selectedTimeDepartment.department;
-                //    selectedTime.cost = _selectedTimeDepartment.initalCost;
-                //    selectedTime.rate = _selectedTimeDepartment.rateCost;
-
-                //    OnPropertyChanged("selectedTime");
-                //}
             }
         }
         #endregion
 
         #region Events
-        //Item
-
-        private void SaveItem_Click(object sender, RoutedEventArgs e)
-        {
-            quoteItemList.Remove(quoteItemList.SingleOrDefault(x => x.ID == selectedItem.ID));
-
-            if (selectedItem.ID == 0)
-            {
-                selectedItem.quoteID = selectedQuote.quoteID;
-                selectedItem.line = quoteItemList.Max(x => x.line) + 1;
-            }
-
-            quoteItemList.Add(selectedItem);
-            quoteItemList.OrderBy(x => x.line);
-        }
-
-        private void UploadItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DeleteItem_Click(object sender, RoutedEventArgs e)
-        {
-            DeleteDialog.IsOpen = true;
-        }
-
-        private void SaveTask_Click(object sender, RoutedEventArgs e)
-        {
-            //todoList.Remove(quoteSubcontractorList.SingleOrDefault(x => x.ID == selectedSubcontractor.ID));
-
-            //if (selectedSubcontractor.ID == 0)
-            //{
-            //    //selectedTime.quoteID
-            //}
-
-            //quoteSubcontractorList.Add(selectedSubcontractor);
-        }
 
         #endregion
-
-        private void userButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void DeleteDialog_DialogClosing(object sender, MaterialDesignThemes.Wpf.DialogClosingEventArgs eventArgs)
         {
         }
 
-        private DispatcherTimer loginTimer = new DispatcherTimer();
-
-        private void loginTimer_Tick(object sender, EventArgs e)
-        {
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                loginTimer.Stop();
-                loginTimer.IsEnabled = false;
-                progressBar.Visibility = Visibility.Collapsed;
-            }));
-            var messageQueue = SnackBar.MessageQueue;
-            Task.Factory.StartNew(() => messageQueue.Enqueue("Saved"));
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            loginTimer = new DispatcherTimer();
-            loginTimer.Tick += loginTimer_Tick;
-            loginTimer.Interval = new TimeSpan(0, 0, 5);
-            loginTimer.Start();
-            progressBar.Visibility = Visibility.Visible;
-        }
 
-        private void CompleteToDo_Checked(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Complete!");
-            //var checkbox = sender as CheckBox;
-            //int value = (int)checkbox.Tag;
-            //if(value != 0)
-            //{
-            //    todoList.Remove(todoList.SingleOrDefault(x => x.ID == value));
-            //}
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Debug.WriteLine("Selection Changed");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -446,34 +323,14 @@ namespace ERP.Views
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if (loginTimer.IsEnabled == true)
-            {
-                loginTimer.Stop();
-            }
-            loginTimer = new DispatcherTimer();
-            loginTimer.Tick += loginTimer_Tick;
-            loginTimer.Interval = new TimeSpan(0, 0, 5);
-            loginTimer.Start();
 
-            progressBar.Visibility = Visibility.Visible;
         }
 
-        private void ShowHideDetails(object sender, RoutedEventArgs e)
-        {
-            DataGridRow row = TimeList.ItemContainerGenerator.ContainerFromIndex(selectedTime) as DataGridRow;
-            if (row.IsNewItem == true)
-            {
-                quoteTimeList.Add(new QuoteTime() { nominalCode = selectedAccount != null ? selectedAccount.defaultNominalCode : 4000 });
-            }
-            else
-            {
-                row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            }
-        }
+        //---------------------------------------------------------------
 
         private void NewTime_Click(object sender, RoutedEventArgs e)
         {
-            quoteTimeList.Add(new QuoteTime() { nominalCode = selectedAccount != null ? selectedAccount.defaultNominalCode : 4000 });
+            timeList.Add(new QuoteTime() { nominalCode = selectedAccount != null ? selectedAccount.defaultNominalCode : 4000, line = timeList.Max(p => p.line) + 1 });
         }
 
         private void EditTime_Click(object sender, RoutedEventArgs e)
@@ -488,6 +345,63 @@ namespace ERP.Views
         private void DeleteTime_Click(object sender, RoutedEventArgs e)
         {
             DeleteDialog.IsOpen = !DeleteDialog.IsOpen;
+        }
+
+        private void NewItem_Click(object sender, RoutedEventArgs e)
+        {
+            itemList.Add(new QuoteItem() { nominalCode = selectedAccount != null ? selectedAccount.defaultNominalCode : 4000, line = itemList.Max(p => p.line) + 1 });
+        }
+
+        private void EditItem_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridRow row = ItemList.ItemContainerGenerator.ContainerFromIndex(selectedItem) as DataGridRow;
+            if (row != null)
+            {
+                row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private void RefreshItems_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteDialog.IsOpen = true;
+        }
+
+        private void RelatedCallItem_EditCall(object sender, RoutedEventArgs e)
+        {
+            //TODO: Edit call
+        }
+
+        private void RelatedTodoItem_CompleteTodo(object sender, RoutedEventArgs e)
+        {
+            //TODO: Complete todo
+        }
+
+        private void RelatedOrderItem_EditOrder(object sender, RoutedEventArgs e)
+        {
+            //TODO: Edit order
+        }
+
+        private void NewTodo_Click(object sender, RoutedEventArgs e)
+        {
+            var TodoWindow = new TodoView();
+            TodoWindow.Show();
+        }
+
+        private void NewCalls_Click(object sender, RoutedEventArgs e)
+        {
+            var CallWindow = new CallView();
+            CallWindow.Show();
+        }
+
+        private void NewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            //var OrderWindow = new OrderView();
+            //OrderWindow.Show();
         }
     }
 }

@@ -10,18 +10,10 @@
         xmlns:UserControl="clr-namespace:ERP.Control"
         x:Class="ERP.Views.CallView"
         mc:Ignorable="d"
-        Width="672"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextElement.FontFamily="Roboto"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
+        Style="{StaticResource MaterialDesignBorderedWindow}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Language="en-GB"
-        ResizeMode="CanMinimize"
-        Height="478">
+        WindowStartupLocation="CenterScreen"
+        Title="Call">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -29,7 +21,8 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}"
-                                  Grid.Row="0">
+                                  Grid.Row="0"
+                                  Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
@@ -46,19 +39,34 @@
                            Style="{StaticResource MaterialDesignTitleTextBlock}"
                            Margin="48,0,0,0" />
                 <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="2">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="Download" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
                         Grid.Column="3"
                         ToolTip="Stage forward">
-                    <materialDesign:PackIcon Kind="ContentSave"
-                                             Height="24"
-                                             Width="24" />
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="Forward" />
                 </Button>
-                <materialDesign:PopupBox Grid.Column="6"
+                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="4">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="Delete" />
+                </Button>
+                <Button x:Name="Save"
+                        Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="5">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="ContentSave" />
+                </Button>
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
+                                         Grid.Column="6"
                                          PlacementMode="BottomAndAlignRightEdges"
-                                         StaysOpen="True"
-                                         Style="{StaticResource MaterialDesignMidHuePopupBox}">
+                                         StaysOpen="True">
                     <StackPanel>
                         <Button Content="Convert quote" />
-                        <Separator />
+                        <Button Content="Delete quote" />
                         <Button Content="Delete quote" />
                     </StackPanel>
                 </materialDesign:PopupBox>
@@ -69,70 +77,61 @@
                      IsIndeterminate="True"
                      Visibility="Collapsed" />
         <Grid Grid.Row="2"
-              Margin="0,12">
+              Margin="0,16,0,26">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="336" />
                 <ColumnDefinition Width="336" />
             </Grid.ColumnDefinitions>
-            <StackPanel Width="256"
-                        Grid.Row="2">
-                <Grid>
-                    <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Due date" />
-                    <materialDesign:TimePicker Style="{StaticResource MaterialDesignCustomFloatingTimePickerHalf}"
-                                               HorizontalAlignment="Right"
-                                               materialDesign:HintAssist.Hint="Due time" />
-                </Grid>
-                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Customer"
-                          IsTextSearchEnabled="False">
-                    <ComboBoxItem Content="Jasper Friend" />
-                </ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Contact"
-                          IsTextSearchEnabled="False">
-                    <ComboBoxItem Content="Jasper Friend" />
-                </ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Type"
-                          IsTextSearchEnabled="True">
-                    <ComboBoxItem Content="Outbound"
-                                  IsSelected="True" />
-                    <ComboBoxItem Content="Inbound" />
-                    <ComboBoxItem Content="Internal" />
-                </ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Purpose"
-                          IsTextSearchEnabled="True">
-                    <ComboBoxItem Content="Quote" />
-                    <ComboBoxItem Content="Order" />
-                    <ComboBoxItem Content="Information sent" />
-                    <ComboBoxItem Content="Service" />
-                </ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Type">
-                    <ComboBoxItem Content="Jasper Friend" />
-                </ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
-                          materialDesign:HintAssist.Hint="Assigned to"
-                          IsEnabled="False">
-                    <ComboBoxItem Content="Jasper Friend"
-                                  IsSelected="True" />
-                    <ComboBoxItem Content="Jasper Friend" />
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Width="256"
-                        Grid.Column="1">
-                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                         materialDesign:TextFieldAssist.HasTextAreaBox="True"
-                         materialDesign:HintAssist.Hint="Description"
-                         AcceptsReturn="True"
-                         Grid.Column="1"
-                         Height="324"
-                         Margin="0,12,0,4"
-                         TextWrapping="WrapWithOverflow" />
-            </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <ComboBox Grid.Column="0"
+                      Grid.Row="0"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Customer"
+                      IsTextSearchEnabled="False">
+                <ComboBoxItem Content="Jasper Friend" />
+            </ComboBox>
+            <ComboBox Grid.Column="1"
+                      Grid.Row="0"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Contact"
+                      IsTextSearchEnabled="False">
+                <ComboBoxItem Content="Jasper Friend" />
+            </ComboBox>
+            <ComboBox Grid.Column="0"
+                      Grid.Row="1"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Type"
+                      IsTextSearchEnabled="True">
+                <ComboBoxItem Content="Outbound"
+                              IsSelected="True" />
+                <ComboBoxItem Content="Inbound" />
+                <ComboBoxItem Content="Internal" />
+            </ComboBox>
+            <ComboBox Grid.Column="1"
+                      Grid.Row="1"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Purpose"
+                      IsTextSearchEnabled="True">
+                <ComboBoxItem Content="Quote" />
+                <ComboBoxItem Content="Order" />
+                <ComboBoxItem Content="Information sent" />
+                <ComboBoxItem Content="Service" />
+            </ComboBox>
+            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                     materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                     materialDesign:HintAssist.Hint="Description"
+                     AcceptsReturn="True"
+                     Grid.Row="3"
+                     Grid.ColumnSpan="2"
+                     Width="592"
+                     Height="150"
+                     Margin="0,12,0,4"
+                     TextWrapping="WrapWithOverflow" />
         </Grid>
     </Grid>
 </Window>

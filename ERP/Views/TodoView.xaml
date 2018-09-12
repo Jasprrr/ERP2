@@ -1,0 +1,205 @@
+﻿<Window x:Class="ERP.Views.TodoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ERP.Views"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignBorderedWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        WindowStartupLocation="CenterScreen"
+        Title="Todo">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Style="{StaticResource MaterialDesignColorZoneHeader}"
+                                  Grid.Row="0"
+                                  Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="Todo"
+                           Style="{StaticResource MaterialDesignTitleTextBlock}"
+                           Margin="48,0,0,0" />
+                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="2">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="Download" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="3"
+                        ToolTip="Stage forward">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="Forward" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="4">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="Delete" />
+                </Button>
+                <Button x:Name="Save"
+                        Style="{StaticResource MaterialDesignDarkForegroundButton}"
+                        Grid.Column="5">
+                    <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
+                                             Kind="ContentSave" />
+                </Button>
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignDarkForegroundPopupBox}"
+                                         Grid.Column="6"
+                                         PlacementMode="BottomAndAlignRightEdges"
+                                         StaysOpen="True">
+                    <StackPanel>
+                        <Button Content="Convert quote" />
+                        <Button Content="Delete quote" />
+                        <Button Content="Delete quote" />
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </Grid>
+        </materialDesign:ColorZone>
+        <ProgressBar x:Name="progressBar"
+                     Grid.Row="1"
+                     IsIndeterminate="True"
+                     Visibility="Collapsed" />
+        <Grid Grid.Row="2"
+              Margin="0,16,0,26">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="336" />
+                <ColumnDefinition Width="336" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                     materialDesign:HintAssist.Hint="Subject"
+                     AcceptsReturn="True"
+                     Grid.Row="0"
+                     Grid.ColumnSpan="2"
+                     Width="592"
+                     Margin="0,12,0,4"
+                     TextWrapping="WrapWithOverflow" />
+            <ComboBox Grid.Column="0"
+                      Grid.Row="1"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Account"
+                      IsTextSearchEnabled="True">
+                <ComboBoxItem Content="Outbound" />
+                <ComboBoxItem Content="Inbound" />
+                <ComboBoxItem Content="Internal" />
+            </ComboBox>
+            <ComboBox Grid.Column="1"
+                      Grid.Row="1"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Contact"
+                      IsTextSearchEnabled="True">
+                <ComboBoxItem Content="Quote" />
+                <ComboBoxItem Content="Order" />
+                <ComboBoxItem Content="Information sent" />
+                <ComboBoxItem Content="Service" />
+            </ComboBox>
+            <Grid Grid.Row="2"
+                  Width="256">
+                <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
+                            materialDesign:HintAssist.Hint="From"
+                            Text="{Binding selectedQuote.dueDate}"
+                            HorizontalAlignment="Left" />
+                <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
+                            materialDesign:HintAssist.Hint="To"
+                            Text="{Binding selectedQuote.dueDate}"
+                            HorizontalAlignment="Right"
+                            Visibility="Collapsed" />
+                <materialDesign:TimePicker Style="{StaticResource MaterialDesignCustomFloatingTimePickerHalf}"
+                                           materialDesign:HintAssist.Hint="Starts"
+                                           Text="{Binding selectedQuote.dueDate}"
+                                           HorizontalAlignment="Right" />
+            </Grid>
+            <!--<Grid Grid.Row="3"
+                  Grid.Column="1"
+                  Width="256">
+                <CheckBox  Style="{StaticResource MaterialDesignPopupCheckBox}"
+                           HorizontalAlignment="left"
+                           Content="All day"
+                           Height="26"
+                           Width="92"
+                           Margin="8,4,0,0" />
+            </Grid>-->
+            <!--<Grid Grid.Row="3"
+                  Grid.Column="1"
+                  Width="256">
+                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxHalf}"
+                          materialDesign:HintAssist.Hint="Repeat"
+                          HorizontalAlignment="Left">
+                    <ComboBoxItem Content="None" />
+                    <ComboBoxItem Content="Weekly" />
+                    <ComboBoxItem Content="Monthly" />
+                    <ComboBoxItem Content="Annually" />
+                </ComboBox>
+                <materialDesign:TimePicker Style="{StaticResource MaterialDesignCustomFloatingTimePickerHalf}"
+                                           materialDesign:HintAssist.Hint="Until"
+                                           Text="{Binding selectedQuote.dueDate}"
+                                           HorizontalAlignment="Right" />
+            </Grid>-->
+            <Grid Width="256"
+                  Grid.Column="1"
+                  Grid.Row="2">
+                <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
+                            materialDesign:HintAssist.Hint="To"
+                            Text="{Binding selectedQuote.dueDate}"
+                            HorizontalAlignment="Left" />
+                <materialDesign:TimePicker Style="{StaticResource MaterialDesignCustomFloatingTimePickerHalf}"
+                                           materialDesign:HintAssist.Hint="Ends"
+                                           Text="{Binding selectedQuote.dueDate}"
+                                           HorizontalAlignment="Right" />
+            </Grid>
+            <ComboBox Grid.Column="0"
+                      Grid.Row="4"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                      materialDesign:HintAssist.Hint="Assigned to"
+                      IsTextSearchEnabled="True">
+                <ComboBoxItem Content="Quote" />
+                <ComboBoxItem Content="Order" />
+                <ComboBoxItem Content="Information sent" />
+                <ComboBoxItem Content="Service" />
+            </ComboBox>
+            <Grid Grid.Row="4"
+                  Grid.Column="1"
+                  Width="256">
+                <CheckBox  Style="{StaticResource MaterialDesignPopupCheckBox}"
+                           HorizontalAlignment="left"
+                           Content="Completed"
+                           Width="92"
+                           Margin="0,4,0,0" />
+                <materialDesign:TimePicker Style="{StaticResource MaterialDesignCustomFloatingTimePickerHalf}"
+                                           materialDesign:HintAssist.Hint="Date"
+                                           Text="{Binding selectedQuote.dueDate}"
+                                           HorizontalAlignment="Right" />
+            </Grid>
+            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                     materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                     materialDesign:HintAssist.Hint="Notes"
+                     AcceptsReturn="True"
+                     Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     Width="592"
+                     Height="100"
+                     Margin="0,12,0,4"
+                     TextWrapping="WrapWithOverflow" />
+        </Grid>
+    </Grid>
+</Window>

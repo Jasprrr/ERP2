@@ -200,7 +200,7 @@
                                         <Grid>
                                             <DatePicker Style="{StaticResource MaterialDesignCustomFloatingDatePickerHalf}"
                                                         materialDesign:HintAssist.Hint="Due date"
-                                                        Text="{Binding selectedQuote.todoDate}"
+                                                        Text="{Binding selectedQuote.dueDate}"
                                                         HorizontalAlignment="Left" />
                                             <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
                                                      materialDesign:HintAssist.Hint="Success chance"
@@ -330,8 +330,12 @@
                                              Height="48"
                                              MinWidth="100">
                                         <TabItem.Header>
-                                            <TextBlock Text="ITEMS"
-                                                       Style="{StaticResource MaterialDesignButtonTextBlock}" />
+                                            <Grid ToolTip="Items"
+                                                  Background="Transparent">
+                                                <materialDesign:PackIcon Kind="PackageVariantClosed"
+                                                                         Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                         ToolTip="Items" />
+                                            </Grid>
                                         </TabItem.Header>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -340,232 +344,207 @@
                                             </Grid.RowDefinitions>
                                             <Grid Height="32"
                                                   Margin="24,0,24,20"
-                                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                                  HorizontalAlignment="Right">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
                                                 <Button x:Name="NewItem"
                                                         Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                        ToolTip="New item"
-                                                        Grid.Column="1"
-                                                        Click="NewTime_Click">
+                                                        ToolTip="New time"
+                                                        Grid.Column="0"
+                                                        Click="NewItem_Click">
                                                     <materialDesign:PackIcon Kind="Plus"
                                                                              Style="{StaticResource MaterialDesignButtonIcon}" />
                                                 </Button>
-                                                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
-                                                                         Grid.Column="2"
-                                                                         StaysOpen="True"
-                                                                         PlacementMode="BottomAndAlignCentres"
-                                                                         FontSize="15">
-                                                    <materialDesign:PopupBox.ToggleContent>
-                                                        <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                                                 Kind="FilterVariant"
-                                                                                 Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                                                    </materialDesign:PopupBox.ToggleContent>
-                                                    <StackPanel Margin="8,0">
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Calls" />
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Tasks" />
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Quotes" />
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Orders" />
-                                                    </StackPanel>
-                                                </materialDesign:PopupBox>
                                                 <Button x:Name="RefreshItems"
                                                         Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                        ToolTip="Refresh items"
-                                                        Grid.Column="3">
+                                                        ToolTip="New account"
+                                                        Grid.Column="1"
+                                                        Click="RefreshItems_Click">
                                                     <materialDesign:PackIcon Kind="Refresh"
                                                                              Style="{StaticResource MaterialDesignButtonIcon}" />
                                                 </Button>
                                             </Grid>
                                             <DataGrid  x:Name="ItemList"
-                                                           Grid.Row="1"
-                                                           ItemsSource="{Binding quoteItemList}"
-                                                           Style="{StaticResource MaterialDesignGrid}"
-                                                           CellStyle="{StaticResource MaterialDesignCell}"
-                                                           ScrollViewer.CanContentScroll="True"
-                                                           VerticalScrollBarVisibility="Visible"
-                                                           Margin="0,0,0,8"
-                                                           IsReadOnly="True"
-                                                           RowDetailsVisibilityMode="Collapsed"
-                                                           SelectedIndex="{Binding selectedItem}">
-                                                    <DataGrid.RowDetailsTemplate>
-                                                        <DataTemplate>
-                                                            <Grid HorizontalAlignment="Stretch"
-                                                                  Background="{DynamicResource MaterialDesignCardBackground}">
-                                                                <StackPanel Orientation="Horizontal"
-                                                                            HorizontalAlignment="center">
-                                                                    <StackPanel Width="256"
-                                                                                Margin="28,12">
-                                                                        <Grid>
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Item no."
-                                                                                     Text="{Binding line}"
-                                                                                     IsEnabled="False"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Line"
-                                                                                     Text="{Binding quantity}"
-                                                                                     HorizontalAlignment="Right" />
-                                                                        </Grid>
-                                                                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                       Grid.Row="1"
+                                                       ItemsSource="{Binding itemList}"
+                                                       Style="{StaticResource MaterialDesignGrid}"
+                                                       CellStyle="{StaticResource MaterialDesignCell}"
+                                                       ScrollViewer.CanContentScroll="True"
+                                                       VerticalScrollBarVisibility="Visible"
+                                                       Margin="0,0,0,8"
+                                                       IsReadOnly="True"
+                                                       RowDetailsVisibilityMode="Collapsed"
+                                                       SelectedIndex="{Binding selectedItem}">
+                                                <DataGrid.RowDetailsTemplate>
+                                                    <DataTemplate>
+                                                        <Grid HorizontalAlignment="Stretch"
+                                                              Background="{DynamicResource MaterialDesignCardBackground}">
+                                                            <StackPanel Orientation="Horizontal"
+                                                                        HorizontalAlignment="center">
+                                                                <StackPanel Width="256"
+                                                                            Margin="28,12">
+                                                                    <Grid>
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Item no."
+                                                                                 Text="{Binding line}"
+                                                                                 IsEnabled="False"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Line"
+                                                                                 Text="{Binding quantity}"
+                                                                                 HorizontalAlignment="Right" />
+                                                                    </Grid>
+                                                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxFull}"
+                                                                              ItemsSource="{Binding Source={x:Static local:QuoteView.standardItems}}"
+                                                                              DisplayMemberPath="itemCode"
+                                                                              Text="{Binding itemCode}"
+                                                                              materialDesign:HintAssist.Hint="Item code"
+                                                                              IsEditable="True" />
+                                                                    <Grid>
+                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                                 materialDesign:HintAssist.Hint="Quantity"
+                                                                                 Text="{Binding quantity}"
+                                                                                 HorizontalAlignment="Left" />
+                                                                        <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxHalf}"
                                                                                   ItemsSource="{Binding Source={x:Static local:QuoteView.standardItems}}"
                                                                                   DisplayMemberPath="itemCode"
                                                                                   Text="{Binding itemCode}"
-                                                                                  materialDesign:HintAssist.Hint="Item code"
-                                                                                  IsEditable="True" />
-                                                                        <Grid>
-                                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                     materialDesign:HintAssist.Hint="Quantity"
-                                                                                     Text="{Binding quantity}"
-                                                                                     HorizontalAlignment="Left" />
-                                                                            <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBoxHalf}"
-                                                                                      ItemsSource="{Binding Source={x:Static local:QuoteView.standardItems}}"
-                                                                                      DisplayMemberPath="itemCode"
-                                                                                      Text="{Binding itemCode}"
-                                                                                      materialDesign:HintAssist.Hint="N/C"
-                                                                                      IsEditable="True"
-                                                                                      HorizontalAlignment="Right" />
-                                                                        </Grid>
-                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                 materialDesign:HintAssist.Hint="Batch number"
-                                                                                 Text="{Binding internalDescription}" />
-                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                                 materialDesign:HintAssist.Hint="Cost"
-                                                                                 Text="{Binding cost, StringFormat=\{0:C\}}"
-                                                                                 HorizontalAlignment="Left" />
-                                                                    </StackPanel>
-                                                                    <StackPanel Width="256"
-                                                                                Margin="28,12">
-                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                 materialDesign:TextFieldAssist.HasTextAreaBox="True"
-                                                                                 materialDesign:HintAssist.Hint="Internal description"
-                                                                                 Text="{Binding internalDescription}"
-                                                                                 AcceptsReturn="True"
-                                                                                 Height="254"
-                                                                                 Margin="0,12,0,4"
-                                                                                 TextWrapping="Wrap" />
-                                                                    </StackPanel>
-                                                                    <StackPanel Width="256"
-                                                                                Margin="28,12">
-                                                                        <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                                 materialDesign:TextFieldAssist.HasTextAreaBox="True"
-                                                                                 materialDesign:HintAssist.Hint="External description"
-                                                                                 Text="{Binding externalDescription}"
-                                                                                 AcceptsReturn="True"
-                                                                                 Height="254"
-                                                                                 Margin="0,12,0,4"
-                                                                                 TextWrapping="Wrap" />
-                                                                    </StackPanel>
+                                                                                  materialDesign:HintAssist.Hint="N/C"
+                                                                                  IsEditable="True"
+                                                                                  HorizontalAlignment="Right" />
+                                                                    </Grid>
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:HintAssist.Hint="Batch number"
+                                                                             Text="{Binding internalDescription}" />
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                             materialDesign:HintAssist.Hint="Cost"
+                                                                             Text="{Binding cost, StringFormat=\{0:C\}}"
+                                                                             HorizontalAlignment="Left" />
                                                                 </StackPanel>
-                                                            </Grid>
-                                                        </DataTemplate>
-                                                    </DataGrid.RowDetailsTemplate>
-                                                    <DataGrid.Columns>
-                                                        <DataGridTemplateColumn CanUserResize="False"
-                                                                                Width="60"
-                                                                                MinWidth="60"
-                                                                                MaxWidth="60">
-                                                            <DataGridTemplateColumn.CellTemplate>
-                                                                <DataTemplate>
-                                                                    <Button x:Name="EditItem"
-                                                                            Click="ShowHideDetails"
-                                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                                            Tag="{Binding ID}"
-                                                                            Margin="0,-8">
-                                                                        <materialDesign:PackIcon Kind="Pencil"
-                                                                                                 Style="{StaticResource MaterialDesignButtonIcon}"
-                                                                                                 Height="18"
-                                                                                                 Width="18" />
-                                                                    </Button>
-                                                                </DataTemplate>
-                                                            </DataGridTemplateColumn.CellTemplate>
-                                                        </DataGridTemplateColumn>
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemLine"
-                                                                                                   Binding="{Binding line}"
-                                                                                                   Header="Line"
-                                                                                                   Width="*"
-                                                                                                   MinWidth="80"
-                                                                                                   SortDirection="Ascending"
-                                                                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemCode"
-                                                                                                   Binding="{Binding itemCode}"
-                                                                                                   Header="Item code"
-                                                                                                   Width="2*"
-                                                                                                   MinWidth="120"
-                                                                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemInternalDescription"
-                                                                                                   Binding="{Binding internalDescription}"
-                                                                                                   Header="Internal description"
-                                                                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-                                                                                                   Width="6*"
-                                                                                                   MinWidth="200" />
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemNominalCode"
-                                                                                                   Binding="{Binding nominalCode}"
-                                                                                                   Header="N/C"
-                                                                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-                                                                                                   Width="*"
-                                                                                                   MinWidth="80" />
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemQuantity"
-                                                                                                   Binding="{Binding quantity}"
-                                                                                                   Header="Quantity"
-                                                                                                   Width="*"
-                                                                                                   MinWidth="80"
-                                                                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemCost"
-                                                                                                   Binding="{Binding cost}"
-                                                                                                   Header="Cost (£)"
-                                                                                                   Width="*"
-                                                                                                   MinWidth="80"
-                                                                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                                                        <materialDesign:MaterialDataGridTextColumn x:Name="itemTotal"
-                                                                                                   Binding="{Binding total}"
-                                                                                                   Header="Total (£)"
-                                                                                                   Width="*"
-                                                                                                   MinWidth="80"
-                                                                                                   IsReadOnly="True" />
-                                                        <DataGridTemplateColumn CanUserResize="False"
-                                                                                Width="60"
-                                                                                MinWidth="60"
-                                                                                MaxWidth="60">
-                                                            <DataGridTemplateColumn.CellTemplate>
-                                                                <DataTemplate>
-                                                                    <Button x:Name="DeleteQuoteItem"
-                                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                                            Tag="{Binding ID}"
-                                                                            Margin="0,-8">
-                                                                        <materialDesign:PackIcon Kind="Delete"
-                                                                                                 Style="{StaticResource MaterialDesignButtonIcon}"
-                                                                                                 Height="18"
-                                                                                                 Width="18" />
-                                                                    </Button>
-                                                                </DataTemplate>
-                                                            </DataGridTemplateColumn.CellTemplate>
-                                                        </DataGridTemplateColumn>
-                                                    </DataGrid.Columns>
-                                                </DataGrid>
-                                            </Grid>
+                                                                <StackPanel Width="256"
+                                                                            Margin="28,12">
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                                                                             materialDesign:HintAssist.Hint="Internal description"
+                                                                             Text="{Binding internalDescription}"
+                                                                             AcceptsReturn="True"
+                                                                             Height="254"
+                                                                             Margin="0,12,0,4"
+                                                                             TextWrapping="Wrap" />
+                                                                </StackPanel>
+                                                                <StackPanel Width="256"
+                                                                            Margin="28,12">
+                                                                    <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                             materialDesign:TextFieldAssist.HasTextAreaBox="True"
+                                                                             materialDesign:HintAssist.Hint="External description"
+                                                                             Text="{Binding externalDescription}"
+                                                                             AcceptsReturn="True"
+                                                                             Height="254"
+                                                                             Margin="0,12,0,4"
+                                                                             TextWrapping="Wrap" />
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </DataGrid.RowDetailsTemplate>
+                                                <DataGrid.Columns>
+                                                    <DataGridTemplateColumn CanUserResize="False"
+                                                                            Width="60"
+                                                                            MinWidth="60"
+                                                                            MaxWidth="60">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button x:Name="EditItem"
+                                                                        Click="EditItem_Click"
+                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
+                                                                        Tag="{Binding ID}"
+                                                                        Margin="0,-8">
+                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                             Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                                             Height="18"
+                                                                                             Width="18" />
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemLine"
+                                                                                               Binding="{Binding line}"
+                                                                                               Header="Line"
+                                                                                               Width="*"
+                                                                                               MinWidth="80"
+                                                                                               SortDirection="Ascending"
+                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemCode"
+                                                                                               Binding="{Binding itemCode}"
+                                                                                               Header="Item code"
+                                                                                               Width="2*"
+                                                                                               MinWidth="120"
+                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemInternalDescription"
+                                                                                               Binding="{Binding internalDescription}"
+                                                                                               Header="Internal description"
+                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                                                                                               Width="6*"
+                                                                                               MinWidth="200" />
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemNominalCode"
+                                                                                               Binding="{Binding nominalCode}"
+                                                                                               Header="N/C"
+                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                                                                                               Width="*"
+                                                                                               MinWidth="80" />
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemQuantity"
+                                                                                               Binding="{Binding quantity}"
+                                                                                               Header="Quantity"
+                                                                                               Width="*"
+                                                                                               MinWidth="80"
+                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemCost"
+                                                                                               Binding="{Binding cost}"
+                                                                                               Header="Cost (£)"
+                                                                                               Width="*"
+                                                                                               MinWidth="80"
+                                                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                                    <materialDesign:MaterialDataGridTextColumn x:Name="itemTotal"
+                                                                                               Binding="{Binding total}"
+                                                                                               Header="Total (£)"
+                                                                                               Width="*"
+                                                                                               MinWidth="80"
+                                                                                               IsReadOnly="True" />
+                                                    <DataGridTemplateColumn CanUserResize="False"
+                                                                            Width="60"
+                                                                            MinWidth="60"
+                                                                            MaxWidth="60">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button x:Name="DeleteItem"
+                                                                        Style="{StaticResource MaterialDesignFlatIconButton}"
+                                                                        Tag="{Binding ID}"
+                                                                        Margin="0,-8"
+                                                                        Click="DeleteItem_Click">
+                                                                    <materialDesign:PackIcon Kind="Delete"
+                                                                                             Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                                             Height="18"
+                                                                                             Width="18" />
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </Grid>
                                     </TabItem>
                                     <TabItem Style="{DynamicResource MaterialDesignTopTabItem}"
                                              Height="48"
                                              MinWidth="100">
                                         <TabItem.Header>
-                                            <TextBlock Text="TIMES"
-                                                       Style="{StaticResource MaterialDesignButtonTextBlock}" />
+                                            <Grid ToolTip="Times"
+                                                  Background="Transparent">
+                                                <materialDesign:PackIcon Kind="Timer"
+                                                                         Style="{StaticResource MaterialDesignButtonIcon}"
+                                                                         ToolTip="Times" />
+                                            </Grid>
                                         </TabItem.Header>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -574,61 +553,30 @@
                                             </Grid.RowDefinitions>
                                             <Grid Height="32"
                                                   Margin="24,0,24,20"
-                                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                                  HorizontalAlignment="Right">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
                                                 <Button x:Name="NewTime"
                                                         Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New time"
-                                                        Grid.Column="1"
+                                                        Grid.Column="0"
                                                         Click="NewTime_Click">
                                                     <materialDesign:PackIcon Kind="Plus"
                                                                              Style="{StaticResource MaterialDesignButtonIcon}" />
                                                 </Button>
-                                                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMidHuePopupBox}"
-                                                                         Grid.Column="2"
-                                                                         StaysOpen="True"
-                                                                         PlacementMode="BottomAndAlignCentres"
-                                                                         FontSize="15">
-                                                    <materialDesign:PopupBox.ToggleContent>
-                                                        <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
-                                                                                 Kind="FilterVariant"
-                                                                                 Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                                                    </materialDesign:PopupBox.ToggleContent>
-                                                    <StackPanel Margin="8,0">
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Calls" />
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Tasks" />
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Quotes" />
-                                                        <CheckBox Style="{StaticResource MaterialDesignPopupCheckBox}"
-                                                                  Padding="8,8,16,8"
-                                                                  IsChecked="True"
-                                                                  Content="Orders" />
-                                                    </StackPanel>
-                                                </materialDesign:PopupBox>
                                                 <Button x:Name="RefreshAccounts"
                                                         Style="{StaticResource MaterialDesignFlatIconButton}"
                                                         ToolTip="New account"
-                                                        Grid.Column="3">
+                                                        Grid.Column="1">
                                                     <materialDesign:PackIcon Kind="Refresh"
                                                                              Style="{StaticResource MaterialDesignButtonIcon}" />
                                                 </Button>
                                             </Grid>
                                             <DataGrid x:Name="TimeList"
                                                       Grid.Row="1"
-                                                      ItemsSource="{Binding quoteTimeList}"
+                                                      ItemsSource="{Binding timeList}"
                                                       Style="{StaticResource MaterialDesignGrid}"
                                                       CellStyle="{StaticResource MaterialDesignCell}"
                                                       ScrollViewer.CanContentScroll="True"
@@ -776,18 +724,18 @@
                                       VerticalScrollBarVisibility="Auto">
                             <StackPanel>
                                 <Expander Background="{DynamicResource MaterialDesignCardBackground}"
-                                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                           IsExpanded="True">
                                     <Expander.Header>
                                         <Grid>
                                             <TextBlock Text="Calls"
                                                        Style="{StaticResource MaterialDesignHeaderTextBlock}"
                                                        Foreground="{DynamicResource MaterialDesignBody}" />
-                                            <Button x:Name="NewTask"
+                                            <Button x:Name="NewCalls"
                                                     Style="{StaticResource MaterialDesignFlatIconButton}"
                                                     ToolTip="New task"
                                                     Panel.ZIndex="1"
-                                                    VerticalAlignment="Top">
+                                                    VerticalAlignment="Top"
+                                                    Click="NewCalls_Click">
                                                 <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
                                                                          Kind="Plus" />
                                             </Button>
@@ -801,55 +749,9 @@
                                                 <ItemsPresenter />
                                             </ControlTemplate>
                                         </ListView.Template>
-
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Margin="0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50" />
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Button Grid.Column="0"
-                                                            x:Name="NewTas2k"
-                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                            ToolTip="New item"
-                                                            Margin="0,0,0,0"
-                                                            VerticalAlignment="Center"
-                                                            HorizontalAlignment="Center">
-                                                        <materialDesign:PackIcon Kind="Pencil"
-                                                                                 Height="18"
-                                                                                 Width="18" />
-                                                    </Button>
-                                                    <StackPanel Grid.Column="1"
-                                                                Margin="8,0,0,0">
-                                                        <TextBlock x:Name="taskHeader"
-                                                                   Style="{StaticResource MaterialDesignBody2TextBlock}" />
-                                                        <TextBlock x:Name="taskSubheader"
-                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                   Visibility="{Binding description, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding description}"
-                                                                   TextTrimming="CharacterEllipsis" />
-                                                        <TextBlock x:Name="taskDetail"
-                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                   Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                   Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding todoDate, StringFormat=\{0:D\}}" />
-                                                    </StackPanel>
-                                                    <Border Grid.Column="2"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Margin="12,4,12,0"
-                                                            Width="24"
-                                                            Height="24"
-                                                            Background="{StaticResource SecondaryAccentBrush}"
-                                                            CornerRadius="12"
-                                                            ToolTip="Tooltip!">
-                                                        <TextBlock HorizontalAlignment="Center"
-                                                                   VerticalAlignment="Center"
-                                                                   Foreground="{StaticResource SecondaryAccentForegroundBrush}" />
-                                                    </Border>
-                                                </Grid>
+                                                <UserControl:RelatedCallItem EditCall="RelatedCallItem_EditCall" />
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
@@ -860,16 +762,18 @@
                                         <Grid>
                                             <TextBlock Text="Tasks"
                                                        Style="{StaticResource MaterialDesignHeaderTextBlock}" />
-                                            <Button Style="{StaticResource MaterialDesignFlatIconButton}"
+                                            <Button x:Name="NewTodo"
+                                                    Style="{StaticResource MaterialDesignFlatIconButton}"
                                                     ToolTip="New item"
                                                     Panel.ZIndex="1"
-                                                    VerticalAlignment="Top">
+                                                    VerticalAlignment="Top"
+                                                    Click="NewTodo_Click">
                                                 <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
                                                                          Kind="Plus" />
                                             </Button>
                                         </Grid>
                                     </Expander.Header>
-                                    <ListView x:Name="TaskList"
+                                    <ListView x:Name="TodoList"
                                               Style="{StaticResource MaterialDesignPreviewListView}"
                                               ItemsSource="{Binding todoList}">
                                         <ListView.Template>
@@ -879,46 +783,7 @@
                                         </ListView.Template>
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Margin="0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50" />
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <CheckBox Grid.Column="0"
-                                                              HorizontalAlignment="Center"
-                                                              Cursor="Hand"
-                                                              VerticalAlignment="Center"
-                                                              Panel.ZIndex="1" />
-                                                    <StackPanel Grid.Column="1"
-                                                                Margin="8,0,0,0">
-                                                        <TextBlock x:Name="taskHeader"
-                                                                   Style="{StaticResource MaterialDesignBody2TextBlock}" />
-                                                        <TextBlock x:Name="taskSubheader"
-                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                   Visibility="{Binding description, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding description}"
-                                                                   TextTrimming="CharacterEllipsis" />
-                                                        <TextBlock x:Name="taskDetail"
-                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                   Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                   Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding todoDate, StringFormat=\{0:D\}}" />
-                                                    </StackPanel>
-                                                    <Border Grid.Column="2"
-                                                            VerticalAlignment="Center"
-                                                            Margin="12,4,12,0"
-                                                            Padding="0"
-                                                            Width="24"
-                                                            Height="24"
-                                                            Background="{StaticResource SecondaryAccentBrush}"
-                                                            CornerRadius="12"
-                                                            HorizontalAlignment="Center">
-                                                        <TextBlock HorizontalAlignment="Center"
-                                                                   VerticalAlignment="Center"
-                                                                   Foreground="{StaticResource SecondaryAccentForegroundBrush}" />
-                                                    </Border>
-                                                </Grid>
+                                                <UserControl:RelatedTodoItem CompleteTodo="RelatedTodoItem_CompleteTodo" />
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
@@ -929,10 +794,12 @@
                                         <Grid>
                                             <TextBlock Text="Orders"
                                                        Style="{StaticResource MaterialDesignHeaderTextBlock}" />
-                                            <Button Style="{StaticResource MaterialDesignFlatIconButton}"
+                                            <Button x:Name="NewOrder"
+                                                    Style="{StaticResource MaterialDesignFlatIconButton}"
                                                     ToolTip="New item"
                                                     Panel.ZIndex="1"
-                                                    VerticalAlignment="Top">
+                                                    VerticalAlignment="Top"
+                                                    Click="NewOrder_Click">
                                                 <materialDesign:PackIcon Style="{StaticResource MaterialDesignButtonIcon}"
                                                                          Kind="Plus" />
                                             </Button>
@@ -948,52 +815,7 @@
                                         </ListView.Template>
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Margin="0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50" />
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Button Grid.Column="0"
-                                                            x:Name="NewTas2k"
-                                                            Style="{StaticResource MaterialDesignFlatIconButton}"
-                                                            ToolTip="New item"
-                                                            Margin="0,0,0,0"
-                                                            VerticalAlignment="Center"
-                                                            HorizontalAlignment="Center">
-                                                        <materialDesign:PackIcon Kind="Pencil"
-                                                                                 Height="18"
-                                                                                 Width="18" />
-                                                    </Button>
-                                                    <StackPanel Grid.Column="1"
-                                                                Margin="8,0,0,0">
-                                                        <TextBlock x:Name="taskHeader"
-                                                                   Style="{StaticResource MaterialDesignBody2TextBlock}" />
-                                                        <TextBlock x:Name="taskSubheader"
-                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                   Visibility="{Binding description, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding description}"
-                                                                   TextTrimming="CharacterEllipsis" />
-                                                        <TextBlock x:Name="taskDetail"
-                                                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                                                   Foreground="{StaticResource MaterialDesignColumnHeader}"
-                                                                   Visibility="{Binding todoDate, Converter={StaticResource NullableToVisibilityConverter}}"
-                                                                   Text="{Binding todoDate, StringFormat=\{0:D\}}" />
-                                                    </StackPanel>
-                                                    <Border Grid.Column="2"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Margin="12,4,12,0"
-                                                            Width="24"
-                                                            Height="24"
-                                                            Background="{StaticResource SecondaryAccentBrush}"
-                                                            CornerRadius="12"
-                                                            ToolTip="Tooltip!">
-                                                        <TextBlock HorizontalAlignment="Center"
-                                                                   VerticalAlignment="Center"
-                                                                   Foreground="{StaticResource SecondaryAccentForegroundBrush}" />
-                                                    </Border>
-                                                </Grid>
+                                                <UserControl:RelatedOrderItem EditOrder="RelatedOrderItem_EditOrder" />
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
