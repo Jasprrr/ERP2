@@ -888,7 +888,7 @@
                                     <ContentPresenter x:Name="PART_SelectedContentHost"
                                                       ContentSource="SelectedContent"
                                                       Margin="{TemplateBinding Padding}"
-                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </Border>
                             </Grid>
                             <ControlTemplate.Triggers>

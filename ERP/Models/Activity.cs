@@ -12,14 +12,14 @@ namespace ERP.Models
         public event PropertyChangedEventHandler PropertyChanged;
         
         public int activityID { get; set; }
+        public string icon { get; set; }
         public string activity { get; set; }
-        public DateTime? activityDate { get; set; }
-        public string user { get; set; }
-        public int userID { get; set; }
-        public string contact { get; set; }
-        public string icon {get;set;}
-        public string colour { get; set; }
+        public string header { get; set; }
+        public string subheader { get; set; }
         public string description { get; set; }
+        public string colour { get; set; }
+        public DateTime activityDate { get; set; }
+        public string user { get; set; }
 
         public string activityDescription
         {

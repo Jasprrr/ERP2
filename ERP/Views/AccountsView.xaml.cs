@@ -36,46 +36,6 @@ namespace ERP.Views
             InitializeComponent();
 
             accountList = AccountsController.GetAccounts(search);
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status="Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status="Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status="Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status="Active"});
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status="Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "TIMC", accountName = "Tim Co.", email = "tim@tim.co", phone1 = "0800 000 001", status = "Cold" });
-            //_accountList.Add(new Account() { accountCode = "BOBC", accountName = "Bob Co.", email = "bob@bob.co", phone1 = "0800 000 002", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "ROBC", accountName = "Rob Co.", email = "rob@rob.co", phone1 = "0800 000 003", status = "Lapsed" });
-            //_accountList.Add(new Account() { accountCode = "JIMC", accountName = "Jim Co.", email = "jim@jim.co", phone1 = "0800 000 004", status = "Active" });
-            //_accountList.Add(new Account() { accountCode = "SAMC", accountName = "Sam Co.", email = "sam@sam.co", phone1 = "0800 000 005", status = "Cold" });
         }
 
         private Account _selectedAccount;
