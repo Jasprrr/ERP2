@@ -81,7 +81,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1"
                                        VerticalAlignment="Center"
-                                       Text="Account"
+                                       Text="{Binding selectedAccount.accountName}"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}"
                                        Margin="48,0,0,0" />
                             <Button Style="{StaticResource MaterialDesignDarkForegroundButton}"
@@ -142,7 +142,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <materialDesign:ColorZone Mode="PrimaryMid">
+                                        <!--<materialDesign:ColorZone Mode="PrimaryMid">
                                             <StackPanel Width="256"
                                                         Margin="0,18">
                                                 <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}"
@@ -158,15 +158,17 @@
                                                            IsEnabled="False"
                                                            HorizontalAlignment="Center"
                                                            Margin="0,4" />
-                                                <!--<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                -->
+                                        <!--<TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                                            materialDesign:HintAssist.Hint="Date"
                                                            Text="{Binding selectedAccount.dateCreated, StringFormat=\{0:D\}}"
                                                            Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
                                                            IsEnabled="False"
                                                            HorizontalAlignment="Center"
                                                            Margin="0,4" />-->
+                                        <!--
                                             </StackPanel>
-                                        </materialDesign:ColorZone>
+                                        </materialDesign:ColorZone>-->
                                         <TabControl Grid.Row="1"
                                                     Style="{StaticResource MaterialDesignTabControl}"
                                                     VerticalContentAlignment="Stretch"
@@ -253,98 +255,112 @@
                                                 <TabItem.Header>
                                                     <Grid ToolTip="Addresses"
                                                           Background="Transparent">
-                                                        <materialDesign:PackIcon Kind="Map"
+                                                        <materialDesign:PackIcon Kind="MapMarker"
                                                                                  Style="{StaticResource MaterialDesignButtonIcon}"
                                                                                  ToolTip="Addresses" />
                                                     </Grid>
                                                 </TabItem.Header>
-                                                <Grid Width="336">
-                                                    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                                                  VerticalContentAlignment="Stretch"
-                                                                  HorizontalContentAlignment="Stretch">
-                                                        <StackPanel Width="256"
-                                                                    Margin="0,12">
-                                                            <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
-                                                                       Text="Billing address"
-                                                                       Margin="0,8,0,4"
-                                                                       Foreground="{StaticResource PrimaryHueMidBrush}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                     Text="{Binding selectedAccount.billingAddress1}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                     Text="{Binding selectedAccount.billingAddress1}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                     Text="{Binding selectedAccount.billingAddress2}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="City"
-                                                                     Text="{Binding selectedAccount.billingCity}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="County"
-                                                                     Text="{Binding selectedAccount.billingCounty}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                     Text="{Binding selectedAccount.billingPostcode}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                     Text="{Binding selectedAccount.billingCountry}" />
-                                                            <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
-                                                                       Margin="-20,6,-20,4" />
-                                                            <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
-                                                                       Text="Shipping address"
-                                                                       Margin="0,8,0,4"
-                                                                       Foreground="{StaticResource PrimaryHueMidBrush}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                     Text="{Binding selectedAccount.shippingAddress1}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                     Text="{Binding selectedAccount.shippingAddress2}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="City"
-                                                                     Text="{Binding selectedAccount.shippingCity}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="County"
-                                                                     Text="{Binding selectedAccount.shippingCounty}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                     Text="{Binding selectedAccount.shippingPostcode}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                     Text="{Binding selectedAccount.shippingCountry}" />
-                                                            <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
-                                                                       Margin="-20,6,-20,4" />
-                                                            <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
-                                                                       Text="Registered address"
-                                                                       Margin="0,8,0,4"
-                                                                       Foreground="{StaticResource PrimaryHueMidBrush}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 1"
-                                                                     Text="{Binding selectedAccount.registeredAddress1}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Address 2"
-                                                                     Text="{Binding selectedAccount.registeredAddress2}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="City"
-                                                                     Text="{Binding selectedAccount.registeredCity}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="County"
-                                                                     Text="{Binding selectedAccount.registeredCounty}" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
-                                                                     materialDesign:HintAssist.Hint="Postcode"
-                                                                     Text="{Binding selectedAccount.registeredPostcode}"
-                                                                     HorizontalAlignment="Left" />
-                                                            <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
-                                                                     materialDesign:HintAssist.Hint="Country"
-                                                                     Text="{Binding selectedAccount.registeredCountry}" />
-                                                            <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
-                                                                       Margin="-20,6,-20,4" />
-                                                        </StackPanel>
-                                                    </ScrollViewer>
+                                                <Grid Margin="0,-3,0,0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <materialDesign:ColorZone x:Name="AddressShadow"
+                                                                              materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                                                              materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                                                              Height="1"
+                                                                              Visibility="Collapsed" />
+                                                    <Grid Width="334"
+                                                          Grid.Row="1">
+                                                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                                                      VerticalContentAlignment="Stretch"
+                                                                      HorizontalContentAlignment="Stretch"
+                                                                      ScrollChanged="ScrollViewer_ScrollChanged">
+                                                            <StackPanel Width="256"
+                                                                        Margin="0,12">
+                                                                <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                                           Text="Billing address"
+                                                                           Margin="0,8,0,4"
+                                                                           Foreground="{StaticResource PrimaryHueMidBrush}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 1"
+                                                                         Text="{Binding selectedAccount.billingAddress1}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 1"
+                                                                         Text="{Binding selectedAccount.billingAddress1}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 2"
+                                                                         Text="{Binding selectedAccount.billingAddress2}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="City"
+                                                                         Text="{Binding selectedAccount.billingCity}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="County"
+                                                                         Text="{Binding selectedAccount.billingCounty}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                         materialDesign:HintAssist.Hint="Postcode"
+                                                                         Text="{Binding selectedAccount.billingPostcode}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Country"
+                                                                         Text="{Binding selectedAccount.billingCountry}" />
+                                                                <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
+                                                                           Margin="-20,6,-20,4" />
+                                                                <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                                           Text="Shipping address"
+                                                                           Margin="0,8,0,4"
+                                                                           Foreground="{StaticResource PrimaryHueMidBrush}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 1"
+                                                                         Text="{Binding selectedAccount.shippingAddress1}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 2"
+                                                                         Text="{Binding selectedAccount.shippingAddress2}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="City"
+                                                                         Text="{Binding selectedAccount.shippingCity}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="County"
+                                                                         Text="{Binding selectedAccount.shippingCounty}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                         materialDesign:HintAssist.Hint="Postcode"
+                                                                         Text="{Binding selectedAccount.shippingPostcode}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Country"
+                                                                         Text="{Binding selectedAccount.shippingCountry}" />
+                                                                <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
+                                                                           Margin="-20,6,-20,4" />
+                                                                <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                                           Text="Registered address"
+                                                                           Margin="0,8,0,4"
+                                                                           Foreground="{StaticResource PrimaryHueMidBrush}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 1"
+                                                                         Text="{Binding selectedAccount.registeredAddress1}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Address 2"
+                                                                         Text="{Binding selectedAccount.registeredAddress2}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="City"
+                                                                         Text="{Binding selectedAccount.registeredCity}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="County"
+                                                                         Text="{Binding selectedAccount.registeredCounty}" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxHalf}"
+                                                                         materialDesign:HintAssist.Hint="Postcode"
+                                                                         Text="{Binding selectedAccount.registeredPostcode}"
+                                                                         HorizontalAlignment="Left" />
+                                                                <TextBox Style="{StaticResource MaterialDesignCustomFloatingHintTextBoxFull}"
+                                                                         materialDesign:HintAssist.Hint="Country"
+                                                                         Text="{Binding selectedAccount.registeredCountry}" />
+                                                                <Separator Style="{StaticResource MaterialDesignCustomSeperator}"
+                                                                           Margin="-20,6,-20,4" />
+                                                            </StackPanel>
+                                                        </ScrollViewer>
+                                                    </Grid>
                                                 </Grid>
+
                                             </TabItem>
                                             <TabItem Style="{StaticResource MaterialDesignTopTabItem}"
                                                      MinWidth="112">
@@ -503,7 +519,11 @@
                                               Margin="0,0,0,12">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <materialDesign:Card Margin="8,12,8,0">
+                                            <materialDesign:ColorZone CornerRadius="3"
+                                                                      Margin="8,12,8,0"
+                                                                      BorderThickness="1"
+                                                                      Background="{DynamicResource MaterialDesignCardBackground}"
+                                                                      BorderBrush="#1e000000">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
@@ -587,7 +607,7 @@
                                                                    Margin="0,8,0,0" />
                                                     </StackPanel>
                                                 </Grid>
-                                            </materialDesign:Card>
+                                            </materialDesign:ColorZone>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>

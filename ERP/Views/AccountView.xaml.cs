@@ -191,5 +191,17 @@ namespace ERP.Views
 
             }
         }
+
+        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.VerticalOffset > 0)
+            {
+                AddressShadow.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AddressShadow.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

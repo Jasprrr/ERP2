@@ -1225,7 +1225,125 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <Style x:Key="MaterialDesignTabItemMedium"
+                   TargetType="{x:Type TabItem}">
+                <Setter Property="FocusVisualStyle"
+                        Value="{StaticResource FocusVisual}" />
+                <Setter Property="Margin"
+                        Value="0" />
+                <Setter Property="Padding"
+                        Value="16,12,16,12" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot"
+                                  SnapsToDevicePixels="true">
+                                <Border x:Name="mainBorder"
+                                        Background="{DynamicResource PrimaryHueMidBrush}">
+                                    <Border x:Name="innerBorder"
+                                            BorderBrush="{DynamicResource SecondaryAccentBrush}"
+                                            BorderThickness="0,0,0,2"
+                                            Background="{DynamicResource PrimaryHueMidBrush}"
+                                            Margin="0"
+                                            Opacity="0" />
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter"
+                                                  ContentSource="Header"
+                                                  Focusable="False"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="true" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Panel.ZIndex"
+                                            Value="1" />
+                                    <Setter Property="Opacity"
+                                            TargetName="innerBorder"
+                                            Value="1" />
+                                </MultiDataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             
+            <Style x:Key="MaterialDesignTabItemDark"
+                   TargetType="{x:Type TabItem}">
+                <Setter Property="FocusVisualStyle"
+                        Value="{StaticResource FocusVisual}" />
+                <Setter Property="Margin"
+                        Value="0" />
+                <Setter Property="Padding"
+                        Value="16,12,16,12" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot"
+                                  SnapsToDevicePixels="true">
+                                <Border x:Name="mainBorder"
+                                        Background="{DynamicResource PrimaryHueDarkBrush}">
+                                    <Border x:Name="innerBorder"
+                                            BorderBrush="{DynamicResource SecondaryAccentBrush}"
+                                            BorderThickness="0,0,0,2"
+                                            Background="{DynamicResource PrimaryHueDarkBrush}"
+                                            Margin="0"
+                                            Opacity="0" />
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter"
+                                                  ContentSource="Header"
+                                                  Focusable="False"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="true" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Panel.ZIndex"
+                                            Value="1" />
+                                    <Setter Property="Opacity"
+                                            TargetName="innerBorder"
+                                            Value="1" />
+                                </MultiDataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <!-- Border -->
             <Style x:Key="MaterialDesignUserBorder"
                    TargetType="Border">
