@@ -200,6 +200,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Resources\ColourGenerator.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Views\AccountView2.xaml.cs">
+      <DependentUpon>AccountView2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
@@ -335,6 +338,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AccountView2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
